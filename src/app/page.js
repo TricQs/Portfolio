@@ -1,66 +1,83 @@
-import Image from "next/image";
 import styles from "./page.module.css";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <nav className={styles.navbar}>
+        <div className={styles.logo}>Portofolio.</div>
+        <div className={styles.navLinks}>
+          <a href="#beranda">Beranda</a>
+          <a href="#tentang">Tentang</a>
+          <a href="#proyek">Proyek</a>
+          <a href="#kontak">Kontak</a>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </nav>
+
+      <main className={styles.main}>
+        <div className={styles.container}>
+          {/* Hero Section */}
+          <section id="beranda" className={styles.hero}>
+            <div className={styles.heroContent}>
+              <span className={styles.greeting}>Halo, saya</span>
+              <h1 className={styles.title}>
+                Creative <span>Developer</span>.
+              </h1>
+              <p className={styles.subtitle}>
+                Saya membangun antarmuka web modern yang estetis, cepat, dan responsif. 
+                Berfokus pada pengalaman pengguna yang luar biasa dengan desain yang memukau.
+              </p>
+              <div className={styles.actions}>
+                <a href="#proyek" className="btn btn-primary">Lihat Proyek</a>
+                <a href="#kontak" className="btn btn-secondary">Hubungi Saya</a>
+              </div>
+            </div>
+          </section>
+
+          {/* Proyek Section */}
+          <section id="proyek" className={styles.section}>
+            <h2 className={styles.sectionTitle}>Proyek Unggulan</h2>
+            <div className={styles.grid}>
+              {[
+                {
+                  title: "E-Commerce Premium",
+                  desc: "Platform toko online dengan fitur lengkap, performa tinggi, dan desain minimalis elegan.",
+                  icon: "🛍️"
+                },
+                {
+                  title: "Dashboard Analitik",
+                  desc: "Sistem monitoring data real-time dengan grafik interaktif dan mode gelap yang nyaman.",
+                  icon: "📊"
+                },
+                {
+                  title: "Sistem Manajemen AI",
+                  desc: "Aplikasi cerdas untuk manajemen tugas otomatis yang terintegrasi dengan berbagai API AI.",
+                  icon: "🤖"
+                }
+              ].map((project, i) => (
+                <div key={i} className={`glass ${styles.card}`}>
+                  <div className={styles.cardIcon}>{project.icon}</div>
+                  <h3 className={styles.cardTitle}>{project.title}</h3>
+                  <p className={styles.cardDesc}>{project.desc}</p>
+                  <a href="#" className={styles.cardLink}>Detail Proyek →</a>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Kontak Section */}
+          <section id="kontak" className={styles.section} style={{ textAlign: 'center' }}>
+            <h2 className={styles.sectionTitle}>Mari Bekerja Sama</h2>
+            <p className={styles.subtitle} style={{ margin: '0 auto 2rem' }}>
+              Saya selalu terbuka untuk mendiskusikan pekerjaan desain produk atau peluang kemitraan.
+            </p>
+            <a href="mailto:halo@emailanda.com" className="btn btn-primary">Mulai Percakapan</a>
+          </section>
         </div>
       </main>
-    </div>
+
+      <footer className={styles.footer}>
+        <p>© {new Date().getFullYear()} Portofolio. Dibuat dengan Next.js & Vercel.</p>
+      </footer>
+    </>
   );
 }
