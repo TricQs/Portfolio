@@ -5,12 +5,12 @@ import { Mail, ArrowUpRight } from 'lucide-react'
 import { GitHubIcon, LinkedInIcon, InstagramIcon } from './SocialIcons'
 
 const footerNavLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'AI', href: '#ai' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About',      id: 'about'      },
+  { label: 'Experience', id: 'experience' },
+  { label: 'Skills',     id: 'skills'     },
+  { label: 'Projects',   id: 'projects'   },
+  { label: 'AI',         id: 'ai'         },
+  { label: 'Contact',    id: 'contact'    },
 ]
 
 const socialLinks = [
@@ -49,7 +49,7 @@ export default function Footer() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-20 pb-10 relative z-10 flex flex-col h-full">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12 pt-20 pb-10 relative z-10 flex flex-col h-full">
         {/* Big tagline */}
         <div className="flex-1 flex items-center">
           <motion.div
@@ -84,13 +84,13 @@ export default function Footer() {
           {/* Nav links */}
           <nav className="flex flex-wrap gap-x-6 gap-y-2">
             {footerNavLinks.map(link => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-xs text-[#8a8a8a] hover:text-white transition-colors duration-300 tracking-wide"
+              <button
+                key={link.id}
+                onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })}
+                className="text-xs text-[#8a8a8a] hover:text-white transition-colors duration-300 tracking-wide cursor-pointer"
               >
                 {link.label}
-              </a>
+              </button>
             ))}
           </nav>
 

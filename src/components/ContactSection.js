@@ -46,7 +46,7 @@ export default function ContactSection() {
         className="absolute inset-0 grid-overlay pointer-events-none"
         style={{ opacity: 0.4 }}
       />
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -58,7 +58,7 @@ export default function ContactSection() {
             08 — Contact
           </span>
           <h2
-            className="text-5xl md:text-6xl lg:text-7xl font-bold mt-3 leading-tight text-gradient"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mt-3 leading-tight text-gradient"
             style={{ fontFamily: 'var(--font-space-grotesk)' }}
           >
             Let&apos;s Build Something<br />Great

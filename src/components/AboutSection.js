@@ -20,16 +20,18 @@ function StatCard({ stat, index }) {
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: index * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className="glass border border-white/[0.07] rounded-2xl p-6 flex flex-col gap-3 hover:border-white/15 hover:bg-white/[0.04] transition-all duration-500 group"
+      className="card-glow glass border border-white/[0.07] rounded-2xl p-6 flex flex-col gap-3 hover:border-white/15 hover:bg-white/[0.04] transition-all duration-500 group cursor-default"
     >
-      <stat.icon size={18} className="text-[#8a8a8a] group-hover:text-white transition-colors duration-300" />
+      <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: 'rgba(255,255,255,0.06)' }}>
+        <stat.icon size={17} className="text-[#8a8a8a] group-hover:text-white transition-colors duration-300" />
+      </div>
       <div
         className="text-3xl font-bold text-white"
         style={{ fontFamily: 'var(--font-space-grotesk)' }}
       >
         {stat.value}
       </div>
-      <p className="text-xs text-[#8a8a8a] uppercase tracking-widest">{stat.label}</p>
+      <p className="text-xs text-[#6a6a6a] uppercase tracking-widest">{stat.label}</p>
     </motion.div>
   )
 }
@@ -46,7 +48,7 @@ export default function AboutSection() {
         style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)' }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12">
         {/* Section label */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -58,7 +60,7 @@ export default function AboutSection() {
             01 — About
           </span>
           <h2
-            className="text-5xl md:text-6xl lg:text-7xl font-bold mt-3 leading-tight text-gradient"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mt-3 leading-tight text-gradient"
             style={{ fontFamily: 'var(--font-space-grotesk)' }}
           >
             About Me

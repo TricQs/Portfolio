@@ -50,7 +50,7 @@ export default function SkillsSection() {
 
   return (
     <section id="skills" ref={ref} className="section-padding relative">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -62,7 +62,7 @@ export default function SkillsSection() {
             05 — Skills
           </span>
           <h2
-            className="text-5xl md:text-6xl lg:text-7xl font-bold mt-3 leading-tight text-gradient"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mt-3 leading-tight text-gradient"
             style={{ fontFamily: 'var(--font-space-grotesk)' }}
           >
             Skills &<br />Technologies
