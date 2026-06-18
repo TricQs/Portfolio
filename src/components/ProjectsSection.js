@@ -42,12 +42,11 @@ const projects = [
     description:
       'RESTful API backend built with Python & FastAPI that powers the MoodFit Android app. Integrates Google Gemini AI to generate personalised wellness activity recommendations in real-time.',
     tech: ['Python', 'FastAPI', 'Gemini AI', 'REST API'],
-    live: 'http://127.0.0.1:8000/docs',
+    live: 'https://moodfit-backend-api.vercel.app',
     github: null,
     gradient: 'from-teal-900/30 to-cyan-900/20',
     number: '04',
-    wip: true,
-    statusText: 'Local / Deploy Soon',
+    statusText: 'Live Demo',
   },
   {
     title: 'PlayItNow — Web Games Portal',
