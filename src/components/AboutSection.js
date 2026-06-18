@@ -73,7 +73,7 @@ export default function AboutSection() {
             {[
               'I am an Undergraduate Informatics Student at Universitas Bunda Mulia Serpong, passionate about Front-End Development, User Experience, and Artificial Intelligence on websites and applications.',
               'I enjoy transforming ideas into intuitive digital products while leveraging AI tools to accelerate creativity and productivity.',
-              'Beyond coding, I actively explore prompt engineering and AI-assisted workflows using ChatGPT, Claude, and Gemini to solve problems and build innovative solutions.',
+              'Beyond coding, I actively explore AI Assisted Development and workflows using ChatGPT, Claude, and Gemini to solve problems and build innovative solutions.',
             ].map((para, i) => (
               <motion.p
                 key={i}

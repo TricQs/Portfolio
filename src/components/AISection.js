@@ -31,7 +31,7 @@ const aiTools = [
   },
   {
     icon: Code2,
-    name: 'Prompt Engineering',
+    name: 'AI Assisted Development',
     usage: 'I design structured prompt chains, few-shot templates, and context-rich prompts that deliver consistent, high-quality results across all AI models.',
     color: '#ffffff',
     bg: 'rgba(255, 255, 255, 0.03)',

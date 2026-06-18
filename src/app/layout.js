@@ -14,13 +14,13 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata = {
-  title: "Ferdinand Arya Wijaya | Front-End Developer & AI Prompt Engineer",
+  title: "Ferdinand Arya Wijaya | Front-End Developer & AI Assisted Development",
   description:
-    "Personal portfolio of Ferdinand Arya Wijaya — Informatics Student at Universitas Bunda Mulia Serpong specializing in Front-End Development, UI/UX, and AI Prompt Engineering.",
+    "Personal portfolio of Ferdinand Arya Wijaya — Informatics Student at Universitas Bunda Mulia Serpong specializing in Front-End Development, UI/UX, and AI Assisted Development.",
   keywords: [
     "Ferdinand Arya Wijaya",
     "Front-End Developer",
-    "AI Prompt Engineer",
+    "AI Assisted Development",
     "React",
     "Next.js",
     "TypeScript",
@@ -28,7 +28,7 @@ export const metadata = {
   ],
   authors: [{ name: "Ferdinand Arya Wijaya" }],
   openGraph: {
-    title: "Ferdinand Arya Wijaya | Front-End Developer & AI Prompt Engineer",
+    title: "Ferdinand Arya Wijaya | Front-End Developer & AI Assisted Development",
     description:
       "Personal portfolio showcasing modern web development and AI-powered workflows.",
     type: "website",

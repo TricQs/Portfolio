@@ -14,7 +14,7 @@ const skillCategories = [
   },
   {
     title: 'AI Tools',
-    skills: ['ChatGPT', 'Claude', 'Gemini', 'Prompt Engineering'],
+    skills: ['ChatGPT', 'Claude', 'Gemini', 'AI Assisted Development'],
   },
   {
     title: 'Dev Tools',
