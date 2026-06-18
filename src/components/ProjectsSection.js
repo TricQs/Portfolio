@@ -49,24 +49,14 @@ const projects = [
     statusText: 'Live Demo',
   },
   {
-    title: 'PlayItNow — Web Games Portal',
-    description:
-      'A web platform showcasing various browser-based games I have developed, featuring clean user interfaces and instant playability.',
-    tech: ['HTML5', 'CSS3', 'JavaScript'],
-    live: 'https://playitnow.pages.dev/',
-    github: null,
-    gradient: 'from-zinc-800/30 to-slate-900/20',
-    number: '05',
-  },
-  {
     title: 'GymBar — Fitness App',
     description:
       'A fitness companion application featuring workout tracking, exercise routines, and curated fitness articles to support an active lifestyle.',
     tech: ['React Native', 'Tailwind CSS', 'Mobile Development'],
-    live: 'https://drive.google.com/drive/folders/1WqDiX8ybgWCYYKhMa0gzGKEjfWqCkDlO',
+    live: 'https://drive.google.com/drive/folders/1Ahv-Uoyt05LJBmTf4EgQ7P7EQuNxsUsn?usp=drive_link',
     github: null,
     gradient: 'from-amber-900/20 to-orange-900/20',
-    number: '06',
+    number: '05',
   },
   {
     title: 'THEDEMIT — Indie Horror Game Studio',
@@ -76,6 +66,16 @@ const projects = [
     live: 'https://thedemit.clampolx.com/',
     github: null,
     gradient: 'from-rose-900/20 to-pink-900/20',
+    number: '06',
+  },
+  {
+    title: 'PlayItNow — Web Games Portal',
+    description:
+      'A web platform showcasing various browser-based games I have developed, featuring clean user interfaces and instant playability.',
+    tech: ['HTML5', 'CSS3', 'JavaScript'],
+    live: 'https://playitnow.pages.dev/',
+    github: null,
+    gradient: 'from-zinc-800/30 to-slate-900/20',
     number: '07',
   },
   {
