@@ -28,14 +28,26 @@ const projects = [
   {
     title: 'MoodFit — AI Mood Companion',
     description:
-      'AI-powered app that recommends personalized activities based on your mood state — stress, neutral, or productive. Built for mental wellness.',
-    tech: ['React Native', 'AI', 'Antigravity IDE'],
+      'Android app that recommends personalized wellness activities based on mood — stress, neutral, or productive. Powered by a Python FastAPI backend with Gemini AI integration.',
+    tech: ['Android', 'Kotlin', 'Gemini AI', 'Antigravity IDE'],
     live: null,
     github: null,
     statusText: 'On Progress',
     gradient: 'from-emerald-900/30 to-green-900/20',
     number: '03',
     wip: true,
+  },
+  {
+    title: 'MoodFit API — Python Backend',
+    description:
+      'RESTful API backend built with Python & FastAPI that powers the MoodFit Android app. Integrates Google Gemini AI to generate personalised wellness activity recommendations in real-time.',
+    tech: ['Python', 'FastAPI', 'Gemini AI', 'REST API'],
+    live: 'http://127.0.0.1:8000/docs',
+    github: null,
+    gradient: 'from-teal-900/30 to-cyan-900/20',
+    number: '04',
+    wip: true,
+    statusText: 'Local / Deploy Soon',
   },
   {
     title: 'PlayItNow — Web Games Portal',
@@ -45,7 +57,7 @@ const projects = [
     live: 'https://playitnow.pages.dev/',
     github: null,
     gradient: 'from-zinc-800/30 to-slate-900/20',
-    number: '04',
+    number: '05',
   },
   {
     title: 'GymBar — Fitness App',
@@ -55,7 +67,7 @@ const projects = [
     live: 'https://drive.google.com/drive/folders/1WqDiX8ybgWCYYKhMa0gzGKEjfWqCkDlO',
     github: null,
     gradient: 'from-amber-900/20 to-orange-900/20',
-    number: '05',
+    number: '06',
   },
   {
     title: 'THEDEMIT — Indie Horror Game Studio',
@@ -65,7 +77,7 @@ const projects = [
     live: 'https://thedemit.clampolx.com/',
     github: null,
     gradient: 'from-rose-900/20 to-pink-900/20',
-    number: '06',
+    number: '07',
   },
   {
     title: 'More to go',
@@ -76,7 +88,7 @@ const projects = [
     github: null,
     statusText: 'Soon',
     gradient: 'from-zinc-900/10 to-stone-900/10',
-    number: '07',
+    number: '08',
     isPlaceholder: true,
   },
 ]

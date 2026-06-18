@@ -9,6 +9,10 @@ const skillCategories = [
     skills: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Tailwind CSS'],
   },
   {
+    title: 'Backend',
+    skills: ['Python', 'FastAPI', 'REST API', 'Node.js'],
+  },
+  {
     title: 'UI/UX',
     skills: ['Figma', 'Design Systems', 'Responsive Design', 'Wireframing'],
   },
@@ -25,8 +29,8 @@ const skillCategories = [
 const currentlyLearning = {
   title: 'Currently Building',
   description:
-    'MoodFit App — an AI-powered application that recommends activities based on your current mood (stress, neutral, or productive). Building with Google Antigravity IDE.',
-  tags: ['React Native', 'AI Recommendations', 'Mental Wellness', 'Google Antigravity IDE'],
+    'MoodFit — an AI-powered Android app that recommends activities based on your mood, backed by a Python FastAPI REST API that integrates Google Gemini AI for real-time personalised recommendations.',
+  tags: ['Android (Kotlin)', 'Python', 'FastAPI', 'Gemini AI', 'REST API', 'Google Antigravity IDE'],
 }
 
 function SkillPill({ skill, index }) {

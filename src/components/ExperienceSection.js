@@ -26,9 +26,9 @@ const experiences = [
     position: 'MoodFit App Developer',
     company: 'Google Antigravity IDE Project',
     period: '2026 – Present',
-    description: 'Currently developing MoodFit — an app that recommends activities based on your mood state (stress, neutral, or productive). Uses AI to personalize recommendations for mental wellness.',
+    description: 'Developing MoodFit — an Android app that recommends activities based on mood. Built a Python FastAPI backend with Google Gemini AI integration, exposing a RESTful API with Swagger documentation and graceful offline fallback.',
     link: null,
-    tags: ['React Native', 'AI', 'Mental Wellness'],
+    tags: ['Android', 'Kotlin', 'Python', 'FastAPI', 'Gemini AI', 'REST API'],
     current: true,
   },
   {
