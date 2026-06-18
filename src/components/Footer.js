@@ -5,16 +5,16 @@ import { Mail, ArrowUpRight } from 'lucide-react'
 import { GitHubIcon, LinkedInIcon, InstagramIcon } from './SocialIcons'
 
 const footerNavLinks = [
-  { label: 'About',      id: 'about'      },
+  { label: 'About', id: 'about' },
   { label: 'Experience', id: 'experience' },
-  { label: 'Skills',     id: 'skills'     },
-  { label: 'Projects',   id: 'projects'   },
-  { label: 'AI',         id: 'ai'         },
-  { label: 'Contact',    id: 'contact'    },
+  { label: 'Skills', id: 'skills' },
+  { label: 'Projects', id: 'projects' },
+  { label: 'AI', id: 'ai' },
+  { label: 'Contact', id: 'contact' },
 ]
 
 const socialLinks = [
-  { Icon: GitHubIcon, label: 'GitHub', href: 'https://github.com/ferdinandaryaw' },
+  { Icon: GitHubIcon, label: 'GitHub', href: 'https://github.com/TricQs' },
   { Icon: LinkedInIcon, label: 'LinkedIn', href: 'https://www.linkedin.com/in/ferdinandaryaw/' },
   { Icon: InstagramIcon, label: 'Instagram', href: 'https://www.instagram.com/ferndary/' },
   { Icon: Mail, label: 'Email', href: 'mailto:ferdinandarya80@gmail.com' },

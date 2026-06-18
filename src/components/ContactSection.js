@@ -12,7 +12,7 @@ const contactInfo = [
 ]
 
 const socialLinks = [
-  { Icon: GitHubIcon, label: 'GitHub', href: 'https://github.com/ferdinandaryaw' },
+  { Icon: GitHubIcon, label: 'GitHub', href: 'https://github.com/TricQs' },
   { Icon: LinkedInIcon, label: 'LinkedIn', href: 'https://www.linkedin.com/in/ferdinandaryaw/' },
   { Icon: InstagramIcon, label: 'Instagram', href: 'https://www.instagram.com/ferndary/' },
 ]
@@ -127,11 +127,10 @@ export default function ContactSection() {
                 disabled={sending || sent}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className={`w-full flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl text-sm font-semibold transition-all duration-300 ${
-                  sent
+                className={`w-full flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl text-sm font-semibold transition-all duration-300 ${sent
                     ? 'bg-green-500/20 border border-green-500/30 text-green-400'
                     : 'bg-white text-black hover:bg-white/90 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)]'
-                }`}
+                  }`}
               >
                 {sent ? (
                   <>
