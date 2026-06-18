@@ -16,7 +16,7 @@ const footerNavLinks = [
 const socialLinks = [
   { Icon: GitHubIcon, label: 'GitHub', href: 'https://github.com/TricQs' },
   { Icon: LinkedInIcon, label: 'LinkedIn', href: 'https://www.linkedin.com/in/ferdinandaryaw/' },
-  { Icon: InstagramIcon, label: 'Instagram', href: 'https://www.instagram.com/ferndary/' },
+  { Icon: InstagramIcon, label: 'Instagram', href: 'https://www.instagram.com/zt/' },
   { Icon: Mail, label: 'Email', href: 'mailto:ferdinandarya80@gmail.com' },
 ]
 

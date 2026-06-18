@@ -7,33 +7,33 @@ import dynamic from 'next/dynamic'
 import { GitHubIcon, LinkedInIcon, InstagramIcon } from './SocialIcons'
 
 const socialLinks = [
-  { Icon: GitHubIcon,    label: 'GitHub',    href: 'https://github.com/TricQs' },
-  { Icon: LinkedInIcon,  label: 'LinkedIn',  href: 'https://www.linkedin.com/in/ferdinandaryaw/' },
-  { Icon: InstagramIcon, label: 'Instagram', href: 'https://www.instagram.com/ferndary/' },
+  { Icon: GitHubIcon, label: 'GitHub', href: 'https://github.com/TricQs' },
+  { Icon: LinkedInIcon, label: 'LinkedIn', href: 'https://www.linkedin.com/in/ferdinandaryaw/' },
+  { Icon: InstagramIcon, label: 'Instagram', href: 'https://www.instagram.com/ferndaryzt/' },
 ]
 
 const ParticleBackground = dynamic(() => import('./ParticleBackground'), { ssr: false })
 
 const techBadges = [
-  { label: 'ChatGPT',    color: '#10a37f' },
-  { label: 'Claude',     color: '#c96342' },
-  { label: 'Gemini',     color: '#4285f4' },
-  { label: 'Next.js',    color: '#ffffff' },
-  { label: 'React',      color: '#61dafb' },
+  { label: 'ChatGPT', color: '#10a37f' },
+  { label: 'Claude', color: '#c96342' },
+  { label: 'Gemini', color: '#4285f4' },
+  { label: 'Next.js', color: '#ffffff' },
+  { label: 'React', color: '#61dafb' },
   { label: 'TypeScript', color: '#3178c6' },
 ]
 
 const badgePositions = [
-  { top: '10%', left: '8%',   delay: 0    },
-  { top: '25%', right: '8%',  delay: 0.15 },
-  { top: '55%', right: '6%',  delay: 0.3  },
+  { top: '10%', left: '8%', delay: 0 },
+  { top: '25%', right: '8%', delay: 0.15 },
+  { top: '55%', right: '6%', delay: 0.3 },
   { bottom: '25%', right: '12%', delay: 0.45 },
-  { bottom: '15%', left: '5%',  delay: 0.6  },
-  { top: '65%',  left: '3%',  delay: 0.75 },
+  { bottom: '15%', left: '5%', delay: 0.6 },
+  { top: '65%', left: '3%', delay: 0.75 },
 ]
 
 export default function HeroSection() {
-  const ref    = useRef(null)
+  const ref = useRef(null)
   const inView = useInView(ref, { once: true })
 
   const container = {
@@ -42,7 +42,7 @@ export default function HeroSection() {
   }
   const item = {
     hidden: { opacity: 0, y: 40 },
-    show:   { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } },
+    show: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } },
   }
 
   return (
