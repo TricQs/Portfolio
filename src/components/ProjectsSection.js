@@ -69,11 +69,11 @@ const projects = [
     number: '06',
   },
   {
-    title: 'PlayItNow — Web Games Portal',
+    title: 'Nexus Arcade — Web Games Portal',
     description:
       'A web platform showcasing various browser-based games I have developed, featuring clean user interfaces and instant playability.',
     tech: ['HTML5', 'CSS3', 'JavaScript'],
-    live: 'https://playitnow.pages.dev/',
+    live: 'https://nexus-arcade-one.vercel.app/',
     github: null,
     gradient: 'from-zinc-800/30 to-slate-900/20',
     number: '07',
@@ -135,11 +135,10 @@ export default function ProjectsSection() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               whileHover={project.isPlaceholder ? {} : { y: -8, transition: { duration: 0.3 } }}
-              className={`group glass border rounded-2xl overflow-hidden transition-colors duration-500 flex flex-col ${
-                project.isPlaceholder
-                  ? 'border-dashed border-white/10 hover:border-white/20'
-                  : 'border-white/[0.07] hover:border-white/15'
-              }`}
+              className={`group glass border rounded-2xl overflow-hidden transition-colors duration-500 flex flex-col ${project.isPlaceholder
+                ? 'border-dashed border-white/10 hover:border-white/20'
+                : 'border-white/[0.07] hover:border-white/15'
+                }`}
             >
               {/* Image / Gradient Area */}
               <div
