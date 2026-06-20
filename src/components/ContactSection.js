@@ -23,16 +23,37 @@ export default function ContactSection() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [sending, setSending] = useState(false)
   const [sent, setSent] = useState(false)
+  const [error, setError] = useState(null)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setSending(true)
-    // Simulate send
-    await new Promise(r => setTimeout(r, 1200))
-    setSending(false)
-    setSent(true)
-    setTimeout(() => setSent(false), 4000)
-    setForm({ name: '', email: '', message: '' })
+    setError(null)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setSent(true)
+        setForm({ name: '', email: '', message: '' })
+        setTimeout(() => setSent(false), 5000)
+      } else {
+        setError(data.error || 'Failed to send message. Please try again.')
+      }
+    } catch (err) {
+      console.error('Contact submission error:', err)
+      setError('Connection error. Please check your internet connection and try again.')
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -151,6 +172,17 @@ export default function ContactSection() {
                   </>
                 )}
               </motion.button>
+
+              {/* Error Message */}
+              {error && (
+                <motion.p
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-xs text-red-400 mt-2 text-center"
+                >
+                  {error}
+                </motion.p>
+              )}
             </form>
           </motion.div>
 
