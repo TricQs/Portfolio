@@ -2,11 +2,11 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Bot, Zap, Sparkles, Code2 } from 'lucide-react'
+import { ChatGPTIcon, ClaudeIcon, GeminiIcon, OdysseusIcon } from './TechIcons'
 
 const aiTools = [
   {
-    icon: Bot,
+    icon: ChatGPTIcon,
     name: 'ChatGPT',
     usage: 'My primary AI partner for code generation, debugging, documentation, and brainstorming. I use GPT-4 to prototype features rapidly and write technical content.',
     color: '#10a37f',
@@ -14,7 +14,7 @@ const aiTools = [
     border: 'rgba(16, 163, 127, 0.15)',
   },
   {
-    icon: Zap,
+    icon: ClaudeIcon,
     name: 'Claude',
     usage: 'My go-to for long-context analysis, reviewing large codebases, writing detailed technical proposals, and nuanced creative writing tasks.',
     color: '#c96342',
@@ -22,7 +22,7 @@ const aiTools = [
     border: 'rgba(201, 99, 66, 0.15)',
   },
   {
-    icon: Sparkles,
+    icon: GeminiIcon,
     name: 'Gemini',
     usage: 'Leveraged for multimodal tasks — analyzing UI designs, generating image assets, integrating with Google services, and building with Google Antigravity IDE.',
     color: '#4285f4',
@@ -30,12 +30,12 @@ const aiTools = [
     border: 'rgba(66, 133, 244, 0.15)',
   },
   {
-    icon: Code2,
-    name: 'AI Assisted Development',
-    usage: 'I design structured prompt chains, few-shot templates, and context-rich prompts that deliver consistent, high-quality results across all AI models.',
-    color: '#ffffff',
-    bg: 'rgba(255, 255, 255, 0.03)',
-    border: 'rgba(255, 255, 255, 0.1)',
+    icon: OdysseusIcon,
+    name: 'Odysseus',
+    usage: 'My self-hosted, local-first AI workspace by PewDiePie (archdaemon). I use it to run private local LLMs, orchestrate multi-agent workflows, and conduct deep research with complete data privacy.',
+    color: '#ff0055',
+    bg: 'rgba(255, 0, 85, 0.06)',
+    border: 'rgba(255, 0, 85, 0.15)',
   },
 ]
 

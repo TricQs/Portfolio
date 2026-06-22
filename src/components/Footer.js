@@ -29,7 +29,7 @@ export default function Footer() {
         right: 0,
         zIndex: 0,
         background: '#0d0d0d',
-        minHeight: '60vh',
+        minHeight: '70vh',
       }}
     >
       {/* Ambient glow behind text */}
@@ -48,7 +48,7 @@ export default function Footer() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12 pt-20 pb-10 relative z-10 flex flex-col h-full">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12 pt-14 pb-8 relative z-10 flex flex-col h-full">
         {/* Big tagline */}
         <div className="flex-1 flex items-center">
           <motion.div
@@ -57,7 +57,7 @@ export default function Footer() {
             transition={{ duration: 1 }}
           >
             <h2
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[0.9] tracking-tight"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-7xl font-bold leading-[0.9] tracking-tight"
               style={{ fontFamily: 'var(--font-space-grotesk)' }}
             >
               <span className="text-gradient">Let&apos;s Create</span>
@@ -70,7 +70,7 @@ export default function Footer() {
             <motion.button
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               whileHover={{ x: 4 }}
-              className="inline-flex items-center gap-2 mt-8 px-6 py-3 glass border border-white/10 rounded-full text-sm text-[#8a8a8a] hover:text-white hover:border-white/25 transition-all duration-300 group cursor-pointer"
+              className="inline-flex items-center gap-2 mt-6 px-6 py-3 glass border border-white/10 rounded-full text-sm text-[#8a8a8a] hover:text-white hover:border-white/25 transition-all duration-300 group cursor-pointer"
             >
               Get in Touch
               <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -79,7 +79,7 @@ export default function Footer() {
         </div>
 
         {/* Footer bottom */}
-        <div className="mt-16 pt-8 border-t border-white/[0.05] flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="mt-12 pt-8 border-t border-white/[0.05] flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           {/* Nav links */}
           <nav className="flex flex-wrap gap-x-6 gap-y-2">
             {footerNavLinks.map(link => (

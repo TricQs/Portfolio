@@ -12,7 +12,7 @@ import Footer from '@/components/Footer'
 import MouseGlowWrapper from '@/components/MouseGlowWrapper'
 
 // Footer height that content needs to push below
-const FOOTER_HEIGHT = '60vh'
+const FOOTER_HEIGHT = '70vh'
 
 export default function Home() {
   return (

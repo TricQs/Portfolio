@@ -3,6 +3,64 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 
+import {
+  HTMLIcon,
+  CSSIcon,
+  JavaScriptIcon,
+  TypeScriptIcon,
+  ReactIcon,
+  NextjsIcon,
+  TailwindIcon,
+  PythonIcon,
+  FastAPIIcon,
+  RESTAPIIcon,
+  NodejsIcon,
+  FigmaIcon,
+  DesignSystemsIcon,
+  ResponsiveIcon,
+  WireframingIcon,
+  ChatGPTIcon,
+  ClaudeIcon,
+  GeminiIcon,
+  OdysseusIcon,
+  GitIcon,
+  GitHubTechIcon,
+  VSCodeIcon,
+  VercelIcon,
+  AntigravityIcon,
+  SublimeTextIcon,
+  NotepadPlusPlusIcon,
+} from './TechIcons'
+
+const techIconMap = {
+  'HTML': HTMLIcon,
+  'CSS': CSSIcon,
+  'JavaScript': JavaScriptIcon,
+  'TypeScript': TypeScriptIcon,
+  'React': ReactIcon,
+  'Next.js': NextjsIcon,
+  'Tailwind CSS': TailwindIcon,
+  'Python': PythonIcon,
+  'FastAPI': FastAPIIcon,
+  'REST API': RESTAPIIcon,
+  'Node.js': NodejsIcon,
+  'Figma': FigmaIcon,
+  'Design Systems': DesignSystemsIcon,
+  'Responsive Design': ResponsiveIcon,
+  'Wireframing': WireframingIcon,
+  'ChatGPT': ChatGPTIcon,
+  'Claude': ClaudeIcon,
+  'Gemini': GeminiIcon,
+  'Odysseus': OdysseusIcon,
+  'Git': GitIcon,
+  'GitHub': GitHubTechIcon,
+  'VS Code': VSCodeIcon,
+  'Vercel': VercelIcon,
+  'Google Antigravity IDE': AntigravityIcon,
+  'Sublime Text': SublimeTextIcon,
+  'Notepad++': NotepadPlusPlusIcon,
+}
+
 const skillCategories = [
   {
     title: 'Front-End',
@@ -18,7 +76,7 @@ const skillCategories = [
   },
   {
     title: 'AI Tools',
-    skills: ['ChatGPT', 'Claude', 'Gemini', 'AI Assisted Development'],
+    skills: ['ChatGPT', 'Claude', 'Gemini', 'Odysseus'],
   },
   {
     title: 'Dev Tools',
@@ -34,6 +92,7 @@ const currentlyLearning = {
 }
 
 function SkillPill({ skill, index }) {
+  const Icon = techIconMap[skill]
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
@@ -41,9 +100,10 @@ function SkillPill({ skill, index }) {
       viewport={{ once: true, margin: '-40px' }}
       transition={{ delay: index * 0.04, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ y: -3, transition: { duration: 0.2 } }}
-      className="px-3.5 py-2 glass border border-white/[0.07] rounded-xl text-sm text-[#8a8a8a] hover:text-white hover:border-white/20 hover:bg-white/[0.04] transition-colors duration-300 cursor-default select-none"
+      className="flex items-center gap-2 px-3.5 py-2 glass border border-white/[0.07] rounded-xl text-sm text-[#8a8a8a] hover:text-white hover:border-white/20 hover:bg-white/[0.04] transition-colors duration-300 cursor-default select-none"
     >
-      {skill}
+      {Icon && <Icon size={14} className="flex-shrink-0" />}
+      <span>{skill}</span>
     </motion.div>
   )
 }

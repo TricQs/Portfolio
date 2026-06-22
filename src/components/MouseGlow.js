@@ -10,8 +10,7 @@ export default function MouseGlow() {
     if (!glow) return
 
     const handleMouseMove = (e) => {
-      glow.style.left = `${e.clientX}px`
-      glow.style.top = `${e.clientY}px`
+      glow.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`
       glow.style.opacity = '1'
     }
 
@@ -37,13 +36,13 @@ export default function MouseGlow() {
         top: 0,
         width: '600px',
         height: '600px',
-        transform: 'translate(-50%, -50%)',
+        transform: 'translate3d(-50%, -50%, 0)',
         background: 'radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 65%)',
         pointerEvents: 'none',
         zIndex: 9999,
         opacity: 0,
-        transition: 'opacity 0.4s ease',
-        willChange: 'left, top',
+        transition: 'opacity 0.4s ease, transform 0.1s cubic-bezier(0.25, 1, 0.5, 1)',
+        willChange: 'transform',
       }}
     />
   )
