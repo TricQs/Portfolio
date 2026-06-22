@@ -18,7 +18,7 @@ const devices = [
   {
     type: 'laptop',
     name: 'Asus TUF A16',
-    role: 'Primary Dev & Gaming',
+    role: 'Primary Laptop',
     specs: [
       { label: 'CPU', value: 'Ryzen 7 7445HS' },
       { label: 'GPU', value: 'RTX 4050 6GB VRAM' },
