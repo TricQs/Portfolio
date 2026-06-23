@@ -1,8 +1,10 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { GitHubIcon, LinkedInIcon, InstagramIcon } from './SocialIcons'
+import BitVolleyball from './BitVolleyball'
 
 const footerNavLinks = [
   { label: 'About', id: 'about' },
@@ -20,6 +22,38 @@ const socialLinks = [
 ]
 
 export default function Footer() {
+  const [style, setStyle] = useState({})
+
+  useEffect(() => {
+    const update = () => {
+      const vw = window.innerWidth
+      if (vw < 768) {
+        const s = Math.min(1, (vw - 12) / 560)
+        setStyle({
+          position: 'absolute',
+          bottom: 0,
+          zIndex: 2,
+          opacity: 0.7,
+          left: '50%',
+          transform: `translateX(-50%) scale(${s})`,
+          transformOrigin: 'bottom center',
+        })
+      } else {
+        setStyle({
+          position: 'absolute',
+          bottom: 0,
+          zIndex: 2,
+          opacity: 0.7,
+          left: '50%',
+          transform: 'translateX(calc(-50% + 130px))',
+        })
+      }
+    }
+    update()
+    window.addEventListener('resize', update)
+    return () => window.removeEventListener('resize', update)
+  }, [])
+
   return (
     <footer
       style={{
@@ -114,6 +148,10 @@ export default function Footer() {
         <p className="mt-6 text-[10px] text-[#8a8a8a]/50 tracking-widest">
           © {new Date().getFullYear()} · Designed & Developed by Ferdinand Arya Wijaya · Built with Next.js
         </p>
+      </div>
+
+      <div style={style}>
+        <BitVolleyball />
       </div>
     </footer>
   )
