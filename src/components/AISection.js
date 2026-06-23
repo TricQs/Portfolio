@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { ChatGPTIcon, ClaudeIcon, GeminiIcon, OdysseusIcon } from './TechIcons'
+import { ChatGPTIcon, ClaudeIcon, GeminiIcon, OdysseusIcon, OpenCodeIcon } from './TechIcons'
 
 const aiTools = [
   {
@@ -36,6 +36,14 @@ const aiTools = [
     color: '#ff0055',
     bg: 'rgba(255, 0, 85, 0.06)',
     border: 'rgba(255, 0, 85, 0.15)',
+  },
+  {
+    icon: OpenCodeIcon,
+    name: 'OpenCode',
+    usage: 'My go-to AI coding agent for the terminal. I use it to plan, edit files, run commands, and debug across multiple AI providers with full codebase context and LSP integration.',
+    color: '#a855f7',
+    bg: 'rgba(168, 85, 247, 0.08)',
+    border: 'rgba(168, 85, 247, 0.15)',
   },
 ]
 

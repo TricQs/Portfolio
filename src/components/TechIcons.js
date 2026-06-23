@@ -214,6 +214,17 @@ export function OdysseusIcon({ size = 16, className = '', style = {} }) {
   )
 }
 
+// OpenCode Icon (Square frame with centered cutout — official brand)
+export function OpenCodeIcon({ size = 16, className = '', style = {} }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className} style={{ width: size, height: size, ...style }} aria-hidden="true">
+      <rect x="1" y="1" width="22" height="22" rx="3" fill="#131010" />
+      <path d="M18 19H6V5h12v14z" fill="white" />
+      <path d="M15 8H9v8h6V8z" fill="#131010" />
+    </svg>
+  )
+}
+
 // Google Antigravity IDE Icon (Gravitational ripples with a center node)
 export function AntigravityIcon({ size = 16, className = '', style = {} }) {
   return (
