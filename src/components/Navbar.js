@@ -66,19 +66,18 @@ export default function Navbar() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${
-          mobileOpen
-            ? 'py-5 border-transparent'
-            : scrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${mobileOpen
+          ? 'py-5 border-transparent'
+          : scrolled
             ? 'py-3 border-white/[0.08]'
             : 'py-5 border-transparent'
-        }`}
+          }`}
         style={{
           background: mobileOpen
             ? 'transparent'
             : scrolled
-            ? 'rgba(5, 5, 5, 0.75)'
-            : 'transparent',
+              ? 'rgba(5, 5, 5, 0.75)'
+              : 'transparent',
           backdropFilter: mobileOpen ? 'none' : scrolled ? 'blur(16px)' : 'none',
           WebkitBackdropFilter: mobileOpen ? 'none' : scrolled ? 'blur(16px)' : 'none',
         }}
@@ -109,11 +108,10 @@ export default function Navbar() {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className={`text-sm tracking-wide transition-all duration-300 relative py-1 cursor-pointer ${
-                  activeSection === link.id
-                    ? 'text-white'
-                    : 'text-[#8a8a8a] hover:text-white'
-                }`}
+                className={`text-sm tracking-wide transition-all duration-300 relative py-1 cursor-pointer ${activeSection === link.id
+                  ? 'text-white'
+                  : 'text-[#8a8a8a] hover:text-white'
+                  }`}
               >
                 {link.label}
                 {activeSection === link.id && (
@@ -130,7 +128,7 @@ export default function Navbar() {
           {/* CTA */}
           <div className="hidden md:flex items-center gap-4">
             <a
-              href="https://drive.google.com/file/d/13-aJqYoIrwuKJuyrQMikF97BiMMVjrtE/view?usp=drive_link"
+              href="https://drive.google.com/file/d/1aSIy1P0ZhF8H6Vl72l4bGj1VehA9x5E-/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-5 py-2.5 text-sm font-medium glass border border-white/10 rounded-full hover:border-white/25 hover:bg-white/5 transition-all duration-300 group"
@@ -195,7 +193,7 @@ export default function Navbar() {
                   <span className="text-xs font-mono text-white/20 group-hover:text-white/60 transition-colors duration-300">
                     0{i + 1}.
                   </span>
-                  <span 
+                  <span
                     className="text-3xl font-bold tracking-tight group-hover:translate-x-2 transition-transform duration-300"
                     style={{ fontFamily: 'var(--font-space-grotesk)' }}
                   >
@@ -213,7 +211,7 @@ export default function Navbar() {
               className="mt-auto pt-6 border-t border-white/[0.06] flex flex-col gap-6 relative z-10"
             >
               <a
-                href="https://drive.google.com/file/d/13-aJqYoIrwuKJuyrQMikF97BiMMVjrtE/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1aSIy1P0ZhF8H6Vl72l4bGj1VehA9x5E-/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-2 py-3.5 text-sm font-medium glass border border-white/10 rounded-full hover:border-white/25 hover:bg-white/5 transition-all duration-300 group"
