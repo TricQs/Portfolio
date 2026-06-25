@@ -117,10 +117,10 @@ export default function HeroSection() {
                 <span className="block text-white">Frontend</span>
                 <span className="block text-shimmer">Developer</span>
                 <span className="block text-white/60 text-[2rem] sm:text-5xl lg:text-6xl xl:text-7xl mt-2 font-medium">
-                  &amp; AI Assisted
+                  &amp; Vibe
                 </span>
                 <span className="block text-shimmer text-[2rem] sm:text-5xl lg:text-6xl xl:text-7xl font-medium">
-                  Development
+                  Coding
                 </span>
               </h1>
             </motion.div>
