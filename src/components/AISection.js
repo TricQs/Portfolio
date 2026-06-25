@@ -52,7 +52,7 @@ export default function AISection() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="ai" ref={ref} className="section-padding relative overflow-hidden">
+    <section id="ai" ref={ref} className="pt-8 pb-14 md:pt-12 md:pb-22 relative overflow-hidden">
       {/* Large "AI" background text */}
       <div
         className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
@@ -75,7 +75,7 @@ export default function AISection() {
           className="mb-6"
         >
           <span className="text-xs font-medium tracking-[0.2em] uppercase text-[#8a8a8a]">
-            07 — AI
+            08 — AI
           </span>
           <h2
             className="text-5xl md:text-6xl lg:text-7xl font-bold mt-3 leading-tight text-gradient"
