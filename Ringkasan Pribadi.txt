@@ -1,3 +1,0 @@
-Saya Ferdinand Arya Wijaya, mahasiswa Informatika Universitas Bunda Mulia Serpong. Fokus pada pengembangan web (Frontend), UI/UX, dan integrasi AI pada aplikasi modern. Bagi saya, menulis kode adalah proses menerjemahkan ide abstrak menjadi solusi digital yang hidup dan berpusat pada manusia.
-
-Dalam berkarya, saya memadukan Next.js/React untuk antarmuka responsif, memanfaatkan alur kerja AI (Gemini/Claude) untuk inovasi cepat (seperti proyek MoodFit), serta menjelajahi Unity (AR), FastAPI (Python), dan game indie. Saya percaya desain terbaik adalah tentang bagaimana sistem bekerja untuk memberi nilai nyata. Selalu siap berkolaborasi menghadirkan produk berdampak.
