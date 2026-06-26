@@ -6,6 +6,48 @@ import { ExternalLink, FileText, Calendar, ShieldCheck, Check } from 'lucide-rea
 
 const certificates = [
   {
+    title: 'Computer Skill',
+    issuer: 'School',
+    platform: 'Academic',
+    date: 'May 08, 2023',
+    image: '/certificates/computer-skill-front.jpeg',
+    pdf: ['/certificates/computer-skill-front.jpeg', '/certificates/computer-skill-back.jpeg'],
+    verifyUrl: null,
+    learnings: [
+      'Understand operating system fundamentals and essential software.',
+      'Master the use of standard office productivity applications.',
+      'Passed the foundational computer skills competency assessment.'
+    ]
+  },
+  {
+    title: 'English Basic',
+    issuer: 'School',
+    platform: 'Academic',
+    date: 'May 08, 2023',
+    image: '/certificates/english-basic-front.jpeg',
+    pdf: ['/certificates/english-basic-front.jpeg', '/certificates/english-basic-back.jpeg'],
+    verifyUrl: null,
+    learnings: [
+      'Demonstrate foundational English communication skills.',
+      'Understand basic grammar and essential vocabulary.',
+      'Passed the school-level English proficiency assessment.'
+    ]
+  },
+  {
+    title: 'English Course',
+    issuer: 'Les Gracia',
+    platform: 'Offline Course',
+    date: 'Jun 23, 2023',
+    image: '/certificates/gracia.jpeg',
+    pdf: '/certificates/gracia.jpeg',
+    verifyUrl: 'https://www.graciaenglishcourse.com/',
+    learnings: [
+      'Completed a comprehensive English language learning curriculum.',
+      'Developed reading, writing, and speaking skills.',
+      'Enhanced confidence in practical English communication.'
+    ]
+  },
+  {
     title: 'AI for App Building',
     issuer: 'Google',
     platform: 'Coursera',
@@ -97,6 +139,136 @@ const certificates = [
   }
 ]
 
+function CertificateCard({ cert, index, inView }) {
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 40 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ delay: index * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      whileHover={{ y: -6, transition: { duration: 0.3 } }}
+      className="group glass border border-white/[0.07] hover:border-white/15 rounded-2xl overflow-hidden transition-all duration-500 flex flex-col h-full"
+    >
+      {/* Image / Thumbnail Area */}
+      <div className="relative aspect-[16/10] bg-[#0d0d0d] flex items-center justify-center p-4 border-b border-white/[0.06] overflow-hidden select-none">
+        <div className="absolute inset-0 bg-white/[0.01] group-hover:bg-white/[0.03] transition-colors duration-500" />
+        
+        <img
+          src={cert.image}
+          alt={cert.title}
+          className="w-full h-full object-contain rounded border border-white/[0.05] shadow-lg group-hover:scale-[1.02] transition-transform duration-500 z-10"
+        />
+
+        {(cert.verifyUrl || cert.pdf) && (
+          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-center justify-center gap-3 z-20">
+            {cert.verifyUrl && (
+              <a
+                href={cert.verifyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-colors"
+                aria-label="Verify Certificate"
+              >
+                <ExternalLink size={16} />
+              </a>
+            )}
+            {Array.isArray(cert.pdf) ? cert.pdf.map((link, idx) => (
+              <a
+                key={idx}
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-colors"
+                aria-label={`View PDF ${idx + 1}`}
+              >
+                <FileText size={16} />
+              </a>
+            )) : cert.pdf && (
+              <a
+                href={cert.pdf}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-colors"
+                aria-label="View PDF"
+              >
+                <FileText size={16} />
+              </a>
+            )}
+          </div>
+        )}
+      </div>
+
+      {/* Content Area */}
+      <div className="p-6 flex flex-col flex-1">
+        {/* Meta details (Issuer & Date) */}
+        <div className="flex items-center justify-between text-[#8a8a8a] text-[11px] mb-3">
+          <span className="flex items-center gap-1.5 font-medium uppercase tracking-wider">
+            <ShieldCheck size={12} className="text-[#4285f4]" />
+            {cert.issuer} {cert.platform && `• ${cert.platform}`}
+          </span>
+          <span className="flex items-center gap-1">
+            <Calendar size={11} />
+            {cert.date}
+          </span>
+        </div>
+
+        {/* Title */}
+        <h3
+          className="font-semibold text-white text-base leading-snug mb-4 group-hover:text-white/90 transition-colors"
+          style={{ fontFamily: 'var(--font-space-grotesk)' }}
+        >
+          {cert.title}
+        </h3>
+
+        {/* Bullet learnings */}
+        <ul className="space-y-2 mb-6 flex-1 text-xs text-[#8a8a8a] leading-relaxed">
+          {cert.learnings.map((learning, idx) => (
+            <li key={idx} className="flex items-start gap-2">
+              <span className="mt-1 flex-shrink-0 w-3 h-3 rounded-full bg-white/[0.04] border border-white/10 flex items-center justify-center">
+                <Check size={8} className="text-[#8a8a8a]" />
+              </span>
+              <span>{learning}</span>
+            </li>
+          ))}
+        </ul>
+
+        {/* Buttons/Actions */}
+        <div className="grid grid-cols-2 gap-3 mt-auto pt-4 border-t border-white/[0.06]">
+          {cert.verifyUrl && (
+            <a
+              href={cert.verifyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center justify-center gap-1.5 py-2.5 text-xs font-medium rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300 ${!cert.pdf ? 'col-span-2' : ''}`}
+            >
+              <ExternalLink size={12} /> Official Website
+            </a>
+          )}
+          {Array.isArray(cert.pdf) ? cert.pdf.map((link, idx) => (
+            <a
+              key={idx}
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center justify-center gap-1.5 py-2.5 text-xs font-medium rounded-xl bg-white/5 border border-white/10 text-[#8a8a8a] hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300 ${(!cert.verifyUrl && cert.pdf.length === 1) ? 'col-span-2' : ''}`}
+            >
+              <FileText size={12} /> {idx === 0 ? 'Front PDF' : 'Back PDF'}
+            </a>
+          )) : cert.pdf && (
+            <a
+              href={cert.pdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center justify-center gap-1.5 py-2.5 text-xs font-medium rounded-xl bg-white/5 border border-white/10 text-[#8a8a8a] hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300 ${!cert.verifyUrl ? 'col-span-2' : ''}`}
+            >
+              <FileText size={12} /> View PDF
+            </a>
+          )}
+        </div>
+      </div>
+    </motion.article>
+  )
+}
+
 export default function CertificatesSection() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
@@ -130,104 +302,7 @@ export default function CertificatesSection() {
         {/* Certificates Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {certificates.map((cert, i) => (
-            <motion.article
-              key={cert.title}
-              initial={{ opacity: 0, y: 40 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: i * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -6, transition: { duration: 0.3 } }}
-              className="group glass border border-white/[0.07] hover:border-white/15 rounded-2xl overflow-hidden transition-all duration-500 flex flex-col"
-            >
-              {/* Image / Thumbnail Area */}
-              <div className="relative aspect-[16/10] bg-[#0d0d0d] flex items-center justify-center p-4 border-b border-white/[0.06] overflow-hidden select-none">
-                {/* Glow behind image on hover */}
-                <div className="absolute inset-0 bg-white/[0.01] group-hover:bg-white/[0.03] transition-colors duration-500" />
-                
-                {/* Thumbnail image */}
-                <img
-                  src={cert.image}
-                  alt={cert.title}
-                  className="w-full h-full object-contain rounded border border-white/[0.05] shadow-lg group-hover:scale-[1.02] transition-transform duration-500 z-10"
-                />
-
-                {/* Hover Quick actions overlay */}
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-center justify-center gap-3 z-20">
-                  <a
-                    href={cert.verifyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2.5 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-colors"
-                    aria-label="Verify Certificate"
-                  >
-                    <ExternalLink size={16} />
-                  </a>
-                  <a
-                    href={cert.pdf}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2.5 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-colors"
-                    aria-label="View PDF"
-                  >
-                    <FileText size={16} />
-                  </a>
-                </div>
-              </div>
-
-              {/* Content Area */}
-              <div className="p-6 flex flex-col flex-1">
-                {/* Meta details (Issuer & Date) */}
-                <div className="flex items-center justify-between text-[#8a8a8a] text-[11px] mb-3">
-                  <span className="flex items-center gap-1.5 font-medium uppercase tracking-wider">
-                    <ShieldCheck size={12} className="text-[#4285f4]" />
-                    {cert.issuer} • {cert.platform}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <Calendar size={11} />
-                    {cert.date}
-                  </span>
-                </div>
-
-                {/* Title */}
-                <h3
-                  className="font-semibold text-white text-base leading-snug mb-4 group-hover:text-white/90 transition-colors"
-                  style={{ fontFamily: 'var(--font-space-grotesk)' }}
-                >
-                  {cert.title}
-                </h3>
-
-                {/* Bullet learnings */}
-                <ul className="space-y-2 mb-6 flex-1 text-xs text-[#8a8a8a] leading-relaxed">
-                  {cert.learnings.map((learning, index) => (
-                    <li key={index} className="flex items-start gap-2">
-                      <span className="mt-1 flex-shrink-0 w-3 h-3 rounded-full bg-white/[0.04] border border-white/10 flex items-center justify-center">
-                        <Check size={8} className="text-[#8a8a8a]" />
-                      </span>
-                      <span>{learning}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Buttons/Actions */}
-                <div className="grid grid-cols-2 gap-3 mt-auto pt-4 border-t border-white/[0.06]">
-                  <a
-                    href={cert.verifyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-1.5 py-2.5 text-xs font-medium rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300"
-                  >
-                    <ExternalLink size={12} /> Verify Online
-                  </a>
-                  <a
-                    href={cert.pdf}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-1.5 py-2.5 text-xs font-medium rounded-xl bg-white/5 border border-white/10 text-[#8a8a8a] hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300"
-                  >
-                    <FileText size={12} /> View PDF
-                  </a>
-                </div>
-              </div>
-            </motion.article>
+            <CertificateCard key={cert.title} cert={cert} index={i} inView={inView} />
           ))}
         </div>
       </div>
