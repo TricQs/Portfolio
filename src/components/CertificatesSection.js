@@ -1,10 +1,24 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { ExternalLink, FileText, Calendar, ShieldCheck, Check } from 'lucide-react'
 
 const certificates = [
+  {
+    title: 'Introduction to Large Language Models',
+    issuer: 'IBM',
+    platform: 'SkillsBuild',
+    date: 'Jun 29, 2026',
+    image: '/certificates/CompletionCertificate_SkillsBuild.jpg',
+    pdf: '/certificates/CompletionCertificate_SkillsBuild.jpg',
+    verifyUrl: null,
+    learnings: [
+      'Understand the fundamentals of Large Language Models (LLMs) and their capabilities.',
+      'Explore real-world applications and use cases of generative AI technologies.',
+      'Learn about the ethical considerations and limitations of using LLMs.'
+    ]
+  },
   {
     title: 'Computer Skill',
     issuer: 'School',
@@ -178,7 +192,7 @@ function CertificateCard({ cert, index, inView }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2.5 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-colors"
-                aria-label={`View PDF ${idx + 1}`}
+                aria-label={`Fullscreen View ${idx + 1}`}
               >
                 <FileText size={16} />
               </a>
@@ -188,7 +202,7 @@ function CertificateCard({ cert, index, inView }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2.5 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-colors"
-                aria-label="View PDF"
+                aria-label="Fullscreen View"
               >
                 <FileText size={16} />
               </a>
@@ -260,7 +274,7 @@ function CertificateCard({ cert, index, inView }) {
               rel="noopener noreferrer"
               className={`flex items-center justify-center gap-1.5 py-2.5 text-xs font-medium rounded-xl bg-white/5 border border-white/10 text-[#8a8a8a] hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300 ${!cert.verifyUrl ? 'col-span-2' : ''}`}
             >
-              <FileText size={12} /> View PDF
+              <FileText size={12} /> Fullscreen View
             </a>
           )}
         </div>
@@ -272,6 +286,20 @@ function CertificateCard({ cert, index, inView }) {
 export default function CertificatesSection() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
+  const [visibleCount, setVisibleCount] = useState(6)
+
+  const handleLoadMore = () => {
+    setVisibleCount(prev => prev + 6)
+  }
+
+  const handleShowLess = () => {
+    setVisibleCount(6)
+    if (ref.current) {
+      const yOffset = -100 // adjust for header
+      const y = ref.current.getBoundingClientRect().top + window.scrollY + yOffset
+      window.scrollTo({ top: y, behavior: 'smooth' })
+    }
+  }
 
   return (
     <section
@@ -301,10 +329,46 @@ export default function CertificatesSection() {
 
         {/* Certificates Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {certificates.map((cert, i) => (
+          {certificates.slice(0, visibleCount).map((cert, i) => (
             <CertificateCard key={cert.title} cert={cert} index={i} inView={inView} />
           ))}
         </div>
+
+        {/* Pagination Buttons */}
+        {(visibleCount < certificates.length || visibleCount > 6) && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="mt-12 flex flex-wrap justify-center gap-4"
+          >
+            {visibleCount > 6 && (
+              <button
+                onClick={handleShowLess}
+                className="group px-6 py-3 rounded-xl bg-transparent border border-white/10 text-[#8a8a8a] font-medium hover:text-white hover:bg-white/5 hover:border-white/20 transition-all duration-300 flex items-center gap-2"
+                style={{ fontFamily: 'var(--font-space-grotesk)' }}
+              >
+                <span className="group-hover:-translate-y-1 transition-transform duration-300">
+                  ↑
+                </span>
+                Show Less
+              </button>
+            )}
+
+            {visibleCount < certificates.length && (
+              <button
+                onClick={handleLoadMore}
+                className="group px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 hover:border-white/20 transition-all duration-300 flex items-center gap-2"
+                style={{ fontFamily: 'var(--font-space-grotesk)' }}
+              >
+                Load More Certificates
+                <span className="group-hover:translate-y-1 transition-transform duration-300">
+                  ↓
+                </span>
+              </button>
+            )}
+          </motion.div>
+        )}
       </div>
     </section>
   )
