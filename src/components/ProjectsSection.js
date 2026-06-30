@@ -10,7 +10,7 @@ const projects = [
     description:
       'A modern landing page for an online learning platform. Features smooth animations, responsive design, and optimized performance.',
     tech: ['Next.js', 'Vercel', 'Tailwind CSS'],
-    live: 'https://icacourse.vercel.app/',
+    live: 'https://bimbel-icacourse.com/',
     github: null,
     gradient: 'from-blue-900/30 to-indigo-900/20',
     number: '01',
