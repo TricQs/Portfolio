@@ -6,7 +6,7 @@ import { ExternalLink, FileText, Calendar, ShieldCheck, Check } from 'lucide-rea
 
 const certificates = [
   {
-    title: 'Introduction to Large Language Models',
+    title: 'Lab: Troubleshoot Your Code Using IBM Bob',
     issuer: 'IBM',
     platform: 'SkillsBuild',
     date: 'Jul 07, 2026',
