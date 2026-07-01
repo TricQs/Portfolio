@@ -9,6 +9,20 @@ const certificates = [
     title: 'Introduction to Large Language Models',
     issuer: 'IBM',
     platform: 'SkillsBuild',
+    date: 'Jul 07, 2026',
+    image: '/certificates/CompletionCertificate_SkillsBuild2.jpg',
+    pdf: '/certificates/CompletionCertificate_SkillsBuild2.jpg',
+    verifyUrl: null,
+    learnings: [
+      'Understand the fundamentals of Large Language Models (LLMs) and their capabilities.',
+      'Explore real-world applications and use cases of generative AI technologies.',
+      'Learn about the ethical considerations and limitations of using LLMs.'
+    ]
+  },
+  {
+    title: 'Introduction to Large Language Models',
+    issuer: 'IBM',
+    platform: 'SkillsBuild',
     date: 'Jun 29, 2026',
     image: '/certificates/CompletionCertificate_SkillsBuild.jpg',
     pdf: '/certificates/CompletionCertificate_SkillsBuild.jpg',
