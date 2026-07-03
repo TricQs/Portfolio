@@ -7,6 +7,20 @@ import Image from 'next/image'
 
 const certificates = [
   {
+    title: 'AI Fundamentals',
+    issuer: 'Google',
+    platform: 'Coursera',
+    date: 'Jul 03, 2026',
+    image: '/certificates/AI Fundamentals.jpg',
+    pdf: '/certificates/AI Fundamentals.jpg',
+    verifyUrl: null,
+    learnings: [
+      'Demonstrate a strong foundational understanding of core artificial intelligence concepts.',
+      'Understand machine learning workflows and their real-world applications.',
+      'Apply practical generative AI technologies to solve various problems.'
+    ]
+  },
+  {
     title: 'Google AI Professional Certificate',
     issuer: 'Google',
     platform: 'Coursera',
