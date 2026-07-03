@@ -4,6 +4,7 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { ArrowDown, Download, ExternalLink } from 'lucide-react'
 import dynamic from 'next/dynamic'
+import Image from 'next/image'
 import { GitHubIcon, LinkedInIcon, InstagramIcon } from './SocialIcons'
 
 const socialLinks = [
@@ -146,7 +147,7 @@ export default function HeroSection() {
                 <ExternalLink size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
               </button>
               <a
-                href="https://drive.google.com/file/d/1d4xyHfjqri8ySnflfASqYr86PlCd6hxu/view?usp=sharing"
+                href="https://drive.google.com/file/d/1ZqyAgJ_wehaAkRdin_cZ1CATTXw4cV5C/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center gap-2 px-7 py-3.5 glass border border-white/10 text-white/80 text-sm font-medium rounded-full hover:border-white/30 hover:text-white hover:bg-white/5 transition-all duration-300"
@@ -217,10 +218,13 @@ export default function HeroSection() {
 
             {/* Profile image */}
             <div className="relative w-48 h-48 md:w-60 md:h-60 rounded-full overflow-hidden glass border border-white/10 flex items-center justify-center">
-              <img
+              <Image
                 src="https://lh3.googleusercontent.com/d/1z8TrQCVL6L-IkNCpw1auB8fSPhhxv3-e"
                 alt="Ferdinand Arya"
-                className="w-full h-full object-cover"
+                fill
+                sizes="(max-width: 768px) 192px, 240px"
+                className="object-cover"
+                priority
               />
             </div>
 

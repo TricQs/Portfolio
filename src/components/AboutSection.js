@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import { motion, useInView, useCountUp } from 'framer-motion'
 import { Code2, Cpu, Workflow, GraduationCap } from 'lucide-react'
+import Image from 'next/image'
 
 const stats = [
   { icon: Code2, value: '10+', label: 'Projects Built' },
@@ -93,10 +94,12 @@ export default function AboutSection() {
               transition={{ delay: 0.5, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               className="mt-8 relative rounded-2xl overflow-hidden glass border border-white/[0.07] aspect-[4/3] flex items-center justify-center"
             >
-              <img
+              <Image
                 src="https://lh3.googleusercontent.com/d/1z8TrQCVL6L-IkNCpw1auB8fSPhhxv3-e"
                 alt="Ferdinand Arya"
-                className="w-full h-full object-cover"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
               />
             </motion.div>
           </div>

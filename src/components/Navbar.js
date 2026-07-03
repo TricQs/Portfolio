@@ -129,7 +129,7 @@ export default function Navbar() {
           {/* CTA */}
           <div className="hidden md:flex items-center gap-4">
             <a
-              href="https://drive.google.com/file/d/1d4xyHfjqri8ySnflfASqYr86PlCd6hxu/view?usp=sharing"
+              href="https://drive.google.com/file/d/1ZqyAgJ_wehaAkRdin_cZ1CATTXw4cV5C/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-5 py-2.5 text-sm font-medium glass border border-white/10 rounded-full hover:border-white/25 hover:bg-white/5 transition-all duration-300 group"
@@ -212,7 +212,7 @@ export default function Navbar() {
               className="mt-auto pt-6 border-t border-white/[0.06] flex flex-col gap-6 relative z-10"
             >
               <a
-                href="https://drive.google.com/file/d/1d4xyHfjqri8ySnflfASqYr86PlCd6hxu/view?usp=sharing"
+                href="https://drive.google.com/file/d/1ZqyAgJ_wehaAkRdin_cZ1CATTXw4cV5C/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-2 py-3.5 text-sm font-medium glass border border-white/10 rounded-full hover:border-white/25 hover:bg-white/5 transition-all duration-300 group"

@@ -3,6 +3,7 @@
 import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { ExternalLink, FileText, Calendar, ShieldCheck, Check } from 'lucide-react'
+import Image from 'next/image'
 
 const certificates = [
   {
@@ -180,10 +181,12 @@ function CertificateCard({ cert, index, inView }) {
       <div className="relative aspect-[16/10] bg-[#0d0d0d] flex items-center justify-center p-4 border-b border-white/[0.06] overflow-hidden select-none">
         <div className="absolute inset-0 bg-white/[0.01] group-hover:bg-white/[0.03] transition-colors duration-500" />
 
-        <img
+        <Image
           src={cert.image}
           alt={cert.title}
-          className="w-full h-full object-contain rounded border border-white/[0.05] shadow-lg group-hover:scale-[1.02] transition-transform duration-500 z-10"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-contain rounded border border-white/[0.05] shadow-lg group-hover:scale-[1.02] transition-transform duration-500 z-10"
         />
 
         {(cert.verifyUrl || cert.pdf) && (

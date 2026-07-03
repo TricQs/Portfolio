@@ -1,16 +1,18 @@
 import Navbar from '@/components/Navbar'
 import HeroSection from '@/components/HeroSection'
 import AboutSection from '@/components/AboutSection'
-import ApproachSection from '@/components/ApproachSection'
-import PersonalInfoSection from '@/components/PersonalInfoSection'
-import ExperienceSection from '@/components/ExperienceSection'
-import SkillsSection from '@/components/SkillsSection'
-import ProjectsSection from '@/components/ProjectsSection'
-import CertificatesSection from '@/components/CertificatesSection'
-import AISection from '@/components/AISection'
-import ContactSection from '@/components/ContactSection'
-import Footer from '@/components/Footer'
-import MouseGlowWrapper from '@/components/MouseGlowWrapper'
+import dynamic from 'next/dynamic'
+
+const ApproachSection = dynamic(() => import('@/components/ApproachSection'))
+const PersonalInfoSection = dynamic(() => import('@/components/PersonalInfoSection'))
+const ExperienceSection = dynamic(() => import('@/components/ExperienceSection'))
+const SkillsSection = dynamic(() => import('@/components/SkillsSection'))
+const ProjectsSection = dynamic(() => import('@/components/ProjectsSection'))
+const CertificatesSection = dynamic(() => import('@/components/CertificatesSection'))
+const AISection = dynamic(() => import('@/components/AISection'))
+const ContactSection = dynamic(() => import('@/components/ContactSection'))
+const Footer = dynamic(() => import('@/components/Footer'))
+const MouseGlowWrapper = dynamic(() => import('@/components/MouseGlowWrapper'))
 
 // Footer height that content needs to push below
 const FOOTER_HEIGHT = '70vh'
