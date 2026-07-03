@@ -7,6 +7,21 @@ import Image from 'next/image'
 
 const certificates = [
   {
+    title: 'Google AI Professional Certificate',
+    issuer: 'Google',
+    platform: 'Coursera',
+    date: 'Jul 03, 2026',
+    image: '/certificates/Coursera MZSZG06CCL70.jpg',
+    pdf: '/certificates/Coursera MZSZG06CCL70.jpg',
+    verifyUrl: 'https://www.coursera.org/account/accomplishments/verify/MZSZG06CCL70',
+    learnings: [
+      'Demonstrate advanced fluency in AI workflows across 7 specialized tracks.',
+      'Apply prompt engineering and evaluate AI-generated outputs effectively.',
+      'Manage a comprehensive portfolio of 20+ AI-driven artifacts.',
+      'Vibe code custom AI solutions to solve real-world workplace challenges.'
+    ]
+  },
+  {
     title: 'Lab: Troubleshoot Your Code Using IBM Bob',
     issuer: 'IBM',
     platform: 'SkillsBuild',
