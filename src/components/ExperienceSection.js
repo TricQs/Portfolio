@@ -18,8 +18,8 @@ const experiences = [
     company: 'ICA Course',
     period: 'January 2026 – June 2026',
     description: 'Built a Website Landing Page for an online course platform. Implemented responsive design, smooth animations, and optimized performance.',
-    link: 'https://icacourse.vercel.app/',
-    linkLabel: 'icacourse.vercel.app',
+    link: 'https://www.bimbel-icacourse.com/',
+    linkLabel: 'bimbel-icacourse.com',
     tags: ['Next.js', 'Vercel', 'Responsive Design'],
   },
   {
