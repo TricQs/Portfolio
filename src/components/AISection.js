@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { ChatGPTIcon, ClaudeIcon, GeminiIcon, OdysseusIcon, OpenCodeIcon } from './TechIcons'
+import { ChatGPTIcon, ClaudeIcon, GeminiIcon, OpenCodeIcon } from './TechIcons'
 
 const aiTools = [
   {
@@ -28,14 +28,6 @@ const aiTools = [
     color: '#4285f4',
     bg: 'rgba(66, 133, 244, 0.08)',
     border: 'rgba(66, 133, 244, 0.15)',
-  },
-  {
-    icon: OdysseusIcon,
-    name: 'Odysseus',
-    usage: 'My self-hosted, local-first AI workspace by PewDiePie (archdaemon). I use it to run private local LLMs, orchestrate multi-agent workflows, and conduct deep research with complete data privacy.',
-    color: '#ff0055',
-    bg: 'rgba(255, 0, 85, 0.06)',
-    border: 'rgba(255, 0, 85, 0.15)',
   },
   {
     icon: OpenCodeIcon,

@@ -22,7 +22,6 @@ import {
   ChatGPTIcon,
   ClaudeIcon,
   GeminiIcon,
-  OdysseusIcon,
   OpenCodeIcon,
   GitIcon,
   GitHubTechIcon,
@@ -52,7 +51,6 @@ const techIconMap = {
   'ChatGPT': ChatGPTIcon,
   'Claude': ClaudeIcon,
   'Gemini': GeminiIcon,
-  'Odysseus': OdysseusIcon,
   'OpenCode': OpenCodeIcon,
   'Git': GitIcon,
   'GitHub': GitHubTechIcon,
@@ -78,7 +76,7 @@ const skillCategories = [
   },
   {
     title: 'AI Tools',
-    skills: ['ChatGPT', 'Claude', 'Gemini', 'Odysseus', 'OpenCode'],
+    skills: ['ChatGPT', 'Claude', 'Gemini', 'OpenCode'],
   },
   {
     title: 'Dev Tools',

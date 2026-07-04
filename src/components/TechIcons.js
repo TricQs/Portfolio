@@ -197,23 +197,6 @@ export function GeminiIcon({ size = 16, className = '', style = {} }) {
   )
 }
 
-// Odysseus Icon (PewDiePie local-first AI - Custom premium sail ship / compass crest accented in #ff0055)
-export function OdysseusIcon({ size = 16, className = '', style = {} }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className} style={{ width: size, height: size, ...style }} aria-hidden="true">
-      {/* Outer compass/orbit circle */}
-      <circle cx="12" cy="12" r="11" stroke="#ff0055" strokeWidth="1" strokeDasharray="3 3" opacity="0.3" />
-      {/* Sleek abstract sails */}
-      <path d="M11.5 3L4.5 15h7V3z" fill="#ff0055" opacity="0.9" />
-      <path d="M12.5 5.5l5.5 9.5h-5.5V5.5z" fill="#ff0055" opacity="0.75" />
-      {/* Ship Hull */}
-      <path d="M3.5 16.5l2 3h13l2-3H3.5z" fill="#ff0055" />
-      {/* Wave / Sea below */}
-      <path d="M1 21.5c2 0 3-1 5-1s3 1 5 1 3-1 5-1 3 1 5 1" stroke="#ff0055" strokeWidth="1.5" strokeLinecap="round" opacity="0.5" />
-    </svg>
-  )
-}
-
 // OpenCode Icon (Square frame with centered cutout — official brand)
 export function OpenCodeIcon({ size = 16, className = '', style = {} }) {
   return (
