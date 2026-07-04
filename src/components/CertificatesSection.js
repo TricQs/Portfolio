@@ -7,27 +7,13 @@ import Image from 'next/image'
 
 const certificates = [
   {
-    title: 'AI Fundamentals',
-    issuer: 'Google',
-    platform: 'Coursera',
-    date: 'Jul 03, 2026',
-    image: '/certificates/AI Fundamentals.jpg',
-    pdf: '/certificates/AI Fundamentals.jpg',
-    verifyUrl: null,
-    learnings: [
-      'Demonstrate a strong foundational understanding of core artificial intelligence concepts.',
-      'Understand machine learning workflows and their real-world applications.',
-      'Apply practical generative AI technologies to solve various problems.'
-    ]
-  },
-  {
     title: 'Google AI Professional Certificate',
     issuer: 'Google',
     platform: 'Coursera',
     date: 'Jul 03, 2026',
     image: '/certificates/Coursera MZSZG06CCL70.jpg',
     pdf: '/certificates/Coursera MZSZG06CCL70.jpg',
-    verifyUrl: 'https://www.coursera.org/account/accomplishments/verify/MZSZG06CCL70',
+    verifyUrl: 'https://www.coursera.org/account/accomplishments/professional-cert/MZSZG06CCL70',
     learnings: [
       'Demonstrate advanced fluency in AI workflows across 7 specialized tracks.',
       'Apply prompt engineering and evaluate AI-generated outputs effectively.',
@@ -103,96 +89,6 @@ const certificates = [
       'Completed a comprehensive English language learning curriculum.',
       'Developed reading, writing, and speaking skills.',
       'Enhanced confidence in practical English communication.'
-    ]
-  },
-  {
-    title: 'AI for App Building',
-    issuer: 'Google',
-    platform: 'Coursera',
-    date: 'Jun 25, 2026',
-    image: '/certificates/ai-for-app-building.png',
-    pdf: '/certificates/ai-for-app-building.pdf',
-    verifyUrl: 'https://www.coursera.org/account/accomplishments/verify/P1RG0OICH7RN',
-    learnings: [
-      'Analyze professional workflows to identify high-impact AI opportunities.',
-      'Construct functional web applications using vibe coding techniques.',
-      'Evaluate and debug code using AI for stable and functional prototypes.',
-      'Build sophisticated, scalable solutions with Gemini and AI Studio.'
-    ]
-  },
-  {
-    title: 'AI for Data Analysis',
-    issuer: 'Google',
-    platform: 'Coursera',
-    date: 'Jun 25, 2026',
-    image: '/certificates/ai-for-data-analysis.png',
-    pdf: '/certificates/ai-for-data-analysis.pdf',
-    verifyUrl: 'https://www.coursera.org/account/accomplishments/verify/KUEP622NJYUA',
-    learnings: [
-      'Identify success metrics by using AI to analyze business objectives.',
-      'Clean, standardise, and format messy data using effective prompting.',
-      'Generate spreadsheet formulas using natural language with Gemini in Google Sheets.',
-      'Create data visualisations with AI to communicate insights and trends.'
-    ]
-  },
-  {
-    title: 'AI for Content Creation',
-    issuer: 'Google',
-    platform: 'Coursera',
-    date: 'Jun 25, 2026',
-    image: '/certificates/ai-for-content-creation.png',
-    pdf: '/certificates/ai-for-content-creation.pdf',
-    verifyUrl: 'https://www.coursera.org/account/accomplishments/verify/UHW3AWRWYF5Y',
-    learnings: [
-      'Generate high-quality visual and video assets using Gemini models.',
-      'Transform slide decks into visual presentations with Gemini in Google Slides.',
-      'Establish custom design guidelines for brand-aligned AI content.',
-      'Critique creative assets using targeted AI feedback based on design criteria.'
-    ]
-  },
-  {
-    title: 'AI for Writing and Communicating',
-    issuer: 'Google',
-    platform: 'Coursera',
-    date: 'Jun 25, 2026',
-    image: '/certificates/ai-for-writing-and-communicating.png',
-    pdf: '/certificates/ai-for-writing-and-communicating.pdf',
-    verifyUrl: 'https://www.coursera.org/account/accomplishments/verify/QBG1Z8SOIDJQ',
-    learnings: [
-      'Synthesize meeting transcripts into actionable summaries and to-do lists.',
-      'Refine work with critical AI feedback to prepare for high-stakes reviews.',
-      'Construct targeted communication assets using Gemini Canvas constraints.',
-      'Evaluate communication strategies by role-playing with Gemini Live.'
-    ]
-  },
-  {
-    title: 'AI for Research and Insights',
-    issuer: 'Google',
-    platform: 'Coursera',
-    date: 'Jun 25, 2026',
-    image: '/certificates/ai-for-research-and-insights.png',
-    pdf: '/certificates/ai-for-research-and-insights.pdf',
-    verifyUrl: 'https://www.coursera.org/account/accomplishments/verify/HNYOCXZ8X1RF',
-    learnings: [
-      'Synthesize data sources using Gemini Deep Research for comprehensive reports.',
-      'Construct a central research hub in NotebookLM to extract key themes.',
-      'Develop custom AI expert systems using Gemini Gems for new perspectives.',
-      'Evaluate and ground AI-generated findings with source verification.'
-    ]
-  },
-  {
-    title: 'AI for Brainstorming and Planning',
-    issuer: 'Google',
-    platform: 'Coursera',
-    date: 'Jun 25, 2026',
-    image: '/certificates/ai-for-brainstorming-and-planning.png',
-    pdf: '/certificates/ai-for-brainstorming-and-planning.pdf',
-    verifyUrl: 'https://www.coursera.org/account/accomplishments/verify/Y1YGWZHSUHHK',
-    learnings: [
-      'Brainstorm project concepts using AI as an active creative partner.',
-      'Evaluate and prioritize ideas using custom AI decision frameworks.',
-      'Identify timeline risks, gaps, and dependencies in project plans.',
-      'Manage documentation by building a centralized knowledge hub.'
     ]
   }
 ]
