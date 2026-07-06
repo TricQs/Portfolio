@@ -7,6 +7,20 @@ import Image from 'next/image'
 
 const certificates = [
   {
+    title: 'ICA Course Internship',
+    issuer: 'ICA Course',
+    platform: 'Internship',
+    date: '2024',
+    image: '/certificates/Sertifikat ICA Course (1).png',
+    pdf: ['/certificates/Sertifikat ICA Course (1).png', '/certificates/Sertifikat ICA Course (2).png'],
+    verifyUrl: null,
+    learnings: [
+      'Completed an internship program at ICA Course.',
+      'Gained practical experience and applied theoretical knowledge.',
+      'Developed professional skills in a working environment.'
+    ]
+  },
+  {
     title: 'Google AI Professional Certificate',
     issuer: 'Google',
     platform: 'Coursera',
