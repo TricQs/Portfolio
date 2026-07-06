@@ -10,7 +10,7 @@ const certificates = [
     title: 'ICA Course Internship',
     issuer: 'ICA Course',
     platform: 'Internship',
-    date: '2024',
+    date: 'Jan 01, 2026 - Jun 30, 2026',
     image: '/certificates/Sertifikat ICA Course (1).png',
     pdf: ['/certificates/Sertifikat ICA Course (1).png', '/certificates/Sertifikat ICA Course (2).png'],
     verifyUrl: null,
