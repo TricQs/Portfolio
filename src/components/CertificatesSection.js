@@ -15,9 +15,9 @@ const certificates = [
     pdf: ['/certificates/Sertifikat ICA Course (1).png', '/certificates/Sertifikat ICA Course (2).png'],
     verifyUrl: null,
     learnings: [
-      'Completed an internship program at ICA Course.',
-      'Gained practical experience and applied theoretical knowledge.',
-      'Developed professional skills in a working environment.'
+      "Successfully completed a web development internship at ICA Course, spearheading the platform's digital transformation and migration into a custom, scalable web architecture.",
+      'Bridged academic theoretical knowledge with hands-on execution by designing responsive UI/UX components and deploying live full-stack website prototypes.',
+      "Cultivated collaborative software engineering skills within an agile cross-functional team, earning the 'Most ImprovedIntern Award' award for delivering outstanding technical solutions."
     ]
   },
   {
