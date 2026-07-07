@@ -25,10 +25,20 @@ const experiences = [
   {
     position: 'MoodFit App Developer',
     company: 'Google Antigravity IDE Project',
-    period: '2026 – Present',
-    description: 'Developing MoodFit — an Android app that recommends activities based on mood. Built a Python FastAPI backend with Google Gemini AI integration, exposing a RESTful API with Swagger documentation and graceful offline fallback.',
-    link: null,
+    period: '2026',
+    description: 'Developed MoodFit — an Android app that recommends activities based on mood. Built a Python FastAPI backend with Google Gemini AI integration, exposing a RESTful API with Swagger documentation and graceful offline fallback.',
+    link: 'https://github.com/TricQs/MoodFit',
+    linkLabel: 'github.com/TricQs/MoodFit',
     tags: ['Android', 'Kotlin', 'Python', 'FastAPI', 'Gemini AI', 'REST API'],
+  },
+  {
+    position: 'Software Engineer',
+    company: 'FinOps-Core Project',
+    period: '2026 – Present',
+    description: 'Developed FinOps-Core, a mobile financial operations platform. Engineered a Laravel RESTful API backend and a cross-platform React Native frontend, integrating an AI-powered document scanning system for automated ledger entry.',
+    link: 'https://github.com/TricQs/frontend-mobile',
+    linkLabel: 'github.com/TricQs/frontend-mobile',
+    tags: ['React Native', 'Laravel', 'AI', 'REST API'],
     current: true,
   },
   {

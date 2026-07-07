@@ -31,11 +31,10 @@ const projects = [
       'Android app that recommends personalized wellness activities based on mood — stress, neutral, or productive. Powered by a Python FastAPI backend with Gemini AI integration.',
     tech: ['Android', 'Kotlin', 'Gemini AI', 'Antigravity IDE'],
     live: null,
-    github: null,
-    statusText: 'On Progress',
+    github: 'https://github.com/TricQs/MoodFit',
+    statusText: 'Completed',
     gradient: 'from-emerald-900/30 to-green-900/20',
     number: '03',
-    wip: true,
   },
   {
     title: 'MoodFit API — Python Backend',
@@ -79,6 +78,18 @@ const projects = [
     number: '07',
   },
   {
+    title: 'FinOps-Core — Financial Operations',
+    description:
+      'A comprehensive mobile financial operations platform featuring an AI-powered document scanning system for automated ledger entry. Built with a Laravel REST API backend and a React Native mobile application.',
+    tech: ['React Native', 'Laravel', 'AI Integration'],
+    live: null,
+    github: 'https://github.com/TricQs/frontend-mobile',
+    statusText: 'In Development',
+    gradient: 'from-sky-900/30 to-blue-900/20',
+    number: '08',
+    wip: true,
+  },
+  {
     title: 'More to go',
     description:
       'I will be updating and adding more of my professional experience and project history here soon.',
@@ -87,7 +98,7 @@ const projects = [
     github: null,
     statusText: 'Soon',
     gradient: 'from-zinc-900/10 to-stone-900/10',
-    number: '08',
+    number: '09',
     isPlaceholder: true,
   },
 ]
