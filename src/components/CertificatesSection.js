@@ -110,22 +110,21 @@ const certificates = [
 function CertificateCard({ cert, index, inView }) {
   return (
     <motion.article
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ delay: index * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{ y: -6, transition: { duration: 0.3 } }}
-      className="group glass border border-white/[0.07] hover:border-white/15 rounded-2xl overflow-hidden transition-all duration-500 flex flex-col h-full"
+      transition={{ delay: index * 0.08, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      whileHover={{ y: -4, transition: { duration: 0.25 } }}
+      className="group border border-white/[0.06] hover:border-white/[0.12] rounded-2xl overflow-hidden transition-all duration-500 flex flex-col h-full"
+      style={{ background: 'rgba(255,255,255,0.015)' }}
     >
       {/* Image / Thumbnail Area */}
-      <div className="relative aspect-[16/10] bg-[#0d0d0d] flex items-center justify-center p-4 border-b border-white/[0.06] overflow-hidden select-none">
-        <div className="absolute inset-0 bg-white/[0.01] group-hover:bg-white/[0.03] transition-colors duration-500" />
-
+      <div className="relative aspect-[16/10] flex items-center justify-center p-4 border-b border-white/[0.04] overflow-hidden select-none" style={{ background: 'rgba(255,255,255,0.01)' }}>
         <Image
           src={cert.image}
           alt={cert.title}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-contain rounded border border-white/[0.05] shadow-lg group-hover:scale-[1.02] transition-transform duration-500 z-10"
+          className="object-contain rounded border border-white/[0.04] group-hover:scale-[1.02] transition-transform duration-500 z-10"
         />
 
         {(cert.verifyUrl || cert.pdf) && (
@@ -135,10 +134,10 @@ function CertificateCard({ cert, index, inView }) {
                 href={cert.verifyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-colors"
+                className="p-2.5 rounded-full bg-white/[0.08] border border-white/15 text-white hover:bg-white/[0.15] transition-colors duration-300"
                 aria-label="Verify Certificate"
               >
-                <ExternalLink size={16} />
+                <ExternalLink size={14} />
               </a>
             )}
             {Array.isArray(cert.pdf) ? cert.pdf.map((link, idx) => (
@@ -147,20 +146,20 @@ function CertificateCard({ cert, index, inView }) {
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-colors"
+                className="p-2.5 rounded-full bg-white/[0.08] border border-white/15 text-white hover:bg-white/[0.15] transition-colors duration-300"
                 aria-label={`Fullscreen View ${idx + 1}`}
               >
-                <FileText size={16} />
+                <FileText size={14} />
               </a>
             )) : cert.pdf && (
               <a
                 href={cert.pdf}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-colors"
+                className="p-2.5 rounded-full bg-white/[0.08] border border-white/15 text-white hover:bg-white/[0.15] transition-colors duration-300"
                 aria-label="Fullscreen View"
               >
-                <FileText size={16} />
+                <FileText size={14} />
               </a>
             )}
           </div>
@@ -168,33 +167,33 @@ function CertificateCard({ cert, index, inView }) {
       </div>
 
       {/* Content Area */}
-      <div className="p-6 flex flex-col flex-1">
+      <div className="p-5 flex flex-col flex-1">
         {/* Meta details (Issuer & Date) */}
-        <div className="flex items-center justify-between text-[#8a8a8a] text-[11px] mb-3">
-          <span className="flex items-center gap-1.5 font-medium uppercase tracking-wider">
-            <ShieldCheck size={12} className="text-[#4285f4]" />
-            {cert.issuer} {cert.platform && `• ${cert.platform}`}
+        <div className="flex items-center justify-between text-[#6e6e73] text-[10px] mb-3">
+          <span className="flex items-center gap-1.5 font-medium uppercase tracking-[0.08em]">
+            <ShieldCheck size={11} className="text-[#4285f4]" strokeWidth={1.5} />
+            {cert.issuer} {cert.platform && `· ${cert.platform}`}
           </span>
           <span className="flex items-center gap-1">
-            <Calendar size={11} />
+            <Calendar size={10} strokeWidth={1.5} />
             {cert.date}
           </span>
         </div>
 
         {/* Title */}
         <h3
-          className="font-semibold text-white text-base leading-snug mb-4 group-hover:text-white/90 transition-colors"
+          className="font-semibold text-[#f5f5f7] text-[14px] leading-snug mb-4 tracking-[-0.01em]"
           style={{ fontFamily: 'var(--font-space-grotesk)' }}
         >
           {cert.title}
         </h3>
 
         {/* Bullet learnings */}
-        <ul className="space-y-2 mb-6 flex-1 text-xs text-[#8a8a8a] leading-relaxed">
+        <ul className="space-y-2.5 mb-6 flex-1 text-[12px] text-[#86868b] leading-[1.7]">
           {cert.learnings.map((learning, idx) => (
             <li key={idx} className="flex items-start gap-2">
-              <span className="mt-1 flex-shrink-0 w-3 h-3 rounded-full bg-white/[0.04] border border-white/10 flex items-center justify-center">
-                <Check size={8} className="text-[#8a8a8a]" />
+              <span className="mt-1 flex-shrink-0 w-3.5 h-3.5 rounded-full bg-white/[0.03] border border-white/[0.08] flex items-center justify-center">
+                <Check size={7} strokeWidth={2} className="text-[#86868b]" />
               </span>
               <span>{learning}</span>
             </li>
@@ -202,15 +201,15 @@ function CertificateCard({ cert, index, inView }) {
         </ul>
 
         {/* Buttons/Actions */}
-        <div className="grid grid-cols-2 gap-3 mt-auto pt-4 border-t border-white/[0.06]">
+        <div className="grid grid-cols-2 gap-2.5 mt-auto pt-4 border-t border-white/[0.04]">
           {cert.verifyUrl && (
             <a
               href={cert.verifyUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className={`flex items-center justify-center gap-1.5 py-2.5 text-xs font-medium rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300 ${!cert.pdf ? 'col-span-2' : ''}`}
+              className={`flex items-center justify-center gap-1.5 py-2.5 text-[11px] font-medium rounded-xl bg-white/[0.03] border border-white/[0.06] text-[#f5f5f7] hover:bg-white/[0.06] hover:border-white/[0.12] transition-all duration-300 ${!cert.pdf ? 'col-span-2' : ''}`}
             >
-              <ExternalLink size={12} /> Official Website
+              <ExternalLink size={11} strokeWidth={1.5} /> Official Website
             </a>
           )}
           {Array.isArray(cert.pdf) ? cert.pdf.map((link, idx) => (
@@ -219,18 +218,18 @@ function CertificateCard({ cert, index, inView }) {
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              className={`flex items-center justify-center gap-1.5 py-2.5 text-xs font-medium rounded-xl bg-white/5 border border-white/10 text-[#8a8a8a] hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300 ${(!cert.verifyUrl && cert.pdf.length === 1) ? 'col-span-2' : ''}`}
+              className={`flex items-center justify-center gap-1.5 py-2.5 text-[11px] font-medium rounded-xl bg-white/[0.03] border border-white/[0.06] text-[#86868b] hover:text-[#f5f5f7] hover:bg-white/[0.06] hover:border-white/[0.12] transition-all duration-300 ${(!cert.verifyUrl && cert.pdf.length === 1) ? 'col-span-2' : ''}`}
             >
-              <FileText size={12} /> {idx === 0 ? 'Front Side' : 'Back Side'}
+              <FileText size={11} strokeWidth={1.5} /> {idx === 0 ? 'Front Side' : 'Back Side'}
             </a>
           )) : cert.pdf && (
             <a
               href={cert.pdf}
               target="_blank"
               rel="noopener noreferrer"
-              className={`flex items-center justify-center gap-1.5 py-2.5 text-xs font-medium rounded-xl bg-white/5 border border-white/10 text-[#8a8a8a] hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300 ${!cert.verifyUrl ? 'col-span-2' : ''}`}
+              className={`flex items-center justify-center gap-1.5 py-2.5 text-[11px] font-medium rounded-xl bg-white/[0.03] border border-white/[0.06] text-[#86868b] hover:text-[#f5f5f7] hover:bg-white/[0.06] hover:border-white/[0.12] transition-all duration-300 ${!cert.verifyUrl ? 'col-span-2' : ''}`}
             >
-              <FileText size={12} /> Fullscreen View
+              <FileText size={11} strokeWidth={1.5} /> Fullscreen View
             </a>
           )}
         </div>
@@ -261,22 +260,25 @@ export default function CertificatesSection() {
     <section
       id="certificates"
       ref={ref}
-      className="pt-14 pb-8 md:pt-22 md:pb-12 relative"
+      className="section-padding relative"
       style={{ background: 'var(--bg-primary)' }}
     >
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12 relative z-10">
+      {/* Section divider */}
+      <div className="absolute top-0 left-0 right-0 section-divider" />
+
+      <div className="max-w-6xl mx-auto px-6 md:px-8 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <span className="text-xs font-medium tracking-[0.2em] uppercase text-[#8a8a8a]">
+          <span className="text-[11px] font-medium tracking-[0.15em] uppercase text-[#86868b]">
             07 — Credentials
           </span>
           <h2
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mt-3 leading-tight text-gradient"
+            className="text-4xl sm:text-5xl md:text-[3.5rem] font-bold mt-4 leading-[1.1] tracking-[-0.03em] text-gradient"
             style={{ fontFamily: 'var(--font-space-grotesk)' }}
           >
             Certificates &<br />Achievements
@@ -284,7 +286,7 @@ export default function CertificatesSection() {
         </motion.div>
 
         {/* Certificates Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {certificates.slice(0, visibleCount).map((cert, i) => (
             <CertificateCard key={cert.title} cert={cert} index={i} inView={inView} />
           ))}
@@ -295,16 +297,16 @@ export default function CertificatesSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.4, duration: 0.5 }}
-            className="mt-12 flex flex-wrap justify-center gap-4"
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="mt-12 flex flex-wrap justify-center gap-3"
           >
             {visibleCount > 6 && (
               <button
                 onClick={handleShowLess}
-                className="group px-6 py-3 rounded-xl bg-transparent border border-white/10 text-[#8a8a8a] font-medium hover:text-white hover:bg-white/5 hover:border-white/20 transition-all duration-300 flex items-center gap-2"
+                className="group px-5 py-2.5 rounded-xl bg-transparent border border-white/[0.06] text-[#86868b] text-[13px] font-medium hover:text-[#f5f5f7] hover:bg-white/[0.03] hover:border-white/[0.12] transition-all duration-300 flex items-center gap-2 cursor-pointer"
                 style={{ fontFamily: 'var(--font-space-grotesk)' }}
               >
-                <span className="group-hover:-translate-y-1 transition-transform duration-300">
+                <span className="group-hover:-translate-y-0.5 transition-transform duration-300">
                   ↑
                 </span>
                 Show Less
@@ -314,11 +316,11 @@ export default function CertificatesSection() {
             {visibleCount < certificates.length && (
               <button
                 onClick={handleLoadMore}
-                className="group px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 hover:border-white/20 transition-all duration-300 flex items-center gap-2"
+                className="group px-5 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[#f5f5f7] text-[13px] font-medium hover:bg-white/[0.06] hover:border-white/[0.12] transition-all duration-300 flex items-center gap-2 cursor-pointer"
                 style={{ fontFamily: 'var(--font-space-grotesk)' }}
               >
                 Load More Certificates
-                <span className="group-hover:translate-y-1 transition-transform duration-300">
+                <span className="group-hover:translate-y-0.5 transition-transform duration-300">
                   ↓
                 </span>
               </button>

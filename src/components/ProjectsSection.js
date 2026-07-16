@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { ExternalLink, GitBranch, ArrowUpRight } from 'lucide-react'
+import { ExternalLink, GitBranch } from 'lucide-react'
 
 const projects = [
   {
@@ -12,7 +12,7 @@ const projects = [
     tech: ['Next.js', 'Vercel', 'Tailwind CSS'],
     live: 'https://bimbel-icacourse.com/',
     github: null,
-    gradient: 'from-blue-900/30 to-indigo-900/20',
+    gradient: 'from-blue-900/20 to-indigo-900/10',
     number: '01',
   },
   {
@@ -22,7 +22,7 @@ const projects = [
     tech: ['Unity', 'AR Foundation', 'C#', '3D Modeling'],
     live: 'https://youtu.be/dluuvq1TVNQ?si=JlrLqoErSI0S02eT',
     github: null,
-    gradient: 'from-purple-900/30 to-violet-900/20',
+    gradient: 'from-purple-900/20 to-violet-900/10',
     number: '02',
   },
   {
@@ -33,7 +33,7 @@ const projects = [
     live: null,
     github: 'https://github.com/TricQs/MoodFit',
     statusText: 'Completed',
-    gradient: 'from-emerald-900/30 to-green-900/20',
+    gradient: 'from-emerald-900/20 to-green-900/10',
     number: '03',
   },
   {
@@ -43,7 +43,7 @@ const projects = [
     tech: ['Python', 'FastAPI', 'Gemini AI', 'REST API'],
     live: 'https://moodfit-backend-api.vercel.app',
     github: null,
-    gradient: 'from-teal-900/30 to-cyan-900/20',
+    gradient: 'from-teal-900/20 to-cyan-900/10',
     number: '04',
     statusText: 'Live Demo',
   },
@@ -54,7 +54,7 @@ const projects = [
     tech: ['React Native', 'Tailwind CSS', 'Mobile Development'],
     live: 'https://drive.google.com/drive/folders/1Ahv-Uoyt05LJBmTf4EgQ7P7EQuNxsUsn?usp=drive_link',
     github: null,
-    gradient: 'from-amber-900/20 to-orange-900/20',
+    gradient: 'from-amber-900/15 to-orange-900/10',
     number: '05',
   },
   {
@@ -64,7 +64,7 @@ const projects = [
     tech: ['Web Design', 'UI/UX Design', 'Framer Motion'],
     live: 'https://thedemit.clampolx.com/',
     github: null,
-    gradient: 'from-rose-900/20 to-pink-900/20',
+    gradient: 'from-rose-900/15 to-pink-900/10',
     number: '06',
   },
   {
@@ -74,7 +74,7 @@ const projects = [
     tech: ['HTML5', 'CSS3', 'JavaScript'],
     live: 'https://nexus-arcade-one.vercel.app/',
     github: null,
-    gradient: 'from-zinc-800/30 to-slate-900/20',
+    gradient: 'from-zinc-800/20 to-slate-900/10',
     number: '07',
   },
   {
@@ -85,7 +85,7 @@ const projects = [
     live: null,
     github: 'https://github.com/TricQs/frontend-mobile',
     statusText: 'In Development',
-    gradient: 'from-sky-900/30 to-blue-900/20',
+    gradient: 'from-sky-900/20 to-blue-900/10',
     number: '08',
     wip: true,
   },
@@ -97,7 +97,7 @@ const projects = [
     live: null,
     github: null,
     statusText: 'Soon',
-    gradient: 'from-zinc-900/10 to-stone-900/10',
+    gradient: 'from-zinc-900/10 to-stone-900/5',
     number: '09',
     isPlaceholder: true,
   },
@@ -114,23 +114,22 @@ export default function ProjectsSection() {
       className="section-padding relative"
       style={{ background: 'var(--bg-secondary)' }}
     >
-      <div
-        className="absolute inset-0 grid-overlay pointer-events-none"
-        style={{ opacity: 0.4 }}
-      />
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12 relative z-10">
+      {/* Section divider */}
+      <div className="absolute top-0 left-0 right-0 section-divider" />
+
+      <div className="max-w-6xl mx-auto px-6 md:px-8 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <span className="text-xs font-medium tracking-[0.2em] uppercase text-[#8a8a8a]">
+          <span className="text-[11px] font-medium tracking-[0.15em] uppercase text-[#86868b]">
             06 — Work
           </span>
           <h2
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mt-3 leading-tight text-gradient"
+            className="text-4xl sm:text-5xl md:text-[3.5rem] font-bold mt-4 leading-[1.1] tracking-[-0.03em] text-gradient"
             style={{ fontFamily: 'var(--font-space-grotesk)' }}
           >
             Featured<br />Projects
@@ -138,34 +137,35 @@ export default function ProjectsSection() {
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {projects.map((project, i) => (
             <motion.article
               key={project.number}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: i * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={project.isPlaceholder ? {} : { y: -8, transition: { duration: 0.3 } }}
-              className={`group glass border rounded-2xl overflow-hidden transition-colors duration-500 flex flex-col ${project.isPlaceholder
-                ? 'border-dashed border-white/10 hover:border-white/20'
-                : 'border-white/[0.07] hover:border-white/15'
+              transition={{ delay: i * 0.08, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={project.isPlaceholder ? {} : { y: -4, transition: { duration: 0.25 } }}
+              className={`group border rounded-2xl overflow-hidden transition-all duration-500 flex flex-col ${project.isPlaceholder
+                ? 'border-dashed border-white/[0.06] hover:border-white/[0.12]'
+                : 'border-white/[0.06] hover:border-white/[0.12]'
                 }`}
+              style={{ background: 'rgba(255,255,255,0.015)' }}
             >
               {/* Image / Gradient Area */}
               <div
-                className={`relative h-48 bg-gradient-to-br ${project.gradient} flex items-center justify-center overflow-hidden`}
+                className={`relative h-44 bg-gradient-to-br ${project.gradient} flex items-center justify-center overflow-hidden`}
               >
                 {/* Hover overlay */}
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-center justify-center gap-3 z-10">
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-center justify-center gap-3 z-10">
                   {project.live && (
                     <a
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2.5 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-colors"
+                      className="p-2.5 rounded-full bg-white/[0.08] border border-white/15 text-white hover:bg-white/[0.15] transition-colors duration-300"
                       aria-label="Live Demo"
                     >
-                      <ExternalLink size={15} />
+                      <ExternalLink size={14} />
                     </a>
                   )}
                   {project.github && (
@@ -173,17 +173,17 @@ export default function ProjectsSection() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2.5 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-colors"
+                      className="p-2.5 rounded-full bg-white/[0.08] border border-white/15 text-white hover:bg-white/[0.15] transition-colors duration-300"
                       aria-label="GitHub"
                     >
-                      <GitBranch size={15} />
+                      <GitBranch size={14} />
                     </a>
                   )}
                 </div>
 
                 {/* Project number bg */}
                 <span
-                  className="text-[8rem] font-bold text-white/[0.04] select-none leading-none"
+                  className="text-[7rem] font-bold text-white/[0.03] select-none leading-none"
                   style={{ fontFamily: 'var(--font-space-grotesk)' }}
                 >
                   {project.number}
@@ -192,7 +192,7 @@ export default function ProjectsSection() {
                 {/* WIP badge */}
                 {project.wip && (
                   <div className="absolute top-3 right-3 z-20">
-                    <span className="px-2 py-0.5 text-[9px] rounded-full bg-amber-500/20 border border-amber-500/30 text-amber-400 font-medium tracking-widest uppercase">
+                    <span className="px-2 py-0.5 text-[9px] rounded-full bg-amber-500/[0.12] border border-amber-500/20 text-amber-400/90 font-medium tracking-[0.06em] uppercase">
                       In Progress
                     </span>
                   </div>
@@ -200,14 +200,14 @@ export default function ProjectsSection() {
               </div>
 
               {/* Content */}
-              <div className="p-6 flex flex-col flex-1">
+              <div className="p-5 flex flex-col flex-1">
                 <h3
-                  className="font-semibold text-white text-base leading-snug mb-2 group-hover:text-white/90 transition-colors"
+                  className="font-semibold text-[#f5f5f7] text-[14px] leading-snug mb-2 tracking-[-0.01em]"
                   style={{ fontFamily: 'var(--font-space-grotesk)' }}
                 >
                   {project.title}
                 </h3>
-                <p className="text-[#8a8a8a] text-xs leading-relaxed flex-1 mb-4 whitespace-pre-line">
+                <p className="text-[#86868b] text-[12px] leading-[1.7] flex-1 mb-4 whitespace-pre-line">
                   {project.description}
                 </p>
 
@@ -216,7 +216,8 @@ export default function ProjectsSection() {
                   {project.tech.map(t => (
                     <span
                       key={t}
-                      className="px-2 py-0.5 text-[10px] rounded-full bg-white/[0.05] border border-white/[0.08] text-[#8a8a8a]"
+                      className="px-2 py-0.5 text-[10px] rounded-full border border-white/[0.06] text-[#6e6e73]"
+                      style={{ background: 'rgba(255,255,255,0.02)' }}
                     >
                       {t}
                     </span>
@@ -224,15 +225,15 @@ export default function ProjectsSection() {
                 </div>
 
                 {/* Links */}
-                <div className="flex gap-3">
+                <div className="flex gap-4 mt-auto pt-3 border-t border-white/[0.04]">
                   {project.live && (
                     <a
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 text-xs text-white/60 hover:text-white transition-colors duration-300"
+                      className="flex items-center gap-1.5 text-[11px] text-[#6e6e73] hover:text-[#f5f5f7] transition-colors duration-300"
                     >
-                      <ExternalLink size={11} /> Live Demo
+                      <ExternalLink size={10} strokeWidth={1.5} /> Live Demo
                     </a>
                   )}
                   {project.github && (
@@ -240,13 +241,13 @@ export default function ProjectsSection() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 text-xs text-white/60 hover:text-white transition-colors duration-300"
+                      className="flex items-center gap-1.5 text-[11px] text-[#6e6e73] hover:text-[#f5f5f7] transition-colors duration-300"
                     >
-                      <GitBranch size={11} /> GitHub
+                      <GitBranch size={10} strokeWidth={1.5} /> GitHub
                     </a>
                   )}
                   {!project.live && !project.github && (
-                    <span className="text-xs text-white/20">
+                    <span className="text-[11px] text-white/15">
                       {project.statusText || 'Coming soon'}
                     </span>
                   )}

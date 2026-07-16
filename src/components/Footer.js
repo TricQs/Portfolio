@@ -62,7 +62,7 @@ export default function Footer() {
         left: 0,
         right: 0,
         zIndex: 0,
-        background: '#0d0d0d',
+        background: 'var(--bg-secondary)',
         minHeight: '70vh',
       }}
     >
@@ -71,56 +71,52 @@ export default function Footer() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 80% 60% at 50% 100%, rgba(255,255,255,0.04) 0%, transparent 70%)',
+            'radial-gradient(ellipse 80% 60% at 50% 100%, rgba(255,255,255,0.03) 0%, transparent 70%)',
         }}
       />
       {/* Top border line */}
-      <div
-        className="absolute top-0 left-0 right-0 h-px"
-        style={{
-          background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)',
-        }}
-      />
+      <div className="absolute top-0 left-0 right-0 section-divider" />
 
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12 pt-14 pb-8 relative z-10 flex flex-col h-full">
+      <div className="max-w-6xl mx-auto px-6 md:px-8 pt-16 pb-8 relative z-10 flex flex-col h-full">
         {/* Big tagline */}
         <div className="flex-1 flex items-center">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.8 }}
           >
             <h2
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-7xl font-bold leading-[0.9] tracking-tight"
+              className="text-4xl sm:text-5xl md:text-[3.5rem] lg:text-[4rem] font-bold leading-[0.95] tracking-[-0.03em]"
               style={{ fontFamily: 'var(--font-space-grotesk)' }}
             >
               <span className="text-gradient">Let&apos;s Create</span>
               <br />
-              <span className="text-white/20">The Future</span>
+              <span className="text-white/15">The Future</span>
               <br />
-              <span className="text-white">Together.</span>
+              <span className="text-[#f5f5f7]">Together.</span>
             </h2>
 
             <motion.button
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              whileHover={{ x: 4 }}
-              className="inline-flex items-center gap-2 mt-6 px-6 py-3 glass border border-white/10 rounded-full text-sm text-[#8a8a8a] hover:text-white hover:border-white/25 transition-all duration-300 group cursor-pointer"
+              whileHover={{ x: 3 }}
+              className="inline-flex items-center gap-2 mt-8 px-5 py-2.5 border border-white/[0.06] rounded-full text-[13px] text-[#86868b] hover:text-[#f5f5f7] hover:border-white/[0.15] hover:bg-white/[0.03] transition-all duration-300 group cursor-pointer"
+              style={{ background: 'rgba(255,255,255,0.02)' }}
             >
               Get in Touch
-              <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <ArrowUpRight size={13} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
             </motion.button>
           </motion.div>
         </div>
 
         {/* Footer bottom */}
-        <div className="mt-12 pt-8 border-t border-white/[0.05] flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="mt-12 pt-8 border-t border-white/[0.04] flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           {/* Nav links */}
-          <nav className="flex flex-wrap gap-x-6 gap-y-2">
+          <nav className="flex flex-wrap gap-x-5 gap-y-2">
             {footerNavLinks.map(link => (
               <button
                 key={link.id}
                 onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })}
-                className="text-xs text-[#8a8a8a] hover:text-white transition-colors duration-300 tracking-wide cursor-pointer"
+                className="text-[11px] text-[#6e6e73] hover:text-[#f5f5f7] transition-colors duration-300 tracking-[0.04em] cursor-pointer"
               >
                 {link.label}
               </button>
@@ -128,7 +124,7 @@ export default function Footer() {
           </nav>
 
           {/* Social icons */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             {socialLinks.map(social => (
               <a
                 key={social.label}
@@ -136,16 +132,17 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
-                className="w-9 h-9 glass border border-white/[0.07] rounded-lg flex items-center justify-center text-[#8a8a8a] hover:text-white hover:border-white/20 transition-all duration-300"
+                className="w-8 h-8 border border-white/[0.06] rounded-lg flex items-center justify-center text-[#6e6e73] hover:text-[#f5f5f7] hover:border-white/[0.12] transition-all duration-300"
+                style={{ background: 'rgba(255,255,255,0.02)' }}
               >
-                <social.Icon size={14} />
+                <social.Icon size={13} />
               </a>
             ))}
           </div>
         </div>
 
         {/* Copyright */}
-        <p className="mt-6 text-[10px] text-[#8a8a8a]/50 tracking-widest">
+        <p className="mt-6 text-[10px] text-[#6e6e73]/50 tracking-[0.08em]">
           © {new Date().getFullYear()} · Designed & Developed by Ferdinand Arya Wijaya · Built with Next.js
         </p>
       </div>

@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
-import { motion, useInView, useCountUp } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { Code2, Cpu, Workflow, GraduationCap } from 'lucide-react'
 import Image from 'next/image'
 
@@ -18,21 +18,22 @@ function StatCard({ stat, index }) {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ delay: index * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className="card-glow glass border border-white/[0.07] rounded-2xl p-6 flex flex-col gap-3 hover:border-white/15 hover:bg-white/[0.04] transition-all duration-500 group cursor-default"
+      transition={{ delay: index * 0.08, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      className="card-glow border border-white/[0.06] rounded-2xl p-6 flex flex-col gap-4 hover:border-white/[0.12] hover:bg-white/[0.02] transition-all duration-500 group cursor-default"
+      style={{ background: 'rgba(255,255,255,0.015)' }}
     >
-      <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: 'rgba(255,255,255,0.06)' }}>
-        <stat.icon size={17} className="text-[#8a8a8a] group-hover:text-white transition-colors duration-300" />
+      <div className="w-10 h-10 rounded-xl flex items-center justify-center border border-white/[0.06]" style={{ background: 'rgba(255,255,255,0.03)' }}>
+        <stat.icon size={16} strokeWidth={1.5} className="text-[#86868b] group-hover:text-[#f5f5f7] transition-colors duration-300" />
       </div>
       <div
-        className="text-3xl font-bold text-white"
+        className="text-3xl font-bold text-[#f5f5f7] tracking-[-0.02em]"
         style={{ fontFamily: 'var(--font-space-grotesk)' }}
       >
         {stat.value}
       </div>
-      <p className="text-xs text-[#6a6a6a] uppercase tracking-widest">{stat.label}</p>
+      <p className="text-[11px] text-[#6e6e73] uppercase tracking-[0.1em] font-medium">{stat.label}</p>
     </motion.div>
   )
 }
@@ -43,32 +44,29 @@ export default function AboutSection() {
 
   return (
     <section id="about" ref={ref} className="section-padding relative">
-      {/* Section glow */}
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] pointer-events-none"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)' }}
-      />
+      {/* Section divider */}
+      <div className="absolute top-0 left-0 right-0 section-divider" />
 
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12">
+      <div className="max-w-6xl mx-auto px-6 md:px-8">
         {/* Section label */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <span className="text-xs font-medium tracking-[0.2em] uppercase text-[#8a8a8a]">
+          <span className="text-[11px] font-medium tracking-[0.15em] uppercase text-[#86868b]">
             01 — About
           </span>
           <h2
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mt-3 leading-tight text-gradient"
+            className="text-4xl sm:text-5xl md:text-[3.5rem] font-bold mt-4 leading-[1.1] tracking-[-0.03em] text-gradient"
             style={{ fontFamily: 'var(--font-space-grotesk)' }}
           >
             About Me
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-start">
           {/* Text */}
           <div className="space-y-6">
             {[
@@ -78,10 +76,10 @@ export default function AboutSection() {
             ].map((para, i) => (
               <motion.p
                 key={i}
-                initial={{ opacity: 0, y: 25 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.15 * (i + 1), duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className={`leading-relaxed ${i === 0 ? 'text-lg text-white' : 'text-[#8a8a8a]'}`}
+                transition={{ delay: 0.12 * (i + 1), duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                className={`leading-[1.75] ${i === 0 ? 'text-[15px] sm:text-base text-[#f5f5f7]' : 'text-[15px] text-[#86868b]'}`}
               >
                 {para}
               </motion.p>
@@ -89,10 +87,11 @@ export default function AboutSection() {
 
             {/* Profile image */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.97 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: 0.5, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-8 relative rounded-2xl overflow-hidden glass border border-white/[0.07] aspect-[4/3] flex items-center justify-center"
+              transition={{ delay: 0.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-10 relative rounded-2xl overflow-hidden border border-white/[0.06] aspect-[4/3] flex items-center justify-center"
+              style={{ background: 'rgba(255,255,255,0.015)' }}
             >
               <Image
                 src="https://lh3.googleusercontent.com/d/1z8TrQCVL6L-IkNCpw1auB8fSPhhxv3-e"
@@ -116,14 +115,15 @@ export default function AboutSection() {
             <motion.blockquote
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="glass border border-white/[0.07] rounded-2xl p-6 relative overflow-hidden"
+              transition={{ delay: 0.5, duration: 0.7 }}
+              className="border border-white/[0.06] rounded-2xl p-6 relative overflow-hidden"
+              style={{ background: 'rgba(255,255,255,0.015)' }}
             >
               <div
-                className="absolute top-0 left-0 w-1 h-full rounded-full"
-                style={{ background: 'linear-gradient(to bottom, rgba(255,255,255,0.3), transparent)' }}
+                className="absolute top-0 left-0 w-[2px] h-full rounded-full"
+                style={{ background: 'linear-gradient(to bottom, rgba(255,255,255,0.2), transparent)' }}
               />
-              <p className="text-sm text-[#8a8a8a] leading-relaxed italic pl-4">
+              <p className="text-[13px] text-[#86868b] leading-[1.8] italic pl-4">
                 "Design is not just what it looks like and feels like. Design is how it works — and I bring that philosophy to every project."
               </p>
             </motion.blockquote>

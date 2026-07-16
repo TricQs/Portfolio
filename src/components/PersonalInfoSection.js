@@ -65,19 +65,22 @@ export default function PersonalInfoSection() {
 
   return (
     <section id="personal-info" ref={ref} className="section-padding relative">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      {/* Section divider */}
+      <div className="absolute top-0 left-0 right-0 section-divider" />
+
+      <div className="max-w-6xl mx-auto px-6 md:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <span className="text-xs font-medium tracking-[0.2em] uppercase text-[#8a8a8a]">
+          <span className="text-[11px] font-medium tracking-[0.15em] uppercase text-[#86868b]">
             03 — Info
           </span>
           <h2
-            className="text-5xl md:text-6xl lg:text-7xl font-bold mt-3 leading-tight text-gradient"
+            className="text-4xl sm:text-5xl md:text-[3.5rem] font-bold mt-4 leading-[1.1] tracking-[-0.03em] text-gradient"
             style={{ fontFamily: 'var(--font-space-grotesk)' }}
           >
             Personal<br />Information
@@ -85,42 +88,43 @@ export default function PersonalInfoSection() {
         </motion.div>
 
         {/* Info Grid */}
-        <div className="grid sm:grid-cols-2 gap-4">
+        <div className="grid sm:grid-cols-2 gap-3">
           {personalInfo.map((info, i) => (
             <motion.div
               key={info.label}
-              initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: i * 0.08, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="group flex items-start gap-4 glass border border-white/[0.07] rounded-2xl p-5 hover:border-white/15 hover:bg-white/[0.03] transition-all duration-400"
+              initial={{ opacity: 0, y: 16 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: i * 0.06, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="group flex items-start gap-4 border border-white/[0.06] rounded-2xl p-5 hover:border-white/[0.12] hover:bg-white/[0.02] transition-all duration-400"
+              style={{ background: 'rgba(255,255,255,0.015)' }}
             >
               {/* Icon */}
-              <div className="flex-shrink-0 w-10 h-10 rounded-xl glass border border-white/10 flex items-center justify-center mt-0.5 group-hover:border-white/20 transition-colors duration-300">
-                <info.icon size={15} className="text-[#8a8a8a] group-hover:text-white transition-colors duration-300" />
+              <div className="flex-shrink-0 w-10 h-10 rounded-xl border border-white/[0.06] flex items-center justify-center mt-0.5 group-hover:border-white/[0.12] transition-colors duration-300" style={{ background: 'rgba(255,255,255,0.03)' }}>
+                <info.icon size={15} strokeWidth={1.5} className="text-[#86868b] group-hover:text-[#f5f5f7] transition-colors duration-300" />
               </div>
 
               {/* Content */}
               <div className="min-w-0">
-                <p className="text-[10px] font-medium tracking-[0.15em] uppercase text-[#8a8a8a] mb-1">
+                <p className="text-[10px] font-medium tracking-[0.12em] uppercase text-[#6e6e73] mb-1">
                   {info.label}
                 </p>
                 {info.href ? (
                   <a
                     href={info.href}
-                    className="text-sm text-white hover:text-white/70 transition-colors duration-300 truncate block"
+                    className="text-[13px] text-[#f5f5f7] hover:text-white/70 transition-colors duration-300 truncate block"
                   >
                     {info.value}
                   </a>
                 ) : (
-                  <p className="text-sm text-white leading-snug">{info.value}</p>
+                  <p className="text-[13px] text-[#f5f5f7] leading-snug">{info.value}</p>
                 )}
               </div>
 
               {/* Availability badge */}
               {info.label === 'Availability' && (
                 <div className="ml-auto flex-shrink-0">
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-[10px] font-medium">
-                    <span className="w-1 h-1 rounded-full bg-green-400 animate-pulse" />
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/[0.06] border border-emerald-500/15 text-emerald-400/90 text-[10px] font-medium">
+                    <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" />
                     Open
                   </span>
                 </div>
@@ -133,14 +137,14 @@ export default function PersonalInfoSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.3, duration: 0.7 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
           className="mt-24 mb-12"
         >
-          <span className="text-xs font-medium tracking-[0.2em] uppercase text-[#8a8a8a]">
+          <span className="text-[11px] font-medium tracking-[0.15em] uppercase text-[#86868b]">
             Workspace Setup
           </span>
           <h3
-            className="text-3xl font-bold mt-2 text-white"
+            className="text-2xl sm:text-3xl font-bold mt-3 text-[#f5f5f7] tracking-[-0.02em]"
             style={{ fontFamily: 'var(--font-space-grotesk)' }}
           >
             Workstation & Gear
@@ -148,35 +152,36 @@ export default function PersonalInfoSection() {
         </motion.div>
 
         {/* Devices Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {devices.map((device, i) => {
             const Icon = device.type === 'laptop' ? Laptop : Smartphone
             return (
               <motion.div
                 key={device.name}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.4 + i * 0.08, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="group glass border border-white/[0.07] rounded-2xl p-5 hover:border-white/15 hover:bg-white/[0.03] transition-all duration-400 flex flex-col justify-between"
+                transition={{ delay: 0.35 + i * 0.06, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="group border border-white/[0.06] rounded-2xl p-5 hover:border-white/[0.12] hover:bg-white/[0.02] transition-all duration-400 flex flex-col justify-between"
+                style={{ background: 'rgba(255,255,255,0.015)' }}
               >
                 <div>
                   {/* Icon & Title */}
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-9 h-9 rounded-xl glass border border-white/10 flex items-center justify-center group-hover:border-white/20 transition-colors duration-300">
-                      <Icon size={16} className="text-[#8a8a8a] group-hover:text-white transition-colors duration-300" />
+                    <div className="w-9 h-9 rounded-xl border border-white/[0.06] flex items-center justify-center group-hover:border-white/[0.12] transition-colors duration-300" style={{ background: 'rgba(255,255,255,0.03)' }}>
+                      <Icon size={15} strokeWidth={1.5} className="text-[#86868b] group-hover:text-[#f5f5f7] transition-colors duration-300" />
                     </div>
                     <div>
-                      <h4 className="text-base font-semibold text-white tracking-wide">{device.name}</h4>
-                      <p className="text-[10px] font-medium tracking-wider uppercase text-[#8a8a8a]">{device.role}</p>
+                      <h4 className="text-[14px] font-semibold text-[#f5f5f7] tracking-[-0.01em]">{device.name}</h4>
+                      <p className="text-[10px] font-medium tracking-[0.1em] uppercase text-[#6e6e73]">{device.role}</p>
                     </div>
                   </div>
 
                   {/* Specs */}
-                  <div className="space-y-2 mt-4 pt-4 border-t border-white/[0.05]">
+                  <div className="space-y-2 mt-4 pt-4 border-t border-white/[0.04]">
                     {device.specs.map((spec) => (
-                      <div key={spec.label} className="flex justify-between items-center text-xs">
-                        <span className="text-[#6a6a6a] font-medium">{spec.label}</span>
-                        <span className="text-white/85 font-mono text-[11px] text-right">{spec.value}</span>
+                      <div key={spec.label} className="flex justify-between items-center text-[12px]">
+                        <span className="text-[#6e6e73]">{spec.label}</span>
+                        <span className="text-[#b0b0b5] font-mono text-[11px] text-right">{spec.value}</span>
                       </div>
                     ))}
                   </div>
