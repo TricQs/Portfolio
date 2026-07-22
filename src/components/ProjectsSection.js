@@ -16,6 +16,16 @@ const projects = [
     number: '01',
   },
   {
+    title: 'THEDEMIT — Indie Horror Game Studio',
+    description:
+      `Designed and developed an SEO-optimized website for an Indonesian indie horror game studio.\nFocused on semantic HTML, responsive performance, metadata optimization, and immersive storytelling to improve discoverability and user experience.`,
+    tech: ['React', 'SEO', 'UI/UX Design', 'Framer Motion'],
+    live: 'https://thedemit.clampolx.com/',
+    live: 'https://drive.google.com/file/d/1aR8pVpUbIYRZCZYu1atULgJESL5j_tKk/edit',
+    gradient: 'from-rose-900/15 to-pink-900/10',
+    number: '02',
+  },
+  {
     title: 'VR/AR Human Organ Education App',
     description:
       'Augmented Reality educational application for learning about human anatomy. Users view interactive 3D organ models in their real-world environment.',
@@ -23,7 +33,7 @@ const projects = [
     live: 'https://youtu.be/dluuvq1TVNQ?si=JlrLqoErSI0S02eT',
     github: null,
     gradient: 'from-purple-900/20 to-violet-900/10',
-    number: '02',
+    number: '03',
   },
   {
     title: 'MoodFit — AI Mood Companion',
@@ -34,7 +44,7 @@ const projects = [
     github: 'https://github.com/TricQs/MoodFit',
     statusText: 'Completed',
     gradient: 'from-emerald-900/20 to-green-900/10',
-    number: '03',
+    number: '04',
   },
   {
     title: 'MoodFit API — Python Backend',
@@ -44,7 +54,7 @@ const projects = [
     live: 'https://moodfit-backend-api.vercel.app',
     github: null,
     gradient: 'from-teal-900/20 to-cyan-900/10',
-    number: '04',
+    number: '05',
     statusText: 'Live Demo',
   },
   {
@@ -55,16 +65,6 @@ const projects = [
     live: 'https://drive.google.com/drive/folders/1Ahv-Uoyt05LJBmTf4EgQ7P7EQuNxsUsn?usp=drive_link',
     github: null,
     gradient: 'from-amber-900/15 to-orange-900/10',
-    number: '05',
-  },
-  {
-    title: 'THEDEMIT — Indie Horror Game Studio',
-    description:
-      `THEDEMIT is an independent Indonesian horror game developer.\nWe craft immersive, haunting worlds, unique stories, and chilling gameplay\nthat bring Indonesia's darkest myths to life.`,
-    tech: ['Web Design', 'UI/UX Design', 'Framer Motion'],
-    live: 'https://thedemit.clampolx.com/',
-    github: null,
-    gradient: 'from-rose-900/15 to-pink-900/10',
     number: '06',
   },
   {

@@ -23,7 +23,6 @@ import {
   ClaudeIcon,
   GeminiIcon,
   OpenCodeIcon,
-  GitIcon,
   GitHubTechIcon,
   VSCodeIcon,
   VercelIcon,
@@ -52,7 +51,6 @@ const techIconMap = {
   'Claude': ClaudeIcon,
   'Gemini': GeminiIcon,
   'OpenCode': OpenCodeIcon,
-  'Git': GitIcon,
   'GitHub': GitHubTechIcon,
   'VS Code': VSCodeIcon,
   'Vercel': VercelIcon,
@@ -80,16 +78,10 @@ const skillCategories = [
   },
   {
     title: 'Dev Tools',
-    skills: ['Git', 'GitHub', 'VS Code', 'Vercel', 'Google Antigravity IDE', 'Sublime Text', 'Notepad++'],
+    skills: ['GitHub', 'VS Code', 'Vercel', 'Google Antigravity IDE'],
   },
 ]
 
-const currentlyLearning = {
-  title: 'Currently Building',
-  description:
-    'MoodFit — an AI-powered Android app that recommends activities based on your mood, backed by a Python FastAPI REST API that integrates Google Gemini AI for real-time personalised recommendations.',
-  tags: ['Android (Kotlin)', 'Python', 'FastAPI', 'Gemini AI', 'REST API', 'Google Antigravity IDE'],
-}
 
 function SkillPill({ skill, index }) {
   const Icon = techIconMap[skill]
@@ -201,12 +193,6 @@ export default function SkillsSection() {
                   'linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent)',
               }}
             />
-
-            <div className="flex flex-wrap items-start gap-4 mb-4">
-              <span className="px-3 py-1 rounded-full text-[11px] font-medium bg-white/[0.06] text-[#f5f5f7] border border-white/[0.08] tracking-[0.06em] uppercase">
-                ⚡ Currently Building
-              </span>
-            </div>
 
             <h3
               className="text-xl sm:text-2xl font-bold text-[#f5f5f7] mb-3 tracking-[-0.02em]"
