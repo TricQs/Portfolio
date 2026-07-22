@@ -26,6 +26,18 @@ const projects = [
     number: '02',
   },
   {
+    title: 'Personal Finance Management Web App',
+    description:
+      'Developing a full-stack personal finance management web application with multi-account balance tracking, budgeting, expense management, investment monitoring, and financial reporting.\nDesigned a PostgreSQL database with automated balance synchronization using PL/pgSQL triggers and Row Level Security (RLS). Built with Next.js App Router, React Server Components, server-side actions, and export functionality for PDF and Excel reports.',
+    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'PostgreSQL', 'Shadcn UI', 'Framer Motion'],
+    live: null,
+    github: 'https://github.com/CodeMelvin/uangku',
+    statusText: 'In Progress',
+    gradient: 'from-emerald-900/20 to-teal-900/10',
+    number: '03',
+    wip: true,
+  },
+  {
     title: 'Ayen Tanu — Real Estate Listing Platform',
     description:
       'A responsive real estate property catalog created for a real estate agent. Features dynamic property listings synced with Google Sheets, multi-criteria filtering by property type and status (Sale/Rent), detailed view modals, and direct WhatsApp inquiry integration.',
@@ -33,7 +45,7 @@ const projects = [
     live: 'https://ayenwebsite.pages.dev/',
     github: null,
     gradient: 'from-amber-900/20 to-yellow-900/10',
-    number: '03',
+    number: '04',
   },
   {
     title: 'VR/AR Human Organ Education App',
@@ -43,7 +55,7 @@ const projects = [
     live: 'https://youtu.be/dluuvq1TVNQ?si=JlrLqoErSI0S02eT',
     github: null,
     gradient: 'from-purple-900/20 to-violet-900/10',
-    number: '04',
+    number: '05',
   },
   {
     title: 'MoodFit — AI Mood Companion',
@@ -54,7 +66,7 @@ const projects = [
     github: 'https://github.com/TricQs/MoodFit',
     statusText: 'Completed',
     gradient: 'from-emerald-900/20 to-green-900/10',
-    number: '05',
+    number: '06',
   },
   {
     title: 'MoodFit API — Python Backend',
@@ -64,7 +76,7 @@ const projects = [
     live: 'https://moodfit-backend-api.vercel.app',
     github: null,
     gradient: 'from-teal-900/20 to-cyan-900/10',
-    number: '06',
+    number: '07',
     statusText: 'Live Demo',
   },
   {
@@ -75,7 +87,7 @@ const projects = [
     live: 'https://drive.google.com/drive/folders/1Ahv-Uoyt05LJBmTf4EgQ7P7EQuNxsUsn?usp=drive_link',
     github: null,
     gradient: 'from-amber-900/15 to-orange-900/10',
-    number: '07',
+    number: '08',
   },
   {
     title: 'Nexus Arcade — Web Games Portal',
@@ -85,7 +97,7 @@ const projects = [
     live: 'https://nexus-arcade-one.vercel.app/',
     github: null,
     gradient: 'from-zinc-800/20 to-slate-900/10',
-    number: '08',
+    number: '09',
   },
   {
     title: 'FinOps-Core — Financial Operations',
@@ -96,18 +108,6 @@ const projects = [
     github: 'https://github.com/TricQs/frontend-mobile',
     statusText: 'In Development',
     gradient: 'from-sky-900/20 to-blue-900/10',
-    number: '09',
-    wip: true,
-  },
-  {
-    title: 'Personal Finance Management Web App',
-    description:
-      'Developing a full-stack personal finance management web application with multi-account balance tracking, budgeting, expense management, investment monitoring, and financial reporting.\nDesigned a PostgreSQL database with automated balance synchronization using PL/pgSQL triggers and Row Level Security (RLS). Built with Next.js App Router, React Server Components, server-side actions, and export functionality for PDF and Excel reports.',
-    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'PostgreSQL', 'Shadcn UI', 'Framer Motion'],
-    live: null,
-    github: 'https://github.com/CodeMelvin/uangku',
-    statusText: 'In Progress',
-    gradient: 'from-emerald-900/20 to-teal-900/10',
     number: '10',
     wip: true,
   },
