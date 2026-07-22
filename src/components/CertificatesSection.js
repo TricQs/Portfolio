@@ -7,6 +7,20 @@ import Image from 'next/image'
 
 const certificates = [
   {
+    title: 'Spec-Driven Development with Antigravity CLI',
+    issuer: 'Google Developer Groups',
+    platform: 'GDG Live Indonesia',
+    date: 'Jul 22, 2026',
+    image: '/certificates/Recognition of Engagement.png',
+    pdf: '/certificates/Recognition of Engagement.pdf',
+    verifyUrl: 'https://goo.gle/labtracer',
+    learnings: [
+      'Applied Spec-Driven Development (SDD) via Antigravity CLI (specify → plan → implement) to build structured AI agent workflows.',
+      'Connected real-time e-commerce dataset schemas in Google BigQuery using Managed BigQuery MCP (Model Context Protocol).',
+      'Configured modular Agent Skills and sub-agent architecture to optimize token efficiency and implementation velocity.'
+    ]
+  },
+  {
     title: 'ICA Course Internship',
     issuer: 'ICA Course',
     platform: 'Internship',
