@@ -27,8 +27,6 @@ import {
   VSCodeIcon,
   VercelIcon,
   AntigravityIcon,
-  SublimeTextIcon,
-  NotepadPlusPlusIcon,
 } from './TechIcons'
 
 const techIconMap = {
@@ -55,8 +53,6 @@ const techIconMap = {
   'VS Code': VSCodeIcon,
   'Vercel': VercelIcon,
   'Google Antigravity IDE': AntigravityIcon,
-  'Sublime Text': SublimeTextIcon,
-  'Notepad++': NotepadPlusPlusIcon,
 }
 
 const skillCategories = [
