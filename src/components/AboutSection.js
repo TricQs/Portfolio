@@ -124,7 +124,7 @@ export default function AboutSection() {
                 style={{ background: 'linear-gradient(to bottom, rgba(255,255,255,0.2), transparent)' }}
               />
               <p className="text-[13px] text-[#86868b] leading-[1.8] italic pl-4">
-                "Design is not just what it looks like and feels like. Design is how it works — and I bring that philosophy to every project."
+                &ldquo;Design is not just what it looks like and feels like. Design is how it works &mdash; and I bring that philosophy to every project.&rdquo;
               </p>
             </motion.blockquote>
           </div>

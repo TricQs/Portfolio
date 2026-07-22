@@ -100,6 +100,18 @@ const projects = [
     wip: true,
   },
   {
+    title: 'Personal Finance Management Web App',
+    description:
+      'Developing a full-stack personal finance management web application with multi-account balance tracking, budgeting, expense management, investment monitoring, and financial reporting.\nDesigned a PostgreSQL database with automated balance synchronization using PL/pgSQL triggers and Row Level Security (RLS). Built with Next.js App Router, React Server Components, server-side actions, and export functionality for PDF and Excel reports.',
+    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'PostgreSQL', 'Shadcn UI', 'Framer Motion'],
+    live: null,
+    github: 'https://github.com/CodeMelvin/uangku',
+    statusText: 'In Progress',
+    gradient: 'from-emerald-900/20 to-teal-900/10',
+    number: '10',
+    wip: true,
+  },
+  {
     title: 'More to go',
     description:
       'I will be updating and adding more of my professional experience and project history here soon.',
@@ -108,7 +120,7 @@ const projects = [
     github: null,
     statusText: 'Soon',
     gradient: 'from-zinc-900/10 to-stone-900/5',
-    number: '10',
+    number: '11',
     isPlaceholder: true,
   },
 ]
