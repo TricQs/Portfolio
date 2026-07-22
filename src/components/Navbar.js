@@ -129,7 +129,7 @@ export default function Navbar() {
           {/* CTA */}
           <div className="hidden md:flex items-center">
             <a
-              href="https://drive.google.com/file/d/18QtzZ_jX3VwPdtm0S2_jzjimPXCOGr1h/view?usp=sharing"
+              href="https://drive.google.com/file/d/1EZ5gjktT6Llwpk4J7O76dCddTry4_V5c/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 py-2 text-[13px] font-medium rounded-full border border-white/[0.08] bg-white/[0.03] text-[#f5f5f7] hover:bg-white/[0.06] hover:border-white/[0.15] transition-all duration-300 group"
@@ -204,7 +204,7 @@ export default function Navbar() {
               className="mt-auto pt-6 border-t border-white/[0.04] flex flex-col gap-5 relative z-10"
             >
               <a
-                href="https://drive.google.com/file/d/18QtzZ_jX3VwPdtm0S2_jzjimPXCOGr1h/view?usp=sharing"
+                href="https://drive.google.com/file/d/1EZ5gjktT6Llwpk4J7O76dCddTry4_V5c/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-2 py-3 text-[13px] font-medium border border-white/[0.08] bg-white/[0.03] rounded-xl hover:bg-white/[0.06] hover:border-white/[0.15] transition-all duration-300 group"

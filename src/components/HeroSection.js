@@ -142,7 +142,7 @@ export default function HeroSection() {
                 <ExternalLink size={13} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
               </button>
               <a
-                href="https://drive.google.com/file/d/18QtzZ_jX3VwPdtm0S2_jzjimPXCOGr1h/view?usp=sharing"
+                href="https://drive.google.com/file/d/1EZ5gjktT6Llwpk4J7O76dCddTry4_V5c/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center gap-2 px-6 py-3 border border-white/[0.08] bg-white/[0.02] text-[#b0b0b5] text-[13px] font-medium rounded-full hover:border-white/[0.15] hover:text-[#f5f5f7] hover:bg-white/[0.04] transition-all duration-300"
