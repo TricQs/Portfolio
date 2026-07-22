@@ -164,53 +164,7 @@ export default function SkillsSection() {
             </motion.div>
           ))}
 
-          {/* Currently Learning Feature Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="relative border border-white/[0.08] rounded-2xl p-8 overflow-hidden hover:border-white/[0.15] transition-colors duration-500 group"
-            style={{ background: 'rgba(255,255,255,0.02)' }}
-          >
-            {/* Glow */}
-            <div
-              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-              style={{
-                background:
-                  'radial-gradient(ellipse at 0% 100%, rgba(255,255,255,0.03) 0%, transparent 60%)',
-              }}
-            />
 
-            {/* Top accent */}
-            <div
-              className="absolute top-0 left-0 right-0 h-px"
-              style={{
-                background:
-                  'linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent)',
-              }}
-            />
-
-            <h3
-              className="text-xl sm:text-2xl font-bold text-[#f5f5f7] mb-3 tracking-[-0.02em]"
-              style={{ fontFamily: 'var(--font-space-grotesk)' }}
-            >
-              {currentlyLearning.title}
-            </h3>
-            <p className="text-[#86868b] text-[13px] leading-[1.7] mb-5 max-w-2xl">
-              {currentlyLearning.description}
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {currentlyLearning.tags.map(tag => (
-                <span
-                  key={tag}
-                  className="px-3 py-1.5 text-[11px] rounded-full border border-white/[0.06] text-[#6e6e73]"
-                  style={{ background: 'rgba(255,255,255,0.02)' }}
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>
