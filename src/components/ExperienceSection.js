@@ -6,14 +6,6 @@ import { ExternalLink, Calendar } from 'lucide-react'
 
 const experiences = [
   {
-    position: 'VR/AR Application Developer',
-    company: 'My Own Project',
-    period: 'October 4, 2025',
-    description: 'Developed an Augmented Reality educational app for human organ anatomy (Aplikasi Edukasi Organ Manusia Berbasis AR). Users can view interactive 3D models of human organs in real-world space.',
-    link: null,
-    tags: ['AR', 'Unity', 'Education', '3D Modeling'],
-  },
-  {
     position: 'Front-End Developer Intern',
     company: 'ICA Course',
     period: 'January 2026 – June 2026',
@@ -21,34 +13,7 @@ const experiences = [
     link: 'https://www.bimbel-icacourse.com/',
     linkLabel: 'bimbel-icacourse.com',
     tags: ['Next.js', 'Vercel', 'Responsive Design'],
-  },
-  {
-    position: 'MoodFit App Developer',
-    company: 'Google Antigravity IDE Project',
-    period: '2026',
-    description: 'Developed MoodFit — an Android app that recommends activities based on mood. Built a Python FastAPI backend with Google Gemini AI integration, exposing a RESTful API with Swagger documentation and graceful offline fallback.',
-    link: 'https://github.com/TricQs/MoodFit',
-    linkLabel: 'github.com/TricQs/MoodFit',
-    tags: ['Android', 'Kotlin', 'Python', 'FastAPI', 'Gemini AI', 'REST API'],
-  },
-  {
-    position: 'Software Engineer',
-    company: 'FinOps-Core Project',
-    period: '2026 – Present',
-    description: 'Developed FinOps-Core, a mobile financial operations platform. Engineered a Laravel RESTful API backend and a cross-platform React Native frontend, integrating an AI-powered document scanning system for automated ledger entry.',
-    link: 'https://github.com/TricQs/frontend-mobile',
-    linkLabel: 'github.com/TricQs/frontend-mobile',
-    tags: ['React Native', 'Laravel', 'AI', 'REST API'],
-    current: true,
-  },
-  {
-    position: 'More to go',
-    company: 'Future Endeavors',
-    period: 'Soon',
-    description: 'I will be updating and adding more of my professional experience and project history here soon.',
-    tags: ['Next Step', 'Developer Journey'],
-    isPlaceholder: true,
-  },
+  }
 ]
 
 export default function ExperienceSection() {
@@ -110,23 +75,21 @@ export default function ExperienceSection() {
                     initial={{ scale: 0 }}
                     animate={inView ? { scale: 1 } : {}}
                     transition={{ delay: i * 0.12 + 0.4, type: 'spring', stiffness: 400, damping: 20 }}
-                    className={`w-2.5 h-2.5 rounded-full border-[1.5px] ${
-                      exp.current
-                        ? 'border-white bg-white'
-                        : exp.isPlaceholder
+                    className={`w-2.5 h-2.5 rounded-full border-[1.5px] ${exp.current
+                      ? 'border-white bg-white'
+                      : exp.isPlaceholder
                         ? 'border-dashed border-white/15 bg-transparent'
                         : 'border-white/30 bg-transparent'
-                    }`}
+                      }`}
                   />
                 </div>
 
                 {/* Card */}
-                <div className={`border rounded-2xl p-6 hover:bg-white/[0.02] transition-all duration-500 overflow-hidden relative group ${
-                  exp.isPlaceholder
-                    ? 'border-dashed border-white/[0.06] hover:border-white/[0.12]'
-                    : 'border-white/[0.06] hover:border-white/[0.12]'
-                }`}
-                style={{ background: 'rgba(255,255,255,0.015)' }}
+                <div className={`border rounded-2xl p-6 hover:bg-white/[0.02] transition-all duration-500 overflow-hidden relative group ${exp.isPlaceholder
+                  ? 'border-dashed border-white/[0.06] hover:border-white/[0.12]'
+                  : 'border-white/[0.06] hover:border-white/[0.12]'
+                  }`}
+                  style={{ background: 'rgba(255,255,255,0.015)' }}
                 >
                   {/* Left accent line */}
                   <div
