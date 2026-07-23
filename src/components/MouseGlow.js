@@ -6,22 +6,43 @@ export default function MouseGlow() {
   const glowRef = useRef(null)
 
   useEffect(() => {
+    // Disable glow completely on touch devices (phones/tablets) to save resources
+    if (window.matchMedia('(pointer: coarse)').matches) return
+
     const glow = glowRef.current
     if (!glow) return
 
-    const handleMouseMove = (e) => {
-      glow.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`
+    let rafId = null
+    let latestX = 0
+    let latestY = 0
+
+    const updatePosition = () => {
+      glow.style.transform = `translate3d(${latestX}px, ${latestY}px, 0)`
       glow.style.opacity = '1'
+      rafId = null
+    }
+
+    const handleMouseMove = (e) => {
+      latestX = e.clientX
+      latestY = e.clientY
+      if (!rafId) {
+        rafId = requestAnimationFrame(updatePosition)
+      }
     }
 
     const handleMouseLeave = () => {
+      if (rafId) {
+        cancelAnimationFrame(rafId)
+        rafId = null
+      }
       glow.style.opacity = '0'
     }
 
-    window.addEventListener('mousemove', handleMouseMove)
+    window.addEventListener('mousemove', handleMouseMove, { passive: true })
     document.addEventListener('mouseleave', handleMouseLeave)
 
     return () => {
+      if (rafId) cancelAnimationFrame(rafId)
       window.removeEventListener('mousemove', handleMouseMove)
       document.removeEventListener('mouseleave', handleMouseLeave)
     }
@@ -32,17 +53,16 @@ export default function MouseGlow() {
       ref={glowRef}
       style={{
         position: 'fixed',
-        left: 0,
-        top: 0,
+        left: -300,
+        top: -300,
         width: '600px',
         height: '600px',
-        transform: 'translate3d(-50%, -50%, 0)',
-        background: 'radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 65%)',
+        background: 'radial-gradient(circle, rgba(255,255,255,0.035) 0%, transparent 65%)',
         pointerEvents: 'none',
         zIndex: 9999,
         opacity: 0,
-        transition: 'opacity 0.4s ease, transform 0.1s cubic-bezier(0.25, 1, 0.5, 1)',
-        willChange: 'transform',
+        transition: 'opacity 0.3s ease',
+        willChange: 'transform, opacity',
       }}
     />
   )

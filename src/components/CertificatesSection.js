@@ -15,9 +15,9 @@ const certificates = [
     pdf: '/certificates/Recognition of Engagement.pdf',
     verifyUrl: 'https://goo.gle/labtracer',
     learnings: [
-      'Applied Spec-Driven Development (SDD) via Antigravity CLI (specify → plan → implement) to build structured AI agent workflows.',
-      'Connected real-time e-commerce dataset schemas in Google BigQuery using Managed BigQuery MCP (Model Context Protocol).',
-      'Configured modular Agent Skills and sub-agent architecture to optimize token efficiency and implementation velocity.'
+      'Learned Spec-Driven Development (SDD) to structure AI agent workflows using Antigravity CLI.',
+      'Connected live datasets in Google BigQuery using Model Context Protocol (MCP).',
+      'Configured modular Agent Skills to optimize AI assistant workflow speed and accuracy.'
     ]
   },
   {
@@ -29,9 +29,9 @@ const certificates = [
     pdf: ['/certificates/Sertifikat ICA Course (1).png', '/certificates/Sertifikat ICA Course (2).png'],
     verifyUrl: null,
     learnings: [
-      "Successfully completed a web development internship at ICA Course, spearheading the platform's digital transformation and migration into a custom, scalable web architecture.",
-      'Bridged academic theoretical knowledge with hands-on execution by designing responsive UI/UX components and deploying live full-stack website prototypes.',
-      "Cultivated collaborative software engineering skills within an agile cross-functional team, earning the 'Most ImprovedIntern Award' award for delivering outstanding technical solutions."
+      'Completed a Web Development Internship at ICA Course, designing responsive UI/UX components.',
+      'Applied classroom concepts to build and deploy live website prototypes.',
+      'Worked collaboratively in a team setting, earning the "Most Improved Intern Award".'
     ]
   },
   {

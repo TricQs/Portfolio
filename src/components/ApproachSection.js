@@ -10,28 +10,28 @@ const approaches = [
     icon: Palette,
     title: 'Design First',
     description:
-      'I focus on user experience before writing a single line of code. Great products start with understanding the human on the other side of the screen.',
+      'Focusing on intuitive user experience and clean design before writing code. Good websites start with understanding user needs.',
   },
   {
     number: '02',
     icon: Target,
     title: 'Build With Purpose',
     description:
-      'Every component I build should solve a real problem. I avoid over-engineering and stay focused on delivering measurable value.',
+      'Creating clean, functional components that solve real problems without unnecessary complexity.',
   },
   {
     number: '03',
     icon: Bot,
-    title: 'AI Enhanced Workflow',
+    title: 'AI-Assisted Workflow',
     description:
-      'I leverage ChatGPT, Claude, and Gemini to increase speed, quality, and creativity — treating AI not as a shortcut but as a creative partner.',
+      'Utilizing AI tools like ChatGPT, Claude, and Gemini to boost productivity, debug faster, and write cleaner code.',
   },
   {
     number: '04',
     icon: BookOpen,
     title: 'Continuous Learning',
     description:
-      'Technology moves fast. I constantly explore new frameworks, design patterns, and modern development practices to stay ahead.',
+      'Constantly exploring modern web frameworks and industry best practices to improve every day.',
   },
 ]
 

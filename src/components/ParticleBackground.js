@@ -53,10 +53,7 @@ export default function ParticleBackground() {
     }
 
     const animate = () => {
-      if (!isVisible) {
-        animId = requestAnimationFrame(animate)
-        return
-      }
+      if (!isVisible) return
 
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       particles.forEach(p => {
@@ -91,8 +88,21 @@ export default function ParticleBackground() {
       animId = requestAnimationFrame(animate)
     }
 
+    const start = () => {
+      if (!animId && isVisible) {
+        animId = requestAnimationFrame(animate)
+      }
+    }
+
+    const stop = () => {
+      if (animId) {
+        cancelAnimationFrame(animId)
+        animId = null
+      }
+    }
+
     init()
-    animate()
+    start()
 
     const resizeObserver = new ResizeObserver(init)
     resizeObserver.observe(canvas)
@@ -101,13 +111,18 @@ export default function ParticleBackground() {
     const intersectionObserver = new IntersectionObserver(
       ([entry]) => {
         isVisible = entry.isIntersecting
+        if (isVisible) {
+          start()
+        } else {
+          stop()
+        }
       },
       { threshold: 0 }
     )
     intersectionObserver.observe(canvas)
 
     return () => {
-      cancelAnimationFrame(animId)
+      stop()
       resizeObserver.disconnect()
       intersectionObserver.disconnect()
     }

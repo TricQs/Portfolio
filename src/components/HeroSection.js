@@ -127,8 +127,7 @@ export default function HeroSection() {
               variants={item}
               className="text-[15px] sm:text-base text-[#86868b] leading-[1.7] max-w-md border-l border-white/[0.08] pl-4"
             >
-              I build modern digital experiences and craft AI-powered workflows
-              through thoughtful design, code, and prompting.
+              I build responsive, user-friendly websites and utilize modern AI tools to create fast and clean development workflows.
             </motion.p>
 
             {/* CTA Buttons */}

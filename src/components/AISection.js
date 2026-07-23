@@ -8,7 +8,7 @@ const aiTools = [
   {
     icon: ChatGPTIcon,
     name: 'ChatGPT',
-    usage: 'My primary AI partner for code generation, debugging, documentation, and brainstorming. I use GPT-4 to prototype features rapidly and write technical content.',
+    usage: 'Primary AI assistant for writing code snippets, debugging errors, generating documentation, and brainstorming feature ideas.',
     color: '#10a37f',
     bg: 'rgba(16, 163, 127, 0.05)',
     border: 'rgba(16, 163, 127, 0.1)',
@@ -16,7 +16,7 @@ const aiTools = [
   {
     icon: ClaudeIcon,
     name: 'Claude',
-    usage: 'My go-to for long-context analysis, reviewing large codebases, writing detailed technical proposals, and nuanced creative writing tasks.',
+    usage: 'Used for analyzing large code files, explaining complex logic, and writing clear project documentation.',
     color: '#c96342',
     bg: 'rgba(201, 99, 66, 0.05)',
     border: 'rgba(201, 99, 66, 0.1)',
@@ -24,7 +24,7 @@ const aiTools = [
   {
     icon: GeminiIcon,
     name: 'Gemini',
-    usage: 'Leveraged for multimodal tasks — analyzing UI designs, generating image assets, integrating with Google services, and building with Google Antigravity IDE.',
+    usage: 'Helps with analyzing UI design screenshots, generating visual assets, and working with Google developer tools.',
     color: '#4285f4',
     bg: 'rgba(66, 133, 244, 0.05)',
     border: 'rgba(66, 133, 244, 0.1)',
@@ -32,7 +32,7 @@ const aiTools = [
   {
     icon: OpenCodeIcon,
     name: 'OpenCode',
-    usage: 'My go-to AI coding agent for the terminal. I use it to plan, edit files, run commands, and debug across multiple AI providers with full codebase context and LSP integration.',
+    usage: 'Terminal AI assistant used to edit files, run development commands, and assist with coding tasks directly in the editor.',
     color: '#a855f7',
     bg: 'rgba(168, 85, 247, 0.05)',
     border: 'rgba(168, 85, 247, 0.1)',
@@ -86,9 +86,7 @@ export default function AISection() {
           transition={{ delay: 0.1, duration: 0.6 }}
           className="text-[#86868b] text-[15px] max-w-xl mb-14 leading-[1.7]"
         >
-          I use AI not only as a tool but as a creative partner. From generating ideas and
-          accelerating development to building advanced prompting workflows, AI plays a
-          central role in my process.
+          I use AI tools as smart assistants to speed up coding, generate creative ideas, troubleshoot bugs, and improve daily development efficiency.
         </motion.p>
 
         {/* AI Tool Cards */}

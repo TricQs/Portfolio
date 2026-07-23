@@ -18,7 +18,7 @@ const projects = [
   {
     title: 'THEDEMIT — Indie Horror Game Studio',
     description:
-      `Designed and developed an SEO-optimized website for an Indonesian indie horror game studio.\nFocused on semantic HTML, responsive performance, metadata optimization, and immersive storytelling to improve discoverability and user experience.`,
+      'A responsive and SEO-friendly website for an Indonesian indie horror game studio, designed to showcase game releases and studio updates.',
     tech: ['React', 'SEO', 'UI/UX Design', 'Framer Motion'],
     live: 'https://thedemit.clampolx.com/',
     github: null,
@@ -28,8 +28,8 @@ const projects = [
   {
     title: 'Personal Finance Management Web App',
     description:
-      'Developing a full-stack personal finance management web application with multi-account balance tracking, budgeting, expense management, investment monitoring, and financial reporting.\nDesigned a PostgreSQL database with automated balance synchronization using PL/pgSQL triggers and Row Level Security (RLS). Built with Next.js App Router, React Server Components, server-side actions, and export functionality for PDF and Excel reports.',
-    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'PostgreSQL', 'Shadcn UI', 'Framer Motion'],
+      'A web application for tracking personal finances, managing budgets, and monitoring expenses across accounts. Features automatic balance updates and PDF/Excel report exports.',
+    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'PostgreSQL', 'Shadcn UI'],
     live: null,
     github: 'https://github.com/CodeMelvin/uangku',
     statusText: 'In Progress',
@@ -40,7 +40,7 @@ const projects = [
   {
     title: 'Ayen Tanu — Real Estate Listing Platform',
     description:
-      'A responsive real estate property catalog created for a real estate agent. Features dynamic property listings synced with Google Sheets, multi-criteria filtering by property type and status (Sale/Rent), detailed view modals, and direct WhatsApp inquiry integration.',
+      'A responsive real estate catalog for a property agent with live Google Sheets sync, filtering by sale/rent status, property detail modals, and direct WhatsApp contact buttons.',
     tech: ['HTML5', 'CSS3', 'JavaScript', 'Google Sheets API', 'Cloudflare Pages'],
     live: 'https://ayenwebsite.pages.dev/',
     github: null,
@@ -50,7 +50,7 @@ const projects = [
   {
     title: 'VR/AR Human Organ Education App',
     description:
-      'Augmented Reality educational application for learning about human anatomy. Users view interactive 3D organ models in their real-world environment.',
+      'An Augmented Reality (AR) mobile app for learning human anatomy. Users can view and interact with 3D organ models in real time.',
     tech: ['Unity', 'AR Foundation', 'C#', '3D Modeling'],
     live: 'https://youtu.be/dluuvq1TVNQ?si=JlrLqoErSI0S02eT',
     github: null,
@@ -60,7 +60,7 @@ const projects = [
   {
     title: 'MoodFit — AI Mood Companion',
     description:
-      'Android app that recommends personalized wellness activities based on mood — stress, neutral, or productive. Powered by a Python FastAPI backend with Gemini AI integration.',
+      'An Android app that suggests personalized wellness activities based on your current mood (stress, calm, or energetic), integrated with Gemini AI.',
     tech: ['Android', 'Kotlin', 'Gemini AI', 'Antigravity IDE'],
     live: null,
     github: 'https://github.com/TricQs/MoodFit',
@@ -71,7 +71,7 @@ const projects = [
   {
     title: 'MoodFit API — Python Backend',
     description:
-      'RESTful API backend built with Python & FastAPI that powers the MoodFit Android app. Integrates Google Gemini AI to generate personalised wellness activity recommendations in real-time.',
+      'A Python FastAPI backend powering the MoodFit Android app. Connects to Google Gemini AI to generate real-time activity recommendations.',
     tech: ['Python', 'FastAPI', 'Gemini AI', 'REST API'],
     live: 'https://moodfit-backend-api.vercel.app',
     github: null,
@@ -82,7 +82,7 @@ const projects = [
   {
     title: 'GymBar — Fitness App',
     description:
-      'A fitness companion application featuring workout tracking, exercise routines, and curated fitness articles to support an active lifestyle.',
+      'A mobile fitness app featuring workout tracking routines, exercise guides, and fitness articles to support a healthy lifestyle.',
     tech: ['React Native', 'Tailwind CSS', 'Mobile Development'],
     live: 'https://drive.google.com/drive/folders/1Ahv-Uoyt05LJBmTf4EgQ7P7EQuNxsUsn?usp=drive_link',
     github: null,
@@ -92,7 +92,7 @@ const projects = [
   {
     title: 'Nexus Arcade — Web Games Portal',
     description:
-      'A web platform showcasing various browser-based games I have developed, featuring clean user interfaces and instant playability.',
+      'A web portal showcasing lightweight browser-based games, featuring clean navigation and quick playability.',
     tech: ['HTML5', 'CSS3', 'JavaScript'],
     live: 'https://nexus-arcade-one.vercel.app/',
     github: null,
@@ -102,7 +102,7 @@ const projects = [
   {
     title: 'FinOps-Core — Financial Operations',
     description:
-      'A comprehensive mobile financial operations platform featuring an AI-powered document scanning system for automated ledger entry. Built with a Laravel REST API backend and a React Native mobile application.',
+      'A mobile financial app featuring receipt scanning for quick entry. Built with React Native and a Laravel REST API backend.',
     tech: ['React Native', 'Laravel', 'AI Integration'],
     live: null,
     github: 'https://github.com/TricQs/frontend-mobile',

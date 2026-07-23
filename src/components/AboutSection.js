@@ -70,9 +70,9 @@ export default function AboutSection() {
           {/* Text */}
           <div className="space-y-6">
             {[
-              'I am an Undergraduate Informatics Student at Universitas Bunda Mulia Serpong, passionate about Front-End Development, User Experience, and Artificial Intelligence on websites and applications.',
-              'I enjoy transforming ideas into intuitive digital products while leveraging AI tools to accelerate creativity and productivity.',
-              'Beyond coding, I love vibe coding — actively leveraging AI tools like ChatGPT, Claude, and Gemini to speed up workflows, solve problems, and build innovative solutions.',
+              'I am an Informatics Student at Universitas Bunda Mulia Serpong with a strong passion for Front-End Web Development, clean UI/UX design, and AI-assisted workflows.',
+              'I love turning creative ideas into practical, responsive websites that look great and feel effortless to use.',
+              'I actively embrace AI tools like ChatGPT, Claude, and Gemini to speed up development, troubleshoot bugs efficiently, and continuously learn new technologies.',
             ].map((para, i) => (
               <motion.p
                 key={i}

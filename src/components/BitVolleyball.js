@@ -91,11 +91,9 @@ export default function BitVolleyball() {
     resize()
 
     const animate = () => {
-      if (!visible) { raf = requestAnimationFrame(animate); return }
+      if (!visible) return
       frame++
       const dpr = window.devicePixelRatio || 1
-      canvas.width = W * dpr
-      canvas.height = H * dpr
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
       ctx.clearRect(0, 0, W, H)
 
@@ -229,19 +227,39 @@ export default function BitVolleyball() {
       raf = requestAnimationFrame(animate)
     }
 
-    animate()
+    const startAnim = () => {
+      if (!raf && visible) {
+        raf = requestAnimationFrame(animate)
+      }
+    }
+
+    const stopAnim = () => {
+      if (raf) {
+        cancelAnimationFrame(raf)
+        raf = null
+      }
+    }
+
+    startAnim()
 
     const ro = new ResizeObserver(resize)
     ro.observe(canvas)
 
     const io = new IntersectionObserver(
-      ([e]) => { visible = e.isIntersecting },
+      ([e]) => {
+        visible = e.isIntersecting
+        if (visible) {
+          startAnim()
+        } else {
+          stopAnim()
+        }
+      },
       { threshold: 0 }
     )
     io.observe(canvas)
 
     return () => {
-      cancelAnimationFrame(raf)
+      stopAnim()
       ro.disconnect()
       io.disconnect()
     }
