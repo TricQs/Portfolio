@@ -80,7 +80,6 @@ export default function HeroSection() {
           >
             {/* Status Beacon */}
             <motion.div variants={item}>
-              <Magnetic strength={0.2}>
                 <span className="inline-flex items-center gap-2.5 px-4 py-2 text-[11px] font-medium tracking-[0.1em] uppercase rounded-full text-emerald-400 border border-emerald-500/30 bg-emerald-500/10 backdrop-blur-md shadow-[0_0_20px_rgba(16,185,129,0.15)]">
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -88,7 +87,6 @@ export default function HeroSection() {
                   </span>
                   Available for Junior &amp; Entry-Level Roles
                 </span>
-              </Magnetic>
             </motion.div>
 
             {/* Keynote Headline */}
@@ -233,7 +231,7 @@ export default function HeroSection() {
                   }}
                   style={{ position: 'absolute', ...badgePositions[i] }}
                 >
-                  <Magnetic strength={0.35}>
+                  <Magnetic strength={0.35} slime={false}>
                     <motion.div
                       animate={{ y: [0, -5, 0] }}
                       transition={{

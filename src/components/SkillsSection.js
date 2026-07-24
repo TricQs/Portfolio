@@ -88,26 +88,37 @@ export default function SkillsSection() {
             </h2>
           </motion.div>
 
-          {/* Interactive Search with Clear 'X' Button */}
+          {/* Interactive Search with Magnifying Glass Icon & Clear 'X' Button */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.15, duration: 0.6 }}
             className="flex items-center gap-3 w-full md:w-auto"
           >
-            <div className="relative flex-1 md:w-72">
-              <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#a1a1a6]" />
+            <div className="relative flex-1 md:w-72 group">
+              <Search
+                size={15}
+                className={`absolute left-3.5 top-1/2 -translate-y-1/2 transition-all duration-300 pointer-events-none ${
+                  searchQuery
+                    ? 'text-white opacity-100 scale-105'
+                    : 'text-[#6e6e73] opacity-60 group-hover:text-white group-hover:opacity-100 group-focus-within:text-white group-focus-within:opacity-100'
+                }`}
+              />
               <input
                 type="text"
                 placeholder="Search technologies..."
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-9 py-2.5 rounded-xl border border-white/15 bg-white/[0.03] text-xs text-[#f5f5f7] placeholder-[#a1a1a6] focus:border-white/30 focus:bg-white/[0.06] transition-all backdrop-blur-md"
+                className={`w-full pl-10 pr-9 py-2.5 rounded-xl border bg-white/[0.03] text-xs transition-all duration-300 backdrop-blur-md focus:outline-none ${
+                  searchQuery
+                    ? 'text-white border-white/30 bg-white/[0.06] opacity-100 font-medium'
+                    : 'text-[#6e6e73] border-white/10 opacity-60 placeholder-[#6e6e73] hover:border-white/20 hover:text-white hover:opacity-100 hover:placeholder-white/60 focus:border-white/30 focus:text-white focus:opacity-100 focus:bg-white/[0.06]'
+                }`}
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-[#a1a1a6] hover:text-[#f5f5f7] hover:bg-white/10 rounded-full transition-colors cursor-pointer"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-[#86868b] hover:text-white hover:bg-white/10 rounded-full transition-colors cursor-pointer"
                   aria-label="Clear search input"
                 >
                   <X size={13} />
@@ -124,47 +135,47 @@ export default function SkillsSection() {
               filteredCategories.map((category, catIndex) => (
                 <motion.div
                   key={category.title}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  transition={{ delay: catIndex * 0.08, duration: 0.5 }}
-                  className="p-6 rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm"
+                  transition={{ duration: 0.4, delay: catIndex * 0.05 }}
+                  className="border border-white/10 rounded-2xl p-6 bg-white/[0.02] backdrop-blur-sm relative overflow-hidden"
                 >
-                  {/* Category Header */}
-                  <div className="flex items-center justify-between gap-4 mb-6">
-                    <div className="flex items-center gap-3">
-                      <div
-                        className="w-8 h-8 rounded-lg flex items-center justify-center border border-white/15 shadow-sm"
-                        style={{ background: `${category.accent}20` }}
-                      >
-                        <category.icon size={16} style={{ color: category.accent }} />
-                      </div>
-                      <h3
-                        className="text-sm font-bold text-[#f5f5f7] tracking-tight uppercase"
-                        style={{ fontFamily: 'var(--font-space-grotesk)' }}
-                      >
-                        {category.title}
-                      </h3>
+                  <div
+                    className="absolute top-0 left-0 bottom-0 w-1 opacity-80"
+                    style={{ background: category.accent }}
+                  />
+
+                  <div className="flex items-center gap-3 mb-6 pl-2">
+                    <div
+                      className="w-8 h-8 rounded-lg flex items-center justify-center border border-white/10 bg-white/[0.04]"
+                      style={{ color: category.accent }}
+                    >
+                      <category.icon size={16} />
                     </div>
-                    <span className="text-[11px] font-mono text-[#a1a1a6] bg-white/[0.03] border border-white/10 px-2.5 py-1 rounded-full">
-                      {category.skills.length} Technologies
-                    </span>
+                    <h3
+                      className="text-lg font-bold text-[#f5f5f7]"
+                      style={{ fontFamily: 'var(--font-space-grotesk)' }}
+                    >
+                      {category.title}
+                    </h3>
                   </div>
 
-                  {/* Skills Node Grid */}
-                  <div className="flex flex-wrap gap-3">
-                    {category.skills.map((skill) => {
-                      const Icon = techIconMap[skill]
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 pl-2">
+                    {category.skills.map((skillName) => {
+                      const IconComp = techIconMap[skillName]
                       return (
-                        <Magnetic key={skill} strength={0.2}>
-                          <motion.div
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-                            className="flex items-center gap-2.5 px-4 py-2.5 border border-white/15 rounded-xl text-xs font-semibold text-[#f5f5f7] hover:border-white/35 hover:bg-white/[0.08] transition-all duration-300 cursor-pointer select-none bg-white/[0.03] shadow-sm group"
-                          >
-                            {Icon && <Icon size={16} className="flex-shrink-0 group-hover:scale-110 transition-transform duration-300" />}
-                            <span>{skill}</span>
-                          </motion.div>
+                        <Magnetic key={skillName} strength={0.15}>
+                          <div className="flex items-center gap-3 p-3 rounded-xl border border-white/10 bg-white/[0.03] hover:border-white/25 hover:bg-white/[0.07] transition-all duration-300 group cursor-pointer">
+                            {IconComp && (
+                              <div className="flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                <IconComp size={20} />
+                              </div>
+                            )}
+                            <span className="text-xs font-semibold text-[#a1a1a6] group-hover:text-[#f5f5f7] transition-colors truncate">
+                              {skillName}
+                            </span>
+                          </div>
                         </Magnetic>
                       )
                     })}
@@ -172,15 +183,19 @@ export default function SkillsSection() {
                 </motion.div>
               ))
             ) : (
-              <div className="text-center py-12 text-[#a1a1a6] text-sm flex flex-col items-center gap-3">
-                <p>No technologies found matching &ldquo;{searchQuery}&rdquo;.</p>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-center py-12 border border-white/10 rounded-2xl bg-white/[0.01]"
+              >
+                <p className="text-sm text-[#86868b]">No technologies matching &quot;{searchQuery}&quot;</p>
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="px-4 py-2 rounded-xl bg-white/10 text-xs font-semibold text-white hover:bg-white/20 transition-all cursor-pointer"
+                  className="mt-3 text-xs text-amber-400 hover:underline cursor-pointer font-medium"
                 >
-                  Reset Search Filter
+                  Reset search filter
                 </button>
-              </div>
+              </motion.div>
             )}
           </AnimatePresence>
         </div>

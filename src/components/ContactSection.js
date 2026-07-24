@@ -154,32 +154,30 @@ export default function ContactSection() {
                   />
                 </div>
 
-                <Magnetic strength={0.3} slime={false} className="w-full">
-                  <button
-                    type="submit"
-                    disabled={sending || sent}
-                    className={`w-full flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl text-sm font-bold transition-all duration-300 cursor-pointer ${
-                      sent
-                        ? 'bg-emerald-500/10 border border-emerald-500/30 text-emerald-400'
-                        : 'bg-[#f5f5f7] text-[#060606] hover:bg-white shadow-[0_0_30px_rgba(255,255,255,0.15)]'
-                    }`}
-                  >
-                    {sent ? (
-                      <>
-                        <CheckCircle size={16} /> Message Sent Successfully!
-                      </>
-                    ) : sending ? (
-                      <>
-                        <div className="w-4 h-4 border-2 border-[#060606]/30 border-t-[#060606] rounded-full animate-spin" />
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        <Send size={15} /> Send Message
-                      </>
-                    )}
-                  </button>
-                </Magnetic>
+                <button
+                  type="submit"
+                  disabled={sending || sent}
+                  className={`w-full flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl text-sm font-bold transition-all duration-300 cursor-pointer ${
+                    sent
+                      ? 'bg-emerald-500/10 border border-emerald-500/30 text-emerald-400'
+                      : 'bg-[#f5f5f7] text-[#060606] hover:bg-white shadow-[0_0_30px_rgba(255,255,255,0.15)]'
+                  }`}
+                >
+                  {sent ? (
+                    <>
+                      <CheckCircle size={16} /> Message Sent Successfully!
+                    </>
+                  ) : sending ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-[#060606]/30 border-t-[#060606] rounded-full animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send size={15} /> Send Message
+                    </>
+                  )}
+                </button>
 
                 <div aria-live="polite" className="text-center">
                   {error && <p className="text-xs text-rose-400 mt-2">{error}</p>}
