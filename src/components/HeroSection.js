@@ -188,7 +188,7 @@ export default function HeroSection() {
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
             className="relative lg:col-span-5 flex items-center justify-center pt-8 lg:pt-0 min-h-[440px] overflow-visible"
           >
-            <Card3D maxRotate={12} overflowHidden={false} className="p-14 sm:p-20 rounded-full flex items-center justify-center relative overflow-visible">
+            <div className="p-14 sm:p-20 rounded-full flex items-center justify-center relative overflow-visible">
               {/* Outer Precision Glass Hairline Ring */}
               <div className="absolute w-[330px] h-[330px] sm:w-[410px] sm:h-[410px] rounded-full border border-white/15 pointer-events-none shadow-[0_0_40px_rgba(255,255,255,0.03)]" />
 
@@ -217,7 +217,7 @@ export default function HeroSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
 
-              {/* Floating iOS Liquid Glass Badges */}
+              {/* Floating iOS Liquid Glass Badges with Slime Hold */}
               {techBadges.map((badge, i) => (
                 <motion.div
                   key={badge.label}
@@ -231,7 +231,7 @@ export default function HeroSection() {
                   }}
                   style={{ position: 'absolute', ...badgePositions[i] }}
                 >
-                  <Magnetic strength={0.35} slime={false}>
+                  <Magnetic strength={0.35} slime={true}>
                     <motion.div
                       animate={{ y: [0, -5, 0] }}
                       transition={{
@@ -258,7 +258,7 @@ export default function HeroSection() {
                   </Magnetic>
                 </motion.div>
               ))}
-            </Card3D>
+            </div>
           </motion.div>
 
         </div>

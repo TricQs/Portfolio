@@ -13,6 +13,7 @@ const footerNavLinks = [
   { label: 'Skills', id: 'skills' },
   { label: 'Experience', id: 'experience' },
   { label: 'Certificates', id: 'certificates' },
+  { label: 'AI Lab', id: 'ai-lab' },
   { label: 'Contact', id: 'contact' },
 ]
 

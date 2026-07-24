@@ -11,6 +11,7 @@ const navLinks = [
   { label: 'Skills', id: 'skills' },
   { label: 'Experience', id: 'experience' },
   { label: 'Certificates', id: 'certificates' },
+  { label: 'AI Lab', id: 'ai-lab' },
   { label: 'Contact', id: 'contact' },
 ]
 
@@ -84,19 +85,20 @@ export default function Navbar() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${mobileOpen
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          mobileOpen
             ? 'py-4 border-b border-white/10 bg-[#0c0c0e]/95 backdrop-blur-2xl'
             : scrolled
               ? 'py-3.5 border-b border-white/15 shadow-[0_10px_30px_rgba(0,0,0,0.4)]'
               : 'py-5 border-b border-transparent bg-transparent'
-          }`}
+        }`}
         style={
           scrolled && !mobileOpen
             ? {
-              background: 'linear-gradient(135deg, rgba(18, 18, 22, 0.8) 0%, rgba(12, 12, 14, 0.88) 100%)',
-              backdropFilter: 'blur(24px) saturate(180%)',
-              WebkitBackdropFilter: 'blur(24px) saturate(180%)',
-            }
+                background: 'linear-gradient(135deg, rgba(18, 18, 22, 0.8) 0%, rgba(12, 12, 14, 0.88) 100%)',
+                backdropFilter: 'blur(24px) saturate(180%)',
+                WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+              }
             : {}
         }
       >
@@ -126,7 +128,7 @@ export default function Navbar() {
             </span>
           </button>
 
-          {/* Desktop Nav Links with Continuous Always-On Liquid Spring Indicator */}
+          {/* Desktop Nav Links with AI Lab Link */}
           <nav className="hidden md:flex items-center gap-1 p-1 rounded-full border border-white/10 bg-white/[0.02] backdrop-blur-md overflow-hidden relative" aria-label="Main Navigation">
             {navLinks.map((link) => (
               <motion.button
@@ -134,7 +136,7 @@ export default function Navbar() {
                 onClick={() => handleNavClick(link.id)}
                 whileTap={{ scaleX: 1.14, scaleY: 0.86 }}
                 transition={{ type: 'spring', stiffness: 500, damping: 14 }}
-                className={`relative px-4 py-1.5 text-xs font-semibold transition-colors duration-300 rounded-full cursor-pointer select-none ${
+                className={`relative px-3.5 py-1.5 text-xs font-semibold transition-colors duration-300 rounded-full cursor-pointer select-none ${
                   activeSection === link.id
                     ? 'text-[#0c0c0e]'
                     : 'text-[#a1a1a6] hover:text-[#f5f5f7]'
@@ -156,12 +158,14 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Resume CTA Button */}
+          {/* Resume CTA Button with Slime Hold Animation */}
           <div className="hidden md:flex items-center">
-            <a
+            <motion.a
               href="https://drive.google.com/file/d/1EZ5gjktT6Llwpk4J7O76dCddTry4_V5c/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
+              whileTap={{ scaleX: 1.14, scaleY: 0.86 }}
+              transition={{ type: 'spring', stiffness: 700, damping: 12, mass: 0.3 }}
               className="flex items-center gap-2 px-5 py-2 text-xs font-semibold rounded-full text-[#f5f5f7] hover:scale-105 transition-all duration-300"
               style={{
                 background: 'linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.03) 100%)',
@@ -173,7 +177,7 @@ export default function Navbar() {
             >
               <Download size={13} className="text-amber-400" />
               Resume
-            </a>
+            </motion.a>
           </div>
 
           {/* Morphing Apple Liquid Glass Hamburger Button */}
