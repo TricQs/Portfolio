@@ -14,10 +14,10 @@ export default function BitVolleyball() {
 
     const PS = 5
     const W = 560
-    const H = 108
+    const H = 116
     const NET_X = 280
-    const GROUND_Y = 108
-    const NET_TOP = 92
+    const GROUND_Y = 98
+    const NET_TOP = 80
 
     const LEFT_BASE = 170
     const LEFT_MIN = 100
@@ -33,7 +33,7 @@ export default function BitVolleyball() {
     let tx = RIGHT_BASE
     let t = 0
     let speed = 0.008
-    let arc = 64
+    let arc = 60
     let hits = 0
     let maxHits
     let frame = 0
@@ -50,7 +50,7 @@ export default function BitVolleyball() {
     let scoreB = 0
     let pointFlash = 0
     let pointSide = ''
-    let serving = ''  // tim yang melakukan servis ('A' / 'B')
+    let serving = ''
 
     const HEAD_Y = GROUND_Y - PS * 4
     let by = HEAD_Y
@@ -63,7 +63,6 @@ export default function BitVolleyball() {
       leftX = LEFT_BASE
       rightX = RIGHT_BASE
 
-      // Tim pemenang reli terakhir mendapat hak servis
       if (!serving) serving = Math.random() > 0.5 ? 'A' : 'B'
       const startLeft = serving === 'A'
       sx = startLeft ? LEFT_BASE : RIGHT_BASE
@@ -73,7 +72,7 @@ export default function BitVolleyball() {
         ? RIGHT_MIN + Math.random() * (RIGHT_MAX - RIGHT_MIN)
         : LEFT_MIN + Math.random() * (LEFT_MAX - LEFT_MIN)
       t = 0
-      arc = 58 + Math.random() * 18
+      arc = 54 + Math.random() * 16
       speed = 0.006 + Math.random() * 0.008
     }
 
@@ -108,9 +107,7 @@ export default function BitVolleyball() {
         if (t >= 1) {
           hits++
 
-          // Check if THIS hit is a miss (receiver fails to return)
           if (hits >= maxHits) {
-            // Ball continues past target → point for the hitter
             if (sx < NET_X) { scoreA++; pointSide = 'A' }
             else { scoreB++; pointSide = 'B' }
             serving = pointSide
@@ -120,7 +117,6 @@ export default function BitVolleyball() {
             missStartX = tx
             missDir = tx - sx > 0 ? 1 : -1
           } else {
-            // Normal return
             t = 0
             bx = tx
             if (bx < NET_X) leftHit = 10
@@ -129,12 +125,11 @@ export default function BitVolleyball() {
             tx = bx < NET_X
               ? RIGHT_MIN + Math.random() * (RIGHT_MAX - RIGHT_MIN)
               : LEFT_MIN + Math.random() * (LEFT_MAX - LEFT_MIN)
-            arc = 58 + Math.random() * 18
+            arc = 54 + Math.random() * 16
             speed = 0.006 + Math.random() * 0.008
           }
         }
 
-        // Only calculate ball position during active rally
         if (phase === 'rally') {
           bx = sx + (tx - sx) * t
           by = HEAD_Y - arc * Math.sin(t * Math.PI)
@@ -176,21 +171,25 @@ export default function BitVolleyball() {
         ctx.fillRect(Math.round(x), Math.round(y), w || PS, h || PS)
       }
 
+      // Faint ground line
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.08)'
+      ctx.fillRect(80, GROUND_Y + 1, 400, 1)
+
       // Net
-      for (let ny = NET_TOP; ny < GROUND_Y - 4; ny += 10) {
-        pix(NET_X, ny, 'rgba(255,255,255,0.2)')
+      for (let ny = NET_TOP; ny < GROUND_Y; ny += 8) {
+        pix(NET_X, ny, 'rgba(255,255,255,0.25)')
       }
 
       // Players
       const bobL = Math.sin(frame * 0.04) * 1.2
-      const bobR = Math.sin(frame * 0.04 + Math.PI) * 1.2
       const bounceL = leftHit > 0 ? -3 * easeOut(leftHit / 10) : 0
+      const bobR = Math.sin(frame * 0.04 + Math.PI) * 1.2
       const bounceR = rightHit > 0 ? -3 * easeOut(rightHit / 10) : 0
 
       const drawPlayer = (x, y) => {
-        pix(x, y - PS * 3, 'rgba(255,255,255,0.85)')
-        pix(x, y - PS * 2, 'rgba(255,255,255,0.85)')
-        pix(x, y - PS, 'rgba(255,255,255,0.85)')
+        pix(x, y - PS * 3, 'rgba(255,255,255,0.9)')
+        pix(x, y - PS * 2, 'rgba(255,255,255,0.9)')
+        pix(x, y - PS, 'rgba(255,255,255,0.9)')
       }
 
       drawPlayer(leftX, GROUND_Y + bobL + bounceL)
@@ -201,7 +200,7 @@ export default function BitVolleyball() {
         pix(bx - PS, by - PS, '#60a5fa', PS * 2, PS * 2)
       }
 
-      // ── Score ──
+      // Score Text
       const txt = (str, x, y, color, size, weight) => {
         ctx.fillStyle = color
         ctx.font = (weight || '') + ' ' + (size || 9) + 'px monospace'
@@ -210,14 +209,13 @@ export default function BitVolleyball() {
         ctx.fillText(str, x, y)
       }
 
-      const sy = NET_TOP - 20
-      txt(scoreA, NET_X - 30, sy, 'rgba(255,255,255,0.5)', 9)
+      const sy = NET_TOP - 18
+      txt(scoreA, NET_X - 30, sy, 'rgba(255,255,255,0.6)', 9)
       txt('-', NET_X, sy, 'rgba(255,255,255,0.3)', 9)
-      txt(scoreB, NET_X + 30, sy, 'rgba(255,255,255,0.5)', 9)
+      txt(scoreB, NET_X + 30, sy, 'rgba(255,255,255,0.6)', 9)
       txt('●', NET_X + (serving === 'A' ? -42 : 42), sy,
         serving ? '#60a5fa' : 'rgba(255,255,255,0)', 9)
 
-      // Point flash
       if (pointFlash > 24) {
         const label = pointSide === 'A' ? 'A +1' : 'B +1'
         const cx = pointSide === 'A' ? NET_X - 80 : NET_X + 80
@@ -248,11 +246,8 @@ export default function BitVolleyball() {
     const io = new IntersectionObserver(
       ([e]) => {
         visible = e.isIntersecting
-        if (visible) {
-          startAnim()
-        } else {
-          stopAnim()
-        }
+        if (visible) startAnim()
+        else stopAnim()
       },
       { threshold: 0 }
     )
@@ -272,7 +267,7 @@ export default function BitVolleyball() {
         display: 'block',
         pointerEvents: 'none',
         imageRendering: 'pixelated',
-        opacity: 0.55,
+        opacity: 0.65,
       }}
     />
   )

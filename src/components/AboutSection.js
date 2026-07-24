@@ -2,41 +2,15 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Code2, Cpu, Workflow, GraduationCap } from 'lucide-react'
-import Image from 'next/image'
+import { Code2, GraduationCap, Layout, Sparkles, Quote } from 'lucide-react'
+import Card3D from './Card3D'
 
 const stats = [
-  { icon: Code2, value: '10+', label: 'Projects Built' },
-  { icon: Cpu, value: '15+', label: 'Technologies Learned' },
-  { icon: Workflow, value: '20+', label: 'AI Workflows Created' },
-  { icon: GraduationCap, value: 'S1', label: 'Informatics Student' },
+  { icon: Code2, value: '10+', label: 'Projects Built', color: 'from-blue-500/20 to-indigo-500/5' },
+  { icon: GraduationCap, value: 'S1', label: 'Informatics Student', color: 'from-emerald-500/20 to-teal-500/5' },
+  { icon: Layout, value: '1', label: 'Internship Completed', color: 'from-amber-500/20 to-yellow-500/5' },
+  { icon: Sparkles, value: '100%', label: 'Commitment to Growth', color: 'from-purple-500/20 to-pink-500/5' },
 ]
-
-function StatCard({ stat, index }) {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-60px' })
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 24 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ delay: index * 0.08, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="card-glow border border-white/[0.06] rounded-2xl p-6 flex flex-col gap-4 hover:border-white/[0.12] hover:bg-white/[0.02] transition-all duration-500 group cursor-default"
-      style={{ background: 'rgba(255,255,255,0.015)' }}
-    >
-      <div className="w-10 h-10 rounded-xl flex items-center justify-center border border-white/[0.06]" style={{ background: 'rgba(255,255,255,0.03)' }}>
-        <stat.icon size={16} strokeWidth={1.5} className="text-[#86868b] group-hover:text-[#f5f5f7] transition-colors duration-300" />
-      </div>
-      <div
-        className="text-3xl font-bold text-[#f5f5f7] tracking-[-0.02em]"
-        style={{ fontFamily: 'var(--font-space-grotesk)' }}
-      >
-        {stat.value}
-      </div>
-      <p className="text-[11px] text-[#6e6e73] uppercase tracking-[0.1em] font-medium">{stat.label}</p>
-    </motion.div>
-  )
-}
 
 export default function AboutSection() {
   const ref = useRef(null)
@@ -44,89 +18,89 @@ export default function AboutSection() {
 
   return (
     <section id="about" ref={ref} className="section-padding relative">
-      {/* Section divider */}
       <div className="absolute top-0 left-0 right-0 section-divider" />
 
-      <div className="max-w-6xl mx-auto px-6 md:px-8">
-        {/* Section label */}
+      <div className="max-w-6xl mx-auto px-6 md:px-8 relative z-10">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <span className="text-[11px] font-medium tracking-[0.15em] uppercase text-[#86868b]">
-            01 — About
-          </span>
+          <div className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#86868b] mb-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+            02 — Background &amp; Philosophy
+          </div>
           <h2
-            className="text-4xl sm:text-5xl md:text-[3.5rem] font-bold mt-4 leading-[1.1] tracking-[-0.03em] text-gradient"
+            className="text-4xl sm:text-5xl md:text-[3.5rem] font-bold leading-[1.05] tracking-[-0.035em] text-gradient"
             style={{ fontFamily: 'var(--font-space-grotesk)' }}
           >
-            About Me
+            Editorial Bio &amp;<br />Engineering Mindset
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-start">
-          {/* Text */}
-          <div className="space-y-6">
-            {[
-              'I am an Informatics Student at Universitas Bunda Mulia Serpong with a strong passion for Front-End Web Development, clean UI/UX design, and AI-assisted workflows.',
-              'I love turning creative ideas into practical, responsive websites that look great and feel effortless to use.',
-              'I actively embrace AI tools like ChatGPT, Claude, and Gemini to speed up development, troubleshoot bugs efficiently, and continuously learn new technologies.',
-            ].map((para, i) => (
-              <motion.p
-                key={i}
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Main Bio Text (7 Cols) - Editorial Magazine Styling */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 space-y-6"
+          >
+            <p className="text-lg sm:text-xl text-[#f5f5f7] leading-relaxed font-normal tracking-tight border-l-2 border-amber-500/60 pl-5">
+              I am an Informatics Student at Universitas Bunda Mulia Serpong with a core focus on Front-End Web Development, design system structure, and intuitive UI/UX execution.
+            </p>
+            <p className="text-sm sm:text-base text-[#86868b] leading-relaxed">
+              I enjoy translating user interface designs into responsive, well-structured web applications using React, Next.js, and TypeScript. My focus is on writing readable code, following modern web standards, and delivering clean user experiences.
+            </p>
+            <p className="text-sm sm:text-base text-[#86868b] leading-relaxed">
+              I actively utilize modern developer tools and AI assistants (like ChatGPT, Claude, and Gemini) to streamline debugging, explore new libraries, and continuously accelerate my technical learning.
+            </p>
+
+            {/* Editorial Highlight Quote */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="mt-8 p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.03] to-white/[0.005] backdrop-blur-md relative overflow-hidden group"
+            >
+              <Quote size={40} className="absolute -right-2 -bottom-2 text-white/5 group-hover:text-white/10 transition-colors duration-300 pointer-events-none" />
+              <blockquote className="text-xs sm:text-sm text-[#f5f5f7] italic font-medium leading-relaxed relative z-10">
+                &ldquo;I focus on writing clean, maintainable code and creating responsive user interfaces that deliver clear value to users.&rdquo;
+              </blockquote>
+            </motion.div>
+          </motion.div>
+
+          {/* Quick Stats Grid (5 Cols) - Interactive 3D Cards */}
+          <div className="lg:col-span-5 grid grid-cols-2 gap-4">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={stat.label}
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.12 * (i + 1), duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className={`leading-[1.75] ${i === 0 ? 'text-[15px] sm:text-base text-[#f5f5f7]' : 'text-[15px] text-[#86868b]'}`}
+                transition={{ delay: index * 0.08, duration: 0.6 }}
               >
-                {para}
-              </motion.p>
+                <Card3D maxRotate={12} className="h-full">
+                  <div className={`border border-white/[0.08] hover:border-white/20 rounded-2xl p-6 bg-gradient-to-b ${stat.color} hover:bg-white/[0.04] transition-all duration-300 flex flex-col justify-between h-full backdrop-blur-sm`}>
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center border border-white/10 bg-white/[0.04] text-[#f5f5f7] mb-5 shadow-sm">
+                      <stat.icon size={18} strokeWidth={1.75} />
+                    </div>
+                    <div>
+                      <div
+                        className="text-3xl sm:text-4xl font-bold text-[#f5f5f7] tracking-tight mb-1"
+                        style={{ fontFamily: 'var(--font-space-grotesk)' }}
+                      >
+                        {stat.value}
+                      </div>
+                      <div className="text-[11px] text-[#86868b] uppercase tracking-wider font-semibold">
+                        {stat.label}
+                      </div>
+                    </div>
+                  </div>
+                </Card3D>
+              </motion.div>
             ))}
-
-            {/* Profile image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.97 }}
-              animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: 0.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-10 relative rounded-2xl overflow-hidden border border-white/[0.06] aspect-[4/3] flex items-center justify-center"
-              style={{ background: 'rgba(255,255,255,0.015)' }}
-            >
-              <Image
-                src="https://lh3.googleusercontent.com/d/1z8TrQCVL6L-IkNCpw1auB8fSPhhxv3-e"
-                alt="Ferdinand Arya"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
-              />
-            </motion.div>
-          </div>
-
-          {/* Stats */}
-          <div className="space-y-6">
-            <div className="grid grid-cols-2 gap-4">
-              {stats.map((stat, i) => (
-                <StatCard key={stat.label} stat={stat} index={i} />
-              ))}
-            </div>
-
-            {/* Tagline */}
-            <motion.blockquote
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.5, duration: 0.7 }}
-              className="border border-white/[0.06] rounded-2xl p-6 relative overflow-hidden"
-              style={{ background: 'rgba(255,255,255,0.015)' }}
-            >
-              <div
-                className="absolute top-0 left-0 w-[2px] h-full rounded-full"
-                style={{ background: 'linear-gradient(to bottom, rgba(255,255,255,0.2), transparent)' }}
-              />
-              <p className="text-[13px] text-[#86868b] leading-[1.8] italic pl-4">
-                &ldquo;Design is not just what it looks like and feels like. Design is how it works &mdash; and I bring that philosophy to every project.&rdquo;
-              </p>
-            </motion.blockquote>
           </div>
         </div>
       </div>

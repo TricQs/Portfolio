@@ -1,53 +1,46 @@
 import Navbar from '@/components/Navbar'
 import HeroSection from '@/components/HeroSection'
+import ProjectsSection from '@/components/ProjectsSection'
 import AboutSection from '@/components/AboutSection'
-import dynamic from 'next/dynamic'
+import SkillsSection from '@/components/SkillsSection'
+import ExperienceSection from '@/components/ExperienceSection'
+import CertificatesSection from '@/components/CertificatesSection'
+import AISection from '@/components/AISection'
+import ContactSection from '@/components/ContactSection'
+import Footer from '@/components/Footer'
+import MouseGlowWrapper from '@/components/MouseGlowWrapper'
 
-const ApproachSection = dynamic(() => import('@/components/ApproachSection'))
-const PersonalInfoSection = dynamic(() => import('@/components/PersonalInfoSection'))
-const ExperienceSection = dynamic(() => import('@/components/ExperienceSection'))
-const SkillsSection = dynamic(() => import('@/components/SkillsSection'))
-const ProjectsSection = dynamic(() => import('@/components/ProjectsSection'))
-const CertificatesSection = dynamic(() => import('@/components/CertificatesSection'))
-const AISection = dynamic(() => import('@/components/AISection'))
-const ContactSection = dynamic(() => import('@/components/ContactSection'))
-const Footer = dynamic(() => import('@/components/Footer'))
-const MouseGlowWrapper = dynamic(() => import('@/components/MouseGlowWrapper'))
-
-// Footer height that content needs to push below
 const FOOTER_HEIGHT = '70vh'
 
 export default function Home() {
   return (
     <>
-      {/* Mouse spotlight glow — client only */}
+      {/* Mouse spotlight glow */}
       <MouseGlowWrapper />
 
-      {/* Sticky navigation */}
+      {/* Navigation Bar */}
       <Navbar />
 
-      {/* Main content — sits on top of fixed footer (z-index: 1) */}
-      <div
+      {/* Main Content Landmark */}
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className="relative z-[1] bg-[var(--bg-primary)] focus:outline-none"
         style={{
-          position: 'relative',
-          zIndex: 1,
-          backgroundColor: 'var(--bg-primary)',
           marginBottom: FOOTER_HEIGHT,
         }}
       >
         <HeroSection />
-        <AboutSection />
-        <ApproachSection />
-        <PersonalInfoSection />
-        <ExperienceSection />
-        <SkillsSection />
         <ProjectsSection />
+        <AboutSection />
+        <SkillsSection />
+        <ExperienceSection />
         <CertificatesSection />
         <AISection />
         <ContactSection />
-      </div>
+      </main>
 
-      {/* Sticky-reveal footer — fixed behind content */}
+      {/* Sticky Reveal Footer */}
       <Footer />
     </>
   )

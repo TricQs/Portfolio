@@ -2,19 +2,21 @@
 
 import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Send, Mail, Phone, MapPin, CheckCircle } from 'lucide-react'
+import { Send, Mail, Phone, MapPin, CheckCircle, Sparkles } from 'lucide-react'
 import { GitHubIcon, LinkedInIcon, InstagramIcon } from './SocialIcons'
+import Magnetic from './Magnetic'
+import Card3D from './Card3D'
 
 const contactInfo = [
   { icon: Mail, label: 'Email', value: 'ferdinandarya80@gmail.com', href: 'mailto:ferdinandarya80@gmail.com' },
   { icon: Phone, label: 'Phone', value: '0857-7913-7093', href: 'tel:085779137093' },
-  { icon: MapPin, label: 'Location', value: 'Dadap Tangerang Kosambi' },
+  { icon: MapPin, label: 'Location', value: 'Dadap, Tangerang, Banten' },
 ]
 
 const socialLinks = [
-  { Icon: GitHubIcon, label: 'GitHub', href: 'https://github.com/TricQs' },
-  { Icon: LinkedInIcon, label: 'LinkedIn', href: 'https://www.linkedin.com/in/ferdinandaryaw/' },
-  { Icon: InstagramIcon, label: 'Instagram', href: 'https://www.instagram.com/ferndaryzt/' },
+  { Icon: GitHubIcon, label: 'GitHub Profile', href: 'https://github.com/TricQs' },
+  { Icon: LinkedInIcon, label: 'LinkedIn Profile', href: 'https://www.linkedin.com/in/ferdinandaryaw/' },
+  { Icon: InstagramIcon, label: 'Instagram Profile', href: 'https://www.instagram.com/ferndaryzt/' },
 ]
 
 export default function ContactSection() {
@@ -33,12 +35,9 @@ export default function ContactSection() {
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       })
-
       const data = await response.json()
 
       if (response.ok) {
@@ -63,8 +62,15 @@ export default function ContactSection() {
       className="section-padding relative"
       style={{ background: 'var(--bg-secondary)' }}
     >
-      {/* Section divider */}
       <div className="absolute top-0 left-0 right-0 section-divider" />
+
+      {/* Stage Finale Ambient Glow */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+        <div
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] rounded-full opacity-15 blur-3xl"
+          style={{ background: 'radial-gradient(ellipse at bottom, rgba(59,130,246,0.3) 0%, transparent 70%)' }}
+        />
+      </div>
 
       <div className="max-w-6xl mx-auto px-6 md:px-8 relative z-10">
         {/* Header */}
@@ -74,196 +80,173 @@ export default function ContactSection() {
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
-          <span className="text-[11px] font-medium tracking-[0.15em] uppercase text-[#86868b]">
-            09 — Contact
+          <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#86868b] mb-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+            07 — Finale &amp; Contact Stage
           </span>
           <h2
-            className="text-4xl sm:text-5xl md:text-[3.5rem] font-bold mt-4 leading-[1.1] tracking-[-0.03em] text-gradient"
+            className="text-4xl sm:text-5xl md:text-[3.5rem] font-bold mt-2 leading-[1.08] tracking-[-0.035em] text-gradient"
             style={{ fontFamily: 'var(--font-space-grotesk)' }}
           >
-            Let&apos;s Build Something<br />Great
+            Let&apos;s Build Something Iconic
           </h2>
-          <p className="text-[#86868b] mt-5 max-w-lg mx-auto leading-[1.7] text-[15px]">
-            Interested in working together, discussing ideas, or collaborating on projects? Feel free to reach out.
+          <p className="text-sm text-[#86868b] mt-4 max-w-lg mx-auto leading-relaxed">
+            Open to entry-level engineering roles, internships, web application development, or technical collaboration.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Form */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          {/* Interactive Form Stage */}
           <motion.div
-            initial={{ opacity: 0, x: -24 }}
+            initial={{ opacity: 0, x: -20 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.15, duration: 0.7 }}
           >
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {/* Name */}
-              <div>
-                <label className="block text-[11px] font-medium tracking-[0.12em] uppercase text-[#86868b] mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={form.name}
-                  onChange={e => setForm({ ...form, name: e.target.value })}
-                  placeholder="Your full name"
-                  className="w-full px-4 py-3.5 border border-white/[0.06] rounded-xl text-[13px] text-[#f5f5f7] placeholder-[#6e6e73]/60 focus:border-white/[0.15] focus:bg-white/[0.02] transition-all duration-300"
-                  style={{ background: 'rgba(255,255,255,0.015)' }}
-                />
-              </div>
+            <Card3D maxRotate={6} className="h-full">
+              <form onSubmit={handleSubmit} className="space-y-5 p-8 rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-xl shadow-2xl" aria-label="Contact form">
+                <div>
+                  <label htmlFor="contact-name" className="block text-[11px] font-medium tracking-[0.12em] uppercase text-[#86868b] mb-2">
+                    Your Name
+                  </label>
+                  <input
+                    id="contact-name"
+                    name="name"
+                    type="text"
+                    required
+                    autoComplete="name"
+                    value={form.name}
+                    onChange={e => setForm({ ...form, name: e.target.value })}
+                    placeholder="Jane Doe"
+                    className="w-full px-4 py-3.5 border border-white/10 rounded-xl text-sm text-[#f5f5f7] placeholder-[#86868b]/50 focus:border-white/30 focus:bg-white/[0.04] transition-all bg-white/[0.015]"
+                  />
+                </div>
 
-              {/* Email */}
-              <div>
-                <label className="block text-[11px] font-medium tracking-[0.12em] uppercase text-[#86868b] mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  required
-                  value={form.email}
-                  onChange={e => setForm({ ...form, email: e.target.value })}
-                  placeholder="your@email.com"
-                  className="w-full px-4 py-3.5 border border-white/[0.06] rounded-xl text-[13px] text-[#f5f5f7] placeholder-[#6e6e73]/60 focus:border-white/[0.15] focus:bg-white/[0.02] transition-all duration-300"
-                  style={{ background: 'rgba(255,255,255,0.015)' }}
-                />
-              </div>
+                <div>
+                  <label htmlFor="contact-email" className="block text-[11px] font-medium tracking-[0.12em] uppercase text-[#86868b] mb-2">
+                    Email Address
+                  </label>
+                  <input
+                    id="contact-email"
+                    name="email"
+                    type="email"
+                    required
+                    autoComplete="email"
+                    value={form.email}
+                    onChange={e => setForm({ ...form, email: e.target.value })}
+                    placeholder="jane@company.com"
+                    className="w-full px-4 py-3.5 border border-white/10 rounded-xl text-sm text-[#f5f5f7] placeholder-[#86868b]/50 focus:border-white/30 focus:bg-white/[0.04] transition-all bg-white/[0.015]"
+                  />
+                </div>
 
-              {/* Message */}
-              <div>
-                <label className="block text-[11px] font-medium tracking-[0.12em] uppercase text-[#86868b] mb-2">
-                  Message
-                </label>
-                <textarea
-                  required
-                  rows={5}
-                  value={form.message}
-                  onChange={e => setForm({ ...form, message: e.target.value })}
-                  placeholder="Tell me about your project or idea..."
-                  className="w-full px-4 py-3.5 border border-white/[0.06] rounded-xl text-[13px] text-[#f5f5f7] placeholder-[#6e6e73]/60 focus:border-white/[0.15] focus:bg-white/[0.02] transition-all duration-300 resize-none"
-                  style={{ background: 'rgba(255,255,255,0.015)' }}
-                />
-              </div>
+                <div>
+                  <label htmlFor="contact-message" className="block text-[11px] font-medium tracking-[0.12em] uppercase text-[#86868b] mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    required
+                    rows={4}
+                    value={form.message}
+                    onChange={e => setForm({ ...form, message: e.target.value })}
+                    placeholder="Hello Ferdinand, I'd like to discuss..."
+                    className="w-full px-4 py-3.5 border border-white/10 rounded-xl text-sm text-[#f5f5f7] placeholder-[#86868b]/50 focus:border-white/30 focus:bg-white/[0.04] transition-all resize-none bg-white/[0.015]"
+                  />
+                </div>
 
-              {/* Submit */}
-              <motion.button
-                type="submit"
-                disabled={sending || sent}
-                whileHover={{ scale: 1.01 }}
-                whileTap={{ scale: 0.99 }}
-                className={`w-full flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl text-[13px] font-semibold transition-all duration-300 cursor-pointer ${sent
-                  ? 'bg-emerald-500/[0.1] border border-emerald-500/20 text-emerald-400'
-                  : 'bg-[#f5f5f7] text-[#060606] hover:shadow-[0_0_30px_rgba(255,255,255,0.1)]'
-                  }`}
-              >
-                {sent ? (
-                  <>
-                    <CheckCircle size={14} /> Message Sent!
-                  </>
-                ) : sending ? (
-                  <>
-                    <motion.div
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-                      className="w-3.5 h-3.5 border-[1.5px] border-[#060606]/30 border-t-[#060606] rounded-full"
-                    />
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    <Send size={13} /> Send Message
-                  </>
-                )}
-              </motion.button>
+                <Magnetic strength={0.3} slime={false} className="w-full">
+                  <button
+                    type="submit"
+                    disabled={sending || sent}
+                    className={`w-full flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl text-sm font-bold transition-all duration-300 cursor-pointer ${
+                      sent
+                        ? 'bg-emerald-500/10 border border-emerald-500/30 text-emerald-400'
+                        : 'bg-[#f5f5f7] text-[#060606] hover:bg-white shadow-[0_0_30px_rgba(255,255,255,0.15)]'
+                    }`}
+                  >
+                    {sent ? (
+                      <>
+                        <CheckCircle size={16} /> Message Sent Successfully!
+                      </>
+                    ) : sending ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-[#060606]/30 border-t-[#060606] rounded-full animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send size={15} /> Send Message
+                      </>
+                    )}
+                  </button>
+                </Magnetic>
 
-              {/* Error Message */}
-              {error && (
-                <motion.p
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-[11px] text-red-400/80 mt-2 text-center"
-                >
-                  {error}
-                </motion.p>
-              )}
-            </form>
+                <div aria-live="polite" className="text-center">
+                  {error && <p className="text-xs text-rose-400 mt-2">{error}</p>}
+                </div>
+              </form>
+            </Card3D>
           </motion.div>
 
-          {/* Info */}
+          {/* Contact Details & Availability Stage */}
           <motion.div
-            initial={{ opacity: 0, x: 24 }}
+            initial={{ opacity: 0, x: 20 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.25, duration: 0.7 }}
             className="space-y-8"
           >
-            {/* Contact items */}
             <div className="space-y-4">
               {contactInfo.map((item) => (
-                <div
-                  key={item.label}
-                  className="flex items-center gap-4 group"
-                >
-                  <div className="w-10 h-10 rounded-xl border border-white/[0.06] flex items-center justify-center flex-shrink-0 group-hover:border-white/[0.12] transition-colors duration-300" style={{ background: 'rgba(255,255,255,0.03)' }}>
-                    <item.icon size={14} strokeWidth={1.5} className="text-[#86868b]" />
+                <Card3D key={item.label} maxRotate={8}>
+                  <div className="flex items-center gap-4 p-4 rounded-xl border border-white/10 bg-white/[0.015] hover:border-white/20 transition-all">
+                    <div className="w-11 h-11 rounded-xl border border-white/10 flex items-center justify-center flex-shrink-0 bg-white/[0.03]">
+                      <item.icon size={18} className="text-[#f5f5f7]" />
+                    </div>
+                    <div>
+                      <p className="text-[10px] uppercase tracking-wider text-[#86868b] mb-0.5">{item.label}</p>
+                      {item.href ? (
+                        <a href={item.href} className="text-sm text-[#f5f5f7] hover:text-white transition-colors font-medium">
+                          {item.value}
+                        </a>
+                      ) : (
+                        <p className="text-sm text-[#f5f5f7] font-medium">{item.value}</p>
+                      )}
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-[10px] uppercase tracking-[0.1em] text-[#6e6e73] mb-0.5">{item.label}</p>
-                    {item.href ? (
-                      <a
-                        href={item.href}
-                        className="text-[13px] text-[#f5f5f7] hover:text-white/70 transition-colors duration-300"
-                      >
-                        {item.value}
-                      </a>
-                    ) : (
-                      <p className="text-[13px] text-[#f5f5f7]">{item.value}</p>
-                    )}
-                  </div>
-                </div>
+                </Card3D>
               ))}
             </div>
 
-            {/* Divider */}
             <div className="section-divider" />
 
-            {/* Social Links */}
             <div>
-              <p className="text-[10px] uppercase tracking-[0.15em] text-[#6e6e73] mb-4">
-                Follow Me
+              <p className="text-[10px] uppercase tracking-[0.2em] text-[#86868b] mb-4 font-semibold">
+                Social Profiles
               </p>
               <div className="flex gap-3">
                 {socialLinks.map((social) => (
-                  <motion.a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ y: -3 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-10 h-10 border border-white/[0.06] rounded-xl flex items-center justify-center hover:border-white/[0.12] hover:bg-white/[0.03] transition-all duration-300 group"
-                    style={{ background: 'rgba(255,255,255,0.02)' }}
-                    aria-label={social.label}
-                  >
-                    <social.Icon
-                      size={15}
-                      className="text-[#86868b] group-hover:text-[#f5f5f7] transition-colors duration-300"
-                    />
-                  </motion.a>
+                  <Magnetic key={social.label} strength={0.3}>
+                    <a
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={social.label}
+                      className="w-11 h-11 border border-white/10 rounded-xl flex items-center justify-center hover:border-white/30 hover:bg-white/[0.06] transition-all text-[#86868b] hover:text-[#f5f5f7] bg-white/[0.02]"
+                    >
+                      <social.Icon size={16} />
+                    </a>
+                  </Magnetic>
                 ))}
               </div>
             </div>
 
-            {/* Availability card */}
-            <div className="border border-white/[0.06] rounded-2xl p-6 relative overflow-hidden" style={{ background: 'rgba(255,255,255,0.015)' }}>
-              <div
-                className="absolute top-0 left-0 right-0 h-px"
-                style={{ background: 'linear-gradient(90deg, transparent, rgba(74, 222, 128, 0.2), transparent)' }}
-              />
+            <div className="border border-emerald-500/20 rounded-2xl p-6 bg-emerald-500/5 backdrop-blur-md relative overflow-hidden">
               <div className="flex items-center gap-2 mb-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="text-[11px] font-medium text-emerald-400/90 tracking-[0.08em] uppercase">Available</span>
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                <span className="text-[11px] font-bold text-emerald-400 tracking-wider uppercase">Open for Work</span>
               </div>
-              <p className="text-[13px] text-[#86868b] leading-[1.7]">
-                Currently open to internship, freelance, and collaborative project opportunities. Response within 24 hours.
+              <p className="text-xs text-[#a1a1a6] leading-relaxed">
+                Actively seeking entry-level software engineering positions, front-end developer roles, internships, and technical projects.
               </p>
             </div>
           </motion.div>

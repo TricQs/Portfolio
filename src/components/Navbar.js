@@ -2,19 +2,19 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Download } from 'lucide-react'
+import { Download } from 'lucide-react'
 import { GitHubIcon, LinkedInIcon, InstagramIcon } from './SocialIcons'
+import Magnetic from './Magnetic'
 
 const navLinks = [
-  { label: 'About', id: 'about' },
-  { label: 'Experience', id: 'experience' },
-  { label: 'Skills', id: 'skills' },
   { label: 'Projects', id: 'projects' },
+  { label: 'About', id: 'about' },
+  { label: 'Skills', id: 'skills' },
+  { label: 'Experience', id: 'experience' },
   { label: 'Certificates', id: 'certificates' },
   { label: 'Contact', id: 'contact' },
 ]
 
-// Scroll ke section tanpa mengubah URL
 function scrollToSection(id) {
   const el = document.getElementById(id)
   if (el) {
@@ -28,7 +28,7 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState('')
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50)
+    const onScroll = () => setScrolled(window.scrollY > 30)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -41,7 +41,7 @@ export default function Navbar() {
           if (entry.isIntersecting) setActiveSection(entry.target.id)
         })
       },
-      { rootMargin: '-40% 0px -55% 0px' }
+      { rootMargin: '-30% 0px -60% 0px' }
     )
     ids.forEach(id => {
       const el = document.getElementById(id)
@@ -51,37 +51,32 @@ export default function Navbar() {
   }, [])
 
   useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
-    return () => {
-      document.body.style.overflow = ''
-    }
+    document.body.style.overflow = mobileOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
 
   return (
     <>
-      <motion.nav
-        initial={{ y: -100, opacity: 0 }}
+      <motion.header
+        initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${mobileOpen
-          ? 'py-4 border-b border-transparent'
-          : scrolled
-            ? 'py-3 border-b border-white/[0.06]'
-            : 'py-5 border-b border-transparent'
-          }`}
-        style={{
-          background: mobileOpen
-            ? 'transparent'
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          mobileOpen
+            ? 'py-4 border-b border-white/10 bg-[#0c0c0e]/95 backdrop-blur-2xl'
             : scrolled
-              ? 'rgba(6, 6, 6, 0.8)'
-              : 'transparent',
-          backdropFilter: mobileOpen ? 'none' : scrolled ? 'blur(20px) saturate(180%)' : 'none',
-          WebkitBackdropFilter: mobileOpen ? 'none' : scrolled ? 'blur(20px) saturate(180%)' : 'none',
-        }}
+              ? 'py-3.5 border-b border-white/15 shadow-[0_10px_30px_rgba(0,0,0,0.4)]'
+              : 'py-5 border-b border-transparent bg-transparent'
+        }`}
+        style={
+          scrolled && !mobileOpen
+            ? {
+                background: 'linear-gradient(135deg, rgba(18, 18, 22, 0.8) 0%, rgba(12, 12, 14, 0.88) 100%)',
+                backdropFilter: 'blur(24px) saturate(180%)',
+                WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+              }
+            : {}
+        }
       >
         <div className="max-w-6xl mx-auto px-6 md:px-8 flex items-center justify-between">
           {/* Logo */}
@@ -90,137 +85,175 @@ export default function Navbar() {
               scrollToSection('hero')
               setMobileOpen(false)
             }}
-            className="group flex items-center gap-0.5 cursor-pointer"
+            className="group flex items-center gap-1 cursor-pointer focus:outline-none"
+            aria-label="Ferdinand Arya Wijaya Portfolio Home"
           >
             <span
-              className="text-[15px] font-semibold tracking-[-0.02em] text-[#f5f5f7]"
+              className="text-base font-bold tracking-tight text-[#f5f5f7] group-hover:text-white transition-colors"
               style={{ fontFamily: 'var(--font-space-grotesk)' }}
             >
               Ferdinand Arya
             </span>
-            <span className="text-[15px] font-semibold text-white/20 group-hover:text-white/60 transition-colors duration-300">
+            <span className="text-base font-bold text-amber-400 group-hover:scale-125 transition-transform">
               .
             </span>
           </button>
 
-          {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-1">
+          {/* Desktop Nav Links with Apple Liquid Glass Pills */}
+          <nav className="hidden md:flex items-center gap-1 p-1 rounded-full border border-white/10 bg-white/[0.02] backdrop-blur-md" aria-label="Main Navigation">
             {navLinks.map((link) => (
-              <button
+              <motion.button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className={`relative px-3 py-1.5 text-[13px] tracking-[-0.01em] transition-all duration-300 rounded-lg cursor-pointer ${activeSection === link.id
-                  ? 'text-[#f5f5f7]'
-                  : 'text-[#86868b] hover:text-[#f5f5f7]'
-                  }`}
+                whileTap={{ scaleX: 1.14, scaleY: 0.86 }}
+                transition={{ type: 'spring', stiffness: 500, damping: 14 }}
+                className={`relative px-4 py-1.5 text-xs font-semibold transition-all duration-300 rounded-full cursor-pointer select-none ${
+                  activeSection === link.id
+                    ? 'text-[#0c0c0e]'
+                    : 'text-[#a1a1a6] hover:text-[#f5f5f7]'
+                }`}
               >
-                {link.label}
                 {activeSection === link.id && (
                   <motion.div
-                    layoutId="nav-indicator"
-                    className="absolute -bottom-1 left-3 right-3 h-px bg-white/60"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    layoutId="activeNavBg"
+                    className="absolute inset-0 rounded-full z-0 border border-white/80"
+                    style={{
+                      background: 'linear-gradient(180deg, #ffffff 0%, #ececef 100%)',
+                      boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 1), 0 4px 14px rgba(0, 0, 0, 0.25)',
+                    }}
+                    transition={{ type: 'spring', stiffness: 520, damping: 32, mass: 0.45 }}
                   />
                 )}
-              </button>
+                <span className="relative z-10">{link.label}</span>
+              </motion.button>
             ))}
-          </div>
+          </nav>
 
-          {/* CTA */}
+          {/* Resume CTA Button */}
           <div className="hidden md:flex items-center">
-            <a
-              href="https://drive.google.com/file/d/1EZ5gjktT6Llwpk4J7O76dCddTry4_V5c/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 text-[13px] font-medium rounded-full border border-white/[0.08] bg-white/[0.03] text-[#f5f5f7] hover:bg-white/[0.06] hover:border-white/[0.15] transition-all duration-300 group"
-            >
-              <Download size={13} className="text-[#86868b] group-hover:text-[#f5f5f7] transition-colors duration-300" />
-              Resume
-            </a>
+            <Magnetic strength={0.25}>
+              <a
+                href="https://drive.google.com/file/d/1EZ5gjktT6Llwpk4J7O76dCddTry4_V5c/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-5 py-2 text-xs font-semibold rounded-full text-[#f5f5f7] hover:scale-105 transition-all duration-300"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.03) 100%)',
+                  backdropFilter: 'blur(16px) saturate(180%)',
+                  WebkitBackdropFilter: 'blur(16px) saturate(180%)',
+                  border: '1px solid rgba(255, 255, 255, 0.22)',
+                  boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.35), 0 8px 24px rgba(0,0,0,0.3)',
+                }}
+              >
+                <Download size={13} className="text-amber-400" />
+                Resume
+              </a>
+            </Magnetic>
           </div>
 
-          {/* Hamburger */}
+          {/* Morphing Apple Liquid Glass Hamburger Button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-[#86868b] hover:text-white transition-colors rounded-lg"
-            aria-label="Toggle menu"
+            className="md:hidden w-10 h-10 rounded-full flex flex-col items-center justify-center gap-1.5 focus:outline-none transition-all duration-300 cursor-pointer"
+            style={{
+              background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.04) 100%)',
+              backdropFilter: 'blur(20px) saturate(180%)',
+              WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+              border: '1px solid rgba(255, 255, 255, 0.25)',
+              boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.35), 0 4px 20px rgba(0,0,0,0.4)',
+            }}
+            aria-label="Toggle navigation menu"
+            aria-expanded={mobileOpen}
           >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+            <motion.span
+              animate={mobileOpen ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="w-4 h-0.5 bg-[#f5f5f7] rounded-full block transform-origin-center"
+            />
+            <motion.span
+              animate={mobileOpen ? { opacity: 0, scale: 0 } : { opacity: 1, scale: 1 }}
+              transition={{ duration: 0.2 }}
+              className="w-4 h-0.5 bg-[#f5f5f7] rounded-full block"
+            />
+            <motion.span
+              animate={mobileOpen ? { rotate: -45, y: -5 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="w-4 h-0.5 bg-[#f5f5f7] rounded-full block transform-origin-center"
+            />
           </button>
         </div>
-      </motion.nav>
+      </motion.header>
 
-      {/* Mobile Menu */}
+      {/* Apple iOS Liquid Glass Mobile Menu Drawer */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-40 flex flex-col pt-24 px-6 pb-8 overflow-y-auto"
-            style={{ background: 'rgba(6, 6, 6, 0.98)', backdropFilter: 'blur(24px)' }}
+            id="mobile-navigation"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-40 flex flex-col pt-28 px-6 pb-10 overflow-y-auto"
+            style={{
+              background: 'linear-gradient(180deg, rgba(12, 12, 14, 0.92) 0%, rgba(18, 18, 22, 0.96) 100%)',
+              backdropFilter: 'blur(32px) saturate(200%)',
+              WebkitBackdropFilter: 'blur(32px) saturate(200%)',
+            }}
           >
-            {/* Subtle ambient glow */}
-            <motion.div
-              animate={{ scale: [1, 1.1, 1], opacity: [0.08, 0.14, 0.08] }}
-              transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute -top-20 -right-20 w-[300px] h-[300px] rounded-full pointer-events-none"
-              style={{ background: 'radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 65%)' }}
-            />
-
-            {/* Menu Links */}
-            <div className="flex flex-col justify-center flex-grow gap-1 relative z-10 my-auto">
+            <div className="flex flex-col justify-center flex-grow gap-3 relative z-10 my-auto max-w-sm mx-auto w-full">
               {navLinks.map((link, i) => (
                 <motion.button
                   key={link.id}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.05 + i * 0.04, duration: 0.4 }}
                   onClick={() => {
                     scrollToSection(link.id)
                     setMobileOpen(false)
                   }}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.04, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                  className="group flex items-baseline gap-4 py-4 border-b border-white/[0.04] text-[#86868b] hover:text-white transition-all duration-300 text-left cursor-pointer"
+                  className="group flex items-center justify-between p-4 rounded-2xl border text-left cursor-pointer transition-all duration-300"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)',
+                    backdropFilter: 'blur(16px)',
+                    border: '1px solid rgba(255, 255, 255, 0.15)',
+                    boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.2)',
+                  }}
                 >
-                  <span className="text-[11px] font-mono text-white/15 group-hover:text-white/40 transition-colors duration-300 tabular-nums">
-                    0{i + 1}
-                  </span>
                   <span
-                    className="text-2xl font-semibold tracking-[-0.02em] group-hover:translate-x-2 transition-transform duration-300"
+                    className="text-lg font-bold tracking-tight text-[#f5f5f7] group-hover:text-white"
                     style={{ fontFamily: 'var(--font-space-grotesk)' }}
                   >
                     {link.label}
+                  </span>
+                  <span className="text-xs font-mono text-white/30 group-hover:text-amber-400 transition-colors">
+                    0{i + 1}
                   </span>
                 </motion.button>
               ))}
             </div>
 
-            {/* Footer with CV and Social Media */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-              className="mt-auto pt-6 border-t border-white/[0.04] flex flex-col gap-5 relative z-10"
-            >
+            <div className="mt-auto pt-6 border-t border-white/10 flex flex-col gap-4 relative z-10 max-w-sm mx-auto w-full">
               <a
                 href="https://drive.google.com/file/d/1EZ5gjktT6Llwpk4J7O76dCddTry4_V5c/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 py-3 text-[13px] font-medium border border-white/[0.08] bg-white/[0.03] rounded-xl hover:bg-white/[0.06] hover:border-white/[0.15] transition-all duration-300 group"
+                className="w-full flex items-center justify-center gap-2 py-3.5 text-xs font-bold text-[#f5f5f7] rounded-2xl shadow-lg"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.04) 100%)',
+                  backdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255, 255, 255, 0.22)',
+                  boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.3)',
+                }}
               >
-                <Download size={13} className="text-[#86868b] group-hover:text-white transition-colors duration-300" />
-                Download CV
+                <Download size={14} className="text-amber-400" />
+                Download Resume (PDF)
               </a>
 
-              {/* Social Icons row */}
               <div className="flex items-center justify-center gap-3">
-                <span className="text-[10px] text-white/20 tracking-[0.15em] uppercase">Follow</span>
-                <div className="h-px w-5 bg-white/[0.06]" />
                 {[
-                  { Icon: GitHubIcon, label: 'GitHub', href: 'https://github.com/TricQs' },
-                  { Icon: LinkedInIcon, label: 'LinkedIn', href: 'https://www.linkedin.com/in/ferdinandaryaw/' },
-                  { Icon: InstagramIcon, label: 'Instagram', href: 'https://www.instagram.com/ferndaryzt/' },
+                  { Icon: GitHubIcon, label: 'GitHub Profile', href: 'https://github.com/TricQs' },
+                  { Icon: LinkedInIcon, label: 'LinkedIn Profile', href: 'https://www.linkedin.com/in/ferdinandaryaw/' },
+                  { Icon: InstagramIcon, label: 'Instagram Profile', href: 'https://www.instagram.com/ferndaryzt/' },
                 ].map((social) => (
                   <a
                     key={social.label}
@@ -228,13 +261,17 @@ export default function Navbar() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="w-9 h-9 border border-white/[0.06] rounded-xl flex items-center justify-center text-[#86868b] hover:text-white hover:border-white/20 hover:bg-white/[0.04] transition-all duration-300"
+                    className="w-10 h-10 rounded-xl flex items-center justify-center text-[#a1a1a6] hover:text-[#f5f5f7] transition-all"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)',
+                      border: '1px solid rgba(255, 255, 255, 0.15)',
+                    }}
                   >
-                    <social.Icon size={14} />
+                    <social.Icon size={15} />
                   </a>
                 ))}
               </div>
-            </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

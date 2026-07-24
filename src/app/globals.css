@@ -4,15 +4,19 @@
 
 /* ───── Design Tokens ───── */
 :root {
-  --bg-primary: #060606;
-  --bg-secondary: #0a0a0a;
-  --bg-elevated: #111111;
+  --bg-primary: #0c0c0e;
+  --bg-secondary: #121216;
+  --bg-elevated: #18181f;
   --accent: #f5f5f7;
+  --text-secondary: #a1a1a6;
   --muted: #86868b;
   --muted-soft: #6e6e73;
-  --glass-bg: rgba(255, 255, 255, 0.02);
-  --glass-border: rgba(255, 255, 255, 0.06);
-  --glow-white: rgba(255, 255, 255, 0.04);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --card-border: rgba(255, 255, 255, 0.14);
+  --card-border-hover: rgba(255, 255, 255, 0.28);
+  --card-surface: rgba(255, 255, 255, 0.03);
+  --glow-white: rgba(255, 255, 255, 0.06);
   --font-grotesk: var(--font-space-grotesk), sans-serif;
   --font-outfit: var(--font-outfit), sans-serif;
 
@@ -27,6 +31,7 @@
   --space-10: 5rem;    /* 80px */
   --space-12: 6rem;    /* 96px */
   --space-16: 8rem;    /* 128px */
+  --space-20: 10rem;   /* 160px */
 
   /* Radius system */
   --radius-sm: 8px;
@@ -40,14 +45,14 @@
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.25);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
-  --shadow-glow: 0 0 40px rgba(255, 255, 255, 0.03);
+  --shadow-glow: 0 0 40px rgba(255, 255, 255, 0.04);
 
   /* Transition system */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
-  --duration-fast: 200ms;
-  --duration-normal: 300ms;
-  --duration-slow: 500ms;
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
 }
 
 /* ───── Base Resets ───── */
@@ -75,22 +80,23 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   letter-spacing: -0.011em;
-  line-height: 1.6;
+  line-height: 1.65;
+  font-size: 15px;
 }
 
 /* ───── Custom Scrollbar ───── */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
   background: var(--bg-primary);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 /* ───── Grain Texture ───── */
@@ -104,7 +110,7 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px 256px;
-  opacity: 0.018;
+  opacity: 0.015;
   pointer-events: none;
   z-index: 9998;
   animation: grain 8s steps(10) infinite;
@@ -123,7 +129,7 @@ body::before {
   90% { transform: translate(-2%, 4%); }
 }
 
-/* ───── Glass Utility ───── */
+/* ───── Glass Utilities ───── */
 .glass {
   background: var(--glass-bg);
   backdrop-filter: blur(16px) saturate(180%);
@@ -131,177 +137,54 @@ body::before {
   border: 1px solid var(--glass-border);
 }
 
-/* ───── Grid Overlay ───── */
-.grid-overlay {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-  background-size: 80px 80px;
+/* Apple iOS Liquid Glass Utility */
+.glass-liquid {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.03) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35), 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.card-liquid {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2), 0 12px 35px rgba(0, 0, 0, 0.35);
+  transition: all var(--duration-normal) var(--ease-out-expo);
+}
+
+.card-liquid:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 16px 45px rgba(0, 0, 0, 0.45);
 }
 
 /* ───── Text Gradient ───── */
 .text-gradient {
-  background: linear-gradient(180deg, #f5f5f7 0%, #86868b 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #b0b0b8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-}
-
-.text-gradient-accent {
-  background: linear-gradient(180deg, #f5f5f7 0%, #b0b0b5 40%, #86868b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* ───── Animated Shimmer Text ───── */
-.text-shimmer {
-  background: linear-gradient(
-    90deg,
-    #86868b 0%,
-    #f5f5f7 25%,
-    #b0b0b5 50%,
-    #f5f5f7 75%,
-    #86868b 100%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmer 4s linear infinite;
-}
-
-@keyframes shimmer {
-  0% { background-position: 200% center; }
-  100% { background-position: -200% center; }
-}
-
-/* ───── Animated Gradient Border Card ───── */
-.card-glow {
-  position: relative;
-}
-.card-glow::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent 50%, rgba(255,255,255,0.03));
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-  transition: opacity var(--duration-slow) ease;
-  opacity: 0;
-}
-.card-glow:hover::before {
-  opacity: 1;
-}
-
-/* ───── Floating animation ───── */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-8px); }
-}
-.animate-float {
-  animation: float 4s ease-in-out infinite;
-}
-
-/* ───── Pulse glow ───── */
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(255,255,255,0.03); }
-  50%       { box-shadow: 0 0 40px rgba(255,255,255,0.08), 0 0 80px rgba(255,255,255,0.03); }
-}
-.animate-pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
-}
-
-/* ───── Spin slow ───── */
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-.animate-spin-slow {
-  animation: spin-slow 20s linear infinite;
 }
 
 /* ───── Section Spacing (8px system) ───── */
 .section-padding {
-  padding-top: var(--space-10);
-  padding-bottom: var(--space-10);
+  padding-top: var(--space-12);
+  padding-bottom: var(--space-12);
 }
 
 @media (min-width: 768px) {
   .section-padding {
-    padding-top: var(--space-16);
-    padding-bottom: var(--space-16);
+    padding-top: var(--space-20);
+    padding-bottom: var(--space-20);
   }
 }
 
-/* ───── Magnetic Button Base ───── */
-.magnetic-btn {
-  position: relative;
-  overflow: hidden;
-  transition: transform var(--duration-normal) var(--ease-out-expo);
-}
-
-.magnetic-btn::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.04);
-  opacity: 0;
-  transition: opacity var(--duration-normal) ease;
-}
-
-.magnetic-btn:hover::after {
-  opacity: 1;
-}
-
-/* ───── Glow Effect ───── */
-.glow-white {
-  box-shadow: var(--shadow-glow);
-}
-
-.glow-white-strong {
-  box-shadow: 0 0 60px rgba(255, 255, 255, 0.06), 0 0 120px rgba(255, 255, 255, 0.03);
-}
-
-/* ───── Links ───── */
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-/* ───── Selection ───── */
-::selection {
-  background: rgba(255, 255, 255, 0.12);
-  color: #f5f5f7;
-}
-
-/* ───── Input base ───── */
-input, textarea {
-  background: transparent;
-  outline: none;
-  color: inherit;
-  font-family: inherit;
-}
-
-input::placeholder, textarea::placeholder {
-  color: var(--muted-soft);
-}
-
-/* ───── Focus Ring ───── */
-:focus-visible {
-  outline: 2px solid rgba(255, 255, 255, 0.2);
-  outline-offset: 2px;
-  border-radius: var(--radius-sm);
-}
-
-/* ───── Section Divider Utility ───── */
+/* ───── Crisp Section Divider ───── */
 .section-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
 }
