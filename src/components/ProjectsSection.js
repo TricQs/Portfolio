@@ -1,8 +1,8 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useRef, useState, useMemo } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
-import { ExternalLink, GitBranch, PlayCircle, Layers, Sparkles } from 'lucide-react'
+import { ExternalLink, GitBranch, PlayCircle, Layers } from 'lucide-react'
 import Card3D from './Card3D'
 import Magnetic from './Magnetic'
 
@@ -142,9 +142,11 @@ export default function ProjectsSection() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
   const [activeCategory, setActiveCategory] = useState('All')
 
-  const filteredProjects = activeCategory === 'All'
-    ? projects
-    : projects.filter(p => p.filterCategory === activeCategory)
+  const filteredProjects = useMemo(() => {
+    return activeCategory === 'All'
+      ? projects
+      : projects.filter(p => p.filterCategory === activeCategory)
+  }, [activeCategory])
 
   return (
     <section
@@ -215,19 +217,18 @@ export default function ProjectsSection() {
           </motion.div>
         </div>
 
-        {/* Interactive 3D Projects Grid with Smooth Layout Transitions */}
-        <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* High-Performance 60fps Filtered Projects Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project, i) => (
+            {filteredProjects.map((project) => (
               <motion.div
                 key={project.number}
-                layout
-                initial={{ opacity: 0, scale: 0.94, y: 15 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.94, y: 15 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1], delay: i * 0.04 }}
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.96 }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
               >
-                <Card3D maxRotate={10} className="h-full">
+                <Card3D maxRotate={8} className="h-full">
                   <article className="group card-liquid rounded-2xl p-6 flex flex-col relative overflow-hidden h-full">
                     {/* Top Ambient Glow Bar */}
                     <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${project.gradient}`} />
@@ -310,7 +311,7 @@ export default function ProjectsSection() {
               </motion.div>
             ))}
           </AnimatePresence>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

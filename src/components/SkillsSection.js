@@ -96,14 +96,6 @@ export default function SkillsSection() {
             className="flex items-center gap-3 w-full md:w-auto"
           >
             <div className="relative flex-1 md:w-72 group">
-              <Search
-                size={15}
-                className={`absolute left-3.5 top-1/2 -translate-y-1/2 transition-all duration-300 pointer-events-none ${
-                  searchQuery
-                    ? 'text-white opacity-100 scale-105'
-                    : 'text-[#6e6e73] opacity-60 group-hover:text-white group-hover:opacity-100 group-focus-within:text-white group-focus-within:opacity-100'
-                }`}
-              />
               <input
                 type="text"
                 placeholder="Search technologies..."
@@ -115,10 +107,18 @@ export default function SkillsSection() {
                     : 'text-[#6e6e73] border-white/10 opacity-60 placeholder-[#6e6e73] hover:border-white/20 hover:text-white hover:opacity-100 hover:placeholder-white/60 focus:border-white/30 focus:text-white focus:opacity-100 focus:bg-white/[0.06]'
                 }`}
               />
+              <Search
+                size={15}
+                className={`absolute left-3.5 top-1/2 -translate-y-1/2 z-10 transition-all duration-300 pointer-events-none ${
+                  searchQuery
+                    ? 'text-white opacity-100 scale-105'
+                    : 'text-[#6e6e73] opacity-60 group-hover:text-white group-hover:opacity-100 group-focus-within:text-white group-focus-within:opacity-100'
+                }`}
+              />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-[#86868b] hover:text-white hover:bg-white/10 rounded-full transition-colors cursor-pointer"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 z-10 p-1 text-[#86868b] hover:text-white hover:bg-white/10 rounded-full transition-colors cursor-pointer"
                   aria-label="Clear search input"
                 >
                   <X size={13} />
