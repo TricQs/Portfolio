@@ -38,12 +38,20 @@ export default function ExperienceSection() {
     >
       <div className="absolute top-0 left-0 right-0 section-divider" />
 
+      {/* Ambient Background Glow */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+        <div
+          className="absolute top-1/4 left-0 w-[500px] h-[400px] rounded-full opacity-[0.06] blur-3xl"
+          style={{ background: 'radial-gradient(circle, rgba(245,158,11,0.25) 0%, transparent 70%)' }}
+        />
+      </div>
+
       <div className="max-w-6xl mx-auto px-6 md:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mb-16"
         >
           <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#86868b] mb-2">
@@ -83,8 +91,9 @@ export default function ExperienceSection() {
                 </div>
 
                 {/* 3D Timeline Stage Card */}
+                <motion.div whileHover={{ y: -3 }} transition={{ type: 'spring', stiffness: 400, damping: 28 }}>
                 <Card3D maxRotate={8}>
-                  <div className="border border-white/10 hover:border-white/20 rounded-2xl p-7 md:p-8 bg-gradient-to-br from-white/[0.03] to-white/[0.005] backdrop-blur-md transition-all duration-300">
+                  <div className="border border-white/10 hover:border-white/20 rounded-2xl p-7 md:p-8 bg-gradient-to-br from-white/[0.03] to-white/[0.005] backdrop-blur-md transition-[border-color,background] duration-300">
                     <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
                       <div>
                         <div className="flex items-center gap-3 flex-wrap">
@@ -147,6 +156,7 @@ export default function ExperienceSection() {
                     )}
                   </div>
                 </Card3D>
+                </motion.div>
               </motion.div>
             ))}
           </div>

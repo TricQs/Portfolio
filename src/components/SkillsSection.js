@@ -101,18 +101,18 @@ export default function SkillsSection() {
                 placeholder="Search technologies..."
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                className={`w-full pl-10 pr-9 py-2.5 rounded-xl border bg-white/[0.03] text-xs transition-all duration-300 backdrop-blur-md focus:outline-none ${
+                className={`w-full pl-10 pr-9 py-2.5 rounded-xl border text-xs transition-all duration-300 backdrop-blur-md focus:outline-none bg-white/[0.03] ${
                   searchQuery
-                    ? 'text-white border-white/30 bg-white/[0.06] opacity-100 font-medium'
-                    : 'text-[#6e6e73] border-white/10 opacity-60 placeholder-[#6e6e73] hover:border-white/20 hover:text-white hover:opacity-100 hover:placeholder-white/60 focus:border-white/30 focus:text-white focus:opacity-100 focus:bg-white/[0.06]'
+                    ? 'text-white border-purple-500/50 bg-white/[0.06] font-medium shadow-[0_0_24px_rgba(168,85,247,0.2)]'
+                    : 'text-[#f5f5f7] border-white/15 placeholder-[#a1a1a6] hover:border-white/30 hover:placeholder-white/90 focus:border-purple-500/50 focus:bg-white/[0.06] focus:shadow-[0_0_24px_rgba(168,85,247,0.2)]'
                 }`}
               />
               <Search
                 size={15}
                 className={`absolute left-3.5 top-1/2 -translate-y-1/2 z-10 transition-all duration-300 pointer-events-none ${
                   searchQuery
-                    ? 'text-white opacity-100 scale-105'
-                    : 'text-[#6e6e73] opacity-60 group-hover:text-white group-hover:opacity-100 group-focus-within:text-white group-focus-within:opacity-100'
+                    ? 'text-purple-400 scale-105'
+                    : 'text-[#a1a1a6] group-hover:text-white group-focus-within:text-purple-400'
                 }`}
               />
               {searchQuery && (

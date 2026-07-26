@@ -85,20 +85,19 @@ export default function Navbar() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          mobileOpen
-            ? 'py-4 border-b border-white/10 bg-[#0c0c0e]/95 backdrop-blur-2xl'
-            : scrolled
-              ? 'py-3.5 border-b border-white/15 shadow-[0_10px_30px_rgba(0,0,0,0.4)]'
-              : 'py-5 border-b border-transparent bg-transparent'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-[padding,border-color,background,box-shadow] duration-300 ${mobileOpen
+          ? 'py-4 border-b border-white/10 bg-[#0c0c0e]/95 backdrop-blur-2xl'
+          : scrolled
+            ? 'py-3.5 border-b border-white/15 shadow-[0_10px_30px_rgba(0,0,0,0.4)]'
+            : 'py-5 border-b border-transparent bg-transparent'
+          }`}
         style={
           scrolled && !mobileOpen
             ? {
-                background: 'linear-gradient(135deg, rgba(18, 18, 22, 0.8) 0%, rgba(12, 12, 14, 0.88) 100%)',
-                backdropFilter: 'blur(24px) saturate(180%)',
-                WebkitBackdropFilter: 'blur(24px) saturate(180%)',
-              }
+              background: 'linear-gradient(135deg, rgba(18, 18, 22, 0.8) 0%, rgba(12, 12, 14, 0.88) 100%)',
+              backdropFilter: 'blur(24px) saturate(180%)',
+              WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+            }
             : {}
         }
       >
@@ -136,11 +135,10 @@ export default function Navbar() {
                 onClick={() => handleNavClick(link.id)}
                 whileTap={{ scaleX: 1.14, scaleY: 0.86 }}
                 transition={{ type: 'spring', stiffness: 500, damping: 14 }}
-                className={`relative px-3.5 py-1.5 text-xs font-semibold transition-colors duration-300 rounded-full cursor-pointer select-none ${
-                  activeSection === link.id
-                    ? 'text-[#0c0c0e]'
-                    : 'text-[#a1a1a6] hover:text-[#f5f5f7]'
-                }`}
+                className={`relative px-3.5 py-1.5 text-xs font-semibold transition-colors duration-300 rounded-full cursor-pointer select-none ${activeSection === link.id
+                  ? 'text-[#0c0c0e]'
+                  : 'text-[#a1a1a6] hover:text-[#f5f5f7]'
+                  }`}
               >
                 {activeSection === link.id && (
                   <motion.div
@@ -161,12 +159,12 @@ export default function Navbar() {
           {/* Resume CTA Button with Slime Hold Animation */}
           <div className="hidden md:flex items-center">
             <motion.a
-              href="https://drive.google.com/file/d/1EZ5gjktT6Llwpk4J7O76dCddTry4_V5c/view?usp=sharing"
+              href="https://drive.google.com/file/d/1KvDJ4PDQWPXYdr3xumVfAmV3xaYX2YOA/view?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
               whileTap={{ scaleX: 1.14, scaleY: 0.86 }}
               transition={{ type: 'spring', stiffness: 700, damping: 12, mass: 0.3 }}
-              className="flex items-center gap-2 px-5 py-2 text-xs font-semibold rounded-full text-[#f5f5f7] hover:scale-105 transition-all duration-300"
+              className="flex items-center gap-2 px-5 py-2 text-xs font-semibold rounded-full text-[#f5f5f7] hover:scale-105 transition-transform duration-300"
               style={{
                 background: 'linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.03) 100%)',
                 backdropFilter: 'blur(16px) saturate(180%)',
@@ -176,14 +174,14 @@ export default function Navbar() {
               }}
             >
               <Download size={13} className="text-amber-400" />
-              Resume
+              CV
             </motion.a>
           </div>
 
           {/* Morphing Apple Liquid Glass Hamburger Button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden w-10 h-10 rounded-full flex flex-col items-center justify-center gap-1.5 focus:outline-none transition-all duration-300 cursor-pointer"
+            className="md:hidden w-10 h-10 rounded-full flex items-center justify-center focus:outline-none transition-[background,border-color] duration-300 cursor-pointer"
             style={{
               background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.04) 100%)',
               backdropFilter: 'blur(20px) saturate(180%)',
@@ -194,21 +192,23 @@ export default function Navbar() {
             aria-label="Toggle navigation menu"
             aria-expanded={mobileOpen}
           >
-            <motion.span
-              animate={mobileOpen ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="w-4 h-0.5 bg-[#f5f5f7] rounded-full block transform-origin-center"
-            />
-            <motion.span
-              animate={mobileOpen ? { opacity: 0, scale: 0 } : { opacity: 1, scale: 1 }}
-              transition={{ duration: 0.2 }}
-              className="w-4 h-0.5 bg-[#f5f5f7] rounded-full block"
-            />
-            <motion.span
-              animate={mobileOpen ? { rotate: -45, y: -5 } : { rotate: 0, y: 0 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="w-4 h-0.5 bg-[#f5f5f7] rounded-full block transform-origin-center"
-            />
+            <div className="relative w-4 h-4 flex items-center justify-center">
+              <motion.span
+                animate={mobileOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -5 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute w-4 h-0.5 bg-[#f5f5f7] rounded-full block"
+              />
+              <motion.span
+                animate={mobileOpen ? { opacity: 0, scale: 0 } : { opacity: 1, scale: 1 }}
+                transition={{ duration: 0.2 }}
+                className="absolute w-4 h-0.5 bg-[#f5f5f7] rounded-full block"
+              />
+              <motion.span
+                animate={mobileOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 5 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute w-4 h-0.5 bg-[#f5f5f7] rounded-full block"
+              />
+            </div>
           </button>
         </div>
       </motion.header>
@@ -240,7 +240,7 @@ export default function Navbar() {
                     handleNavClick(link.id)
                     setMobileOpen(false)
                   }}
-                  className="group flex items-center justify-between p-4 rounded-2xl border text-left cursor-pointer transition-all duration-300"
+                  className="group flex items-center justify-between p-4 rounded-2xl border text-left cursor-pointer transition-[border-color,background] duration-300"
                   style={{
                     background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)',
                     backdropFilter: 'blur(16px)',
@@ -263,7 +263,7 @@ export default function Navbar() {
 
             <div className="mt-auto pt-6 border-t border-white/10 flex flex-col gap-4 relative z-10 max-w-sm mx-auto w-full">
               <a
-                href="https://drive.google.com/file/d/1EZ5gjktT6Llwpk4J7O76dCddTry4_V5c/view?usp=sharing"
+                href="https://drive.google.com/file/d/1KvDJ4PDQWPXYdr3xumVfAmV3xaYX2YOA/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-2 py-3.5 text-xs font-bold text-[#f5f5f7] rounded-2xl shadow-lg"
@@ -275,7 +275,7 @@ export default function Navbar() {
                 }}
               >
                 <Download size={14} className="text-amber-400" />
-                Download Resume (PDF)
+                Download CV (PDF)
               </a>
 
               <div className="flex items-center justify-center gap-3">

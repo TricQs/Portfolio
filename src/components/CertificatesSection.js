@@ -143,7 +143,7 @@ export default function CertificatesSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mb-16"
         >
           <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#a1a1a6] mb-2">
@@ -168,7 +168,7 @@ export default function CertificatesSection() {
               transition={{ delay: index * 0.06, duration: 0.6 }}
             >
               <Card3D maxRotate={10} className="h-full">
-                <article className="group border border-white/15 hover:border-white/30 rounded-2xl overflow-hidden transition-all duration-300 flex flex-col h-full bg-white/[0.025] hover:bg-white/[0.05] shadow-md">
+                <article className="group border border-white/15 hover:border-white/30 rounded-2xl overflow-hidden transition-[border-color,background,box-shadow] duration-300 flex flex-col h-full bg-white/[0.025] hover:bg-white/[0.05] shadow-md">
                   {/* Thumbnail Area */}
                   <div
                     className="relative aspect-[16/10] flex items-center justify-center p-4 border-b border-white/10 overflow-hidden select-none cursor-pointer group/img bg-black/40"
@@ -282,13 +282,15 @@ export default function CertificatesSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             onClick={() => setActiveLightbox(null)}
             className="fixed inset-0 z-50 bg-black/92 backdrop-blur-2xl p-6 flex items-center justify-center cursor-zoom-out"
           >
             <motion.div
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.9 }}
+              initial={{ scale: 0.92, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.92, opacity: 0 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
               className="relative max-w-4xl w-full aspect-[4/3] rounded-2xl overflow-hidden border border-white/20 bg-[#0c0c0e] shadow-2xl"
               onClick={e => e.stopPropagation()}
             >

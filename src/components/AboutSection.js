@@ -20,12 +20,24 @@ export default function AboutSection() {
     <section id="about" ref={ref} className="section-padding relative">
       <div className="absolute top-0 left-0 right-0 section-divider" />
 
+      {/* Ambient Background Glow */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+        <div
+          className="absolute top-1/3 right-0 w-[600px] h-[400px] rounded-full opacity-[0.07] blur-3xl"
+          style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.25) 0%, transparent 70%)' }}
+        />
+        <div
+          className="absolute bottom-0 left-0 w-[500px] h-[300px] rounded-full opacity-[0.05] blur-3xl"
+          style={{ background: 'radial-gradient(circle, rgba(245,158,11,0.2) 0%, transparent 70%)' }}
+        />
+      </div>
+
       <div className="max-w-6xl mx-auto px-6 md:px-8 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mb-16"
         >
           <div className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#86868b] mb-2">
@@ -79,10 +91,11 @@ export default function AboutSection() {
                 key={stat.label}
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: index * 0.08, duration: 0.6 }}
+                whileHover={{ y: -3 }}
+                transition={{ delay: index * 0.08, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               >
                 <Card3D maxRotate={12} className="h-full">
-                  <div className={`border border-white/[0.08] hover:border-white/20 rounded-2xl p-6 bg-gradient-to-b ${stat.color} hover:bg-white/[0.04] transition-all duration-300 flex flex-col justify-between h-full backdrop-blur-sm`}>
+                  <div className={`border border-white/[0.08] hover:border-white/20 rounded-2xl p-6 bg-gradient-to-b ${stat.color} hover:bg-white/[0.04] transition-[border-color,background] duration-300 flex flex-col justify-between h-full backdrop-blur-sm`}>
                     <div className="w-10 h-10 rounded-xl flex items-center justify-center border border-white/10 bg-white/[0.04] text-[#f5f5f7] mb-5 shadow-sm">
                       <stat.icon size={18} strokeWidth={1.75} />
                     </div>

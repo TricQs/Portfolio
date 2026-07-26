@@ -73,7 +73,7 @@ export default function PersonalInfoSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mb-16"
         >
           <span className="text-[11px] font-medium tracking-[0.15em] uppercase text-[#86868b]">
@@ -95,7 +95,8 @@ export default function PersonalInfoSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.06, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="group flex items-start gap-4 border border-white/[0.06] rounded-2xl p-5 hover:border-white/[0.12] hover:bg-white/[0.02] transition-all duration-400"
+              whileHover={{ y: -2 }}
+              className="group flex items-start gap-4 border border-white/[0.06] rounded-2xl p-5 hover:border-white/[0.12] hover:bg-white/[0.02] transition-[border-color,background] duration-300"
               style={{ background: 'rgba(255,255,255,0.015)' }}
             >
               {/* Icon */}
@@ -137,7 +138,7 @@ export default function PersonalInfoSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.3, duration: 0.6 }}
+          transition={{ delay: 0.3, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mt-24 mb-12"
         >
           <span className="text-[11px] font-medium tracking-[0.15em] uppercase text-[#86868b]">
@@ -161,7 +162,8 @@ export default function PersonalInfoSection() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.35 + i * 0.06, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="group border border-white/[0.06] rounded-2xl p-5 hover:border-white/[0.12] hover:bg-white/[0.02] transition-all duration-400 flex flex-col justify-between"
+                whileHover={{ y: -2 }}
+                className="group border border-white/[0.06] rounded-2xl p-5 hover:border-white/[0.12] hover:bg-white/[0.02] transition-[border-color,background] duration-300 flex flex-col justify-between"
                 style={{ background: 'rgba(255,255,255,0.015)' }}
               >
                 <div>

@@ -80,13 +80,13 @@ export default function HeroSection() {
           >
             {/* Status Beacon */}
             <motion.div variants={item}>
-                <span className="inline-flex items-center gap-2.5 px-4 py-2 text-[11px] font-medium tracking-[0.1em] uppercase rounded-full text-emerald-400 border border-emerald-500/30 bg-emerald-500/10 backdrop-blur-md shadow-[0_0_20px_rgba(16,185,129,0.15)]">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
-                  </span>
-                  Available for Junior &amp; Entry-Level Roles
+              <span className="inline-flex items-center gap-2.5 px-4 py-2 text-[11px] font-medium tracking-[0.1em] uppercase rounded-full text-emerald-400 border border-emerald-500/30 bg-emerald-500/10 backdrop-blur-md shadow-[0_0_20px_rgba(16,185,129,0.15)]">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
                 </span>
+                Available for Junior &amp; Entry-Level Roles
+              </span>
             </motion.div>
 
             {/* Keynote Headline */}
@@ -119,7 +119,7 @@ export default function HeroSection() {
               <Magnetic strength={0.25}>
                 <button
                   onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="group relative inline-flex items-center gap-2.5 px-7 py-3.5 bg-[#f5f5f7] text-[#060606] text-[13px] font-semibold rounded-full hover:bg-white transition-all duration-300 shadow-[0_0_35px_rgba(255,255,255,0.2)] cursor-pointer overflow-hidden"
+                  className="group relative inline-flex items-center gap-2.5 px-7 py-3.5 bg-[#f5f5f7] text-[#060606] text-[13px] font-semibold rounded-full hover:bg-white transition-[background,box-shadow] duration-300 shadow-[0_0_35px_rgba(255,255,255,0.2)] cursor-pointer overflow-hidden"
                 >
                   <span className="relative z-10">Explore Work</span>
                   <ChevronRight size={14} strokeWidth={2.5} className="relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
@@ -128,13 +128,13 @@ export default function HeroSection() {
 
               <Magnetic strength={0.2}>
                 <a
-                  href="https://drive.google.com/file/d/1EZ5gjktT6Llwpk4J7O76dCddTry4_V5c/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1KvDJ4PDQWPXYdr3xumVfAmV3xaYX2YOA/view?usp=drive_link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 px-6 py-3.5 border border-white/20 bg-white/[0.04] text-[#f5f5f7] text-[13px] font-medium rounded-full hover:border-white/40 hover:bg-white/[0.08] transition-all duration-300 backdrop-blur-sm"
+                  className="group inline-flex items-center gap-2 px-6 py-3.5 border border-white/20 bg-white/[0.04] text-[#f5f5f7] text-[13px] font-medium rounded-full hover:border-white/40 hover:bg-white/[0.08] transition-[border-color,background] duration-300 backdrop-blur-sm"
                 >
                   <Download size={14} strokeWidth={1.75} className="group-hover:-translate-y-0.5 transition-transform duration-300" />
-                  Resume (PDF)
+                  CV (PDF)
                 </a>
               </Magnetic>
 
@@ -148,7 +148,7 @@ export default function HeroSection() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.label}
-                      className="w-10 h-10 border border-white/15 rounded-xl flex items-center justify-center text-[#a1a1a6] hover:text-[#f5f5f7] hover:border-white/30 hover:bg-white/[0.08] transition-all duration-300 bg-white/[0.03]"
+                      className="w-10 h-10 border border-white/15 rounded-xl flex items-center justify-center text-[#a1a1a6] hover:text-[#f5f5f7] hover:border-white/30 hover:bg-white/[0.08] transition-[border-color,color,background] duration-300 bg-white/[0.03]"
                     >
                       <social.Icon size={15} />
                     </a>
@@ -189,6 +189,17 @@ export default function HeroSection() {
             className="relative lg:col-span-5 flex items-center justify-center pt-8 lg:pt-0 min-h-[440px] overflow-visible"
           >
             <div className="p-14 sm:p-20 rounded-full flex items-center justify-center relative overflow-visible">
+              {/* Breathing Radial Ambient Backdrop Aura */}
+              <motion.div
+                animate={{ scale: [0.95, 1.05, 0.95], opacity: [0.35, 0.6, 0.35] }}
+                transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut' }}
+                className="absolute w-[340px] h-[340px] sm:w-[420px] sm:h-[420px] rounded-full pointer-events-none gpu-layer"
+                style={{
+                  background: 'radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 60%, transparent 80%)',
+                  filter: 'blur(30px)',
+                }}
+              />
+
               {/* Outer Precision Glass Hairline Ring */}
               <div className="absolute w-[330px] h-[330px] sm:w-[410px] sm:h-[410px] rounded-full border border-white/15 pointer-events-none shadow-[0_0_40px_rgba(255,255,255,0.03)]" />
 
@@ -240,7 +251,7 @@ export default function HeroSection() {
                         ease: 'easeInOut',
                         delay: i * 0.2,
                       }}
-                      className="px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap flex items-center gap-2 hover:scale-105 transition-all duration-300 cursor-pointer text-[#f5f5f7] select-none"
+                      className="px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap flex items-center gap-2 hover:scale-105 transition-transform duration-300 cursor-pointer text-[#f5f5f7] select-none"
                       style={{
                         background: 'linear-gradient(135deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.03) 100%)',
                         backdropFilter: 'blur(20px) saturate(180%)',

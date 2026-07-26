@@ -9,6 +9,7 @@ export default function Card3D({ children, className = '', maxRotate = 8, glow =
   const [rotateY, setRotateY] = useState(0)
   const [glare, setGlare] = useState({ x: 50, y: 50, opacity: 0 })
   const [isTouch, setIsTouch] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
 
   useEffect(() => {
     setIsTouch('ontouchstart' in window || navigator.maxTouchPoints > 0)
@@ -34,30 +35,41 @@ export default function Card3D({ children, className = '', maxRotate = 8, glow =
     setGlare({ x: glareX, y: glareY, opacity: 0.12 })
   }
 
+  const handleMouseEnter = () => {
+    if (!isTouch) setIsHovered(true)
+  }
+
   const handleMouseLeave = () => {
     if (isTouch) return
     setRotateX(0)
     setRotateY(0)
     setGlare(prev => ({ ...prev, opacity: 0 }))
+    setIsHovered(false)
   }
 
   return (
     <motion.div
       ref={cardRef}
       onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       animate={{ rotateX, rotateY }}
-      transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-      style={{ transformStyle: 'preserve-3d', perspective: 1000 }}
+      transition={{ type: 'spring', stiffness: 400, damping: 28, mass: 0.5 }}
+      style={{
+        transformStyle: 'preserve-3d',
+        perspective: 1000,
+        willChange: isHovered ? 'transform' : 'auto',
+      }}
       className={`relative ${overflowHidden ? 'overflow-hidden' : ''} ${className}`}
     >
       {children}
 
       {glow && !isTouch && (
         <div
-          className="pointer-events-none absolute inset-0 transition-opacity duration-300 z-30"
+          className="pointer-events-none absolute inset-0 z-30"
           style={{
             opacity: glare.opacity,
+            transition: 'opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
             background: `radial-gradient(circle 250px at ${glare.x}% ${glare.y}%, rgba(255, 255, 255, 0.2), transparent 70%)`,
           }}
         />

@@ -54,7 +54,7 @@ export default function ApproachSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mb-16"
         >
           <span className="text-[11px] font-medium tracking-[0.15em] uppercase text-[#86868b]">
@@ -80,8 +80,8 @@ export default function ApproachSection() {
                 duration: 0.7,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              whileHover={{ y: -4, transition: { duration: 0.25 } }}
-              className="group relative border border-white/[0.06] rounded-2xl p-6 flex flex-col gap-5 cursor-default overflow-hidden hover:border-white/[0.12] transition-all duration-500"
+              whileHover={{ y: -4, transition: { type: 'spring', stiffness: 400, damping: 28 } }}
+              className="group relative border border-white/[0.06] rounded-2xl p-6 flex flex-col gap-5 cursor-default overflow-hidden hover:border-white/[0.12] transition-[border-color,background] duration-300"
               style={{ background: 'rgba(255,255,255,0.015)' }}
             >
               {/* Glow on hover */}

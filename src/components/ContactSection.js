@@ -77,7 +77,7 @@ export default function ContactSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mb-16 text-center"
         >
           <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#86868b] mb-2">
@@ -117,7 +117,7 @@ export default function ContactSection() {
                     value={form.name}
                     onChange={e => setForm({ ...form, name: e.target.value })}
                     placeholder="Jane Doe"
-                    className="w-full px-4 py-3.5 border border-white/10 rounded-xl text-sm text-[#f5f5f7] placeholder-[#86868b]/50 focus:border-white/30 focus:bg-white/[0.04] transition-all bg-white/[0.015]"
+                    className="w-full px-4 py-3.5 border border-white/10 rounded-xl text-sm text-[#f5f5f7] placeholder-[#86868b]/50 focus:border-white/35 focus:bg-white/[0.05] focus:shadow-[0_0_24px_rgba(255,255,255,0.08)] focus:outline-none transition-[border-color,background,box-shadow] duration-300 bg-white/[0.015]"
                   />
                 </div>
 
@@ -134,7 +134,7 @@ export default function ContactSection() {
                     value={form.email}
                     onChange={e => setForm({ ...form, email: e.target.value })}
                     placeholder="jane@company.com"
-                    className="w-full px-4 py-3.5 border border-white/10 rounded-xl text-sm text-[#f5f5f7] placeholder-[#86868b]/50 focus:border-white/30 focus:bg-white/[0.04] transition-all bg-white/[0.015]"
+                    className="w-full px-4 py-3.5 border border-white/10 rounded-xl text-sm text-[#f5f5f7] placeholder-[#86868b]/50 focus:border-white/35 focus:bg-white/[0.05] focus:shadow-[0_0_24px_rgba(255,255,255,0.08)] focus:outline-none transition-[border-color,background,box-shadow] duration-300 bg-white/[0.015]"
                   />
                 </div>
 
@@ -150,14 +150,14 @@ export default function ContactSection() {
                     value={form.message}
                     onChange={e => setForm({ ...form, message: e.target.value })}
                     placeholder="Hello Ferdinand, I'd like to discuss..."
-                    className="w-full px-4 py-3.5 border border-white/10 rounded-xl text-sm text-[#f5f5f7] placeholder-[#86868b]/50 focus:border-white/30 focus:bg-white/[0.04] transition-all resize-none bg-white/[0.015]"
+                    className="w-full px-4 py-3.5 border border-white/10 rounded-xl text-sm text-[#f5f5f7] placeholder-[#86868b]/50 focus:border-white/35 focus:bg-white/[0.05] focus:shadow-[0_0_24px_rgba(255,255,255,0.08)] focus:outline-none transition-[border-color,background,box-shadow] duration-300 resize-none bg-white/[0.015]"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={sending || sent}
-                  className={`w-full flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl text-sm font-bold transition-all duration-300 cursor-pointer ${
+                  className={`w-full flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl text-sm font-bold transition-[background,border-color,color,box-shadow] duration-300 cursor-pointer ${
                     sent
                       ? 'bg-emerald-500/10 border border-emerald-500/30 text-emerald-400'
                       : 'bg-[#f5f5f7] text-[#060606] hover:bg-white shadow-[0_0_30px_rgba(255,255,255,0.15)]'
@@ -196,7 +196,7 @@ export default function ContactSection() {
             <div className="space-y-4">
               {contactInfo.map((item) => (
                 <Card3D key={item.label} maxRotate={8}>
-                  <div className="flex items-center gap-4 p-4 rounded-xl border border-white/10 bg-white/[0.015] hover:border-white/20 transition-all">
+                  <div className="flex items-center gap-4 p-4 rounded-xl border border-white/10 bg-white/[0.015] hover:border-white/20 transition-[border-color,background] duration-300">
                     <div className="w-11 h-11 rounded-xl border border-white/10 flex items-center justify-center flex-shrink-0 bg-white/[0.03]">
                       <item.icon size={18} className="text-[#f5f5f7]" />
                     </div>
@@ -229,7 +229,7 @@ export default function ContactSection() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.label}
-                      className="w-11 h-11 border border-white/10 rounded-xl flex items-center justify-center hover:border-white/30 hover:bg-white/[0.06] transition-all text-[#86868b] hover:text-[#f5f5f7] bg-white/[0.02]"
+                      className="w-11 h-11 border border-white/10 rounded-xl flex items-center justify-center hover:border-white/30 hover:bg-white/[0.06] transition-[border-color,color,background] duration-300 text-[#86868b] hover:text-[#f5f5f7] bg-white/[0.02]"
                     >
                       <social.Icon size={16} />
                     </a>

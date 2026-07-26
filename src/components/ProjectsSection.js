@@ -220,13 +220,13 @@ export default function ProjectsSection() {
         {/* High-Performance 60fps Filtered Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => (
+            {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.number}
                 initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.96 }}
-                transition={{ duration: 0.2, ease: 'easeOut' }}
+                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1], delay: index * 0.04 }}
               >
                 <Card3D maxRotate={8} className="h-full">
                   <article className="group card-liquid rounded-2xl p-6 flex flex-col relative overflow-hidden h-full">

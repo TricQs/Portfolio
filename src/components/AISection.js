@@ -141,7 +141,7 @@ export default function AISection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mb-14"
         >
           <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#a1a1a6] mb-2">
@@ -167,7 +167,7 @@ export default function AISection() {
               <Card3D key={tool.id} maxRotate={10}>
                 <div
                   onClick={() => handleSimulate(tool)}
-                  className={`p-6 rounded-2xl border transition-all duration-300 cursor-pointer flex flex-col justify-between h-full relative overflow-hidden ${activeTool.id === tool.id
+                  className={`p-6 rounded-2xl border transition-[border-color,background,box-shadow] duration-300 cursor-pointer flex flex-col justify-between h-full relative overflow-hidden ${activeTool.id === tool.id
                     ? 'border-white/30 bg-white/[0.04] shadow-[0_0_30px_rgba(255,255,255,0.05)]'
                     : 'border-white/[0.08] bg-white/[0.015] hover:border-white/20 hover:bg-white/[0.03]'
                     }`}
@@ -211,8 +211,18 @@ export default function AISection() {
           {/* Simulated Terminal Output Sandbox (5 Cols) */}
           <div className="lg:col-span-5">
             <div className="border border-white/15 rounded-2xl bg-[#0a0a0c] overflow-hidden shadow-2xl backdrop-blur-xl">
-              {/* Terminal Titlebar */}
-              <div className="px-4 py-3 border-b border-white/10 bg-white/[0.03] flex items-center justify-between">
+              {/* Terminal Titlebar with Ambient Glow */}
+              <div
+                className="px-4 py-3 border-b border-white/10 bg-white/[0.03] flex items-center justify-between relative overflow-hidden"
+              >
+                {/* Active simulation ambient glow */}
+                <div
+                  className="absolute inset-0 pointer-events-none transition-opacity duration-500"
+                  style={{
+                    opacity: (isThinking || isStreaming) ? 0.15 : 0,
+                    background: `radial-gradient(ellipse at center, ${activeTool.color}40 0%, transparent 70%)`,
+                  }}
+                />
                 <div className="flex items-center gap-2">
                   <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
                   <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />

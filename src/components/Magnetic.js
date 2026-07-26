@@ -3,6 +3,8 @@
 import { useRef, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
+const APPLE_SPRING = { type: 'spring', stiffness: 400, damping: 28, mass: 0.5 }
+
 export default function Magnetic({ children, strength = 0.3, className = '', slime = true }) {
   const ref = useRef(null)
   const [position, setPosition] = useState({ x: 0, y: 0 })
@@ -30,7 +32,7 @@ export default function Magnetic({ children, strength = 0.3, className = '', sli
     return (
       <motion.div
         whileTap={slime ? { scaleX: 1.14, scaleY: 0.86 } : { scale: 0.96 }}
-        transition={{ type: 'spring', stiffness: 500, damping: 14, mass: 0.6 }}
+        transition={APPLE_SPRING}
         className={`inline-block ${className}`}
       >
         {children}
@@ -45,7 +47,7 @@ export default function Magnetic({ children, strength = 0.3, className = '', sli
       onMouseLeave={handleMouseLeave}
       animate={{ x: position.x, y: position.y }}
       whileTap={slime ? { scaleX: 1.14, scaleY: 0.86 } : { scale: 0.96 }}
-      transition={{ type: 'spring', stiffness: 500, damping: 14, mass: 0.6 }}
+      transition={APPLE_SPRING}
       className={`inline-block ${className}`}
     >
       {children}
