@@ -6,7 +6,6 @@ import { useState, useEffect } from 'react'
 export default function AnimatedGradientBackground({
   opacity = 1.0,
   blurAmount = '30px',
-  speed = 8,
 }) {
   const [isMobile, setIsMobile] = useState(false)
 
@@ -20,22 +19,22 @@ export default function AnimatedGradientBackground({
 
   const gradient = isMobile
     ? `radial-gradient(
-        ellipse 380% 110% at 50% 95%,
+        ellipse 380% 130% at 50% 95%,
         #ff5500 0%,
-        #ff0080 8%,
-        #7928ca 14%,
-        #0055ff 26%,
-        rgba(0, 85, 255, 0.18) 42%,
-        transparent 55%
+        #ff0080 12%,
+        #7928ca 20%,
+        #0055ff 30%,
+        rgba(0, 85, 255, 0.18) 46%,
+        transparent 58%
       )`
     : `radial-gradient(
-        ellipse 220% 120% at 50% 95%,
+        ellipse 220% 140% at 50% 102%,
         #ff5500 0%,
-        #ff0080 8%,
-        #7928ca 16%,
-        #0055ff 24%,
-        rgba(0, 85, 255, 0.18) 40%,
-        transparent 52%
+        #ff0080 15%,
+        #7928ca 21%,
+        #0055ff 28%,
+        rgba(0, 85, 255, 0.18) 42%,
+        transparent 56%
       )`
 
   return (
@@ -44,19 +43,11 @@ export default function AnimatedGradientBackground({
       style={{ opacity }}
       aria-hidden="true"
     >
-      {/* Single radial gradient from bottom center — with responsive aspect ratio */}
       <motion.div
-        animate={{
-          scaleY: [1, 1.04, 0.97, 1],
-          scaleX: [1, 1.02, 0.99, 1],
-          opacity: [0.85, 1, 0.9, 0.85],
-        }}
-        transition={{
-          duration: speed,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-        className="absolute -inset-[8%]"
+        initial={{ scaleY: 0.7, scaleX: 0.8, opacity: 0.35 }}
+        animate={{ scaleY: 1, scaleX: 1, opacity: 1 }}
+        transition={{ duration: 1, ease: [0.45, 0, 0.2, 1] }}
+        className="absolute -inset-[25%]"
         style={{
           background: gradient,
           filter: `blur(${blurAmount})`,
