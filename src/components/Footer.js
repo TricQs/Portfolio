@@ -59,17 +59,7 @@ export default function Footer() {
   }, [])
 
   return (
-    <footer
-      style={{
-        position: 'fixed',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        zIndex: 0,
-        background: 'var(--bg-secondary)',
-        minHeight: '70vh',
-      }}
-    >
+    <footer className="relative z-10 bg-transparent pt-16 pb-12 overflow-hidden">
       {/* Subtle background glow */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -92,7 +82,7 @@ export default function Footer() {
               className="text-4xl sm:text-5xl md:text-[3.5rem] lg:text-[4rem] font-bold leading-[0.98] tracking-[-0.03em]"
               style={{ fontFamily: 'var(--font-space-grotesk)' }}
             >
-              <span className="text-gradient">Ready to collaborate?</span>
+              <span className="text-gradient-gold">Ready to collaborate?</span>
               <br />
               <span className="text-[#f5f5f7]">Let&apos;s build together.</span>
             </motion.h2>
@@ -107,7 +97,7 @@ export default function Footer() {
                   onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                   whileTap={{ scaleX: 1.18, scaleY: 0.82 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 28 }}
-                  className="inline-flex items-center gap-2 mt-8 px-5 py-2.5 border border-white/[0.08] rounded-full text-xs sm:text-sm text-[#86868b] hover:text-[#f5f5f7] hover:border-white/20 hover:bg-white/[0.03] transition-[border-color,color,background] duration-300 group cursor-pointer"
+                  className="inline-flex items-center gap-2 mt-8 px-5 py-2.5 border border-[#d4a853]/15 rounded-full text-xs sm:text-sm text-[#a1a1a6] hover:text-[#d4a853] hover:border-[#d4a853]/30 hover:bg-[#d4a853]/5 transition-[border-color,color,background] duration-300 group cursor-pointer"
                   style={{ background: 'rgba(255,255,255,0.02)' }}
                 >
                   Contact Me
@@ -152,7 +142,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="w-8 h-8 border border-white/[0.08] rounded-lg flex items-center justify-center text-[#6e6e73] hover:text-[#f5f5f7] hover:border-white/20 transition-[border-color,color] duration-300 bg-white/[0.02]"
+                    className="w-8 h-8 border border-white/[0.08] rounded-lg flex items-center justify-center text-[#6e6e73] hover:text-[#d4a853] hover:border-[#d4a853]/25 transition-[border-color,color] duration-300 bg-white/[0.02]"
                   >
                     <social.Icon size={14} />
                   </a>

@@ -6,6 +6,7 @@ import { ExternalLink, FileText, ShieldCheck, Calendar, Check, X, ZoomIn, Award 
 import Image from 'next/image'
 import Card3D from './Card3D'
 import Magnetic from './Magnetic'
+import { GlassEffect } from './ui/liquid-glass'
 
 const certificates = [
   {
@@ -134,7 +135,6 @@ export default function CertificatesSection() {
       id="certificates"
       ref={ref}
       className="section-padding relative"
-      style={{ background: 'var(--bg-primary)' }}
     >
       <div className="absolute top-0 left-0 right-0 section-divider" />
 
@@ -147,7 +147,7 @@ export default function CertificatesSection() {
           className="mb-16"
         >
           <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#a1a1a6] mb-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#d4a853]" />
             05 — Verification &amp; Credentials
           </span>
           <h2
@@ -167,82 +167,84 @@ export default function CertificatesSection() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: index * 0.06, duration: 0.6 }}
             >
-              <Card3D maxRotate={10} className="h-full">
-                <article className="group border border-white/15 hover:border-white/30 rounded-2xl overflow-hidden transition-[border-color,background,box-shadow] duration-300 flex flex-col h-full bg-white/[0.025] hover:bg-white/[0.05] shadow-md">
-                  {/* Thumbnail Area */}
-                  <div
-                    className="relative aspect-[16/10] flex items-center justify-center p-4 border-b border-white/10 overflow-hidden select-none cursor-pointer group/img bg-black/40"
-                    onClick={() => setActiveLightbox(cert.image)}
-                  >
-                    <ImageWithFallback
-                      src={cert.image}
-                      alt={cert.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-contain p-2 group-hover/img:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2">
-                      <span className="p-3 rounded-full bg-white/15 backdrop-blur-md border border-white/30 text-white shadow-xl">
-                        <ZoomIn size={16} />
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Content Area */}
-                  <div className="p-6 flex flex-col flex-1">
-                    <div className="flex items-center justify-between text-[#a1a1a6] text-[11px] mb-3">
-                      <span className="flex items-center gap-1.5 font-semibold uppercase tracking-wider text-[#f5f5f7]">
-                        <ShieldCheck size={13} className="text-cyan-400" />
-                        {cert.issuer}
-                      </span>
-                      <span className="flex items-center gap-1 font-mono">
-                        <Calendar size={11} />
-                        {cert.date}
-                      </span>
-                    </div>
-
-                    <h3
-                      className="font-bold text-[#f5f5f7] text-base leading-snug mb-4 tracking-tight"
-                      style={{ fontFamily: 'var(--font-space-grotesk)' }}
+              <Card3D maxRotate={10} className="h-full rounded-2xl">
+                <GlassEffect className="rounded-2xl border border-white/15 h-full">
+                  <article className="group overflow-hidden flex flex-col h-full bg-transparent">
+                    {/* Thumbnail Area */}
+                    <div
+                      className="relative aspect-[16/10] flex items-center justify-center p-4 border-b border-white/10 overflow-hidden select-none cursor-pointer group/img bg-transparent"
+                      onClick={() => setActiveLightbox(cert.image)}
                     >
-                      {cert.title}
-                    </h3>
-
-                    {/* Learnings Bullet List */}
-                    <ul className="space-y-2 mb-6 flex-1 text-xs text-[#a1a1a6] leading-relaxed">
-                      {cert.learnings.map((l, idx) => (
-                        <li key={idx} className="flex items-start gap-2">
-                          <Check size={12} className="text-cyan-400 flex-shrink-0 mt-0.5" />
-                          <span>{l}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    {/* Interactive Actions */}
-                    <div className="flex items-center gap-3 pt-4 border-t border-white/10 mt-auto">
-                      {cert.verifyUrl && (
-                        <Magnetic strength={0.2} className="w-full">
-                          <a
-                            href={cert.verifyUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="w-full flex items-center justify-center gap-1.5 py-2.5 text-xs font-semibold rounded-xl bg-white/[0.06] border border-white/15 text-[#f5f5f7] hover:bg-white/[0.14] transition-all"
-                          >
-                            <ExternalLink size={13} /> Official Record
-                          </a>
-                        </Magnetic>
-                      )}
-                      <Magnetic strength={0.2} className="w-full">
-                        <button
-                          onClick={() => setActiveLightbox(cert.image)}
-                          className="w-full flex items-center justify-center gap-1.5 py-2.5 text-xs font-semibold rounded-xl border border-white/15 text-[#a1a1a6] hover:text-[#f5f5f7] hover:bg-white/[0.06] transition-all cursor-pointer"
-                        >
-                          <FileText size={13} /> View Full Image
-                        </button>
-                      </Magnetic>
+                      <ImageWithFallback
+                        src={cert.image}
+                        alt={cert.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-contain p-2 group-hover/img:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2">
+                        <span className="p-3 rounded-full bg-white/15 backdrop-blur-md border border-white/30 text-white shadow-xl">
+                          <ZoomIn size={16} />
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                </article>
+
+                    {/* Content Area */}
+                    <div className="p-6 flex flex-col flex-1">
+                      <div className="flex items-center justify-between text-[#a1a1a6] text-[11px] mb-3">
+                        <span className="flex items-center gap-1.5 font-semibold uppercase tracking-wider text-[#f5f5f7]">
+                          <ShieldCheck size={13} className="text-[#d4a853]" />
+                          {cert.issuer}
+                        </span>
+                        <span className="flex items-center gap-1 font-mono">
+                          <Calendar size={11} />
+                          {cert.date}
+                        </span>
+                      </div>
+
+                      <h3
+                        className="font-bold text-[#f5f5f7] text-base leading-snug mb-4 tracking-tight"
+                        style={{ fontFamily: 'var(--font-space-grotesk)' }}
+                      >
+                        {cert.title}
+                      </h3>
+
+                      {/* Learnings Bullet List */}
+                      <ul className="space-y-2 mb-6 flex-1 text-xs text-[#a1a1a6] leading-relaxed">
+                        {cert.learnings.map((l, idx) => (
+                          <li key={idx} className="flex items-start gap-2">
+                            <Check size={12} className="text-[#d4a853] flex-shrink-0 mt-0.5" />
+                            <span>{l}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      {/* Interactive Actions */}
+                      <div className="flex items-center gap-3 pt-4 border-t border-white/10 mt-auto">
+                        {cert.verifyUrl && (
+                          <Magnetic strength={0.2} className="w-full">
+                            <a
+                              href={cert.verifyUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="w-full flex items-center justify-center gap-1.5 py-2.5 text-xs font-semibold rounded-xl bg-white/[0.06] border border-white/15 text-[#f5f5f7] hover:bg-white/[0.14] transition-all"
+                            >
+                              <ExternalLink size={13} /> Official Record
+                            </a>
+                          </Magnetic>
+                        )}
+                        <Magnetic strength={0.2} className="w-full">
+                          <button
+                            onClick={() => setActiveLightbox(cert.image)}
+                            className="w-full flex items-center justify-center gap-1.5 py-2.5 text-xs font-semibold rounded-xl border border-white/15 text-[#a1a1a6] hover:text-[#f5f5f7] hover:bg-white/[0.06] transition-all cursor-pointer"
+                          >
+                            <FileText size={13} /> View Full Image
+                          </button>
+                        </Magnetic>
+                      </div>
+                    </div>
+                  </article>
+                </GlassEffect>
               </Card3D>
             </motion.div>
           ))}

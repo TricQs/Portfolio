@@ -2,41 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ───── Design Tokens ───── */
+/* ───── Obsidian Luxe Design Tokens ───── */
 :root {
-  --bg-primary: #0c0c0e;
-  --bg-secondary: #121216;
-  --bg-elevated: #18181f;
+  /* Core Palette — Warm Obsidian with deep navy/purple undertones */
+  --bg-primary: #08080c;
+  --bg-secondary: #0d0d14;
+  --bg-elevated: #14141e;
+  --bg-card: rgba(255, 255, 255, 0.025);
+
+  /* Text Hierarchy */
   --accent: #f5f5f7;
   --text-secondary: #a1a1a6;
   --muted: #86868b;
   --muted-soft: #6e6e73;
-  --glass-bg: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.12);
-  --card-border: rgba(255, 255, 255, 0.14);
-  --card-border-hover: rgba(255, 255, 255, 0.28);
-  --card-surface: rgba(255, 255, 255, 0.03);
-  --glow-white: rgba(255, 255, 255, 0.06);
+
+  /* Gold Accent System — The signature luxury thread */
+  --accent-gold: #d4a853;
+  --accent-gold-light: #e8c67a;
+  --accent-gold-dim: #a07d3a;
+  --accent-gold-glow: rgba(212, 168, 83, 0.15);
+  --accent-gold-border: rgba(212, 168, 83, 0.25);
+
+  /* Glass System — Warmer tinted glass */
+  --glass-bg: rgba(255, 255, 255, 0.025);
+  --glass-border: rgba(255, 255, 255, 0.10);
+  --glass-border-hover: rgba(255, 255, 255, 0.22);
+  --card-border: rgba(255, 255, 255, 0.10);
+  --card-border-hover: rgba(255, 255, 255, 0.22);
+  --card-surface: rgba(255, 255, 255, 0.025);
+  --glow-white: rgba(255, 255, 255, 0.05);
+
+  /* Typography */
   --font-grotesk: var(--font-space-grotesk), sans-serif;
   --font-outfit: var(--font-outfit), sans-serif;
 
-  /* Apple Fluid Spring reference (CSS fallback) */
+  /* Apple Fluid Spring */
   --apple-ease: cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* 8px spacing system */
-  --space-1: 0.5rem;   /* 8px */
-  --space-2: 1rem;     /* 16px */
-  --space-3: 1.5rem;   /* 24px */
-  --space-4: 2rem;     /* 32px */
-  --space-5: 2.5rem;   /* 40px */
-  --space-6: 3rem;     /* 48px */
-  --space-8: 4rem;     /* 64px */
-  --space-10: 5rem;    /* 80px */
-  --space-12: 6rem;    /* 96px */
-  --space-16: 8rem;    /* 128px */
-  --space-20: 10rem;   /* 160px */
+  /* 8px Spacing System */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 2.5rem;
+  --space-6: 3rem;
+  --space-8: 4rem;
+  --space-10: 5rem;
+  --space-12: 6rem;
+  --space-16: 8rem;
+  --space-20: 10rem;
 
-  /* Radius system */
+  /* Radius System */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
@@ -44,13 +60,14 @@
   --radius-2xl: 24px;
   --radius-full: 9999px;
 
-  /* Shadow system */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.25);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
-  --shadow-glow: 0 0 40px rgba(255, 255, 255, 0.04);
+  /* Shadow System */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.35);
+  --shadow-glow: 0 0 40px rgba(255, 255, 255, 0.03);
+  --shadow-gold: 0 0 30px rgba(212, 168, 83, 0.12);
 
-  /* Transition system */
+  /* Transition System */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --duration-fast: 150ms;
@@ -87,19 +104,19 @@ body {
   font-size: 15px;
 }
 
-/* ───── Custom Scrollbar ───── */
+/* ───── Custom Scrollbar — Obsidian Luxe ───── */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
   background: var(--bg-primary);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(212, 168, 83, 0.2);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(212, 168, 83, 0.45);
 }
 
 /* ───── Grain Texture ───── */
@@ -113,7 +130,7 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px 256px;
-  opacity: 0.015;
+  opacity: 0.018;
   pointer-events: none;
   z-index: 9998;
   animation: grain 8s steps(10) infinite;
@@ -140,38 +157,43 @@ body::before {
   border: 1px solid var(--glass-border);
 }
 
-/* ───── Hardware Acceleration (on-demand) ───── */
+/* ───── Hardware Acceleration ───── */
 .gpu-layer {
   transform: translateZ(0);
   backface-visibility: hidden;
 }
 
-/* Apple iOS Liquid Glass Utility */
+/* Obsidian Luxe Liquid Glass */
 .glass-liquid {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.03) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.02) 100%);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35), 0 10px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.25), 0 10px 30px rgba(0, 0, 0, 0.4);
   transform: translateZ(0);
 }
 
+/* Card Liquid — The premium card surface */
 .card-liquid {
   position: relative;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.035) 0%, rgba(255, 255, 255, 0.008) 100%);
   backdrop-filter: blur(16px) saturate(160%);
   -webkit-backdrop-filter: blur(16px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2), 0 12px 35px rgba(0, 0, 0, 0.35);
-  transition: border-color 0.3s var(--apple-ease), box-shadow 0.3s var(--apple-ease), background 0.3s var(--apple-ease);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 12px 35px rgba(0, 0, 0, 0.35);
+  transition: border-color 0.4s var(--apple-ease), box-shadow 0.4s var(--apple-ease), background 0.4s var(--apple-ease);
   transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+  isolation: isolate;
 }
 
 .card-liquid:hover {
   will-change: transform, opacity;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%);
-  border-color: rgba(255, 255, 255, 0.28);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35), 0 16px 45px rgba(0, 0, 0, 0.45);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.015) 100%);
+  border-color: rgba(212, 168, 83, 0.20);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 16px 45px rgba(0, 0, 0, 0.45), 0 0 30px rgba(212, 168, 83, 0.06);
 }
 
 .card-liquid::before {
@@ -181,7 +203,7 @@ body::before {
   left: -100%;
   width: 60%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  background: linear-gradient(90deg, transparent, rgba(212, 168, 83, 0.06), transparent);
   transform: skewX(-25deg);
   transition: left 0.75s ease;
   pointer-events: none;
@@ -192,7 +214,7 @@ body::before {
   left: 140%;
 }
 
-/* ───── Staggered Entrance Utility ───── */
+/* ───── Staggered Entrance ───── */
 .stagger-item {
   opacity: 0;
   transform: translateY(10px);
@@ -203,15 +225,23 @@ body::before {
   transform: translateY(0);
 }
 
-/* ───── Text Gradient ───── */
+/* ───── Text Gradient — Obsidian Luxe ───── */
 .text-gradient {
-  background: linear-gradient(180deg, #ffffff 0%, #b0b0b8 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #c8c8ce 50%, #a0a0a8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* ───── Section Spacing (8px system) ───── */
+/* Gold Text Gradient — Signature accent */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #e8c67a 0%, #d4a853 50%, #a07d3a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ───── Section Spacing ───── */
 .section-padding {
   padding-top: var(--space-12);
   padding-bottom: var(--space-12);
@@ -224,11 +254,11 @@ body::before {
   }
 }
 
-/* ───── Crisp Section Divider ───── */
+/* ───── Section Divider — Gold-tinted ───── */
 .section-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  background: linear-gradient(90deg, transparent, rgba(212, 168, 83, 0.15), rgba(255, 255, 255, 0.12), rgba(212, 168, 83, 0.15), transparent);
+  box-shadow: 0 0 12px rgba(212, 168, 83, 0.06);
 }
 
 /* ───── Accessibility: Reduced Motion ───── */

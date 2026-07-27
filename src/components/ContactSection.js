@@ -6,6 +6,7 @@ import { Send, Mail, Phone, MapPin, CheckCircle, Sparkles } from 'lucide-react'
 import { GitHubIcon, LinkedInIcon, InstagramIcon } from './SocialIcons'
 import Magnetic from './Magnetic'
 import Card3D from './Card3D'
+import { GlassEffect } from './ui/liquid-glass'
 
 const contactInfo = [
   { icon: Mail, label: 'Email', value: 'ferdinandarya80@gmail.com', href: 'mailto:ferdinandarya80@gmail.com' },
@@ -60,7 +61,6 @@ export default function ContactSection() {
       id="contact"
       ref={ref}
       className="section-padding relative"
-      style={{ background: 'var(--bg-secondary)' }}
     >
       <div className="absolute top-0 left-0 right-0 section-divider" />
 
@@ -81,7 +81,7 @@ export default function ContactSection() {
           className="mb-16 text-center"
         >
           <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#86868b] mb-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#d4a853]" />
             07 — Finale &amp; Contact Stage
           </span>
           <h2
@@ -103,7 +103,8 @@ export default function ContactSection() {
             transition={{ delay: 0.15, duration: 0.7 }}
           >
             <Card3D maxRotate={6} className="h-full">
-              <form onSubmit={handleSubmit} className="space-y-5 p-8 rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-xl shadow-2xl" aria-label="Contact form">
+              <GlassEffect className="rounded-2xl border border-white/15 h-full">
+                <form onSubmit={handleSubmit} className="space-y-5 p-8 w-full backdrop-blur-xl shadow-2xl" aria-label="Contact form">
                 <div>
                   <label htmlFor="contact-name" className="block text-[11px] font-medium tracking-[0.12em] uppercase text-[#86868b] mb-2">
                     Your Name
@@ -117,7 +118,7 @@ export default function ContactSection() {
                     value={form.name}
                     onChange={e => setForm({ ...form, name: e.target.value })}
                     placeholder="Jane Doe"
-                    className="w-full px-4 py-3.5 border border-white/10 rounded-xl text-sm text-[#f5f5f7] placeholder-[#86868b]/50 focus:border-white/35 focus:bg-white/[0.05] focus:shadow-[0_0_24px_rgba(255,255,255,0.08)] focus:outline-none transition-[border-color,background,box-shadow] duration-300 bg-white/[0.015]"
+                    className="w-full px-4 py-3.5 border border-white/10 rounded-xl text-sm text-[#f5f5f7] placeholder-[#86868b]/50 focus:border-[#d4a853]/40 focus:bg-white/[0.05] focus:shadow-[0_0_24px_rgba(212,168,83,0.08)] focus:outline-none transition-[border-color,background,box-shadow] duration-300 bg-white/[0.015]"
                   />
                 </div>
 
@@ -134,7 +135,7 @@ export default function ContactSection() {
                     value={form.email}
                     onChange={e => setForm({ ...form, email: e.target.value })}
                     placeholder="jane@company.com"
-                    className="w-full px-4 py-3.5 border border-white/10 rounded-xl text-sm text-[#f5f5f7] placeholder-[#86868b]/50 focus:border-white/35 focus:bg-white/[0.05] focus:shadow-[0_0_24px_rgba(255,255,255,0.08)] focus:outline-none transition-[border-color,background,box-shadow] duration-300 bg-white/[0.015]"
+                    className="w-full px-4 py-3.5 border border-white/10 rounded-xl text-sm text-[#f5f5f7] placeholder-[#86868b]/50 focus:border-[#d4a853]/40 focus:bg-white/[0.05] focus:shadow-[0_0_24px_rgba(212,168,83,0.08)] focus:outline-none transition-[border-color,background,box-shadow] duration-300 bg-white/[0.015]"
                   />
                 </div>
 
@@ -150,7 +151,7 @@ export default function ContactSection() {
                     value={form.message}
                     onChange={e => setForm({ ...form, message: e.target.value })}
                     placeholder="Hello Ferdinand, I'd like to discuss..."
-                    className="w-full px-4 py-3.5 border border-white/10 rounded-xl text-sm text-[#f5f5f7] placeholder-[#86868b]/50 focus:border-white/35 focus:bg-white/[0.05] focus:shadow-[0_0_24px_rgba(255,255,255,0.08)] focus:outline-none transition-[border-color,background,box-shadow] duration-300 resize-none bg-white/[0.015]"
+                    className="w-full px-4 py-3.5 border border-white/10 rounded-xl text-sm text-[#f5f5f7] placeholder-[#86868b]/50 focus:border-[#d4a853]/40 focus:bg-white/[0.05] focus:shadow-[0_0_24px_rgba(212,168,83,0.08)] focus:outline-none transition-[border-color,background,box-shadow] duration-300 resize-none bg-white/[0.015]"
                   />
                 </div>
 
@@ -159,9 +160,12 @@ export default function ContactSection() {
                   disabled={sending || sent}
                   className={`w-full flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl text-sm font-bold transition-[background,border-color,color,box-shadow] duration-300 cursor-pointer ${
                     sent
-                      ? 'bg-emerald-500/10 border border-emerald-500/30 text-emerald-400'
-                      : 'bg-[#f5f5f7] text-[#060606] hover:bg-white shadow-[0_0_30px_rgba(255,255,255,0.15)]'
+                      ? 'bg-[#d4a853]/10 border border-[#d4a853]/30 text-[#d4a853]'
+                      : 'text-[#08080c] shadow-[0_0_30px_rgba(212,168,83,0.2)]'
                   }`}
+                  style={!sent ? {
+                    background: 'linear-gradient(135deg, #e8c67a 0%, #d4a853 50%, #c49a48 100%)',
+                  } : undefined}
                 >
                   {sent ? (
                     <>
@@ -183,7 +187,8 @@ export default function ContactSection() {
                   {error && <p className="text-xs text-rose-400 mt-2">{error}</p>}
                 </div>
               </form>
-            </Card3D>
+            </GlassEffect>
+          </Card3D>
           </motion.div>
 
           {/* Contact Details & Availability Stage */}
@@ -238,10 +243,10 @@ export default function ContactSection() {
               </div>
             </div>
 
-            <div className="border border-emerald-500/20 rounded-2xl p-6 bg-emerald-500/5 backdrop-blur-md relative overflow-hidden">
+            <div className="border border-[#d4a853]/20 rounded-2xl p-6 bg-[#d4a853]/5 backdrop-blur-md relative overflow-hidden">
               <div className="flex items-center gap-2 mb-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                <span className="text-[11px] font-bold text-emerald-400 tracking-wider uppercase">Open for Work</span>
+                <span className="w-2 h-2 rounded-full bg-[#d4a853] animate-ping" />
+                <span className="text-[11px] font-bold text-[#d4a853] tracking-wider uppercase">Open for Work</span>
               </div>
               <p className="text-xs text-[#a1a1a6] leading-relaxed">
                 Actively seeking entry-level software engineering positions, front-end developer roles, internships, and technical projects.

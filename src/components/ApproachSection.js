@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Palette, Target, Bot, BookOpen } from 'lucide-react'
+import { GlassEffect } from './ui/liquid-glass'
 
 const approaches = [
   {
@@ -44,7 +45,6 @@ export default function ApproachSection() {
       id="approach"
       ref={ref}
       className="section-padding relative"
-      style={{ background: 'var(--bg-secondary)' }}
     >
       {/* Section divider */}
       <div className="absolute top-0 left-0 right-0 section-divider" />
@@ -81,56 +81,54 @@ export default function ApproachSection() {
                 ease: [0.16, 1, 0.3, 1],
               }}
               whileHover={{ y: -4, transition: { type: 'spring', stiffness: 400, damping: 28 } }}
-              className="group relative border border-white/[0.06] rounded-2xl p-6 flex flex-col gap-5 cursor-default overflow-hidden hover:border-white/[0.12] transition-[border-color,background] duration-300"
-              style={{ background: 'rgba(255,255,255,0.015)' }}
             >
-              {/* Glow on hover */}
-              <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                style={{
-                  background:
-                    'radial-gradient(circle at 50% 0%, rgba(255,255,255,0.03) 0%, transparent 70%)',
-                }}
-              />
+              <GlassEffect className="rounded-2xl border border-white/[0.08] hover:border-white/20 transition-all duration-300 h-full">
+                <div className="group relative p-6 flex flex-col gap-5 cursor-default overflow-hidden h-full">
+                  {/* Glow on hover */}
+                  <div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    style={{
+                      background:
+                        'radial-gradient(circle at 50% 0%, rgba(255,255,255,0.03) 0%, transparent 70%)',
+                    }}
+                  />
 
-              {/* Top line */}
-              <div
-                className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{
-                  background:
-                    'linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent)',
-                }}
-              />
+                  {/* Top line */}
+                  <div
+                    className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{
+                      background:
+                        'linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent)',
+                    }}
+                  />
 
-              {/* Number */}
-              <span
-                className="text-5xl font-bold text-white/[0.04] select-none absolute top-4 right-5"
-                style={{ fontFamily: 'var(--font-space-grotesk)' }}
-              >
-                {item.number}
-              </span>
+                  {/* Number */}
+                  <span
+                    className="text-5xl font-bold text-white/[0.04] select-none absolute top-4 right-5"
+                    style={{ fontFamily: 'var(--font-space-grotesk)' }}
+                  >
+                    {item.number}
+                  </span>
 
-              {/* Icon */}
-              <div className="w-10 h-10 rounded-xl border border-white/[0.06] flex items-center justify-center group-hover:border-white/[0.12] transition-colors duration-300" style={{ background: 'rgba(255,255,255,0.03)' }}>
-                <item.icon
-                  size={16}
-                  strokeWidth={1.5}
-                  className="text-[#86868b] group-hover:text-[#f5f5f7] transition-colors duration-300"
-                />
-              </div>
+                  {/* Icon */}
+                  <div className="w-10 h-10 rounded-xl border border-white/[0.06] flex items-center justify-center bg-white/[0.03] text-[#86868b] group-hover:text-[#f5f5f7] group-hover:border-white/[0.12] transition-colors duration-300">
+                    <item.icon size={18} strokeWidth={1.5} />
+                  </div>
 
-              {/* Content */}
-              <div className="space-y-2.5 relative z-10">
-                <h3
-                  className="text-[15px] font-semibold text-[#f5f5f7] leading-snug tracking-[-0.01em]"
-                  style={{ fontFamily: 'var(--font-space-grotesk)' }}
-                >
-                  {item.title}
-                </h3>
-                <p className="text-[13px] text-[#86868b] leading-[1.7]">
-                  {item.description}
-                </p>
-              </div>
+                  {/* Title & Desc */}
+                  <div>
+                    <h3
+                      className="text-base font-semibold text-[#f5f5f7] mb-2 tracking-[-0.01em]"
+                      style={{ fontFamily: 'var(--font-space-grotesk)' }}
+                    >
+                      {item.title}
+                    </h3>
+                    <p className="text-xs text-[#86868b] leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              </GlassEffect>
             </motion.div>
           ))}
         </div>

@@ -1,20 +1,27 @@
+'use client'
+
+import dynamic from 'next/dynamic'
 import Navbar from '@/components/Navbar'
 import HeroSection from '@/components/HeroSection'
-import ProjectsSection from '@/components/ProjectsSection'
-import AboutSection from '@/components/AboutSection'
-import SkillsSection from '@/components/SkillsSection'
-import ExperienceSection from '@/components/ExperienceSection'
-import CertificatesSection from '@/components/CertificatesSection'
-import AISection from '@/components/AISection'
-import ContactSection from '@/components/ContactSection'
-import Footer from '@/components/Footer'
-import MouseGlowWrapper from '@/components/MouseGlowWrapper'
 
-const FOOTER_HEIGHT = '70vh'
+// Dynamic Imports with { ssr: false } for background animation & heavy interactive components
+const AnimatedGradientBackground = dynamic(() => import('@/components/AnimatedGradientBackground'), { ssr: false })
+const MouseGlowWrapper = dynamic(() => import('@/components/MouseGlowWrapper'), { ssr: false })
+const ProjectsSection = dynamic(() => import('@/components/ProjectsSection'), { ssr: false })
+const AboutSection = dynamic(() => import('@/components/AboutSection'), { ssr: false })
+const SkillsSection = dynamic(() => import('@/components/SkillsSection'), { ssr: false })
+const ExperienceSection = dynamic(() => import('@/components/ExperienceSection'), { ssr: false })
+const CertificatesSection = dynamic(() => import('@/components/CertificatesSection'), { ssr: false })
+const AISection = dynamic(() => import('@/components/AISection'), { ssr: false })
+const ContactSection = dynamic(() => import('@/components/ContactSection'), { ssr: false })
+const Footer = dynamic(() => import('@/components/Footer'), { ssr: false })
 
 export default function Home() {
   return (
     <>
+      {/* 21st.dev Animated Radial Gradient Background (Fixed & Following Scroll) */}
+      <AnimatedGradientBackground opacity={1.0} blurAmount="35px" />
+
       {/* Mouse spotlight glow */}
       <MouseGlowWrapper />
 
@@ -25,10 +32,7 @@ export default function Home() {
       <main
         id="main-content"
         tabIndex={-1}
-        className="relative z-[1] bg-[var(--bg-primary)] focus:outline-none"
-        style={{
-          marginBottom: FOOTER_HEIGHT,
-        }}
+        className="relative z-[1] bg-transparent focus:outline-none"
       >
         <HeroSection />
         <ProjectsSection />
@@ -38,10 +42,8 @@ export default function Home() {
         <CertificatesSection />
         <AISection />
         <ContactSection />
+        <Footer />
       </main>
-
-      {/* Sticky Reveal Footer */}
-      <Footer />
     </>
   )
 }

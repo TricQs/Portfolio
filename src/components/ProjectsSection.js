@@ -5,6 +5,7 @@ import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { ExternalLink, GitBranch, PlayCircle, Layers } from 'lucide-react'
 import Card3D from './Card3D'
 import Magnetic from './Magnetic'
+import { GlassEffect } from './ui/liquid-glass'
 
 const projects = [
   {
@@ -133,6 +134,20 @@ const projects = [
     gradient: 'from-sky-500/30 via-blue-500/15 to-transparent',
     accentColor: '#38bdf8',
   },
+  {
+    number: '10',
+    title: 'Express Blog App & Supabase Cloud',
+    category: 'Backend & Web App',
+    filterCategory: 'Full-Stack',
+    description:
+      'A server-side rendered (SSR) blog web application featuring user registration, JWT authentication via httpOnly cookies, author-restricted CRUD post management, and Markdown rendering with XSS sanitization. Connected to PostgreSQL on Supabase Cloud.',
+    tech: ['Express.js', 'Node.js', 'PostgreSQL', 'Supabase', 'JWT', 'EJS'],
+    live: null,
+    github: 'https://github.com/TricQs/backend-project',
+    statusText: 'Active Project',
+    gradient: 'from-violet-500/30 via-purple-500/15 to-transparent',
+    accentColor: '#8b5cf6',
+  },
 ]
 
 const categories = ['All', 'Full-Stack', 'Web & Mobile', 'Internship']
@@ -153,7 +168,6 @@ export default function ProjectsSection() {
       id="projects"
       ref={ref}
       className="section-padding relative"
-      style={{ background: 'var(--bg-secondary)' }}
     >
       <div className="absolute top-0 left-0 right-0 section-divider" />
 
@@ -166,7 +180,7 @@ export default function ProjectsSection() {
             transition={{ duration: 0.6 }}
           >
             <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#a1a1a6] mb-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#d4a853]" />
               01 — Product Exhibits
             </span>
             <h2
@@ -194,22 +208,23 @@ export default function ProjectsSection() {
                 whileTap={{ scaleX: 1.14, scaleY: 0.86 }}
                 transition={{ type: 'spring', stiffness: 500, damping: 14, mass: 0.6 }}
                 className={`relative px-3 sm:px-4 h-8 sm:h-9 flex items-center justify-center rounded-xl text-[11px] sm:text-xs font-semibold transition-colors duration-200 cursor-pointer select-none shrink-0 whitespace-nowrap ${
-                  activeCategory === cat ? 'text-[#0c0c0e]' : 'text-[#a1a1a6] hover:text-[#f5f5f7]'
+                  activeCategory === cat ? 'text-[#08080c]' : 'text-[#a1a1a6] hover:text-[#f5f5f7]'
                 }`}
               >
                 {activeCategory === cat && (
                   <motion.div
                     layoutId="activeCategoryBg"
-                    className="absolute inset-0 rounded-xl z-0 border border-white/80"
+                    className="absolute inset-0 rounded-xl z-0"
                     style={{
-                      background: 'linear-gradient(180deg, #ffffff 0%, #ececef 100%)',
-                      boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 1), 0 4px 14px rgba(0, 0, 0, 0.25)',
+                      background: 'linear-gradient(135deg, #e8c67a 0%, #d4a853 50%, #c49a48 100%)',
+                      border: '1px solid rgba(232, 198, 122, 0.6)',
+                      boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(212, 168, 83, 0.3)',
                     }}
                     transition={{ type: 'spring', stiffness: 520, damping: 32, mass: 0.45 }}
                   />
                 )}
                 <span className="relative z-10 flex items-center gap-1.5">
-                  {cat === 'All' && <Layers size={13} className={activeCategory === cat ? 'text-[#0c0c0e]' : 'text-[#a1a1a6]'} />}
+                  {cat === 'All' && <Layers size={13} className={activeCategory === cat ? 'text-[#08080c]' : 'text-[#a1a1a6]'} />}
                   {cat}
                 </span>
               </motion.button>
@@ -228,85 +243,94 @@ export default function ProjectsSection() {
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1], delay: index * 0.04 }}
               >
-                <Card3D maxRotate={8} className="h-full">
-                  <article className="group card-liquid rounded-2xl p-6 flex flex-col relative overflow-hidden h-full">
-                    {/* Top Ambient Glow Bar */}
-                    <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${project.gradient}`} />
+                <Card3D maxRotate={8} className="h-full rounded-2xl">
+                  <GlassEffect className="rounded-2xl border border-white/15 h-full">
+                    <article className="group p-6 flex flex-col relative overflow-hidden h-full">
+                      {/* Top Ambient Glow Bar */}
+                      <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${project.gradient}`} />
 
-                    {/* Number & Status */}
-                    <div className="flex items-center justify-between gap-4 mb-4">
-                      <span className="text-xs font-mono text-[#a1a1a6]">[{project.number}]</span>
-                      <span className="text-[11px] px-2.5 py-0.5 rounded-full border border-white/15 text-[#a1a1a6] bg-white/[0.04] backdrop-blur-sm flex items-center gap-1.5 font-medium">
-                        <span className="w-1.5 h-1.5 rounded-full" style={{ background: project.accentColor, boxShadow: `0 0 8px ${project.accentColor}` }} />
-                        {project.statusText}
-                      </span>
-                    </div>
-
-                    {/* Title */}
-                    <h3
-                      className="font-bold text-[#f5f5f7] text-lg mb-1.5 tracking-[-0.01em] group-hover:text-white transition-colors"
-                      style={{ fontFamily: 'var(--font-space-grotesk)' }}
-                    >
-                      {project.title}
-                    </h3>
-
-                    {/* Category */}
-                    <span className="text-[11px] text-[#86868b] font-medium uppercase tracking-wider mb-4 block">
-                      {project.category}
-                    </span>
-
-                    {/* Description */}
-                    <p className="text-xs sm:text-[13px] text-[#a1a1a6] leading-relaxed mb-6 flex-1">
-                      {project.description}
-                    </p>
-
-                    {/* Tech Stack Badges */}
-                    <div className="flex flex-wrap gap-1.5 mb-6">
-                      {project.tech.map(t => (
-                        <span
-                          key={t}
-                          className="px-2.5 py-1 text-[10px] rounded-lg border border-white/10 text-[#a1a1a6] bg-white/[0.03] group-hover:border-white/20 transition-colors"
-                        >
-                          {t}
+                      {/* Number & Status */}
+                      <div className="flex items-center justify-between gap-4 mb-4">
+                        <span className="text-xs font-mono text-[#a1a1a6]">[{project.number}]</span>
+                        <span className="text-[11px] px-2.5 py-0.5 rounded-full border border-white/15 text-[#a1a1a6] bg-white/[0.04] backdrop-blur-sm flex items-center gap-1.5 font-medium">
+                          <span className="w-1.5 h-1.5 rounded-full" style={{ background: project.accentColor, boxShadow: `0 0 8px ${project.accentColor}` }} />
+                          {project.statusText}
                         </span>
-                      ))}
-                    </div>
+                      </div>
 
-                    {/* Interactive Actions */}
-                    <div className="flex items-center gap-4 pt-4 border-t border-white/10 mt-auto">
-                      {project.live && (
-                        <Magnetic strength={0.2}>
-                          <motion.a
-                            href={project.live}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            whileTap={{ scaleX: 1.15, scaleY: 0.85 }}
-                            transition={{ type: 'spring', stiffness: 500, damping: 14 }}
-                            aria-label={`Live Demo for ${project.title}`}
-                            className="flex items-center gap-1.5 text-xs text-[#f5f5f7] hover:text-white font-semibold transition-colors bg-white/[0.06] hover:bg-white/[0.14] px-3.5 py-2 rounded-xl border border-white/15 shadow-sm"
+                      {/* Title */}
+                      <h3
+                        className="text-xl font-bold text-[#f5f5f7] group-hover:text-white transition-colors duration-300 mb-2 leading-snug tracking-tight"
+                        style={{ fontFamily: 'var(--font-space-grotesk)' }}
+                      >
+                        {project.title}
+                      </h3>
+
+                      {/* Category Badge */}
+                      <div className="mb-4">
+                        <span className="text-[11px] text-[#86868b] font-mono tracking-wide">
+                          {project.category}
+                        </span>
+                      </div>
+
+                      {/* Description */}
+                      <p className="text-xs text-[#a1a1a6] leading-relaxed mb-6 flex-1">
+                        {project.description}
+                      </p>
+
+                      {/* Tech Pills */}
+                      <div className="flex flex-wrap gap-1.5 mb-6">
+                        {project.tech.map((t) => (
+                          <span
+                            key={t}
+                            className="px-2.5 py-1 rounded-lg text-[10px] font-medium border border-white/10 text-[#a1a1a6] bg-white/[0.02]"
                           >
-                            {project.statusText === 'Video Demo' ? <PlayCircle size={14} /> : <ExternalLink size={14} />}
-                            {project.statusText === 'Video Demo' ? 'Watch Demo' : 'Live Preview'}
-                          </motion.a>
-                        </Magnetic>
-                      )}
-                      {project.github && (
-                        <Magnetic strength={0.2}>
-                          <motion.a
-                            href={project.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            whileTap={{ scaleX: 1.15, scaleY: 0.85 }}
-                            transition={{ type: 'spring', stiffness: 500, damping: 14 }}
-                            aria-label={`GitHub Repository for ${project.title}`}
-                            className="flex items-center gap-1.5 text-xs text-[#a1a1a6] hover:text-[#f5f5f7] transition-colors py-2 px-3 rounded-xl border border-transparent hover:border-white/10"
-                          >
-                            <GitBranch size={14} /> GitHub Code
-                          </motion.a>
-                        </Magnetic>
-                      )}
-                    </div>
-                  </article>
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Action Links */}
+                      <div className="flex items-center gap-4 pt-4 border-t border-white/10 mt-auto">
+                        {project.live && (
+                          <Magnetic strength={0.2}>
+                            <motion.a
+                              href={project.live}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              whileTap={{ scaleX: 1.14, scaleY: 0.86 }}
+                              transition={{ type: 'spring', stiffness: 500, damping: 14 }}
+                              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#08080c] bg-[#d4a853] hover:bg-[#e8c67a] px-4 py-2 rounded-xl transition-colors shadow-md"
+                            >
+                              {project.statusText === 'Video Demo' ? (
+                                <>
+                                  <PlayCircle size={13} /> Watch Demo
+                                </>
+                              ) : (
+                                <>
+                                  <ExternalLink size={13} /> Live Preview
+                                </>
+                              )}
+                            </motion.a>
+                          </Magnetic>
+                        )}
+                        {project.github && (
+                          <Magnetic strength={0.2}>
+                            <motion.a
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              whileTap={{ scaleX: 1.14, scaleY: 0.86 }}
+                              transition={{ type: 'spring', stiffness: 500, damping: 14 }}
+                              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#f5f5f7] hover:text-white border border-white/15 bg-white/[0.04] hover:bg-white/[0.1] px-4 py-2 rounded-xl transition-all"
+                            >
+                              <GitBranch size={13} /> GitHub Code
+                            </motion.a>
+                          </Magnetic>
+                        )}
+                      </div>
+                    </article>
+                  </GlassEffect>
                 </Card3D>
               </motion.div>
             ))}

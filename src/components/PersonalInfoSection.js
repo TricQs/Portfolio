@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { User, MapPin, GraduationCap, Mail, Phone, Languages, Briefcase, Laptop, Smartphone } from 'lucide-react'
+import { GlassEffect } from './ui/liquid-glass'
 
 const personalInfo = [
   { icon: User, label: 'Name', value: 'Ferdinand Arya Wijaya' },
@@ -96,40 +97,42 @@ export default function PersonalInfoSection() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.06, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ y: -2 }}
-              className="group flex items-start gap-4 border border-white/[0.06] rounded-2xl p-5 hover:border-white/[0.12] hover:bg-white/[0.02] transition-[border-color,background] duration-300"
-              style={{ background: 'rgba(255,255,255,0.015)' }}
             >
-              {/* Icon */}
-              <div className="flex-shrink-0 w-10 h-10 rounded-xl border border-white/[0.06] flex items-center justify-center mt-0.5 group-hover:border-white/[0.12] transition-colors duration-300" style={{ background: 'rgba(255,255,255,0.03)' }}>
-                <info.icon size={15} strokeWidth={1.5} className="text-[#86868b] group-hover:text-[#f5f5f7] transition-colors duration-300" />
-              </div>
+              <GlassEffect className="rounded-2xl border border-white/[0.08] p-5 hover:border-white/20 transition-all duration-300">
+                <div className="group flex items-start gap-4 w-full">
+                  {/* Icon */}
+                  <div className="flex-shrink-0 w-10 h-10 rounded-xl border border-white/[0.06] flex items-center justify-center mt-0.5 group-hover:border-white/[0.12] transition-colors duration-300" style={{ background: 'rgba(255,255,255,0.03)' }}>
+                    <info.icon size={15} strokeWidth={1.5} className="text-[#86868b] group-hover:text-[#f5f5f7] transition-colors duration-300" />
+                  </div>
 
-              {/* Content */}
-              <div className="min-w-0">
-                <p className="text-[10px] font-medium tracking-[0.12em] uppercase text-[#6e6e73] mb-1">
-                  {info.label}
-                </p>
-                {info.href ? (
-                  <a
-                    href={info.href}
-                    className="text-[13px] text-[#f5f5f7] hover:text-white/70 transition-colors duration-300 truncate block"
-                  >
-                    {info.value}
-                  </a>
-                ) : (
-                  <p className="text-[13px] text-[#f5f5f7] leading-snug">{info.value}</p>
-                )}
-              </div>
+                  {/* Content */}
+                  <div className="min-w-0 flex-1">
+                    <p className="text-[10px] font-medium tracking-[0.12em] uppercase text-[#6e6e73] mb-1">
+                      {info.label}
+                    </p>
+                    {info.href ? (
+                      <a
+                        href={info.href}
+                        className="text-[13px] text-[#f5f5f7] hover:text-white/70 transition-colors duration-300 truncate block"
+                      >
+                        {info.value}
+                      </a>
+                    ) : (
+                      <p className="text-[13px] text-[#f5f5f7] leading-snug">{info.value}</p>
+                    )}
+                  </div>
 
-              {/* Availability badge */}
-              {info.label === 'Availability' && (
-                <div className="ml-auto flex-shrink-0">
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/[0.06] border border-emerald-500/15 text-emerald-400/90 text-[10px] font-medium">
-                    <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" />
-                    Open
-                  </span>
+                  {/* Availability badge */}
+                  {info.label === 'Availability' && (
+                    <div className="ml-auto flex-shrink-0">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/[0.06] border border-emerald-500/15 text-emerald-400/90 text-[10px] font-medium">
+                        <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" />
+                        Open
+                      </span>
+                    </div>
+                  )}
                 </div>
-              )}
+              </GlassEffect>
             </motion.div>
           ))}
         </div>
@@ -163,31 +166,33 @@ export default function PersonalInfoSection() {
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.35 + i * 0.06, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ y: -2 }}
-                className="group border border-white/[0.06] rounded-2xl p-5 hover:border-white/[0.12] hover:bg-white/[0.02] transition-[border-color,background] duration-300 flex flex-col justify-between"
-                style={{ background: 'rgba(255,255,255,0.015)' }}
               >
-                <div>
-                  {/* Icon & Title */}
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-9 h-9 rounded-xl border border-white/[0.06] flex items-center justify-center group-hover:border-white/[0.12] transition-colors duration-300" style={{ background: 'rgba(255,255,255,0.03)' }}>
-                      <Icon size={15} strokeWidth={1.5} className="text-[#86868b] group-hover:text-[#f5f5f7] transition-colors duration-300" />
-                    </div>
+                <GlassEffect className="rounded-2xl border border-white/[0.08] p-5 hover:border-white/20 transition-all duration-300 h-full">
+                  <div className="group flex flex-col justify-between h-full w-full">
                     <div>
-                      <h4 className="text-[14px] font-semibold text-[#f5f5f7] tracking-[-0.01em]">{device.name}</h4>
-                      <p className="text-[10px] font-medium tracking-[0.1em] uppercase text-[#6e6e73]">{device.role}</p>
+                      {/* Icon & Title */}
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-9 h-9 rounded-xl border border-white/[0.06] flex items-center justify-center group-hover:border-white/[0.12] transition-colors duration-300" style={{ background: 'rgba(255,255,255,0.03)' }}>
+                          <Icon size={15} strokeWidth={1.5} className="text-[#86868b] group-hover:text-[#f5f5f7] transition-colors duration-300" />
+                        </div>
+                        <div>
+                          <h4 className="text-[14px] font-semibold text-[#f5f5f7] tracking-[-0.01em]">{device.name}</h4>
+                          <p className="text-[10px] font-medium tracking-[0.1em] uppercase text-[#6e6e73]">{device.role}</p>
+                        </div>
+                      </div>
+
+                      {/* Specs */}
+                      <div className="space-y-2 mt-4 pt-4 border-t border-white/[0.04]">
+                        {device.specs.map((spec) => (
+                          <div key={spec.label} className="flex justify-between items-center text-[12px]">
+                            <span className="text-[#6e6e73]">{spec.label}</span>
+                            <span className="text-[#b0b0b5] font-mono text-[11px] text-right">{spec.value}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
-
-                  {/* Specs */}
-                  <div className="space-y-2 mt-4 pt-4 border-t border-white/[0.04]">
-                    {device.specs.map((spec) => (
-                      <div key={spec.label} className="flex justify-between items-center text-[12px]">
-                        <span className="text-[#6e6e73]">{spec.label}</span>
-                        <span className="text-[#b0b0b5] font-mono text-[11px] text-right">{spec.value}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                </GlassEffect>
               </motion.div>
             )
           })}

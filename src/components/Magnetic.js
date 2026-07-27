@@ -8,11 +8,9 @@ const APPLE_SPRING = { type: 'spring', stiffness: 400, damping: 28, mass: 0.5 }
 export default function Magnetic({ children, strength = 0.3, className = '', slime = true }) {
   const ref = useRef(null)
   const [position, setPosition] = useState({ x: 0, y: 0 })
-  const [isTouch, setIsTouch] = useState(false)
-
-  useEffect(() => {
-    setIsTouch('ontouchstart' in window || navigator.maxTouchPoints > 0)
-  }, [])
+  const [isTouch] = useState(() =>
+    typeof window !== 'undefined' ? ('ontouchstart' in window || navigator.maxTouchPoints > 0) : false
+  )
 
   const handleMouseMove = (e) => {
     if (isTouch || !ref.current) return

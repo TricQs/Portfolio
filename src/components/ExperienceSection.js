@@ -5,6 +5,7 @@ import { motion, useInView } from 'framer-motion'
 import { ExternalLink, Calendar, Briefcase, Award, CheckCircle2 } from 'lucide-react'
 import Card3D from './Card3D'
 import Magnetic from './Magnetic'
+import { GlassEffect } from './ui/liquid-glass'
 
 const experiences = [
   {
@@ -34,7 +35,6 @@ export default function ExperienceSection() {
       id="experience"
       ref={ref}
       className="section-padding relative"
-      style={{ background: 'var(--bg-secondary)' }}
     >
       <div className="absolute top-0 left-0 right-0 section-divider" />
 
@@ -55,7 +55,7 @@ export default function ExperienceSection() {
           className="mb-16"
         >
           <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#86868b] mb-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#d4a853]" />
             04 — Career &amp; Experience
           </span>
           <h2
@@ -70,7 +70,7 @@ export default function ExperienceSection() {
         <div className="relative">
           <div
             className="absolute left-4 md:left-8 top-0 bottom-0 w-0.5"
-            style={{ background: 'linear-gradient(to bottom, rgba(59,130,246,0.5), rgba(255,255,255,0.05))' }}
+            style={{ background: 'linear-gradient(to bottom, rgba(212, 168, 83, 0.5), rgba(255,255,255,0.05))' }}
           />
 
           <div className="space-y-8 pl-12 md:pl-20">
@@ -82,81 +82,81 @@ export default function ExperienceSection() {
                 transition={{ delay: i * 0.15, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
                 className="relative group"
               >
-                {/* Glowing Node Dot */}
-                <div className="absolute -left-[3.25rem] md:-left-[5.25rem] top-7 flex items-center justify-center">
+                {/* Glowing Node Dot — aligned with timeline line */}
+                <div className="absolute -left-[2.625rem] md:-left-[3.625rem] top-7 flex items-center justify-center">
                   <span className="relative flex h-5 w-5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-5 w-5 bg-blue-500 border-2 border-white/20 shadow-[0_0_15px_rgba(59,130,246,0.6)]" />
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d4a853] opacity-75" />
+                    <span className="relative inline-flex rounded-full h-5 w-5 bg-[#d4a853] border-2 border-white/20 shadow-[0_0_15px_rgba(212,168,83,0.6)]" />
                   </span>
                 </div>
 
                 {/* 3D Timeline Stage Card */}
-                <motion.div whileHover={{ y: -3 }} transition={{ type: 'spring', stiffness: 400, damping: 28 }}>
-                <Card3D maxRotate={8}>
-                  <div className="border border-white/10 hover:border-white/20 rounded-2xl p-7 md:p-8 bg-gradient-to-br from-white/[0.03] to-white/[0.005] backdrop-blur-md transition-[border-color,background] duration-300">
-                    <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
-                      <div>
-                        <div className="flex items-center gap-3 flex-wrap">
-                          <h3
-                            className="text-xl font-bold text-[#f5f5f7] tracking-tight"
-                            style={{ fontFamily: 'var(--font-space-grotesk)' }}
+                <Card3D maxRotate={8} className="rounded-2xl">
+                  <GlassEffect className="rounded-2xl border border-white/10 h-full">
+                    <div className="p-7 md:p-8 bg-gradient-to-br from-white/[0.03] to-white/[0.005] backdrop-blur-md transition-[border-color,background] duration-300">
+                      <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
+                        <div>
+                          <div className="flex items-center gap-3 flex-wrap">
+                            <h3
+                              className="text-xl font-bold text-[#f5f5f7] tracking-tight"
+                              style={{ fontFamily: 'var(--font-space-grotesk)' }}
+                            >
+                              {exp.position}
+                            </h3>
+                            <span className="px-3 py-1 rounded-full text-[11px] font-mono text-[#d4a853] border border-[#d4a853]/20 bg-[#d4a853]/10">
+                              {exp.company}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2 text-[#86868b] text-xs font-mono bg-white/[0.02] border border-white/10 px-3 py-1.5 rounded-full">
+                          <Calendar size={13} strokeWidth={1.75} />
+                          {exp.period}
+                        </div>
+                      </div>
+
+                      <p className="text-sm text-[#86868b] leading-relaxed mb-6">
+                        {exp.description}
+                      </p>
+
+                      {/* Key Highlights */}
+                      <div className="space-y-2.5 mb-6">
+                        {exp.highlights.map((h, idx) => (
+                          <div key={idx} className="flex items-start gap-2.5 text-xs text-[#a1a1a6] leading-relaxed">
+                            <CheckCircle2 size={15} className="text-[#d4a853] flex-shrink-0 mt-0.5" />
+                            <span>{h}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Tech Badges */}
+                      <div className="flex flex-wrap gap-1.5 mb-6">
+                        {exp.tags.map(tag => (
+                          <span
+                            key={tag}
+                            className="px-2.5 py-1 text-[10px] rounded-lg border border-white/10 text-[#a1a1a6] bg-white/[0.02]"
                           >
-                            {exp.position}
-                          </h3>
-                          <span className="px-3 py-1 rounded-full text-[11px] font-mono text-blue-400 border border-blue-500/20 bg-blue-500/10">
-                            {exp.company}
+                            {tag}
                           </span>
-                        </div>
+                        ))}
                       </div>
-                      <div className="flex items-center gap-2 text-[#86868b] text-xs font-mono bg-white/[0.02] border border-white/10 px-3 py-1.5 rounded-full">
-                        <Calendar size={13} strokeWidth={1.75} />
-                        {exp.period}
-                      </div>
+
+                      {/* Action Link */}
+                      {exp.link && (
+                        <Magnetic strength={0.2}>
+                          <a
+                            href={exp.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 text-xs text-[#f5f5f7] hover:text-white font-semibold transition-colors bg-white/[0.04] hover:bg-white/[0.1] px-4 py-2 rounded-xl border border-white/10"
+                          >
+                            <ExternalLink size={13} />
+                            {exp.linkLabel}
+                          </a>
+                        </Magnetic>
+                      )}
                     </div>
-
-                    <p className="text-sm text-[#86868b] leading-relaxed mb-6">
-                      {exp.description}
-                    </p>
-
-                    {/* Key Highlights */}
-                    <div className="space-y-2.5 mb-6">
-                      {exp.highlights.map((h, idx) => (
-                        <div key={idx} className="flex items-start gap-2.5 text-xs text-[#a1a1a6] leading-relaxed">
-                          <CheckCircle2 size={15} className="text-blue-400 flex-shrink-0 mt-0.5" />
-                          <span>{h}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Tech Badges */}
-                    <div className="flex flex-wrap gap-1.5 mb-6">
-                      {exp.tags.map(tag => (
-                        <span
-                          key={tag}
-                          className="px-2.5 py-1 text-[10px] rounded-lg border border-white/10 text-[#a1a1a6] bg-white/[0.02]"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Action Link */}
-                    {exp.link && (
-                      <Magnetic strength={0.2}>
-                        <a
-                          href={exp.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-xs text-[#f5f5f7] hover:text-white font-semibold transition-colors bg-white/[0.04] hover:bg-white/[0.1] px-4 py-2 rounded-xl border border-white/10"
-                        >
-                          <ExternalLink size={13} />
-                          {exp.linkLabel}
-                        </a>
-                      </Magnetic>
-                    )}
-                  </div>
+                  </GlassEffect>
                 </Card3D>
-                </motion.div>
               </motion.div>
             ))}
           </div>

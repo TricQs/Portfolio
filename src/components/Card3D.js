@@ -3,17 +3,15 @@
 import { useRef, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
-export default function Card3D({ children, className = '', maxRotate = 8, glow = true, overflowHidden = true }) {
+export default function Card3D({ children, className = '', maxRotate = 8, glow = true, overflowHidden = false, onClick }) {
   const cardRef = useRef(null)
   const [rotateX, setRotateX] = useState(0)
   const [rotateY, setRotateY] = useState(0)
   const [glare, setGlare] = useState({ x: 50, y: 50, opacity: 0 })
-  const [isTouch, setIsTouch] = useState(false)
+  const [isTouch] = useState(() =>
+    typeof window !== 'undefined' ? ('ontouchstart' in window || navigator.maxTouchPoints > 0) : false
+  )
   const [isHovered, setIsHovered] = useState(false)
-
-  useEffect(() => {
-    setIsTouch('ontouchstart' in window || navigator.maxTouchPoints > 0)
-  }, [])
 
   const handleMouseMove = (e) => {
     if (isTouch || !cardRef.current) return
@@ -48,32 +46,42 @@ export default function Card3D({ children, className = '', maxRotate = 8, glow =
   }
 
   return (
-    <motion.div
+    <div
       ref={cardRef}
+      onClick={onClick}
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      animate={{ rotateX, rotateY }}
-      transition={{ type: 'spring', stiffness: 400, damping: 28, mass: 0.5 }}
-      style={{
-        transformStyle: 'preserve-3d',
-        perspective: 1000,
-        willChange: isHovered ? 'transform' : 'auto',
-      }}
-      className={`relative ${overflowHidden ? 'overflow-hidden' : ''} ${className}`}
+      style={{ perspective: '1000px' }}
+      className={`h-full ${onClick ? 'cursor-pointer' : ''} ${overflowHidden ? 'overflow-hidden' : ''} ${className}`}
     >
-      {children}
+      <motion.div
+        animate={{ rotateX, rotateY }}
+        transition={{ type: 'spring', stiffness: 400, damping: 28, mass: 0.5 }}
+        style={{
+          transformStyle: 'preserve-3d',
+          backfaceVisibility: 'hidden',
+          WebkitBackfaceVisibility: 'hidden',
+          WebkitFontSmoothing: 'subpixel-antialiased',
+          willChange: isHovered ? 'transform' : 'auto',
+        }}
+        className="relative h-full"
+      >
+        {glow && !isTouch && (
+          <div
+            className="pointer-events-none absolute inset-0 z-10"
+            style={{
+              opacity: glare.opacity,
+              transition: 'opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+              background: `radial-gradient(circle 250px at ${glare.x}% ${glare.y}%, rgba(255, 255, 255, 0.2), transparent 70%)`,
+            }}
+          />
+        )}
 
-      {glow && !isTouch && (
-        <div
-          className="pointer-events-none absolute inset-0 z-30"
-          style={{
-            opacity: glare.opacity,
-            transition: 'opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-            background: `radial-gradient(circle 250px at ${glare.x}% ${glare.y}%, rgba(255, 255, 255, 0.2), transparent 70%)`,
-          }}
-        />
-      )}
-    </motion.div>
+        <div className="relative z-20 h-full">
+          {children}
+        </div>
+      </motion.div>
+    </div>
   )
 }

@@ -244,3 +244,21 @@ export function WireframingIcon({ size = 16, className = '', style = {} }) {
     </svg>
   )
 }
+
+// Express.js Icon
+export function ExpressjsIcon({ size = 16, className = '', style = {} }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className} style={{ width: size, height: size, color: '#f5f5f7', ...style }} aria-hidden="true">
+      <path d="M24 18.24a.5.5 0 0 1-.396.49l-6.425 1.488a.5.5 0 0 1-.6-.445V4.227a.5.5 0 0 1 .6-.445l6.425 1.487A.5.5 0 0 1 24 5.76v12.48zM15 4.5v15l-6-1.5V6l6-1.5zM7.5 6v12L1.5 16.5V7.5L7.5 6z" />
+    </svg>
+  )
+}
+
+// Supabase Icon
+export function SupabaseIcon({ size = 16, className = '', style = {} }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className} style={{ width: size, height: size, ...style }} aria-hidden="true">
+      <path d="M13.35 24V11.64h7.9c.75 0 1.16-.88.67-1.45l-10.45-10a1 1 0 0 0-1.68.73v11.44h-7.9c-.75 0-1.16.88-.67 1.45l10.45 10a1 1 0 0 0 1.68-.73z" fill="#3ECF8E"/>
+    </svg>
+  )
+}

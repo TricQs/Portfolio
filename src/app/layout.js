@@ -66,12 +66,13 @@ export default function RootLayout({ children }) {
     >
       <head>
         <meta name="color-scheme" content="dark" />
+        <meta name="theme-color" content="#08080c" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-[#060606] text-[#f5f5f7] antialiased">
+      <body className="bg-[#08080c] text-[#f5f5f7] antialiased">
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[10000] focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded-md focus:font-semibold shadow-xl"

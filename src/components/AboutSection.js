@@ -5,6 +5,8 @@ import { motion, useInView } from 'framer-motion'
 import { Code2, GraduationCap, Layout, Sparkles, Quote } from 'lucide-react'
 import Card3D from './Card3D'
 
+import { GlassEffect } from './ui/liquid-glass'
+
 const stats = [
   { icon: Code2, value: '10+', label: 'Projects Built', color: 'from-blue-500/20 to-indigo-500/5' },
   { icon: GraduationCap, value: 'S1', label: 'Informatics Student', color: 'from-emerald-500/20 to-teal-500/5' },
@@ -41,7 +43,7 @@ export default function AboutSection() {
           className="mb-16"
         >
           <div className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#86868b] mb-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#d4a853]" />
             02 — Background &amp; Philosophy
           </div>
           <h2
@@ -60,7 +62,7 @@ export default function AboutSection() {
             transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7 space-y-6"
           >
-            <p className="text-lg sm:text-xl text-[#f5f5f7] leading-relaxed font-normal tracking-tight border-l-2 border-amber-500/60 pl-5">
+            <p className="text-lg sm:text-xl text-[#f5f5f7] leading-relaxed font-normal tracking-tight border-l-2 border-[#d4a853]/50 pl-5">
               I am an Informatics Student at Universitas Bunda Mulia Serpong with a core focus on Front-End Web Development, design system structure, and intuitive UI/UX execution.
             </p>
             <p className="text-sm sm:text-base text-[#86868b] leading-relaxed">
@@ -75,12 +77,14 @@ export default function AboutSection() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="mt-8 p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.03] to-white/[0.005] backdrop-blur-md relative overflow-hidden group"
+              className="mt-8"
             >
-              <Quote size={40} className="absolute -right-2 -bottom-2 text-white/5 group-hover:text-white/10 transition-colors duration-300 pointer-events-none" />
-              <blockquote className="text-xs sm:text-sm text-[#f5f5f7] italic font-medium leading-relaxed relative z-10">
-                &ldquo;I focus on writing clean, maintainable code and creating responsive user interfaces that deliver clear value to users.&rdquo;
-              </blockquote>
+              <GlassEffect className="p-6 rounded-2xl border border-white/10 relative overflow-hidden group">
+                <Quote size={40} className="absolute -right-2 -bottom-2 text-[#d4a853]/5 group-hover:text-[#d4a853]/10 transition-colors duration-300 pointer-events-none" />
+                <blockquote className="text-xs sm:text-sm text-[#f5f5f7] italic font-medium leading-relaxed relative z-10">
+                  &ldquo;I focus on writing clean, maintainable code and creating responsive user interfaces that deliver clear value to users.&rdquo;
+                </blockquote>
+              </GlassEffect>
             </motion.div>
           </motion.div>
 
@@ -91,26 +95,27 @@ export default function AboutSection() {
                 key={stat.label}
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                whileHover={{ y: -3 }}
                 transition={{ delay: index * 0.08, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               >
-                <Card3D maxRotate={12} className="h-full">
-                  <div className={`border border-white/[0.08] hover:border-white/20 rounded-2xl p-6 bg-gradient-to-b ${stat.color} hover:bg-white/[0.04] transition-[border-color,background] duration-300 flex flex-col justify-between h-full backdrop-blur-sm`}>
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center border border-white/10 bg-white/[0.04] text-[#f5f5f7] mb-5 shadow-sm">
-                      <stat.icon size={18} strokeWidth={1.75} />
-                    </div>
-                    <div>
-                      <div
-                        className="text-3xl sm:text-4xl font-bold text-[#f5f5f7] tracking-tight mb-1"
-                        style={{ fontFamily: 'var(--font-space-grotesk)' }}
-                      >
-                        {stat.value}
+                <Card3D maxRotate={12} className="h-full rounded-2xl">
+                  <GlassEffect className="rounded-2xl border border-white/10 h-full">
+                    <div className={`p-5 sm:p-6 bg-gradient-to-b ${stat.color} transition-[background] duration-300 flex flex-col justify-between h-full`}>
+                      <div className="w-9 h-9 rounded-xl flex items-center justify-center border border-white/10 bg-white/[0.04] text-[#f5f5f7] mb-4 shadow-sm">
+                        <stat.icon size={16} strokeWidth={1.75} />
                       </div>
-                      <div className="text-[11px] text-[#86868b] uppercase tracking-wider font-semibold">
-                        {stat.label}
+                      <div>
+                        <div
+                          className="text-2xl sm:text-3xl font-bold text-[#f5f5f7] tracking-tight mb-0.5 leading-none"
+                          style={{ fontFamily: 'var(--font-space-grotesk)' }}
+                        >
+                          {stat.value}
+                        </div>
+                        <div className="text-[10px] sm:text-[11px] text-[#86868b] uppercase tracking-wider font-semibold leading-tight">
+                          {stat.label}
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </GlassEffect>
                 </Card3D>
               </motion.div>
             ))}

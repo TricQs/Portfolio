@@ -39,7 +39,7 @@ export default function ParticleBackground() {
       draw() {
         ctx.beginPath()
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(255,255,255,${this.opacity})`
+        ctx.fillStyle = this.size > 1 ? `rgba(212,168,83,${this.opacity})` : `rgba(255,255,255,${this.opacity})`
         ctx.fill()
       }
     }
@@ -79,7 +79,7 @@ export default function ParticleBackground() {
             ctx.beginPath()
             ctx.moveTo(p1.x, p1.y)
             ctx.lineTo(p2.x, p2.y)
-            ctx.strokeStyle = `rgba(255,255,255,${0.05 * (1 - dist / maxDist)})`
+            ctx.strokeStyle = `rgba(212,168,83,${0.06 * (1 - dist / maxDist)})`
             ctx.lineWidth = 0.4
             ctx.stroke()
           }

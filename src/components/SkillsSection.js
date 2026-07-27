@@ -4,10 +4,11 @@ import { useRef, useState } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { Search, Sparkles, Terminal, Code2, Cpu, X } from 'lucide-react'
 import Magnetic from './Magnetic'
+import { GlassEffect } from './ui/liquid-glass'
 
 import {
   HTMLIcon, CSSIcon, JavaScriptIcon, TypeScriptIcon, ReactIcon, NextjsIcon, TailwindIcon,
-  PythonIcon, FastAPIIcon, RESTAPIIcon, NodejsIcon,
+  PythonIcon, FastAPIIcon, RESTAPIIcon, NodejsIcon, ExpressjsIcon, SupabaseIcon,
   FigmaIcon, DesignSystemsIcon, ResponsiveIcon, WireframingIcon,
   ChatGPTIcon, ClaudeIcon, GeminiIcon,
   GitHubTechIcon, VSCodeIcon, VercelIcon,
@@ -16,8 +17,9 @@ import {
 const techIconMap = {
   'HTML5': HTMLIcon, 'CSS3': CSSIcon, 'JavaScript (ES6+)': JavaScriptIcon,
   'TypeScript': TypeScriptIcon, 'React': ReactIcon, 'Next.js': NextjsIcon,
-  'Tailwind CSS': TailwindIcon, 'Python': PythonIcon, 'FastAPI': FastAPIIcon,
-  'REST API': RESTAPIIcon, 'Node.js': NodejsIcon, 'Figma': FigmaIcon,
+  'Tailwind CSS': TailwindIcon, 'Express.js': ExpressjsIcon, 'Node.js': NodejsIcon,
+  'Supabase': SupabaseIcon, 'Python': PythonIcon, 'FastAPI': FastAPIIcon,
+  'REST API': RESTAPIIcon, 'Figma': FigmaIcon,
   'Design Systems': DesignSystemsIcon, 'Responsive Web Design': ResponsiveIcon,
   'Wireframing': WireframingIcon, 'ChatGPT': ChatGPTIcon, 'Claude': ClaudeIcon,
   'Gemini': GeminiIcon, 'Git & GitHub': GitHubTechIcon, 'VS Code': VSCodeIcon,
@@ -33,7 +35,7 @@ const skillCategories = [
   },
   {
     title: 'Backend & APIs',
-    skills: ['Python', 'FastAPI', 'Node.js', 'REST API'],
+    skills: ['Express.js', 'Node.js', 'Supabase', 'Python', 'FastAPI', 'REST API'],
     icon: Cpu,
     accent: '#10b981',
   },
@@ -77,7 +79,7 @@ export default function SkillsSection() {
             transition={{ duration: 0.6 }}
           >
             <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#a1a1a6] mb-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#d4a853]" />
               03 — Tech Matrix &amp; Stack
             </span>
             <h2
@@ -103,16 +105,16 @@ export default function SkillsSection() {
                 onChange={e => setSearchQuery(e.target.value)}
                 className={`w-full pl-10 pr-9 py-2.5 rounded-xl border text-xs transition-all duration-300 backdrop-blur-md focus:outline-none bg-white/[0.03] ${
                   searchQuery
-                    ? 'text-white border-purple-500/50 bg-white/[0.06] font-medium shadow-[0_0_24px_rgba(168,85,247,0.2)]'
-                    : 'text-[#f5f5f7] border-white/15 placeholder-[#a1a1a6] hover:border-white/30 hover:placeholder-white/90 focus:border-purple-500/50 focus:bg-white/[0.06] focus:shadow-[0_0_24px_rgba(168,85,247,0.2)]'
+                    ? 'text-white border-[#d4a853]/50 bg-white/[0.06] font-medium shadow-[0_0_24px_rgba(212,168,83,0.15)]'
+                    : 'text-[#f5f5f7] border-white/15 placeholder-[#a1a1a6] hover:border-white/30 hover:placeholder-white/90 focus:border-[#d4a853]/50 focus:bg-white/[0.06] focus:shadow-[0_0_24px_rgba(212,168,83,0.15)]'
                 }`}
               />
               <Search
                 size={15}
                 className={`absolute left-3.5 top-1/2 -translate-y-1/2 z-10 transition-all duration-300 pointer-events-none ${
                   searchQuery
-                    ? 'text-purple-400 scale-105'
-                    : 'text-[#a1a1a6] group-hover:text-white group-focus-within:text-purple-400'
+                    ? 'text-[#d4a853] scale-105'
+                    : 'text-[#a1a1a6] group-hover:text-white group-focus-within:text-[#d4a853]'
                 }`}
               />
               {searchQuery && (
@@ -139,47 +141,50 @@ export default function SkillsSection() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4, delay: catIndex * 0.05 }}
-                  className="border border-white/10 rounded-2xl p-6 bg-white/[0.02] backdrop-blur-sm relative overflow-hidden"
                 >
-                  <div
-                    className="absolute top-0 left-0 bottom-0 w-1 opacity-80"
-                    style={{ background: category.accent }}
-                  />
+                  <GlassEffect className="rounded-2xl border border-white/10 relative overflow-hidden">
+                    <div className="p-6 w-full">
+                      <div
+                        className="absolute top-0 left-0 bottom-0 w-1 opacity-80"
+                        style={{ background: category.accent }}
+                      />
 
-                  <div className="flex items-center gap-3 mb-6 pl-2">
-                    <div
-                      className="w-8 h-8 rounded-lg flex items-center justify-center border border-white/10 bg-white/[0.04]"
-                      style={{ color: category.accent }}
-                    >
-                      <category.icon size={16} />
-                    </div>
-                    <h3
-                      className="text-lg font-bold text-[#f5f5f7]"
-                      style={{ fontFamily: 'var(--font-space-grotesk)' }}
-                    >
-                      {category.title}
-                    </h3>
-                  </div>
+                      <div className="flex items-center gap-3 mb-6 pl-2">
+                        <div
+                          className="w-8 h-8 rounded-lg flex items-center justify-center border border-white/10 bg-white/[0.04]"
+                          style={{ color: category.accent }}
+                        >
+                          <category.icon size={16} />
+                        </div>
+                        <h3
+                          className="text-lg font-bold text-[#f5f5f7]"
+                          style={{ fontFamily: 'var(--font-space-grotesk)' }}
+                        >
+                          {category.title}
+                        </h3>
+                      </div>
 
-                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 pl-2">
-                    {category.skills.map((skillName) => {
-                      const IconComp = techIconMap[skillName]
-                      return (
-                        <Magnetic key={skillName} strength={0.15}>
-                          <div className="flex items-center gap-3 p-3 rounded-xl border border-white/10 bg-white/[0.03] hover:border-white/25 hover:bg-white/[0.07] transition-all duration-300 group cursor-pointer">
-                            {IconComp && (
-                              <div className="flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                                <IconComp size={20} />
+                      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 pl-2">
+                        {category.skills.map((skillName) => {
+                          const IconComp = techIconMap[skillName]
+                          return (
+                            <Magnetic key={skillName} strength={0.15}>
+                              <div className="flex items-center gap-3 p-3 rounded-xl border border-white/10 bg-white/[0.03] hover:border-white/25 hover:bg-white/[0.07] transition-all duration-300 group cursor-pointer">
+                                {IconComp && (
+                                  <div className="flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                    <IconComp size={20} />
+                                  </div>
+                                )}
+                                <span className="text-xs font-semibold text-[#a1a1a6] group-hover:text-[#f5f5f7] transition-colors truncate">
+                                  {skillName}
+                                </span>
                               </div>
-                            )}
-                            <span className="text-xs font-semibold text-[#a1a1a6] group-hover:text-[#f5f5f7] transition-colors truncate">
-                              {skillName}
-                            </span>
-                          </div>
-                        </Magnetic>
-                      )
-                    })}
-                  </div>
+                            </Magnetic>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  </GlassEffect>
                 </motion.div>
               ))
             ) : (
@@ -191,7 +196,7 @@ export default function SkillsSection() {
                 <p className="text-sm text-[#86868b]">No technologies matching &quot;{searchQuery}&quot;</p>
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="mt-3 text-xs text-amber-400 hover:underline cursor-pointer font-medium"
+                  className="mt-3 text-xs text-[#d4a853] hover:underline cursor-pointer font-medium"
                 >
                   Reset search filter
                 </button>
