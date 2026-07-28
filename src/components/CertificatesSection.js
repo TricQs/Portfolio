@@ -156,11 +156,11 @@ export default function CertificatesSection() {
             className="text-4xl sm:text-5xl md:text-[3.25rem] font-bold mt-2 leading-[1.08] tracking-[-0.035em] text-gradient"
             style={{ fontFamily: 'var(--font-space-grotesk)' }}
           >
-            3D Certificate Exhibition
+            Certificate Exhibition
           </h2>
         </motion.div>
 
-        {/* 3D Exhibition Grid */}
+        {/* Exhibition Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {certificates.slice(0, visibleCount).map((cert, index) => (
             <motion.div
