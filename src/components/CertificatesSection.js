@@ -7,6 +7,7 @@ import Image from 'next/image'
 import Card3D from './Card3D'
 import Magnetic from './Magnetic'
 import { GlassEffect } from './ui/liquid-glass'
+import { GlowingEffect } from './ui/glowing-effect'
 
 const certificates = [
   {
@@ -169,8 +170,16 @@ export default function CertificatesSection() {
               transition={{ delay: index * 0.06, duration: 0.6 }}
             >
               <Card3D maxRotate={10} className="h-full rounded-2xl">
-                <GlassEffect className="rounded-2xl border border-white/15 h-full">
-                  <article className="group overflow-hidden flex flex-col h-full bg-transparent">
+                <GlassEffect className="rounded-2xl border border-white/15 h-full relative">
+                  <GlowingEffect
+                    spread={35}
+                    glow={true}
+                    disabled={false}
+                    proximity={64}
+                    inactiveZone={0.01}
+                    borderWidth={2}
+                  />
+                  <article className="group overflow-hidden flex flex-col h-full bg-transparent z-10 relative">
                     {/* Thumbnail Area */}
                     <div
                       className="relative aspect-[16/10] flex items-center justify-center p-4 border-b border-white/10 overflow-hidden select-none cursor-pointer group/img bg-transparent"

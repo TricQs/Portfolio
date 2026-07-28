@@ -6,6 +6,7 @@ import { ExternalLink, GitBranch, PlayCircle, Layers } from 'lucide-react'
 import Card3D from './Card3D'
 import Magnetic from './Magnetic'
 import { GlassEffect } from './ui/liquid-glass'
+import { GlowingEffect } from './ui/glowing-effect'
 
 const projects = [
   {
@@ -244,8 +245,16 @@ export default function ProjectsSection() {
                 transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1], delay: index * 0.04 }}
               >
                 <Card3D maxRotate={8} className="h-full rounded-2xl">
-                  <GlassEffect className="rounded-2xl border border-white/15 h-full">
-                    <article className="group p-6 flex flex-col relative overflow-hidden h-full">
+                  <GlassEffect className="rounded-2xl border border-white/15 h-full relative">
+                    <GlowingEffect
+                      spread={35}
+                      glow={true}
+                      disabled={false}
+                      proximity={64}
+                      inactiveZone={0.01}
+                      borderWidth={2}
+                    />
+                    <article className="group p-6 flex flex-col relative overflow-hidden h-full z-10">
                       {/* Top Ambient Glow Bar */}
                       <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${project.gradient}`} />
 
