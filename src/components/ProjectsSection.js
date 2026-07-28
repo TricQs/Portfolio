@@ -180,7 +180,7 @@ export default function ProjectsSection() {
             transition={{ duration: 0.6 }}
           >
             <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#cbd5e1] mb-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#d4a853]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8]" />
               01 — Product Exhibits
             </span>
             <h2
@@ -208,7 +208,7 @@ export default function ProjectsSection() {
                 whileTap={{ scaleX: 1.14, scaleY: 0.86 }}
                 transition={{ type: 'spring', stiffness: 500, damping: 14, mass: 0.6 }}
                 className={`relative px-3 sm:px-4 h-8 sm:h-9 flex items-center justify-center rounded-xl text-[11px] sm:text-xs font-semibold transition-colors duration-200 cursor-pointer select-none shrink-0 whitespace-nowrap ${
-                  activeCategory === cat ? 'text-[#08080c]' : 'text-[#cbd5e1] hover:text-[#f5f5f7]'
+                  activeCategory === cat ? 'text-white font-bold' : 'text-[#cbd5e1] hover:text-[#f5f5f7]'
                 }`}
               >
                 {activeCategory === cat && (
@@ -216,9 +216,9 @@ export default function ProjectsSection() {
                     layoutId="activeCategoryBg"
                     className="absolute inset-0 rounded-xl z-0"
                     style={{
-                      background: 'linear-gradient(135deg, #e8c67a 0%, #d4a853 50%, #c49a48 100%)',
-                      border: '1px solid rgba(232, 198, 122, 0.6)',
-                      boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(212, 168, 83, 0.3)',
+                      background: 'linear-gradient(135deg, #38bdf8 0%, #6366f1 50%, #a855f7 100%)',
+                      border: '1px solid rgba(56, 189, 248, 0.6)',
+                      boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(56, 189, 248, 0.35)',
                     }}
                     transition={{ type: 'spring', stiffness: 520, damping: 32, mass: 0.45 }}
                   />

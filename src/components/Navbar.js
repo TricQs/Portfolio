@@ -39,37 +39,30 @@ export default function Navbar() {
   }
 
   useEffect(() => {
-    const onScroll = () => {
-      const isScrolled = window.scrollY > 30
-      setScrolled(isScrolled)
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
 
-      if (!isClicking.current && window.scrollY < 200) {
-        setActiveSection('projects')
+      if (isClicking.current) return
+
+      const scrollPosition = window.scrollY + 220
+      const sectionIds = navLinks.map(l => l.id)
+
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sectionIds[i])
+        if (section) {
+          const top = section.offsetTop
+          if (scrollPosition >= top) {
+            setActiveSection(sectionIds[i])
+            break
+          }
+        }
       }
     }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
-  useEffect(() => {
-    const ids = navLinks.map(l => l.id)
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (isClicking.current) return
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id)
-          }
-        })
-      },
-      { rootMargin: '-25% 0px -45% 0px' }
-    )
-    ids.forEach(id => {
-      const el = document.getElementById(id)
-      if (el) observer.observe(el)
-    })
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
     return () => {
-      observer.disconnect()
+      window.removeEventListener('scroll', handleScroll)
       if (clickTimeout.current) clearTimeout(clickTimeout.current)
     }
   }, [])
@@ -134,12 +127,12 @@ export default function Navbar() {
             >
               Ferdinand Arya
             </span>
-            <span className="text-base font-bold text-[#d4a853] group-hover:scale-125 transition-transform">
+            <span className="text-base font-bold text-[#38bdf8] group-hover:scale-125 transition-transform">
               .
             </span>
           </button>
 
-          {/* Desktop Nav — Liquid Glass Gold-Tinted Active Pill */}
+          {/* Desktop Nav — Liquid Glass Cyan-Tinted Active Pill */}
           <GlassEffect className="hidden md:flex rounded-full border border-white/20 p-1 backdrop-blur-xl">
             <nav className="flex items-center gap-1 overflow-hidden relative" aria-label="Main Navigation">
               {navLinks.map((link) => (
@@ -149,7 +142,7 @@ export default function Navbar() {
                   whileTap={{ scaleX: 1.14, scaleY: 0.86 }}
                   transition={{ type: 'spring', stiffness: 500, damping: 14 }}
                   className={`relative px-3.5 py-1.5 text-xs font-semibold transition-colors duration-300 rounded-full cursor-pointer select-none ${activeSection === link.id
-                    ? 'text-[#08080c]'
+                    ? 'text-white font-bold'
                     : 'text-[#a1a1a6] hover:text-[#f5f5f7]'
                     }`}
                 >
@@ -158,9 +151,9 @@ export default function Navbar() {
                       layoutId="activeNavBg"
                       className="absolute inset-0 rounded-full z-0"
                       style={{
-                        background: 'linear-gradient(135deg, #e8c67a 0%, #d4a853 50%, #c49a48 100%)',
-                        border: '1px solid rgba(232, 198, 122, 0.6)',
-                        boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(212, 168, 83, 0.3)',
+                        background: 'linear-gradient(135deg, #38bdf8 0%, #6366f1 50%, #a855f7 100%)',
+                        border: '1px solid rgba(56, 189, 248, 0.6)',
+                        boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 16px rgba(56, 189, 248, 0.35)',
                       }}
                       transition={{ type: 'spring', stiffness: 480, damping: 36, mass: 0.45 }}
                     />
@@ -171,9 +164,9 @@ export default function Navbar() {
             </nav>
           </GlassEffect>
 
-          {/* CV Button — Liquid Glass Gold Accent */}
+          {/* CV Button — Liquid Glass Cyan Accent */}
           <div className="hidden md:flex items-center">
-            <GlassEffect className="rounded-full border border-[#d4a853]/40">
+            <GlassEffect className="rounded-full border border-[#38bdf8]/40">
               <motion.a
                 href="https://drive.google.com/file/d/1KvDJ4PDQWPXYdr3xumVfAmV3xaYX2YOA/view?usp=drive_link"
                 target="_blank"
@@ -182,7 +175,7 @@ export default function Navbar() {
                 transition={{ type: 'spring', stiffness: 700, damping: 12, mass: 0.3 }}
                 className="flex items-center gap-2 px-5 py-2 text-xs font-semibold rounded-full text-[#f5f5f7] hover:scale-105 transition-transform duration-300 bg-white/[0.04]"
               >
-                <Download size={13} className="text-[#d4a853]" />
+                <Download size={13} className="text-[#38bdf8]" />
                 CV
               </motion.a>
             </GlassEffect>

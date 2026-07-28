@@ -2,44 +2,42 @@
 
 import React from "react";
 
-// Glass Effect Wrapper Component
+// Glass Effect Wrapper Component (Lightweight Semi-Transparent Surface)
 export const GlassEffect = ({
   children,
   className = "",
   style = {},
   href,
+  onClick,
   target = "_blank",
+  enableBlur = false,
 }) => {
   const glassStyle = {
-    boxShadow: "0 6px 20px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.4)",
-    transitionTimingFunction: "cubic-bezier(0.175, 0.885, 0.32, 1.4)",
+    boxShadow: "0 6px 20px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.3)",
     ...style,
   };
 
   const content = (
     <div
-      className={`relative flex flex-col font-semibold overflow-hidden text-white cursor-pointer transition-all duration-700 ${className}`}
+      onClick={onClick}
+      className={`relative flex flex-col font-semibold overflow-hidden text-white ${href || onClick ? 'cursor-pointer' : 'cursor-default'} transition-all duration-300 ${className}`}
       style={glassStyle}
     >
-      {/* Glass Layers */}
+      {/* Glass Surface */}
       <div
         className="absolute inset-0 z-0 overflow-hidden rounded-[inherit]"
         style={{
-          backdropFilter: "blur(12px) saturate(180%)",
-          WebkitBackdropFilter: "blur(12px) saturate(180%)",
-          filter: "url(#glass-distortion)",
+          background: "rgba(255, 255, 255, 0.04)",
+          backdropFilter: enableBlur ? "blur(16px) saturate(180%)" : "none",
+          WebkitBackdropFilter: enableBlur ? "blur(16px) saturate(180%)" : "none",
           isolation: "isolate",
         }}
-      />
-      <div
-        className="absolute inset-0 z-10 rounded-[inherit] overflow-hidden pointer-events-none"
-        style={{ background: "rgba(255, 255, 255, 0.05)" }}
       />
       <div
         className="absolute inset-0 z-20 rounded-[inherit] overflow-hidden pointer-events-none"
         style={{
           boxShadow:
-            "inset 1.5px 1.5px 1px 0 rgba(255, 255, 255, 0.35), inset -1px -1px 1px 1px rgba(255, 255, 255, 0.15)",
+            "inset 1.5px 1.5px 1px 0 rgba(255, 255, 255, 0.25), inset -1px -1px 1px 1px rgba(255, 255, 255, 0.1)",
         }}
       />
 
@@ -61,6 +59,7 @@ export const GlassEffect = ({
 export const GlassDock = ({ icons, href }) => (
   <GlassEffect
     href={href}
+    enableBlur={true}
     className="rounded-3xl p-3 hover:p-4 hover:rounded-4xl transition-all duration-500"
   >
     <div className="flex items-center justify-center gap-3 rounded-3xl p-2 overflow-hidden">
@@ -85,6 +84,7 @@ export const GlassDock = ({ icons, href }) => (
 export const GlassButton = ({ children, href, onClick, className = "" }) => (
   <GlassEffect
     href={href}
+    enableBlur={true}
     className={`rounded-3xl px-8 py-4 hover:px-9 hover:py-5 transition-all duration-500 overflow-hidden ${className}`}
   >
     <div
@@ -100,55 +100,4 @@ export const GlassButton = ({ children, href, onClick, className = "" }) => (
 );
 
 // SVG Filter Component
-export const GlassFilter = () => (
-  <svg style={{ display: "none" }} aria-hidden="true">
-    <filter
-      id="glass-distortion"
-      x="0%"
-      y="0%"
-      width="100%"
-      height="100%"
-      filterUnits="objectBoundingBox"
-    >
-      <feTurbulence
-        type="fractalNoise"
-        baseFrequency="0.001 0.005"
-        numOctaves="1"
-        seed="17"
-        result="turbulence"
-      />
-      <feComponentTransfer in="turbulence" result="mapped">
-        <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
-        <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
-        <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
-      </feComponentTransfer>
-      <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
-      <feSpecularLighting
-        in="softMap"
-        surfaceScale="5"
-        specularConstant="1"
-        specularExponent="100"
-        lightingColor="white"
-        result="specLight"
-      >
-        <fePointLight x="-200" y="-200" z="300" />
-      </feSpecularLighting>
-      <feComposite
-        in="specLight"
-        operator="arithmetic"
-        k1="0"
-        k2="1"
-        k3="1"
-        k4="0"
-        result="litImage"
-      />
-      <feDisplacementMap
-        in="SourceGraphic"
-        in2="softMap"
-        scale="80"
-        xChannelSelector="R"
-        yChannelSelector="G"
-      />
-    </filter>
-  </svg>
-);
+export const GlassFilter = () => null;

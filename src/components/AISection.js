@@ -248,9 +248,7 @@ export default function AISection() {
   const handleSimulate = (tool, promptIdx = null) => {
     setDisplayedResponse('')
     setIsProcessing(true)
-    setIsStreaming(false)
-    setCurrentStep(1)
-    setActiveLabel('Analyzing...')
+    setIsStreaming(true)
     setCopied(false)
 
     if (promptIdx !== null) {
@@ -264,46 +262,48 @@ export default function AISection() {
     }
   }
 
-  // Realistic Multi-Stage Sequential Delay Pipeline (Analyzing -> Building -> Generating -> Stream)
+  // Ultra-Fast & Lightweight 3-Stage Visual Pipeline (Analyzing -> Building -> Generating -> Stream)
   useEffect(() => {
     let isCancelled = false
-
-    // Step 1: Analyzing (0 - 1000ms)
+    setIsProcessing(true)
+    setIsStreaming(true)
+    setDisplayedResponse('')
     setCurrentStep(1)
     setActiveLabel('Analyzing...')
 
-    // Step 2: Building (1000ms - 2200ms)
+    // Step 2: Building (350ms)
     const t1 = setTimeout(() => {
       if (isCancelled) return
       setCurrentStep(2)
       setActiveLabel('Building...')
-    }, 1000)
+    }, 350)
 
-    // Step 3: Generating (2200ms - 3000ms)
+    // Step 3: Generating (700ms)
     const t2 = setTimeout(() => {
       if (isCancelled) return
       setCurrentStep(3)
       setActiveLabel('Generating...')
-    }, 2200)
+    }, 700)
 
-    // Step 4: Code Output Streaming (3000ms+)
+    // Step 4: Stream Code (950ms)
     const thinkTimer = setTimeout(() => {
       if (isCancelled) return
       setIsProcessing(false)
-      setIsStreaming(true)
+      setCurrentStep(4)
+      setActiveLabel('Streaming...')
 
-      let idx = 0
-      const respTimer = setInterval(() => {
+      let charIndex = 0
+      const streamInterval = setInterval(() => {
         if (isCancelled) return
-        if (idx < currentResponse.length) {
-          idx = Math.min(idx + 3, currentResponse.length)
-          setDisplayedResponse(currentResponse.slice(0, idx))
+        if (charIndex < currentResponse.length) {
+          charIndex = Math.min(charIndex + 4, currentResponse.length)
+          setDisplayedResponse(currentResponse.slice(0, charIndex))
         } else {
           setIsStreaming(false)
-          clearInterval(respTimer)
+          clearInterval(streamInterval)
         }
-      }, 10)
-    }, 3000)
+      }, 18)
+    }, 950)
 
     return () => {
       isCancelled = true
@@ -343,7 +343,7 @@ export default function AISection() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
             <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#cbd5e1] mb-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#d4a853] animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] animate-pulse" />
               06 — Developer Tooling &amp; AI Integration
             </span>
             <h2

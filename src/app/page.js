@@ -6,7 +6,6 @@ import HeroSection from '@/components/HeroSection'
 
 // Dynamic Imports with { ssr: false } for background animation & heavy interactive components
 const AnimatedGradientBackground = dynamic(() => import('@/components/AnimatedGradientBackground'))
-const MouseGlowWrapper = dynamic(() => import('@/components/MouseGlowWrapper'), { ssr: false })
 const ProjectsSection = dynamic(() => import('@/components/ProjectsSection'), { ssr: false })
 const AboutSection = dynamic(() => import('@/components/AboutSection'), { ssr: false })
 const SkillsSection = dynamic(() => import('@/components/SkillsSection'), { ssr: false })
@@ -21,9 +20,6 @@ export default function Home() {
     <>
       {/* 21st.dev Animated Radial Gradient Background (Fixed & Following Scroll) */}
       <AnimatedGradientBackground opacity={1.0} blurAmount="35px" />
-
-      {/* Mouse spotlight glow */}
-      <MouseGlowWrapper />
 
       {/* Navigation Bar */}
       <Navbar />

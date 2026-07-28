@@ -21,7 +21,6 @@ export default function AnimatedGradientBackground({
     const handler = (e) => setIsMobile(e.matches)
     mq.addEventListener('change', handler)
 
-    // Fallback timer to ensure mobile devices transition to breathing seamlessly
     const timer = setTimeout(() => {
       setHasEntered(true)
     }, 1100)
@@ -72,7 +71,7 @@ export default function AnimatedGradientBackground({
         transition={
           hasEntered
             ? {
-                duration: 7,
+                duration: 8,
                 repeat: Infinity,
                 ease: 'easeInOut',
               }
@@ -81,12 +80,12 @@ export default function AnimatedGradientBackground({
         onAnimationComplete={() => {
           if (!hasEntered) setHasEntered(true)
         }}
-        className="absolute -inset-[25%]"
+        className="absolute -inset-[22%]"
         style={{
           background: gradient,
           filter: `blur(${blurAmount})`,
           transformOrigin: 'center bottom',
-          willChange: 'transform',
+          willChange: 'transform, opacity',
           transform: 'translate3d(0,0,0)',
           backfaceVisibility: 'hidden',
           WebkitBackfaceVisibility: 'hidden',

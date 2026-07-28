@@ -55,7 +55,7 @@ export default function ExperienceSection() {
           className="mb-16"
         >
           <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#cbd5e1] mb-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#d4a853]" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8]" />
             04 — Career &amp; Experience
           </span>
           <h2
@@ -70,7 +70,7 @@ export default function ExperienceSection() {
         <div className="relative">
           <div
             className="absolute left-4 md:left-8 top-0 bottom-0 w-0.5"
-            style={{ background: 'linear-gradient(to bottom, rgba(212, 168, 83, 0.5), rgba(255,255,255,0.05))' }}
+            style={{ background: 'linear-gradient(to bottom, rgba(56, 189, 248, 0.6), rgba(255,255,255,0.05))' }}
           />
 
           <div className="space-y-8 pl-12 md:pl-20">

@@ -43,7 +43,7 @@ export default function AboutSection() {
           className="mb-16"
         >
           <div className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#cbd5e1] mb-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#d4a853]" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8]" />
             02 — Background &amp; Philosophy
           </div>
           <h2
@@ -62,7 +62,7 @@ export default function AboutSection() {
             transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7 space-y-6"
           >
-            <p className="text-lg sm:text-xl text-[#f5f5f7] leading-relaxed font-normal tracking-tight border-l-2 border-[#d4a853]/50 pl-5">
+            <p className="text-lg sm:text-xl text-[#f5f5f7] leading-relaxed font-normal tracking-tight border-l-2 border-[#38bdf8]/50 pl-5">
               I am an Informatics Student at Universitas Bunda Mulia Serpong with a core focus on Front-End Web Development, design system structure, and intuitive UI/UX execution.
             </p>
             <p className="text-sm sm:text-base text-[#cbd5e1] leading-relaxed">

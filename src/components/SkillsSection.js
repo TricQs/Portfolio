@@ -79,7 +79,7 @@ export default function SkillsSection() {
             transition={{ duration: 0.6 }}
           >
             <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#a1a1a6] mb-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#d4a853]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8]" />
               03 — Tech Matrix &amp; Stack
             </span>
             <h2
@@ -105,16 +105,16 @@ export default function SkillsSection() {
                 onChange={e => setSearchQuery(e.target.value)}
                 className={`w-full pl-10 pr-9 py-2.5 rounded-xl border text-xs transition-all duration-300 backdrop-blur-md focus:outline-none bg-white/[0.03] ${
                   searchQuery
-                    ? 'text-white border-[#d4a853]/50 bg-white/[0.06] font-medium shadow-[0_0_24px_rgba(212,168,83,0.15)]'
-                    : 'text-[#f5f5f7] border-white/15 placeholder-[#a1a1a6] hover:border-white/30 hover:placeholder-white/90 focus:border-[#d4a853]/50 focus:bg-white/[0.06] focus:shadow-[0_0_24px_rgba(212,168,83,0.15)]'
+                    ? 'text-white border-[#38bdf8]/50 bg-white/[0.06] font-medium shadow-[0_0_24px_rgba(56,189,248,0.15)]'
+                    : 'text-[#f5f5f7] border-white/15 placeholder-[#a1a1a6] hover:border-white/30 hover:placeholder-white/90 focus:border-[#38bdf8]/50 focus:bg-white/[0.06] focus:shadow-[0_0_24px_rgba(56,189,248,0.15)]'
                 }`}
               />
               <Search
                 size={15}
                 className={`absolute left-3.5 top-1/2 -translate-y-1/2 z-10 transition-all duration-300 pointer-events-none ${
                   searchQuery
-                    ? 'text-[#d4a853] scale-105'
-                    : 'text-[#a1a1a6] group-hover:text-white group-focus-within:text-[#d4a853]'
+                    ? 'text-[#38bdf8] scale-105'
+                    : 'text-[#a1a1a6] group-hover:text-white group-focus-within:text-[#38bdf8]'
                 }`}
               />
               {searchQuery && (

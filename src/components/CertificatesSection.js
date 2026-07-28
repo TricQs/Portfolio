@@ -112,6 +112,7 @@ function ImageWithFallback({ src, alt, ...props }) {
     <Image
       src={src}
       alt={alt}
+      loading="lazy"
       onError={() => setError(true)}
       {...props}
     />
@@ -147,7 +148,7 @@ export default function CertificatesSection() {
           className="mb-16"
         >
           <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#cbd5e1] mb-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#d4a853]" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8]" />
             05 — Verification &amp; Credentials
           </span>
           <h2
