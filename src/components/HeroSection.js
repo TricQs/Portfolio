@@ -91,7 +91,7 @@ export default function HeroSection() {
 
             {/* Headline — Gold Name Gradient */}
             <motion.div variants={item} className="space-y-3">
-              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-[#a1a1a6]">
+              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-[#cbd5e1]">
                 <Sparkles size={13} className="text-[#d4a853] animate-pulse" />
                 Frontend Software Engineer
               </div>
@@ -109,7 +109,7 @@ export default function HeroSection() {
             {/* Subtitle */}
             <motion.p
               variants={item}
-              className="text-[15px] sm:text-base text-[#a1a1a6] leading-[1.75] max-w-[540px] border-l-2 border-[#d4a853]/40 pl-4 py-1"
+              className="text-[15px] sm:text-base text-[#cbd5e1] leading-[1.75] max-w-[540px] border-l-2 border-[#d4a853]/40 pl-4 py-1"
             >
               Building modern, performant web applications with React, Next.js, and TypeScript. Dedicated to engineering craftsmanship, clean architecture, and intuitive digital interfaces.
             </motion.p>
@@ -152,7 +152,7 @@ export default function HeroSection() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.label}
-                      className="w-10 h-10 border border-white/10 rounded-xl flex items-center justify-center text-[#a1a1a6] hover:text-[#d4a853] hover:border-[#d4a853]/25 hover:bg-white/[0.05] transition-[border-color,color,background] duration-300 bg-white/[0.02]"
+                      className="w-10 h-10 border border-white/10 rounded-xl flex items-center justify-center text-[#cbd5e1] hover:text-[#d4a853] hover:border-[#d4a853]/25 hover:bg-white/[0.05] transition-[border-color,color,background] duration-300 bg-white/[0.02]"
                     >
                       <social.Icon size={15} />
                     </a>
@@ -164,7 +164,7 @@ export default function HeroSection() {
             {/* Quick Proof Strip */}
             <motion.div
               variants={item}
-              className="pt-7 border-t border-white/15 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs text-[#a1a1a6]"
+              className="pt-7 border-t border-white/15 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs text-[#cbd5e1]"
             >
               <div className="flex items-center gap-2.5">
                 <GraduationCap size={15} strokeWidth={1.5} className="text-[#d4a853] flex-shrink-0" />

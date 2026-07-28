@@ -146,7 +146,7 @@ export default function CertificatesSection() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mb-16"
         >
-          <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#a1a1a6] mb-2">
+          <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#cbd5e1] mb-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#d4a853]" />
             05 — Verification &amp; Credentials
           </span>
@@ -191,7 +191,7 @@ export default function CertificatesSection() {
 
                     {/* Content Area */}
                     <div className="p-6 flex flex-col flex-1">
-                      <div className="flex items-center justify-between text-[#a1a1a6] text-[11px] mb-3">
+                      <div className="flex items-center justify-between text-[#cbd5e1] text-[11px] mb-3">
                         <span className="flex items-center gap-1.5 font-semibold uppercase tracking-wider text-[#f5f5f7]">
                           <ShieldCheck size={13} className="text-[#d4a853]" />
                           {cert.issuer}
@@ -210,7 +210,7 @@ export default function CertificatesSection() {
                       </h3>
 
                       {/* Learnings Bullet List */}
-                      <ul className="space-y-2 mb-6 flex-1 text-xs text-[#a1a1a6] leading-relaxed">
+                      <ul className="space-y-2 mb-6 flex-1 text-xs text-[#cbd5e1] leading-relaxed">
                         {cert.learnings.map((l, idx) => (
                           <li key={idx} className="flex items-start gap-2">
                             <Check size={12} className="text-[#d4a853] flex-shrink-0 mt-0.5" />
@@ -236,7 +236,7 @@ export default function CertificatesSection() {
                         <Magnetic strength={0.2} className="w-full">
                           <button
                             onClick={() => setActiveLightbox(cert.image)}
-                            className="w-full flex items-center justify-center gap-1.5 py-2.5 text-xs font-semibold rounded-xl border border-white/15 text-[#a1a1a6] hover:text-[#f5f5f7] hover:bg-white/[0.06] transition-all cursor-pointer"
+                            className="w-full flex items-center justify-center gap-1.5 py-2.5 text-xs font-semibold rounded-xl border border-white/15 text-[#cbd5e1] hover:text-[#f5f5f7] hover:bg-white/[0.06] transition-all cursor-pointer"
                           >
                             <FileText size={13} /> View Full Image
                           </button>
@@ -257,7 +257,7 @@ export default function CertificatesSection() {
               <Magnetic strength={0.3}>
                 <button
                   onClick={handleShowLess}
-                  className="px-6 py-3 rounded-xl border border-white/15 text-xs font-semibold text-[#a1a1a6] hover:text-[#f5f5f7] hover:bg-white/[0.06] transition-all cursor-pointer"
+                  className="px-6 py-3 rounded-xl border border-white/15 text-xs font-semibold text-[#cbd5e1] hover:text-[#f5f5f7] hover:bg-white/[0.06] transition-all cursor-pointer"
                 >
                   Show Less ↑
                 </button>

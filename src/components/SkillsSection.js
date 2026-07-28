@@ -175,7 +175,7 @@ export default function SkillsSection() {
                                     <IconComp size={20} />
                                   </div>
                                 )}
-                                <span className="text-xs font-semibold text-[#a1a1a6] group-hover:text-[#f5f5f7] transition-colors truncate">
+                                <span className="text-xs font-semibold text-[#cbd5e1] group-hover:text-white transition-colors truncate">
                                   {skillName}
                                 </span>
                               </div>

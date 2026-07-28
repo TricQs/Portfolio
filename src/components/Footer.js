@@ -1,10 +1,9 @@
 'use client'
 
-import { useRef, useEffect, useState } from 'react'
+import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import { GitHubIcon, LinkedInIcon, InstagramIcon } from './SocialIcons'
-import BitVolleyball from './BitVolleyball'
 import Magnetic from './Magnetic'
 
 const footerNavLinks = [
@@ -24,39 +23,8 @@ const socialLinks = [
 ]
 
 export default function Footer() {
-  const [style, setStyle] = useState({})
   const headingRef = useRef(null)
   const headingInView = useInView(headingRef, { once: true, margin: '-100px' })
-
-  useEffect(() => {
-    const update = () => {
-      const vw = window.innerWidth
-      if (vw < 768) {
-        const s = Math.min(1, (vw - 12) / 560)
-        setStyle({
-          position: 'absolute',
-          bottom: '4px',
-          zIndex: 2,
-          opacity: 0.75,
-          left: '50%',
-          transform: `translateX(-50%) scale(${s})`,
-          transformOrigin: 'bottom center',
-        })
-      } else {
-        setStyle({
-          position: 'absolute',
-          bottom: '4px',
-          zIndex: 2,
-          opacity: 0.75,
-          left: '50%',
-          transform: 'translateX(calc(-50% + 130px))',
-        })
-      }
-    }
-    update()
-    window.addEventListener('resize', update)
-    return () => window.removeEventListener('resize', update)
-  }, [])
 
   return (
     <footer className="relative z-10 bg-transparent pt-16 pb-12 overflow-hidden">
@@ -97,7 +65,7 @@ export default function Footer() {
                   onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                   whileTap={{ scaleX: 1.18, scaleY: 0.82 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 28 }}
-                  className="inline-flex items-center gap-2 mt-8 px-5 py-2.5 border border-[#d4a853]/15 rounded-full text-xs sm:text-sm text-[#a1a1a6] hover:text-[#d4a853] hover:border-[#d4a853]/30 hover:bg-[#d4a853]/5 transition-[border-color,color,background] duration-300 group cursor-pointer"
+                  className="inline-flex items-center gap-2 mt-8 px-5 py-2.5 border border-[#d4a853]/15 rounded-full text-xs sm:text-sm text-[#cbd5e1] hover:text-[#d4a853] hover:border-[#d4a853]/30 hover:bg-[#d4a853]/5 transition-[border-color,color,background] duration-300 group cursor-pointer"
                   style={{ background: 'rgba(255,255,255,0.02)' }}
                 >
                   Contact Me
@@ -120,7 +88,7 @@ export default function Footer() {
                 transition={{ delay: 0.25 + i * 0.04, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })}
                 whileTap={{ scaleX: 1.15, scaleY: 0.85 }}
-                className="text-xs text-[#6e6e73] hover:text-[#f5f5f7] transition-colors tracking-wide cursor-pointer"
+                className="text-xs text-[#cbd5e1] hover:text-white transition-colors tracking-wide cursor-pointer font-medium"
               >
                 {link.label}
               </motion.button>
@@ -142,7 +110,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="w-8 h-8 border border-white/[0.08] rounded-lg flex items-center justify-center text-[#6e6e73] hover:text-[#d4a853] hover:border-[#d4a853]/25 transition-[border-color,color] duration-300 bg-white/[0.02]"
+                    className="w-8 h-8 border border-white/[0.08] rounded-lg flex items-center justify-center text-[#cbd5e1] hover:text-[#d4a853] hover:border-[#d4a853]/25 transition-[border-color,color] duration-300 bg-white/[0.02]"
                   >
                     <social.Icon size={14} />
                   </a>
@@ -157,14 +125,10 @@ export default function Footer() {
           initial={{ opacity: 0 }}
           animate={headingInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.6, duration: 0.5 }}
-          className="mt-6 text-[11px] text-[#6e6e73] tracking-wide"
+          className="mt-6 text-[11px] text-[#cbd5e1] tracking-wide"
         >
           © {new Date().getFullYear()} · Ferdinand Arya Wijaya · Informatics Student &amp; Front-End Developer
         </motion.p>
-      </div>
-
-      <div style={style}>
-        <BitVolleyball />
       </div>
     </footer>
   )

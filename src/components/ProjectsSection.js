@@ -179,7 +179,7 @@ export default function ProjectsSection() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#a1a1a6] mb-2">
+            <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#cbd5e1] mb-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#d4a853]" />
               01 — Product Exhibits
             </span>
@@ -189,7 +189,7 @@ export default function ProjectsSection() {
             >
               Selected Engineering Projects
             </h2>
-            <p className="text-sm text-[#a1a1a6] mt-3 max-w-xl">
+            <p className="text-sm text-[#cbd5e1] mt-3 max-w-xl">
               Showcasing software applications, full-stack tools, and internship projects built with engineering craftsmanship.
             </p>
           </motion.div>
@@ -208,7 +208,7 @@ export default function ProjectsSection() {
                 whileTap={{ scaleX: 1.14, scaleY: 0.86 }}
                 transition={{ type: 'spring', stiffness: 500, damping: 14, mass: 0.6 }}
                 className={`relative px-3 sm:px-4 h-8 sm:h-9 flex items-center justify-center rounded-xl text-[11px] sm:text-xs font-semibold transition-colors duration-200 cursor-pointer select-none shrink-0 whitespace-nowrap ${
-                  activeCategory === cat ? 'text-[#08080c]' : 'text-[#a1a1a6] hover:text-[#f5f5f7]'
+                  activeCategory === cat ? 'text-[#08080c]' : 'text-[#cbd5e1] hover:text-[#f5f5f7]'
                 }`}
               >
                 {activeCategory === cat && (
@@ -224,7 +224,7 @@ export default function ProjectsSection() {
                   />
                 )}
                 <span className="relative z-10 flex items-center gap-1.5">
-                  {cat === 'All' && <Layers size={13} className={activeCategory === cat ? 'text-[#08080c]' : 'text-[#a1a1a6]'} />}
+                  {cat === 'All' && <Layers size={13} className={activeCategory === cat ? 'text-[#08080c]' : 'text-[#cbd5e1]'} />}
                   {cat}
                 </span>
               </motion.button>
@@ -251,8 +251,8 @@ export default function ProjectsSection() {
 
                       {/* Number & Status */}
                       <div className="flex items-center justify-between gap-4 mb-4">
-                        <span className="text-xs font-mono text-[#a1a1a6]">[{project.number}]</span>
-                        <span className="text-[11px] px-2.5 py-0.5 rounded-full border border-white/15 text-[#a1a1a6] bg-white/[0.04] backdrop-blur-sm flex items-center gap-1.5 font-medium">
+                        <span className="text-xs font-mono text-[#cbd5e1]">[{project.number}]</span>
+                        <span className="text-[11px] px-2.5 py-0.5 rounded-full border border-white/15 text-[#cbd5e1] bg-white/[0.04] backdrop-blur-sm flex items-center gap-1.5 font-medium">
                           <span className="w-1.5 h-1.5 rounded-full" style={{ background: project.accentColor, boxShadow: `0 0 8px ${project.accentColor}` }} />
                           {project.statusText}
                         </span>
@@ -268,13 +268,13 @@ export default function ProjectsSection() {
 
                       {/* Category Badge */}
                       <div className="mb-4">
-                        <span className="text-[11px] text-[#86868b] font-mono tracking-wide">
+                        <span className="text-[11px] text-[#cbd5e1] font-mono tracking-wide">
                           {project.category}
                         </span>
                       </div>
 
                       {/* Description */}
-                      <p className="text-xs text-[#a1a1a6] leading-relaxed mb-6 flex-1">
+                      <p className="text-xs text-[#cbd5e1] leading-relaxed mb-6 flex-1">
                         {project.description}
                       </p>
 
@@ -283,7 +283,7 @@ export default function ProjectsSection() {
                         {project.tech.map((t) => (
                           <span
                             key={t}
-                            className="px-2.5 py-1 rounded-lg text-[10px] font-medium border border-white/10 text-[#a1a1a6] bg-white/[0.02]"
+                            className="px-2.5 py-1 rounded-lg text-[10px] font-medium border border-white/10 text-[#cbd5e1] bg-white/[0.02]"
                           >
                             {t}
                           </span>

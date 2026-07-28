@@ -42,7 +42,7 @@ export default function AboutSection() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mb-16"
         >
-          <div className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#86868b] mb-2">
+          <div className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#cbd5e1] mb-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#d4a853]" />
             02 — Background &amp; Philosophy
           </div>
@@ -65,10 +65,10 @@ export default function AboutSection() {
             <p className="text-lg sm:text-xl text-[#f5f5f7] leading-relaxed font-normal tracking-tight border-l-2 border-[#d4a853]/50 pl-5">
               I am an Informatics Student at Universitas Bunda Mulia Serpong with a core focus on Front-End Web Development, design system structure, and intuitive UI/UX execution.
             </p>
-            <p className="text-sm sm:text-base text-[#86868b] leading-relaxed">
+            <p className="text-sm sm:text-base text-[#cbd5e1] leading-relaxed">
               I enjoy translating user interface designs into responsive, well-structured web applications using React, Next.js, and TypeScript. My focus is on writing readable code, following modern web standards, and delivering clean user experiences.
             </p>
-            <p className="text-sm sm:text-base text-[#86868b] leading-relaxed">
+            <p className="text-sm sm:text-base text-[#cbd5e1] leading-relaxed">
               I actively utilize modern developer tools and AI assistants (like ChatGPT, Claude, and Gemini) to streamline debugging, explore new libraries, and continuously accelerate my technical learning.
             </p>
 
@@ -110,7 +110,7 @@ export default function AboutSection() {
                         >
                           {stat.value}
                         </div>
-                        <div className="text-[10px] sm:text-[11px] text-[#86868b] uppercase tracking-wider font-semibold leading-tight">
+                        <div className="text-[10px] sm:text-[11px] text-[#cbd5e1] uppercase tracking-wider font-semibold leading-tight">
                           {stat.label}
                         </div>
                       </div>

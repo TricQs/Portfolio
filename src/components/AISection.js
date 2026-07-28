@@ -342,7 +342,7 @@ export default function AISection() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#a1a1a6] mb-2">
+            <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#cbd5e1] mb-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#d4a853] animate-pulse" />
               06 — Developer Tooling &amp; AI Integration
             </span>
@@ -352,7 +352,7 @@ export default function AISection() {
             >
               Interactive AI Lab
             </h2>
-            <p className="text-sm text-[#a1a1a6] mt-2 max-w-xl">
+            <p className="text-sm text-[#cbd5e1] mt-2 max-w-xl">
               Experience live AI code generation, architectural analysis, and real-time prompt workflow execution.
             </p>
           </motion.div>
@@ -372,7 +372,7 @@ export default function AISection() {
                     onClick={() => handleSimulate(tool)}
                     className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2.5 transition-all cursor-pointer ${activeTool.id === tool.id
                         ? 'bg-white/15 text-white border border-white/20 shadow-md'
-                        : 'bg-white/[0.02] text-[#a1a1a6] hover:text-white hover:bg-white/[0.06] border border-white/10'
+                        : 'bg-white/[0.02] text-[#cbd5e1] hover:text-white hover:bg-white/[0.06] border border-white/10'
                       }`}
                   >
                     <tool.icon size={16} style={{ color: tool.color }} />
@@ -384,7 +384,7 @@ export default function AISection() {
                 ))}
               </div>
 
-              <div className="flex items-center gap-3 text-xs font-mono text-[#a1a1a6]">
+              <div className="flex items-center gap-3 text-xs font-mono text-[#cbd5e1]">
                 <span className="flex items-center gap-1.5 bg-white/[0.03] border border-white/10 px-3 py-1 rounded-full">
                   <Zap size={12} className="text-amber-400" /> Latency: {activeTool.latency}
                 </span>
@@ -398,7 +398,7 @@ export default function AISection() {
             <div className="space-y-4">
               {/* Preset Chips */}
               <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none text-[11px]">
-                <span className="text-[#a1a1a6] font-mono flex-shrink-0 flex items-center gap-1">
+                <span className="text-[#cbd5e1] font-mono flex-shrink-0 flex items-center gap-1">
                   <Bot size={13} className="text-[#d4a853]" /> Presets:
                 </span>
                 {activeTool.prompts.map((p, idx) => (
@@ -408,7 +408,7 @@ export default function AISection() {
                     onClick={() => handleSimulate(activeTool, idx)}
                     className={`px-3 py-1.5 rounded-lg border text-left whitespace-nowrap transition-all cursor-pointer ${variationIndex % activeTool.prompts.length === idx
                         ? 'border-[#d4a853]/40 bg-[#d4a853]/10 text-[#f5f5f7]'
-                        : 'border-white/10 bg-white/[0.02] text-[#a1a1a6] hover:border-white/20 hover:text-white'
+                        : 'border-white/10 bg-white/[0.02] text-[#cbd5e1] hover:border-white/20 hover:text-white'
                       }`}
                   >
                     &ldquo;{p.length > 45 ? p.slice(0, 45) + '...' : p}&rdquo;

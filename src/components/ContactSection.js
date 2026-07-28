@@ -80,7 +80,7 @@ export default function ContactSection() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mb-16 text-center"
         >
-          <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#86868b] mb-2">
+          <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#cbd5e1] mb-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#d4a853]" />
             07 — Finale &amp; Contact Stage
           </span>
@@ -90,7 +90,7 @@ export default function ContactSection() {
           >
             Let&apos;s Build Something Iconic
           </h2>
-          <p className="text-sm text-[#86868b] mt-4 max-w-lg mx-auto leading-relaxed">
+          <p className="text-sm text-[#cbd5e1] mt-4 max-w-lg mx-auto leading-relaxed">
             Open to entry-level engineering roles, internships, web application development, or technical collaboration.
           </p>
         </motion.div>
@@ -106,7 +106,7 @@ export default function ContactSection() {
               <GlassEffect className="rounded-2xl border border-white/15 h-full">
                 <form onSubmit={handleSubmit} className="space-y-5 p-8 w-full backdrop-blur-xl shadow-2xl" aria-label="Contact form">
                 <div>
-                  <label htmlFor="contact-name" className="block text-[11px] font-medium tracking-[0.12em] uppercase text-[#86868b] mb-2">
+                  <label htmlFor="contact-name" className="block text-[11px] font-medium tracking-[0.12em] uppercase text-[#cbd5e1] mb-2">
                     Your Name
                   </label>
                   <input
@@ -118,12 +118,12 @@ export default function ContactSection() {
                     value={form.name}
                     onChange={e => setForm({ ...form, name: e.target.value })}
                     placeholder="Jane Doe"
-                    className="w-full px-4 py-3.5 border border-white/10 rounded-xl text-sm text-[#f5f5f7] placeholder-[#86868b]/50 focus:border-[#d4a853]/40 focus:bg-white/[0.05] focus:shadow-[0_0_24px_rgba(212,168,83,0.08)] focus:outline-none transition-[border-color,background,box-shadow] duration-300 bg-white/[0.015]"
+                    className="w-full px-4 py-3.5 border border-white/10 rounded-xl text-sm text-[#f5f5f7] placeholder-[#cbd5e1]/60 focus:border-[#d4a853]/40 focus:bg-white/[0.05] focus:shadow-[0_0_24px_rgba(212,168,83,0.08)] focus:outline-none transition-[border-color,background,box-shadow] duration-300 bg-white/[0.015]"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="contact-email" className="block text-[11px] font-medium tracking-[0.12em] uppercase text-[#86868b] mb-2">
+                  <label htmlFor="contact-email" className="block text-[11px] font-medium tracking-[0.12em] uppercase text-[#cbd5e1] mb-2">
                     Email Address
                   </label>
                   <input
@@ -135,12 +135,12 @@ export default function ContactSection() {
                     value={form.email}
                     onChange={e => setForm({ ...form, email: e.target.value })}
                     placeholder="jane@company.com"
-                    className="w-full px-4 py-3.5 border border-white/10 rounded-xl text-sm text-[#f5f5f7] placeholder-[#86868b]/50 focus:border-[#d4a853]/40 focus:bg-white/[0.05] focus:shadow-[0_0_24px_rgba(212,168,83,0.08)] focus:outline-none transition-[border-color,background,box-shadow] duration-300 bg-white/[0.015]"
+                    className="w-full px-4 py-3.5 border border-white/10 rounded-xl text-sm text-[#f5f5f7] placeholder-[#cbd5e1]/60 focus:border-[#d4a853]/40 focus:bg-white/[0.05] focus:shadow-[0_0_24px_rgba(212,168,83,0.08)] focus:outline-none transition-[border-color,background,box-shadow] duration-300 bg-white/[0.015]"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="contact-message" className="block text-[11px] font-medium tracking-[0.12em] uppercase text-[#86868b] mb-2">
+                  <label htmlFor="contact-message" className="block text-[11px] font-medium tracking-[0.12em] uppercase text-[#cbd5e1] mb-2">
                     Message
                   </label>
                   <textarea
@@ -151,7 +151,7 @@ export default function ContactSection() {
                     value={form.message}
                     onChange={e => setForm({ ...form, message: e.target.value })}
                     placeholder="Hello Ferdinand, I'd like to discuss..."
-                    className="w-full px-4 py-3.5 border border-white/10 rounded-xl text-sm text-[#f5f5f7] placeholder-[#86868b]/50 focus:border-[#d4a853]/40 focus:bg-white/[0.05] focus:shadow-[0_0_24px_rgba(212,168,83,0.08)] focus:outline-none transition-[border-color,background,box-shadow] duration-300 resize-none bg-white/[0.015]"
+                    className="w-full px-4 py-3.5 border border-white/10 rounded-xl text-sm text-[#f5f5f7] placeholder-[#cbd5e1]/60 focus:border-[#d4a853]/40 focus:bg-white/[0.05] focus:shadow-[0_0_24px_rgba(212,168,83,0.08)] focus:outline-none transition-[border-color,background,box-shadow] duration-300 resize-none bg-white/[0.015]"
                   />
                 </div>
 
@@ -206,7 +206,7 @@ export default function ContactSection() {
                       <item.icon size={18} className="text-[#f5f5f7]" />
                     </div>
                     <div>
-                      <p className="text-[10px] uppercase tracking-wider text-[#86868b] mb-0.5">{item.label}</p>
+                      <p className="text-[10px] uppercase tracking-wider text-[#cbd5e1] mb-0.5">{item.label}</p>
                       {item.href ? (
                         <a href={item.href} className="text-sm text-[#f5f5f7] hover:text-white transition-colors font-medium">
                           {item.value}
@@ -223,7 +223,7 @@ export default function ContactSection() {
             <div className="section-divider" />
 
             <div>
-              <p className="text-[10px] uppercase tracking-[0.2em] text-[#86868b] mb-4 font-semibold">
+              <p className="text-[10px] uppercase tracking-[0.2em] text-[#cbd5e1] mb-4 font-semibold">
                 Social Profiles
               </p>
               <div className="flex gap-3">
@@ -234,7 +234,7 @@ export default function ContactSection() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.label}
-                      className="w-11 h-11 border border-white/10 rounded-xl flex items-center justify-center hover:border-white/30 hover:bg-white/[0.06] transition-[border-color,color,background] duration-300 text-[#86868b] hover:text-[#f5f5f7] bg-white/[0.02]"
+                      className="w-11 h-11 border border-white/10 rounded-xl flex items-center justify-center hover:border-white/30 hover:bg-white/[0.06] transition-[border-color,color,background] duration-300 text-[#cbd5e1] hover:text-[#f5f5f7] bg-white/[0.02]"
                     >
                       <social.Icon size={16} />
                     </a>
@@ -248,7 +248,7 @@ export default function ContactSection() {
                 <span className="w-2 h-2 rounded-full bg-[#d4a853] animate-ping" />
                 <span className="text-[11px] font-bold text-[#d4a853] tracking-wider uppercase">Open for Work</span>
               </div>
-              <p className="text-xs text-[#a1a1a6] leading-relaxed">
+              <p className="text-xs text-[#cbd5e1] leading-relaxed">
                 Actively seeking entry-level software engineering positions, front-end developer roles, internships, and technical projects.
               </p>
             </div>

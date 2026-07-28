@@ -54,7 +54,7 @@ export default function ExperienceSection() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mb-16"
         >
-          <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#86868b] mb-2">
+          <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#cbd5e1] mb-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#d4a853]" />
             04 — Career &amp; Experience
           </span>
@@ -108,20 +108,20 @@ export default function ExperienceSection() {
                             </span>
                           </div>
                         </div>
-                        <div className="flex items-center gap-2 text-[#86868b] text-xs font-mono bg-white/[0.02] border border-white/10 px-3 py-1.5 rounded-full">
+                        <div className="flex items-center gap-2 text-[#cbd5e1] text-xs font-mono bg-white/[0.02] border border-white/10 px-3 py-1.5 rounded-full">
                           <Calendar size={13} strokeWidth={1.75} />
                           {exp.period}
                         </div>
                       </div>
 
-                      <p className="text-sm text-[#86868b] leading-relaxed mb-6">
+                      <p className="text-sm text-[#cbd5e1] leading-relaxed mb-6">
                         {exp.description}
                       </p>
 
                       {/* Key Highlights */}
                       <div className="space-y-2.5 mb-6">
                         {exp.highlights.map((h, idx) => (
-                          <div key={idx} className="flex items-start gap-2.5 text-xs text-[#a1a1a6] leading-relaxed">
+                          <div key={idx} className="flex items-start gap-2.5 text-xs text-[#cbd5e1] leading-relaxed">
                             <CheckCircle2 size={15} className="text-[#d4a853] flex-shrink-0 mt-0.5" />
                             <span>{h}</span>
                           </div>
@@ -133,7 +133,7 @@ export default function ExperienceSection() {
                         {exp.tags.map(tag => (
                           <span
                             key={tag}
-                            className="px-2.5 py-1 text-[10px] rounded-lg border border-white/10 text-[#a1a1a6] bg-white/[0.02]"
+                            className="px-2.5 py-1 text-[10px] rounded-lg border border-white/10 text-[#cbd5e1] bg-white/[0.02]"
                           >
                             {tag}
                           </span>

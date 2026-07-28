@@ -75,8 +75,20 @@ export default function Navbar() {
   }, [])
 
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
+    if (mobileOpen) {
+      document.documentElement.style.overflow = 'hidden'
+      document.body.style.overflow = 'hidden'
+      document.body.style.touchAction = 'none'
+    } else {
+      document.documentElement.style.overflow = ''
+      document.body.style.overflow = ''
+      document.body.style.touchAction = ''
+    }
+    return () => {
+      document.documentElement.style.overflow = ''
+      document.body.style.overflow = ''
+      document.body.style.touchAction = ''
+    }
   }, [mobileOpen])
 
   return (
@@ -86,7 +98,7 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-[padding,border-color,background,box-shadow] duration-300 ${mobileOpen
-          ? 'py-4 border-b border-white/10 bg-[#08080c]/95 backdrop-blur-2xl'
+          ? 'py-4 border-b border-white/10 bg-[#08080c]/90 backdrop-blur-2xl'
           : scrolled
             ? 'py-3.5 border-b border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)]'
             : 'py-5 border-b border-transparent bg-transparent'
@@ -211,7 +223,7 @@ export default function Navbar() {
         </div>
       </motion.header>
 
-      {/* Mobile Menu Drawer — Obsidian Luxe */}
+      {/* Mobile Menu Drawer — Obsidian Luxe Translucent Glass with Specular Reflection Sheen */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -222,11 +234,26 @@ export default function Navbar() {
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             className="fixed inset-0 z-40 flex flex-col pt-28 px-6 pb-10 overflow-y-auto"
             style={{
-              background: 'linear-gradient(180deg, rgba(8, 8, 12, 0.94) 0%, rgba(13, 13, 20, 0.97) 100%)',
-              backdropFilter: 'blur(32px) saturate(200%)',
-              WebkitBackdropFilter: 'blur(32px) saturate(200%)',
+              background: 'linear-gradient(180deg, rgba(8, 8, 12, 0.88) 0%, rgba(13, 13, 20, 0.92) 100%)',
+              backdropFilter: 'blur(28px) saturate(180%)',
+              WebkitBackdropFilter: 'blur(28px) saturate(180%)',
             }}
           >
+            {/* Top Specular Glass Reflection Sheen (Khusus Layar Mobile) */}
+            <div
+              className="absolute top-0 left-0 right-0 h-[2px] pointer-events-none z-20"
+              style={{
+                background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.6) 30%, rgba(212, 168, 83, 0.8) 50%, rgba(255, 255, 255, 0.6) 70%, transparent 100%)',
+                boxShadow: '0 0 15px rgba(255, 255, 255, 0.6), 0 2px 25px rgba(212, 168, 83, 0.4)',
+              }}
+            />
+            <div
+              className="absolute -top-20 left-1/2 -translate-x-1/2 w-[340px] h-[120px] rounded-full pointer-events-none opacity-40 z-10"
+              style={{
+                background: 'radial-gradient(ellipse at center, rgba(255, 255, 255, 0.3) 0%, rgba(212, 168, 83, 0.15) 45%, transparent 75%)',
+                filter: 'blur(20px)',
+              }}
+            />
             <div className="flex flex-col justify-center flex-grow gap-3 relative z-10 my-auto max-w-sm mx-auto w-full">
               {navLinks.map((link, i) => (
                 <motion.button
