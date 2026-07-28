@@ -1,8 +1,8 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
-import { Download, GraduationCap, MapPin, Code2, FolderGit2, Sparkles, ChevronRight } from 'lucide-react'
+import { useRef, useState, useEffect } from 'react'
+import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { Download, GraduationCap, MapPin, Code2, FolderGit2, Sparkles, ChevronRight, ChevronDown } from 'lucide-react'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { GitHubIcon, LinkedInIcon, InstagramIcon } from './SocialIcons'
@@ -19,32 +19,46 @@ const ParticleBackground = dynamic(() => import('./ParticleBackground'), { ssr: 
 
 const techBadges = [
   { label: 'ChatGPT', color: '#10a37f' },
-  { label: 'Claude', color: '#c96342' },
-  { label: 'Gemini', color: '#4285f4' },
-  { label: 'Next.js', color: '#f5f5f7' },
+  { label: 'Gemini', color: '#1a73e8' },
+  { label: 'Next.js', color: '#ffffff' },
   { label: 'React', color: '#61dafb' },
   { label: 'TypeScript', color: '#3178c6' },
 ]
 
 const badgePositions = [
-  { top: '-6%', left: '0%', delay: 0 },
-  { top: '10%', right: '-10%', delay: 0.15 },
-  { top: '50%', right: '-14%', delay: 0.3 },
-  { bottom: '6%', right: '-6%', delay: 0.45 },
-  { bottom: '-6%', left: '6%', delay: 0.6 },
-  { top: '54%', left: '-14%', delay: 0.75 },
+  { top: '15%', right: '12%', delay: 0.1 },
+  { top: '42%', right: '-4%', delay: 0.2 },
+  { top: '70%', right: '2%', delay: 0.3 },
+  { top: '78%', right: '48%', delay: 0.4 },
+  { top: '46%', right: '78%', delay: 0.5 },
 ]
 
 export default function HeroSection() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true })
+  const [showScrollIndicator, setShowScrollIndicator] = useState(true)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollIndicator(window.scrollY < 80)
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const container = {
-    hidden: {},
-    show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: 0.1,
+      },
+    },
   }
+
   const item = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 24 },
     show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
   }
 
@@ -310,6 +324,29 @@ export default function HeroSection() {
           </motion.div>
         </div>
       </div>
+
+      {/* Scroll Down Indicator (Side-by-Side, Subtle, Low Opacity, Non-Clickable, Fades on Scroll) */}
+      <AnimatePresence>
+        {showScrollIndicator && (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 0.55, y: 0 }}
+            exit={{ opacity: 0, y: 8 }}
+            transition={{ duration: 0.3 }}
+            className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-1.5 pointer-events-none select-none"
+          >
+            <span className="text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.25em] text-[#cbd5e1]">
+              Scroll
+            </span>
+            <motion.div
+              animate={{ y: [0, 3, 0] }}
+              transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
+            >
+              <ChevronDown size={12} className="text-[#38bdf8]" />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }
