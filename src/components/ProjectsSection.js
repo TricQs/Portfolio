@@ -59,7 +59,6 @@ const projects = [
     description:
       'A web application for tracking multi-account finances, budgeting, and monitoring expenses. Built with Next.js App Router, server-side actions, Supabase authentication, and PostgreSQL database triggers for balance synchronization.',
     tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'PostgreSQL'],
-    live: null,
     live: 'https://finance-project-uangku.vercel.app/',
     github: 'https://github.com/CodeMelvin/uangku',
     statusText: 'Active Project',
