@@ -60,6 +60,7 @@ const projects = [
       'A web application for tracking multi-account finances, budgeting, and monitoring expenses. Built with Next.js App Router, server-side actions, Supabase authentication, and PostgreSQL database triggers for balance synchronization.',
     tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'PostgreSQL'],
     live: null,
+    live: 'https://finance-project-uangku.vercel.app/',
     github: 'https://github.com/CodeMelvin/uangku',
     statusText: 'Active Project',
     gradient: 'from-emerald-500/30 via-teal-500/15 to-transparent',
@@ -194,9 +195,8 @@ export default function ProjectsSection() {
                 onClick={() => setActiveCategory(cat)}
                 whileTap={{ scaleX: 1.14, scaleY: 0.86 }}
                 transition={{ type: 'spring', stiffness: 500, damping: 14, mass: 0.6 }}
-                className={`relative px-3 sm:px-4 h-8 sm:h-9 flex items-center justify-center rounded-xl text-[11px] sm:text-xs font-semibold transition-colors duration-200 cursor-pointer select-none shrink-0 whitespace-nowrap ${
-                  activeCategory === cat ? 'text-white font-bold' : 'text-[#cbd5e1] hover:text-[#f5f5f7]'
-                }`}
+                className={`relative px-3 sm:px-4 h-8 sm:h-9 flex items-center justify-center rounded-xl text-[11px] sm:text-xs font-semibold transition-colors duration-200 cursor-pointer select-none shrink-0 whitespace-nowrap ${activeCategory === cat ? 'text-white font-bold' : 'text-[#cbd5e1] hover:text-[#f5f5f7]'
+                  }`}
               >
                 {activeCategory === cat && (
                   <motion.div
