@@ -2,7 +2,7 @@
 
 import { useRef, useState, useMemo } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
-import { ExternalLink, GitBranch, PlayCircle, Layers } from 'lucide-react'
+import { ExternalLink, GitBranch, PlayCircle, Layers, FileText } from 'lucide-react'
 import Card3D from './Card3D'
 import Magnetic from './Magnetic'
 import { GlassEffect } from './ui/liquid-glass'
@@ -33,6 +33,7 @@ const projects = [
     tech: ['React', 'Framer Motion', 'Tailwind CSS', 'SEO Optimization'],
     live: 'https://thedemit.clampolx.com/',
     github: null,
+    report: 'https://drive.google.com/file/d/1C9kMAKymagNUejfqcuSadV71S19R0qKO/view?usp=sharing',
     statusText: 'Live Production',
     gradient: 'from-rose-500/30 via-pink-500/15 to-transparent',
     accentColor: '#f43f5e',
@@ -294,7 +295,7 @@ export default function ProjectsSection() {
                               rel="noopener noreferrer"
                               whileTap={{ scaleX: 1.14, scaleY: 0.86 }}
                               transition={{ type: 'spring', stiffness: 500, damping: 14 }}
-                              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#08080c] bg-[#d4a853] hover:bg-[#e8c67a] px-4 py-2 rounded-xl transition-colors shadow-md"
+                              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#08080c] bg-[#38bdf8] hover:bg-[#7dd3fc] px-4 py-2 rounded-xl transition-colors shadow-md"
                             >
                               {project.statusText === 'Video Demo' ? (
                                 <>
@@ -305,6 +306,20 @@ export default function ProjectsSection() {
                                   <ExternalLink size={13} /> Live Preview
                                 </>
                               )}
+                            </motion.a>
+                          </Magnetic>
+                        )}
+                        {project.report && (
+                          <Magnetic strength={0.2}>
+                            <motion.a
+                              href={project.report}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              whileTap={{ scaleX: 1.14, scaleY: 0.86 }}
+                              transition={{ type: 'spring', stiffness: 500, damping: 14 }}
+                              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#f5f5f7] hover:text-white border border-white/15 bg-white/[0.04] hover:bg-white/[0.1] px-4 py-2 rounded-xl transition-all"
+                            >
+                              <FileText size={13} /> View Report
                             </motion.a>
                           </Magnetic>
                         )}
