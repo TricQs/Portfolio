@@ -40,20 +40,6 @@ const projects = [
   },
   {
     number: '03',
-    title: 'Express Blog App & Supabase Cloud',
-    category: 'Backend & Web App',
-    filterCategory: 'Full-Stack',
-    description:
-      'A server-side rendered (SSR) blog web application featuring user registration, JWT authentication via httpOnly cookies, author-restricted CRUD post management, and Markdown rendering with XSS sanitization. Connected to PostgreSQL on Supabase Cloud.',
-    tech: ['Express.js', 'Node.js', 'PostgreSQL', 'Supabase', 'JWT', 'EJS'],
-    live: null,
-    github: 'https://github.com/TricQs/backend-project',
-    statusText: 'Active Project',
-    gradient: 'from-violet-500/30 via-purple-500/15 to-transparent',
-    accentColor: '#8b5cf6',
-  },
-  {
-    number: '04',
     title: 'Personal Finance Management Web App',
     category: 'Full-Stack Web App',
     filterCategory: 'Full-Stack',
@@ -65,6 +51,20 @@ const projects = [
     statusText: 'Active Project',
     gradient: 'from-emerald-500/30 via-teal-500/15 to-transparent',
     accentColor: '#10b981',
+  },
+  {
+    number: '04',
+    title: 'Express Blog App & Supabase Cloud',
+    category: 'Backend & Web App',
+    filterCategory: 'Full-Stack',
+    description:
+      'A server-side rendered (SSR) blog web application featuring user registration, JWT authentication via httpOnly cookies, author-restricted CRUD post management, and Markdown rendering with XSS sanitization. Connected to PostgreSQL on Supabase Cloud.',
+    tech: ['Express.js', 'Node.js', 'PostgreSQL', 'Supabase', 'JWT', 'EJS'],
+    live: null,
+    github: 'https://github.com/TricQs/backend-project',
+    statusText: 'Active Project',
+    gradient: 'from-violet-500/30 via-purple-500/15 to-transparent',
+    accentColor: '#8b5cf6',
   },
   {
     number: '05',
