@@ -31,6 +31,11 @@ export const metadata = {
   alternates: {
     canonical: "https://ferdinandarya.com",
   },
+  icons: {
+    icon: '/icon.png',
+    shortcut: '/icon.png',
+    apple: '/apple-icon.png',
+  },
   openGraph: {
     title: "Ferdinand Arya Wijaya — Front-End Developer",
     description:
