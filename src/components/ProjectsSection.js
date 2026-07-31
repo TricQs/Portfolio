@@ -68,7 +68,7 @@ const projects = [
   },
   {
     number: '05',
-    title: 'Ayen Tanu — Real Estate Catalog Platform',
+    title: 'Real Estate Catalog Platform',
     category: 'Client Web Project',
     filterCategory: 'Web & Mobile',
     description:
@@ -82,20 +82,6 @@ const projects = [
   },
   {
     number: '06',
-    title: 'MoodFit — AI Mood Companion & FastAPI Backend',
-    category: 'Mobile & Backend API',
-    filterCategory: 'Full-Stack',
-    description:
-      'An Android mobile application and Python FastAPI REST backend that provides personalized activity suggestions based on user mood using Gemini AI.',
-    tech: ['Kotlin', 'Android', 'Python', 'FastAPI', 'Gemini AI API'],
-    live: 'https://moodfit-backend-api.vercel.app',
-    github: 'https://github.com/TricQs/MoodFit',
-    statusText: 'Live Demo API',
-    gradient: 'from-cyan-500/30 via-teal-500/15 to-transparent',
-    accentColor: '#06b6d4',
-  },
-  {
-    number: '07',
     title: 'VR/AR Human Organ Educational App',
     category: 'Augmented Reality',
     filterCategory: 'Web & Mobile',
@@ -109,7 +95,7 @@ const projects = [
     accentColor: '#a855f7',
   },
   {
-    number: '08',
+    number: '07',
     title: 'GymBar — Fitness Companion Mobile App',
     category: 'Mobile Application',
     filterCategory: 'Web & Mobile',
@@ -123,7 +109,7 @@ const projects = [
     accentColor: '#f97316',
   },
   {
-    number: '09',
+    number: '08',
     title: 'Nexus Arcade — Web Games Portal',
     category: 'Web Portal',
     filterCategory: 'Web & Mobile',
