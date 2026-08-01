@@ -40,14 +40,14 @@ const projects = [
   },
   {
     number: '03',
-    title: 'Personal Finance Management Web App',
+    title: 'Personal Finance Management Web App (Uangku)',
     category: 'Full-Stack Web App',
     filterCategory: 'Full-Stack',
     description:
-      'A web application for tracking multi-account finances, budgeting, and monitoring expenses. Built with Next.js App Router, server-side actions, Supabase authentication, and PostgreSQL database triggers for balance synchronization.',
-    tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'PostgreSQL'],
+      'A full-stack personal finance web application featuring multi-account tracking, budget monitoring, multi-currency support, and financial health insights. Built with Next.js App Router, Supabase Auth (Google OAuth & Email Verification), PostgreSQL, and real-time multi-language support (ID, EN, JA).',
+    tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase', 'PostgreSQL', 'i18n', 'Google OAuth'],
     live: 'https://finance-project-uangku.vercel.app/',
-    github: 'https://github.com/CodeMelvin/uangku',
+    github: 'https://github.com/TricQs/finance-project',
     statusText: 'Active Project',
     gradient: 'from-emerald-500/30 via-teal-500/15 to-transparent',
     accentColor: '#10b981',
