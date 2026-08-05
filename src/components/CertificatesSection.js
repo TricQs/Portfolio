@@ -11,6 +11,34 @@ import { GlowingEffect } from './ui/glowing-effect'
 
 const certificates = [
   {
+    title: 'Supercharge Code Quality and Security: AI-Assisted Checks with Antigravity CLI and SDK',
+    issuer: 'Google (GDG Live Indonesia)',
+    platform: 'Challenge Lab',
+    date: 'Aug 2026',
+    image: '/certificates/LabTracer.png',
+    images: ['/certificates/LabTracer.png'],
+    verifyUrl: 'https://drive.google.com/file/d/1sj4u4cK-MPxfmOtypAz89FPY3g5TmqL8/view',
+    learnings: [
+      'Built AI code review assistant prototype using Antigravity CLI & SDK for CI/CD pipelines.',
+      'Automated software validation, vulnerability scanning, and quality checks.',
+      'Skills: AI, Code Review, App Security, Software Validation, CI/CD.'
+    ]
+  },
+  {
+    title: 'Spec-Driven Development with Antigravity CLI — Skills & MCP Workflows',
+    issuer: 'Google (GDG Live Indonesia)',
+    platform: 'Challenge Lab',
+    date: 'Jul 2026',
+    image: '/certificates/Recognition of Engagement.png',
+    images: ['/certificates/Recognition of Engagement.png'],
+    verifyUrl: 'https://drive.google.com/file/d/1KbLPIMCq-ItKok3DjWzu9XTVZieAFZ01/view',
+    learnings: [
+      'Mastered Agent Engineering workflow, Antigravity CLI, and Agent Skills.',
+      'Implemented Spec-Driven Development (SDD) & BigQuery Model Context Protocol (MCP).',
+      'Skills: Antigravity CLI, SDD, MCP, BigQuery, GCP, Agent Engineering.'
+    ]
+  },
+  {
     title: 'Frontend Development Internship Certificate',
     issuer: 'ICA Course',
     platform: 'Internship Program',
