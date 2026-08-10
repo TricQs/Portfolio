@@ -39,23 +39,31 @@ export default function Navbar() {
   }
 
   useEffect(() => {
+    let ticking = false
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          ticking = false
+          setScrolled(window.scrollY > 20)
 
-      if (isClicking.current) return
+          if (isClicking.current) return
 
-      const scrollPosition = window.scrollY + 220
-      const sectionIds = navLinks.map(l => l.id)
+          const scrollPosition = window.scrollY + 220
+          const sectionIds = navLinks.map(l => l.id)
 
-      for (let i = sectionIds.length - 1; i >= 0; i--) {
-        const section = document.getElementById(sectionIds[i])
-        if (section) {
-          const top = section.offsetTop
-          if (scrollPosition >= top) {
-            setActiveSection(sectionIds[i])
-            break
+          for (let i = sectionIds.length - 1; i >= 0; i--) {
+            const section = document.getElementById(sectionIds[i])
+            if (section) {
+              const top = section.offsetTop
+              if (scrollPosition >= top) {
+                setActiveSection(sectionIds[i])
+                break
+              }
+            }
           }
-        }
+        })
+        ticking = true
       }
     }
 
@@ -181,16 +189,16 @@ export default function Navbar() {
             </GlassEffect>
           </div>
 
-          {/* Mobile Hamburger — Gold-tinted glass */}
+          {/* Mobile Hamburger Button — Electric Cyan Glass */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden w-10 h-10 rounded-full flex items-center justify-center focus:outline-none transition-[background,border-color] duration-300 cursor-pointer"
+            className="md:hidden w-10 h-10 rounded-full flex items-center justify-center focus:outline-none transition-all duration-300 cursor-pointer"
             style={{
-              background: 'linear-gradient(135deg, rgba(212, 168, 83, 0.12) 0%, rgba(255,255,255,0.04) 100%)',
+              background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(255,255,255,0.04) 100%)',
               backdropFilter: 'blur(20px) saturate(180%)',
               WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-              border: '1px solid rgba(212, 168, 83, 0.20)',
-              boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.2), 0 4px 20px rgba(0,0,0,0.4)',
+              border: '1px solid rgba(56, 189, 248, 0.3)',
+              boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.2), 0 4px 20px rgba(56, 189, 248, 0.15)',
             }}
             aria-label="Toggle navigation menu"
             aria-expanded={mobileOpen}
@@ -204,7 +212,7 @@ export default function Navbar() {
               <motion.span
                 animate={mobileOpen ? { opacity: 0, scale: 0 } : { opacity: 1, scale: 1 }}
                 transition={{ duration: 0.2 }}
-                className="absolute w-4 h-0.5 bg-[#f5f5f7] rounded-full block"
+                className="absolute w-4 h-0.5 bg-[#38bdf8] rounded-full block"
               />
               <motion.span
                 animate={mobileOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 5 }}
@@ -216,83 +224,87 @@ export default function Navbar() {
         </div>
       </motion.header>
 
-      {/* Mobile Menu Drawer — Obsidian Luxe Translucent Glass with Specular Reflection Sheen */}
+      {/* Mobile Menu Drawer — Obsidian Translucent Glass with Electric Cyan Accents */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             id="mobile-navigation"
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -16 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-40 flex flex-col pt-28 px-6 pb-10 overflow-y-auto"
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-40 flex flex-col pt-24 px-6 pb-8 overflow-y-auto"
             style={{
-              background: 'linear-gradient(180deg, rgba(8, 8, 12, 0.88) 0%, rgba(13, 13, 20, 0.92) 100%)',
+              background: 'linear-gradient(180deg, rgba(8, 8, 12, 0.95) 0%, rgba(13, 13, 20, 0.98) 100%)',
               backdropFilter: 'blur(28px) saturate(180%)',
               WebkitBackdropFilter: 'blur(28px) saturate(180%)',
             }}
           >
-            {/* Top Specular Glass Reflection Sheen (Khusus Layar Mobile) */}
+            {/* Electric Cyan Specular Glass Reflection Sheen */}
             <div
               className="absolute top-0 left-0 right-0 h-[2px] pointer-events-none z-20"
               style={{
-                background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.6) 30%, rgba(212, 168, 83, 0.8) 50%, rgba(255, 255, 255, 0.6) 70%, transparent 100%)',
-                boxShadow: '0 0 15px rgba(255, 255, 255, 0.6), 0 2px 25px rgba(212, 168, 83, 0.4)',
+                background: 'linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.6) 30%, rgba(168, 85, 247, 0.8) 50%, rgba(56, 189, 248, 0.6) 70%, transparent 100%)',
+                boxShadow: '0 0 15px rgba(56, 189, 248, 0.6), 0 2px 25px rgba(168, 85, 247, 0.4)',
               }}
             />
             <div
               className="absolute -top-20 left-1/2 -translate-x-1/2 w-[340px] h-[120px] rounded-full pointer-events-none opacity-40 z-10"
               style={{
-                background: 'radial-gradient(ellipse at center, rgba(255, 255, 255, 0.3) 0%, rgba(212, 168, 83, 0.15) 45%, transparent 75%)',
+                background: 'radial-gradient(ellipse at center, rgba(56, 189, 248, 0.3) 0%, rgba(168, 85, 247, 0.15) 45%, transparent 75%)',
                 filter: 'blur(20px)',
               }}
             />
-            <div className="flex flex-col justify-center flex-grow gap-3 relative z-10 my-auto max-w-sm mx-auto w-full">
-              {navLinks.map((link, i) => (
-                <motion.button
-                  key={link.id}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.05 + i * 0.04, duration: 0.4 }}
-                  onClick={() => {
-                    handleNavClick(link.id)
-                    setMobileOpen(false)
-                  }}
-                  className="group flex items-center justify-between p-4 rounded-2xl border text-left cursor-pointer transition-[border-color,background] duration-300"
-                  style={{
-                    background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%)',
-                    backdropFilter: 'blur(16px)',
-                    border: '1px solid rgba(255, 255, 255, 0.10)',
-                    boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.1)',
-                  }}
-                >
-                  <span
-                    className="text-lg font-bold tracking-tight text-[#f5f5f7] group-hover:text-white"
-                    style={{ fontFamily: 'var(--font-space-grotesk)' }}
+            <div className="flex flex-col justify-center flex-grow gap-2.5 relative z-10 my-auto max-w-sm mx-auto w-full">
+              {navLinks.map((link, i) => {
+                const isActive = activeSection === link.id
+                return (
+                  <motion.button
+                    key={link.id}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.04 + i * 0.03, duration: 0.3 }}
+                    onClick={() => {
+                      handleNavClick(link.id)
+                      setMobileOpen(false)
+                    }}
+                    className={`group flex items-center justify-between p-4 rounded-2xl border text-left cursor-pointer transition-all duration-300 ${
+                      isActive
+                        ? 'border-[#38bdf8]/50 bg-gradient-to-r from-[#38bdf8]/15 via-[#6366f1]/10 to-transparent shadow-[0_4px_20px_rgba(56,189,248,0.15)]'
+                        : 'border-white/10 bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.06]'
+                    }`}
                   >
-                    {link.label}
-                  </span>
-                  <span className="text-xs font-mono text-[#a1a1a6] group-hover:text-[#d4a853] transition-colors">
-                    0{i + 1}
-                  </span>
-                </motion.button>
-              ))}
+                    <div className="flex items-center gap-3">
+                      <span className={`w-1.5 h-1.5 rounded-full transition-colors ${isActive ? 'bg-[#38bdf8] shadow-[0_0_8px_#38bdf8]' : 'bg-white/20'}`} />
+                      <span
+                        className={`text-base font-bold tracking-tight ${isActive ? 'text-white font-extrabold' : 'text-[#cbd5e1] group-hover:text-white'}`}
+                        style={{ fontFamily: 'var(--font-space-grotesk)' }}
+                      >
+                        {link.label}
+                      </span>
+                    </div>
+                    <span className={`text-xs font-mono transition-colors ${isActive ? 'text-[#38bdf8] font-bold' : 'text-[#64748b] group-hover:text-[#cbd5e1]'}`}>
+                      0{i + 1}
+                    </span>
+                  </motion.button>
+                )
+              })}
             </div>
 
-            <div className="mt-auto pt-6 border-t border-white/8 flex flex-col gap-4 relative z-10 max-w-sm mx-auto w-full">
+            <div className="mt-auto pt-6 border-t border-white/10 flex flex-col gap-4 relative z-10 max-w-sm mx-auto w-full">
               <a
                 href="https://drive.google.com/file/d/1KvDJ4PDQWPXYdr3xumVfAmV3xaYX2YOA/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 py-3.5 text-xs font-bold text-[#f5f5f7] rounded-2xl shadow-lg"
+                className="w-full flex items-center justify-center gap-2 py-3.5 text-xs font-bold text-[#f5f5f7] rounded-2xl shadow-lg transition-transform active:scale-95"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(212, 168, 83, 0.15) 0%, rgba(255,255,255,0.04) 100%)',
+                  background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.2) 0%, rgba(168, 85, 247, 0.1) 100%)',
                   backdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(212, 168, 83, 0.22)',
-                  boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.15)',
+                  border: '1px solid rgba(56, 189, 248, 0.35)',
+                  boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.2), 0 4px 20px rgba(56,189,248,0.15)',
                 }}
               >
-                <Download size={14} className="text-[#d4a853]" />
+                <Download size={14} className="text-[#38bdf8]" />
                 Download CV (PDF)
               </a>
 
@@ -308,7 +320,7 @@ export default function Navbar() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="w-10 h-10 rounded-xl flex items-center justify-center text-[#a1a1a6] hover:text-[#d4a853] transition-all"
+                    className="w-10 h-10 rounded-xl flex items-center justify-center text-[#cbd5e1] hover:text-[#38bdf8] hover:border-[#38bdf8]/40 transition-all"
                     style={{
                       background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%)',
                       border: '1px solid rgba(255, 255, 255, 0.10)',

@@ -1,6 +1,6 @@
 'use client'
 
-import { memo, useState, useCallback, useEffect, useRef } from 'react'
+import { memo, useRef, useEffect } from 'react'
 import { cn } from '@/lib/utils'
 
 const GlowingEffect = memo(
@@ -12,32 +12,49 @@ const GlowingEffect = memo(
     disabled = false,
   }) => {
     const containerRef = useRef(null)
-    const [mousePos, setMousePos] = useState({ x: -500, y: -500, opacity: 0 })
-
-    const handlePointerMove = useCallback((e) => {
-      if (!containerRef.current) return
-      const rect = containerRef.current.getBoundingClientRect()
-      const x = e.clientX - rect.left
-      const y = e.clientY - rect.top
-
-      const isInside =
-        e.clientX >= rect.left - 40 &&
-        e.clientX <= rect.right + 40 &&
-        e.clientY >= rect.top - 40 &&
-        e.clientY <= rect.bottom + 40
-
-      if (isInside) {
-        setMousePos({ x, y, opacity: 1 })
-      } else {
-        setMousePos((prev) => ({ ...prev, opacity: 0 }))
-      }
-    }, [])
 
     useEffect(() => {
-      if (disabled) return
-      window.addEventListener('pointermove', handlePointerMove, { passive: true })
-      return () => window.removeEventListener('pointermove', handlePointerMove)
-    }, [handlePointerMove, disabled])
+      if (disabled || !glow) return
+
+      const container = containerRef.current
+      if (!container) return
+
+      const parent = container.parentElement
+      if (!parent) return
+
+      let animFrameId = null
+
+      const handlePointerMove = (e) => {
+        if (animFrameId) return
+        animFrameId = requestAnimationFrame(() => {
+          animFrameId = null
+          const rect = parent.getBoundingClientRect()
+          const x = e.clientX - rect.left
+          const y = e.clientY - rect.top
+
+          container.style.setProperty('--x', `${x}px`)
+          container.style.setProperty('--y', `${y}px`)
+          container.style.setProperty('--opacity', '1')
+        })
+      }
+
+      const handlePointerLeave = () => {
+        if (animFrameId) {
+          cancelAnimationFrame(animFrameId)
+          animFrameId = null
+        }
+        container.style.setProperty('--opacity', '0')
+      }
+
+      parent.addEventListener('pointermove', handlePointerMove, { passive: true })
+      parent.addEventListener('pointerleave', handlePointerLeave, { passive: true })
+
+      return () => {
+        if (animFrameId) cancelAnimationFrame(animFrameId)
+        parent.removeEventListener('pointermove', handlePointerMove)
+        parent.removeEventListener('pointerleave', handlePointerLeave)
+      }
+    }, [disabled, glow])
 
     if (disabled) return null
 
@@ -48,15 +65,16 @@ const GlowingEffect = memo(
           'pointer-events-none absolute inset-0 rounded-[inherit] overflow-hidden transition-opacity duration-300 z-30',
           className
         )}
-        style={{ opacity: glow ? 1 : 0 }}
+        style={{
+          opacity: 'var(--opacity, 0)',
+        }}
       >
         {/* Card Border Spotlight Glow (Follows Cursor (x,y) 1-to-1) */}
         <div
-          className="absolute inset-0 rounded-[inherit] transition-opacity duration-300 pointer-events-none"
+          className="absolute inset-0 rounded-[inherit] pointer-events-none"
           style={{
-            opacity: mousePos.opacity,
             padding: `${borderWidth}px`,
-            background: `radial-gradient(${spotlightSize}px circle at ${mousePos.x}px ${mousePos.y}px, #38bdf8 0%, #818cf8 30%, #c084fc 60%, transparent 100%)`,
+            background: `radial-gradient(${spotlightSize}px circle at var(--x, -500px) var(--y, -500px), #38bdf8 0%, #818cf8 30%, #c084fc 60%, transparent 100%)`,
             WebkitMask:
               'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
             WebkitMaskComposite: 'xor',
@@ -66,10 +84,9 @@ const GlowingEffect = memo(
 
         {/* Ambient Surface Glass Spotlight Glow */}
         <div
-          className="absolute inset-0 rounded-[inherit] transition-opacity duration-300 pointer-events-none"
+          className="absolute inset-0 rounded-[inherit] pointer-events-none opacity-20"
           style={{
-            opacity: mousePos.opacity * 0.2,
-            background: `radial-gradient(${spotlightSize * 1.1}px circle at ${mousePos.x}px ${mousePos.y}px, rgba(56, 189, 248, 0.4) 0%, rgba(99, 102, 241, 0.2) 50%, transparent 80%)`,
+            background: `radial-gradient(${spotlightSize * 1.1}px circle at var(--x, -500px) var(--y, -500px), rgba(56, 189, 248, 0.4) 0%, rgba(99, 102, 241, 0.2) 50%, transparent 80%)`,
           }}
         />
       </div>

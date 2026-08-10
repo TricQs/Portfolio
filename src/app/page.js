@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <>
       {/* 21st.dev Animated Radial Gradient Background (Fixed & Following Scroll) */}
-      <AnimatedGradientBackground opacity={1.0} blurAmount="35px" />
+      <AnimatedGradientBackground opacity={1.0} blurAmount="12px" />
 
       {/* Navigation Bar */}
       <Navbar />

@@ -61,10 +61,14 @@ export default function ParticleBackground() {
         p.draw()
       })
 
-      // Draw connection lines using optimized squared distance checks to avoid Math.sqrt calls
-      const maxDist = 110
+      // Draw connection lines using batched path calls (Single stroke call per frame)
+      const maxDist = 100
       const maxDistSq = maxDist * maxDist
       const len = particles.length
+
+      ctx.beginPath()
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.07)'
+      ctx.lineWidth = 0.5
 
       for (let i = 0; i < len; i++) {
         const p1 = particles[i]
@@ -75,16 +79,12 @@ export default function ParticleBackground() {
           const distSq = dx * dx + dy * dy
 
           if (distSq < maxDistSq) {
-            const dist = Math.sqrt(distSq)
-            ctx.beginPath()
             ctx.moveTo(p1.x, p1.y)
             ctx.lineTo(p2.x, p2.y)
-            ctx.strokeStyle = `rgba(212,168,83,${0.06 * (1 - dist / maxDist)})`
-            ctx.lineWidth = 0.4
-            ctx.stroke()
           }
         }
       }
+      ctx.stroke()
       animId = requestAnimationFrame(animate)
     }
 

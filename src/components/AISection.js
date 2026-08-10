@@ -296,13 +296,13 @@ export default function AISection() {
       const streamInterval = setInterval(() => {
         if (isCancelled) return
         if (charIndex < currentResponse.length) {
-          charIndex = Math.min(charIndex + 4, currentResponse.length)
+          charIndex = Math.min(charIndex + 8, currentResponse.length)
           setDisplayedResponse(currentResponse.slice(0, charIndex))
         } else {
           setIsStreaming(false)
           clearInterval(streamInterval)
         }
-      }, 18)
+      }, 32)
     }, 950)
 
     return () => {
@@ -329,7 +329,7 @@ export default function AISection() {
       {/* Ambient glowing background aura */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] rounded-full opacity-[0.06] blur-3xl transition-colors duration-700"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full opacity-[0.05] blur-xl transition-colors duration-700"
           style={{ background: `radial-gradient(circle, ${activeTool.color} 0%, transparent 70%)` }}
         />
       </div>
@@ -371,8 +371,8 @@ export default function AISection() {
                     type="button"
                     onClick={() => handleSimulate(tool)}
                     className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2.5 transition-all cursor-pointer ${activeTool.id === tool.id
-                        ? 'bg-white/15 text-white border border-white/20 shadow-md'
-                        : 'bg-white/[0.02] text-[#cbd5e1] hover:text-white hover:bg-white/[0.06] border border-white/10'
+                      ? 'bg-white/15 text-white border border-white/20 shadow-md'
+                      : 'bg-white/[0.02] text-[#cbd5e1] hover:text-white hover:bg-white/[0.06] border border-white/10'
                       }`}
                   >
                     <tool.icon size={16} style={{ color: tool.color }} />
@@ -407,8 +407,8 @@ export default function AISection() {
                     type="button"
                     onClick={() => handleSimulate(activeTool, idx)}
                     className={`px-3 py-1.5 rounded-lg border text-left whitespace-nowrap transition-all cursor-pointer ${variationIndex % activeTool.prompts.length === idx
-                        ? 'border-[#d4a853]/40 bg-[#d4a853]/10 text-[#f5f5f7]'
-                        : 'border-white/10 bg-white/[0.02] text-[#cbd5e1] hover:border-white/20 hover:text-white'
+                      ? 'border-[#d4a853]/40 bg-[#d4a853]/10 text-[#f5f5f7]'
+                      : 'border-white/10 bg-white/[0.02] text-[#cbd5e1] hover:border-white/20 hover:text-white'
                       }`}
                   >
                     &ldquo;{p.length > 45 ? p.slice(0, 45) + '...' : p}&rdquo;

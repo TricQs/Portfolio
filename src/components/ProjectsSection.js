@@ -11,12 +11,12 @@ import { GlowingEffect } from './ui/glowing-effect'
 const projects = [
   {
     number: '01',
-    title: 'ICA Course.com — Online Learning Landing Page',
+    title: 'Ica Course — Online Learning Landing Page',
     category: 'Internship Project',
     filterCategory: 'Internship',
     description:
       'A modern landing page designed and built during an internship at ICA Course. Features clean layout structure, responsive navigation, and fast page loading performance.',
-    tech: ['Next.js', 'Vercel', 'Tailwind CSS', 'UI/UX Design'],
+    tech: ['Next.js', 'Vercel', 'Tailwind CSS', 'UI/UX Design', '.com'],
     live: 'https://bimbel-icacourse.com/',
     github: null,
     statusText: 'Live Production',
@@ -30,7 +30,7 @@ const projects = [
     filterCategory: 'Web & Mobile',
     description:
       'A responsive, SEO-optimized website built for an Indonesian indie horror game studio to showcase game titles, media updates, and studio lore with interactive animations.',
-    tech: ['React', 'Framer Motion', 'Tailwind CSS', 'SEO Optimization'],
+    tech: ['React', 'Framer Motion', 'Tailwind CSS', 'SEO Optimization', '.com'],
     live: 'https://thedemit.clampolx.com/',
     github: null,
     report: 'https://drive.google.com/file/d/1C9kMAKymagNUejfqcuSadV71S19R0qKO/view?usp=sharing',

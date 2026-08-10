@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 
 export default function AnimatedGradientBackground({
   opacity = 1.0,
-  blurAmount = '30px',
+  blurAmount = '14px',
 }) {
   const [isMobile, setIsMobile] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -58,34 +58,14 @@ export default function AnimatedGradientBackground({
       aria-hidden="true"
     >
       <motion.div
-        initial={{ scaleY: 0.7, scaleX: 0.8, opacity: 0.35 }}
-        animate={
-          hasEntered
-            ? {
-                scaleY: [1, 1.09, 0.93, 1],
-                scaleX: [1, 1.05, 0.95, 1],
-                opacity: 1,
-              }
-            : { scaleY: 1, scaleX: 1, opacity: 1 }
-        }
-        transition={
-          hasEntered
-            ? {
-                duration: 8,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }
-            : { duration: 1, ease: [0.45, 0, 0.2, 1] }
-        }
-        onAnimationComplete={() => {
-          if (!hasEntered) setHasEntered(true)
-        }}
+        initial={{ scaleY: 0.8, scaleX: 0.9, opacity: 0.3 }}
+        animate={{ scaleY: 1, scaleX: 1, opacity: 1 }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         className="absolute -inset-[22%]"
         style={{
           background: gradient,
           filter: `blur(${blurAmount})`,
           transformOrigin: 'center bottom',
-          willChange: 'transform, opacity',
           transform: 'translate3d(0,0,0)',
           backfaceVisibility: 'hidden',
           WebkitBackfaceVisibility: 'hidden',

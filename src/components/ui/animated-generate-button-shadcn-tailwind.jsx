@@ -129,29 +129,13 @@ export default function AnimatedGenerateButton({
 
         /* Letters */
         .ui-anim-letter {
-          color: #ffffffbb;
-          animation: ui-letter-anim 2s ease-in-out infinite;
+          color: #ffffffdd;
           transition: color var(--transition), text-shadow var(--transition), opacity var(--transition);
         }
 
-        @keyframes ui-letter-anim {
-          50% {
-            text-shadow: 0 0 4px #fff;
-            color: #fff;
-          }
-        }
-
-        /* SVG flicker */
+        /* SVG */
         .ui-anim-btn-svg {
-          filter: drop-shadow(0 0 3px #fff);
-          animation: ui-flicker 2s linear infinite;
-          animation-delay: 0.5s;
-        }
-
-        @keyframes ui-flicker {
-          50% {
-            opacity: 0.4;
-          }
+          filter: drop-shadow(0 0 2px rgba(255,255,255,0.4));
         }
 
         /* Text layers */

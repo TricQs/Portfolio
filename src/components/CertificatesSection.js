@@ -59,7 +59,7 @@ const certificates = [
     title: 'Coursera Technical Certification',
     issuer: 'Coursera Platform',
     platform: 'Online Academy',
-    date: 'May 2025',
+    date: 'Jun 2026',
     image: '/certificates/Coursera MZSZG06CCL70.jpg',
     images: ['/certificates/Coursera MZSZG06CCL70.jpg'],
     verifyUrl: 'https://coursera.org/verify/MZSZG06CCL70',
@@ -73,9 +73,9 @@ const certificates = [
     title: 'IBM SkillsBuild Technical Completion',
     issuer: 'IBM SkillsBuild',
     platform: 'Global Learning',
-    date: 'Nov 2024',
+    date: 'Jun 2026',
     image: '/certificates/CompletionCertificate_SkillsBuild.jpg',
-    images: ['/certificates/CompletionCertificate_SkillsBuild.jpg'],
+    images: ['/certificates/CompletionCertificate_SkillsBuild.jpg', '/certificates/CompletionCertificate_SkillsBuild2.jpg'],
     verifyUrl: null,
     learnings: [
       'Earned technical credential in web architecture & modern IT skills.',
@@ -87,7 +87,7 @@ const certificates = [
     title: 'Certificate of Competency — Computer & Soft Skills',
     issuer: 'Competency Assessment Board',
     platform: 'Certification',
-    date: 'Jul 2024',
+    date: 'May 2023',
     image: '/certificates/computer-skill-front.jpeg',
     images: ['/certificates/computer-skill-front.jpeg', '/certificates/computer-skill-back.jpeg'],
     verifyUrl: null,
@@ -101,7 +101,7 @@ const certificates = [
     title: 'English Assessment — Basic Proficiency',
     issuer: 'SMK Negeri 5 Tangerang',
     platform: 'Proficiency Test',
-    date: 'Dec 2023',
+    date: 'May 2023',
     image: '/certificates/english-basic-front.jpeg',
     images: ['/certificates/english-basic-front.jpeg', '/certificates/english-basic-back.jpeg'],
     verifyUrl: null,
@@ -407,11 +407,10 @@ export default function CertificatesSection() {
                     <button
                       key={img}
                       onClick={() => setActiveLightbox(prev => ({ ...prev, index: idx }))}
-                      className={`px-4 py-1.5 rounded-lg text-xs font-mono font-medium transition-all cursor-pointer ${
-                        activeLightbox.index === idx
-                          ? 'bg-[#38bdf8] text-black font-bold shadow-md scale-105'
-                          : 'bg-white/10 text-white/70 hover:bg-white/20 hover:text-white'
-                      }`}
+                      className={`px-4 py-1.5 rounded-lg text-xs font-mono font-medium transition-all cursor-pointer ${activeLightbox.index === idx
+                        ? 'bg-[#38bdf8] text-black font-bold shadow-md scale-105'
+                        : 'bg-white/10 text-white/70 hover:bg-white/20 hover:text-white'
+                        }`}
                     >
                       Page {idx + 1}
                     </button>
