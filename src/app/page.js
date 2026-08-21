@@ -11,7 +11,6 @@ const AboutSection = dynamic(() => import('@/components/AboutSection'), { ssr: f
 const SkillsSection = dynamic(() => import('@/components/SkillsSection'), { ssr: false })
 const ExperienceSection = dynamic(() => import('@/components/ExperienceSection'), { ssr: false })
 const CertificatesSection = dynamic(() => import('@/components/CertificatesSection'), { ssr: false })
-const AISection = dynamic(() => import('@/components/AISection'), { ssr: false })
 const ContactSection = dynamic(() => import('@/components/ContactSection'), { ssr: false })
 const Footer = dynamic(() => import('@/components/Footer'), { ssr: false })
 
@@ -36,7 +35,6 @@ export default function Home() {
         <SkillsSection />
         <ExperienceSection />
         <CertificatesSection />
-        <AISection />
         <ContactSection />
         <Footer />
       </main>

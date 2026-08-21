@@ -82,7 +82,7 @@ export default function ContactSection() {
         >
           <span className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-[#cbd5e1] mb-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8]" />
-            07 — Finale &amp; Contact Stage
+            06 — Finale &amp; Contact Stage
           </span>
           <h2
             className="text-4xl sm:text-5xl md:text-[3.5rem] font-bold mt-2 leading-[1.08] tracking-[-0.035em] text-gradient"
