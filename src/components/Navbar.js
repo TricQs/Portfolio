@@ -2,9 +2,10 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Download } from 'lucide-react'
+import { Download, Search } from 'lucide-react'
 import { GitHubIcon, LinkedInIcon, InstagramIcon } from './SocialIcons'
 import { GlassEffect } from './ui/liquid-glass'
+import CommandPalette from './CommandPalette'
 
 const navLinks = [
   { label: 'Projects', id: 'projects' },
@@ -171,8 +172,9 @@ export default function Navbar() {
             </nav>
           </GlassEffect>
 
-          {/* CV Button — Liquid Glass Cyan Accent */}
-          <div className="hidden md:flex items-center">
+          {/* Desktop Right Controls: Command Palette + CV */}
+          <div className="hidden md:flex items-center gap-2">
+            <CommandPalette />
             <GlassEffect className="rounded-full border border-[#38bdf8]/40">
               <motion.a
                 href="https://drive.google.com/file/d/1KvDJ4PDQWPXYdr3xumVfAmV3xaYX2YOA/view?usp=drive_link"
@@ -267,11 +269,10 @@ export default function Navbar() {
                       handleNavClick(link.id)
                       setMobileOpen(false)
                     }}
-                    className={`group flex items-center justify-between p-4 rounded-2xl border text-left cursor-pointer transition-all duration-300 ${
-                      isActive
+                    className={`group flex items-center justify-between p-4 rounded-2xl border text-left cursor-pointer transition-all duration-300 ${isActive
                         ? 'border-[#38bdf8]/50 bg-gradient-to-r from-[#38bdf8]/15 via-[#6366f1]/10 to-transparent shadow-[0_4px_20px_rgba(56,189,248,0.15)]'
                         : 'border-white/10 bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.06]'
-                    }`}
+                      }`}
                   >
                     <div className="flex items-center gap-3">
                       <span className={`w-1.5 h-1.5 rounded-full transition-colors ${isActive ? 'bg-[#38bdf8] shadow-[0_0_8px_#38bdf8]' : 'bg-white/20'}`} />
@@ -291,6 +292,24 @@ export default function Navbar() {
             </div>
 
             <div className="mt-auto pt-6 border-t border-white/10 flex flex-col gap-4 relative z-10 max-w-sm mx-auto w-full">
+              {/* Mobile Quick Actions Button */}
+              <button
+                onClick={() => {
+                  setMobileOpen(false)
+                  setTimeout(() => {
+                    window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }))
+                  }, 300)
+                }}
+                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-medium text-[#cbd5e1] hover:text-[#38bdf8] transition-colors cursor-pointer"
+                style={{
+                  background: 'rgba(255,255,255,0.04)',
+                  border: '1px solid rgba(255,255,255,0.10)',
+                }}
+              >
+                <Search size={13} />
+                Quick Actions (⌘K)
+              </button>
+
               <a
                 href="https://drive.google.com/file/d/1KvDJ4PDQWPXYdr3xumVfAmV3xaYX2YOA/view?usp=drive_link"
                 target="_blank"

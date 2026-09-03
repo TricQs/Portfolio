@@ -4,6 +4,7 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Code2, GraduationCap, Layout, Sparkles, Quote } from 'lucide-react'
 import Card3D from './Card3D'
+import HolographicCard from './HolographicCard'
 
 import { GlassEffect } from './ui/liquid-glass'
 
@@ -72,19 +73,21 @@ export default function AboutSection() {
               I actively utilize modern developer tools and AI assistants (like ChatGPT, Claude, and Gemini) to streamline debugging, explore new libraries, and continuously accelerate my technical learning.
             </p>
 
-            {/* Editorial Highlight Quote */}
+            {/* Editorial Highlight Quote with Holographic Effect */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ delay: 0.2, duration: 0.6 }}
               className="mt-8"
             >
-              <GlassEffect className="p-6 rounded-2xl border border-white/10 relative overflow-hidden group">
-                <Quote size={40} className="absolute -right-2 -bottom-2 text-[#d4a853]/5 group-hover:text-[#d4a853]/10 transition-colors duration-300 pointer-events-none" />
-                <blockquote className="text-xs sm:text-sm text-[#f5f5f7] italic font-medium leading-relaxed relative z-10">
-                  &ldquo;I focus on writing clean, maintainable code and creating responsive user interfaces that deliver clear value to users.&rdquo;
-                </blockquote>
-              </GlassEffect>
+              <HolographicCard>
+                <GlassEffect className="p-6 rounded-2xl border border-white/10 relative overflow-hidden group">
+                  <Quote size={40} className="absolute -right-2 -bottom-2 text-[#d4a853]/5 group-hover:text-[#d4a853]/10 transition-colors duration-300 pointer-events-none" />
+                  <blockquote className="text-xs sm:text-sm text-[#f5f5f7] italic font-medium leading-relaxed relative z-10">
+                    &ldquo;I focus on writing clean, maintainable code and creating responsive user interfaces that deliver clear value to users.&rdquo;
+                  </blockquote>
+                </GlassEffect>
+              </HolographicCard>
             </motion.div>
           </motion.div>
 

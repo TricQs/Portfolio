@@ -278,6 +278,16 @@ body::before {
   animation: pulseSubtle 9s ease-in-out infinite;
 }
 
+/* ───── 3D Card Parallax Layer Utilities ───── */
+.card3d-layer-1 {
+  transform: translateZ(30px);
+  transition: transform 0.3s ease-out;
+}
+.card3d-layer-2 {
+  transform: translateZ(15px);
+  transition: transform 0.3s ease-out;
+}
+
 /* ───── Accessibility: Reduced Motion ───── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -294,5 +304,9 @@ body::before {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  .card3d-layer-1,
+  .card3d-layer-2 {
+    transform: none;
   }
 }

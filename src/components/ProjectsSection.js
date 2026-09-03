@@ -241,7 +241,7 @@ export default function ProjectsSection() {
 
                       {/* Title */}
                       <h3
-                        className="text-xl font-bold text-[#f5f5f7] group-hover:text-white transition-colors duration-300 mb-2 leading-snug tracking-tight"
+                        className="text-xl font-bold text-[#f5f5f7] group-hover:text-white transition-colors duration-300 mb-2 leading-snug tracking-tight card3d-layer-1"
                         style={{ fontFamily: 'var(--font-space-grotesk)' }}
                       >
                         {project.title}
@@ -260,7 +260,7 @@ export default function ProjectsSection() {
                       </p>
 
                       {/* Tech Pills */}
-                      <div className="flex flex-wrap gap-1.5 mb-6">
+                      <div className="flex flex-wrap gap-1.5 mb-6 card3d-layer-2">
                         {project.tech.map((t) => (
                           <span
                             key={t}
@@ -272,7 +272,7 @@ export default function ProjectsSection() {
                       </div>
 
                       {/* Action Links */}
-                      <div className="flex items-center gap-4 pt-4 border-t border-white/10 mt-auto">
+                      <div className="flex items-center gap-4 pt-4 border-t border-white/10 mt-auto card3d-layer-1">
                         {project.live && (
                           <Magnetic strength={0.2}>
                             <motion.a
