@@ -82,6 +82,34 @@ const projects = [
   },
   {
     number: '06',
+    title: 'DISC ARCHIVE — 3D Anime Rating & OST Showcase',
+    category: 'Interactive 3D Web App',
+    filterCategory: 'Web & Mobile',
+    description:
+      'An interactive 3D anime rating and soundtrack archive featuring a React Three Fiber turntable platter, accordion spine-to-cover sleeve kinematics, GSAP transitions, seekable OST previews via Web Audio API, and a draggable chronological year timeline.',
+    tech: ['Next.js', 'TypeScript', 'Three.js', 'React Three Fiber', 'GSAP', 'Tailwind CSS', 'Web Audio API'],
+    live: 'https://1epslagi-vert.vercel.app/',
+    github: 'https://github.com/TricQs/3D-Website',
+    statusText: 'Live Demo',
+    gradient: 'from-red-500/30 via-orange-500/15 to-transparent',
+    accentColor: '#e05a3a',
+  },
+  {
+    number: '07',
+    title: 'Tidebound: Little Fishing Days',
+    category: 'Interactive Web Game',
+    filterCategory: 'Web & Mobile',
+    description:
+      'A cozy pixel-art browser fishing game built with HTML5 Canvas and procedural Web Audio soundscapes. Features dynamic day/night and weather cycles, physics-based casting and reeling tension, 4 depth zones, rare fish mutations, gear upgrades, and an interactive aquarium.',
+    tech: ['React', 'TypeScript', 'TanStack Start', 'HTML5 Canvas', 'Web Audio API', 'Tailwind CSS', 'Vite'],
+    live: 'https://tidebound-fishing-days.vercel.app/',
+    github: 'https://github.com/TricQs/Tidebound-Fishing-Days',
+    statusText: 'Live Demo',
+    gradient: 'from-cyan-500/30 via-sky-500/15 to-transparent',
+    accentColor: '#06b6d4',
+  },
+  {
+    number: '08',
     title: 'VR/AR Human Organ Educational App',
     category: 'Augmented Reality',
     filterCategory: 'Web & Mobile',
@@ -95,7 +123,7 @@ const projects = [
     accentColor: '#a855f7',
   },
   {
-    number: '07',
+    number: '09',
     title: 'GymBar — Fitness Companion Mobile App',
     category: 'Mobile Application',
     filterCategory: 'Web & Mobile',
@@ -109,7 +137,7 @@ const projects = [
     accentColor: '#f97316',
   },
   {
-    number: '08',
+    number: '10',
     title: 'Nexus Arcade — Web Games Portal',
     category: 'Web Portal',
     filterCategory: 'Web & Mobile',
