@@ -82,11 +82,11 @@ const projects = [
   },
   {
     number: '06',
-    title: 'DISC ARCHIVE — 3D Anime Rating & OST Showcase',
+    title: 'DISC ARCHIVE — 3D Website Anime Rating & OST Showcase',
     category: 'Interactive 3D Web App',
     filterCategory: 'Web & Mobile',
     description:
-      'An interactive 3D anime rating and soundtrack archive featuring a React Three Fiber turntable platter, accordion spine-to-cover sleeve kinematics, GSAP transitions, seekable OST previews via Web Audio API, and a draggable chronological year timeline.',
+      'An interactive 3D Website anime rating and soundtrack archive featuring a React Three Fiber turntable platter, accordion spine-to-cover sleeve kinematics, GSAP transitions, seekable OST previews via Web Audio API, and a draggable chronological year timeline.',
     tech: ['Next.js', 'TypeScript', 'Three.js', 'React Three Fiber', 'GSAP', 'Tailwind CSS', 'Web Audio API'],
     live: 'https://1epslagi-vert.vercel.app/',
     github: 'https://github.com/TricQs/3D-Website',
